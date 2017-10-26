@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/radioGroupTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButtonNecessary"
+            style="@style/weibo_tab"
+            android:text="@string/necessary_attributes"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonBasic"
+            style="@style/weibo_tab"
+            android:text="@string/basic_attributes"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonPhoto"
+            style="@style/weibo_tab"
+            android:text="@string/take_photos"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonCoordinate"
+            style="@style/weibo_tab"
+            android:text="@string/coordinate"
+            android:visibility="gone"/>
+    </RadioGroup>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerRecord"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

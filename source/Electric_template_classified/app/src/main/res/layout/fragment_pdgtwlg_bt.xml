@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yhjkgt_ywxtid"
+        />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessIDEditText
+            android:id="@+id/etYWXTID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/yhjkgt_ywxtid"
+        />
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yhjkgt_gtmc"
+        />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/etGTMC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/yhjkgt_gtmc"
+        />
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yhjkgt_gtcz"
+        />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:id="@+id/spGTCZ"
+            style="@style/SpinnerStyle"
+            android:tag="@string/yhjkgt_gtcz"
+        />
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yhjkgt_gtxz"
+        />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:id="@+id/spGTXZ"
+            style="@style/SpinnerStyle"
+            android:tag="@string/yhjkgt_gtxz"
+        />
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yhjkgt_yxdw"
+        />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessManager_
+            android:id="@+id/viewYXDW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/yhjkgt_yxdw"
+        />
+    </LinearLayout>
+</ScrollView>

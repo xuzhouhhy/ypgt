@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearLayoutRoot"
+    >
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/byq_ywxtid"
+        />
+
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessIDEditText
+        android:id="@+id/etYWXTID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="@string/byq_ywxtid"
+        />
+    </LinearLayout>
+</ScrollView>

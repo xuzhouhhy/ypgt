@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FileSelectLibrary</string>
+    <string name="OK">确定</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Back">返回</string>
+    <string name="noAuthority">没有权限读取此文件</string>
+    <string name="reachRootDir">已到达根目录</string>
+    <string name="selectAll">全选</string>
+    <string name="selectNone">全不选</string>
+    <string name="waiting">加载中</string>
+    <string name="hint">提示</string>
+    <string name="FolderRequired">这是一个文件</string>
+</resources>

@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean","LOG_DEBUG","false"
+        }
+        debug {
+            buildConfigField "boolean","LOG_DEBUG","true"
+        }
+    }
+
+    packagingOptions{
+        exclude 'libs/EventBus-3.0.0.jar'
+        exclude 'libs/GeoCraftLog-1.0-146.jar'
+        exclude 'libs/utils-1.0.0.45.jar'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    //compile fileTree(include: ['*.jar'], dir: 'libs')    this // is important!!!
+    testCompile 'junit:junit:4.12'
+    //  compile project(':mylibrary')
+    provided files('libs/GeoCraftLog-1.0-146.jar')
+    provided files('libs/EventBus-3.0.0.jar')
+    provided files('libs/utils-1.0.0.45.jar')
+}

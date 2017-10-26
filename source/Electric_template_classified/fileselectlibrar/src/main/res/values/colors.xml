@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_button_click" >#FB9A00</color>
+    <color name="background_button" >#99343A41</color>
+    <!--列表偶数列的背景色-->
+    <color name="background_list_odd">#ffe1e1e1</color>
+    <!--列表奇数列的背景色-->
+    <color name="background_list_even">#00e1e1e1</color>
+    <color name="deepSkyBlue">#2CAEFF</color>
+
+    <color name="button_common">#00cc00</color>
+    <color name="button_clicked">#bbbfbd</color>
+</resources>

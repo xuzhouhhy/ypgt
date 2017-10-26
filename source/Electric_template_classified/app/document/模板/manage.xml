@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ThreeLevelMenu FirstCaption = "省公司" SecondCaption = "一级管理单位" ThirdCaption = "二级管理单位">
+	<Group Name = "国网甘肃省电力公司">
+		<Group Name = "国网甘肃省电力公司">
+			<Item Value = "国网甘肃省电力公司"/>
+		</Group>
+		<Group Name = "兰州供电公司">
+			<Item Value = "兰州客户服务中心"/>
+			<Item Value = "红古分中心"/>
+			<Item Value = "国网兰州新区供电公司"/>
+			<Item Value = "国网永登县供电公司"/>
+			<Item Value = "国网永靖县供电公司"/>
+			<Item Value = "国网榆中县供电公司"/>
+			<Item Value = "西固分中心"/>
+			<Item Value = "榆中县供电公司"/>
+			<Item Value = "永登县供电公司"/>
+			<Item Value = "永靖县供电公司"/>
+			<Item Value = "兰州市农电公司"/>
+		</Group>
+		<Group Name = "白银供电公司">
+			<Item Value = "白银客户服务中心"/>
+			<Item Value = "国网靖远县供电公司"/>
+			<Item Value = "国网景泰县供电公司"/>
+			<Item Value = "国网皋兰县供电公司"/>
+			<Item Value = "国网平川区供电公司"/>
+			<Item Value = "国网会宁县供电公司"/>
+			<Item Value = "靖远县供电公司"/>
+			<Item Value = "景泰县供电公司"/>
+			<Item Value = "皋兰县供电公司"/>
+			<Item Value = "平川区供电公司"/>
+			<Item Value = "会宁县供电公司"/>
+		</Group>
+		<Group Name = "天水供电公司">
+			<Item Value = "天水客户服务中心"/>
+			<Item Value = "国网秦安县供电公司"/>
+			<Item Value = "国网陇西县供电公司"/>
+			<Item Value = "国网麦积区供电公司"/>
+			<Item Value = "武山县供电公司"/>
+			<Item Value = "甘谷县供电公司"/>
+			<Item Value = "秦州区供电公司"/>
+			<Item Value = "秦安县供电公司"/>
+			<Item Value = "清水县供电公司"/>
+			<Item Value = "张家川县供电公司"/>
+		</Group>
+		<Group Name = "平凉供电公司">
+			<Item Value = "国网崇信县供电公司"/>
+			<Item Value = "国网庄浪县供电公司"/>
+			<Item Value = "国网泾川县供电公司"/>
+			<Item Value = "国网静宁县供电公司"/>
+			<Item Value = "国网崆峒区供电公司"/>
+			<Item Value = "平凉客户服务中心"/>
+			<Item Value = "国网华亭县供电公司"/>
+			<Item Value = "国网灵台县供电公司"/>
+		</Group>
+		<Group Name = "金昌供电公司">
+			<Item Value = "金昌客户服务中心"/>
+			<Item Value = "金川区供电公司"/>
+			<Item Value = "永昌县供电公司"/>
+		</Group>
+		<Group Name = "张掖供电公司">
+			<Item Value = "张掖客户服务中心"/>
+			<Item Value = "国网临泽县供电公司"/>
+			<Item Value = "国网祁青供电公司"/>
+			<Item Value = "国网甘州区供电公司"/>
+			<Item Value = "肃南县供电公司"/>
+			<Item Value = "民乐县供电公司"/>
+			<Item Value = "临泽县供电公司"/>
+			<Item Value = "高台县供电公司"/>
+			<Item Value = "山丹县供电公司"/>
+			<Item Value = "山丹马场供电公司"/>
+		</Group>
+		<Group Name = "陇南供电公司">
+			<Item Value = "国网成县供电公司"/>
+			<Item Value = "国网陇南市碧口供电公司"/>
+			<Item Value = "陇南客户服务中心"/>
+			<Item Value = "武都区供电公司"/>
+			<Item Value = "文县供电公司"/>
+			<Item Value = "宕昌县供电公司"/>
+			<Item Value = "康县供电公司"/>
+			<Item Value = "西和县供电公司"/>
+			<Item Value = "礼县供电公司"/>
+			<Item Value = "徽县供电公司"/>
+			<Item Value = "两当县供电公司"/>
+		</Group>
+		<Group Name = "定西供电公司">
+			<Item Value = "定西客户服务中心"/>
+			<Item Value = "安定区供电公司"/>
+			<Item Value = "通渭县供电公司"/>
+			<Item Value = "陇西县供电公司"/>
+			<Item Value = "渭源县供电公司"/>
+			<Item Value = "临洮县供电公司"/>
+			<Item Value = "漳县供电公司"/>
+			<Item Value = "岷县供电公司"/>
+		</Group>
+		<Group Name = "庆阳供电公司">
+			<Item Value = "庆阳客户服务中心"/>
+			<Item Value = "国网西峰区供电公司"/>
+			<Item Value = "庆城县供电公司"/>
+			<Item Value = "环县供电公司"/>
+			<Item Value = "华池县供电公司"/>
+			<Item Value = "合水县供电公司"/>
+			<Item Value = "正宁县供电公司"/>
+			<Item Value = "宁县供电公司"/>
+			<Item Value = "镇原县供电公司"/>
+		</Group>
+		<Group Name = "武威供电公司">
+			<Item Value = "武威客户服务中心"/>
+			<Item Value = "凉州区供电公司"/>
+			<Item Value = "民勤县供电公司"/>
+			<Item Value = "古浪县供电公司"/>
+			<Item Value = "天祝县供电公司"/>
+		</Group>
+		<Group Name = "嘉峪关供电公司">
+			<Item Value = "嘉峪关客户服务中心"/>
+		</Group>
+		<Group Name = "酒泉供电公司">
+			<Item Value = "酒泉客户服务中心"/>
+			<Item Value = "国网肃州区供电公司"/>
+			<Item Value = "金塔县供电公司"/>
+			<Item Value = "瓜州县供电公司"/>
+			<Item Value = "肃北县供电公司"/>
+			<Item Value = "阿克塞县供电公司"/>
+			<Item Value = "玉门市供电公司"/>
+			<Item Value = "国网敦煌市供电公司"/>
+			<Item Value = "酒泉农垦供电公司"/>
+		</Group>
+		<Group Name = "临夏供电公司">
+			<Item Value = "临夏客户服务中心"/>
+			<Item Value = "临夏县供电公司"/>
+			<Item Value = "广河县供电公司"/>
+			<Item Value = "康乐县供电公司"/>
+			<Item Value = "和政县供电公司"/>
+			<Item Value = "东乡县供电公司"/>
+			<Item Value = "积石山县供电公司"/>
+		</Group>
+		<Group Name = "甘南供电公司">
+			<Item Value = "甘南客户服务中心"/>
+			<Item Value = "碌曲县供电公司"/>
+			<Item Value = "舟曲县供电公司"/>
+			<Item Value = "临潭县供电公司"/>
+			<Item Value = "卓尼县供电公司"/>
+			<Item Value = "迭部县供电公司"/>
+			<Item Value = "玛曲县供电公司"/>
+			<Item Value = "夏河县供电公司"/>
+			<Item Value = "合作市供电公司"/>
+		</Group>
+		<Group Name = "国网甘肃省电力公司检修公司">
+			<Item Value = "国网甘肃省电力公司检修公司"/>
+		</Group>
+		<Group Name = "国网甘肃省电力公司经济技术研究院">
+			<Item Value = "国网甘肃省电力公司经济技术研究院"/>
+		</Group>
+		<Group Name = "国网甘肃省电力公司送变电工程公司">
+			<Item Value = "国网甘肃省电力公司送变电工程公司"/>
+		</Group>
+	</Group>
+</ThreeLevelMenu>

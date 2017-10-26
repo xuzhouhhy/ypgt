@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">营配贯通</string>
+    <string name="YPGT">营销客户信息</string>
+    <string name="ZNXJ">运检主网信息</string>
+    <string name="app_tip">提示</string>
+    <string name="app_alert_exit_application">是否退出应用程序？</string>
+    <string name="app_no">否</string>
+    <string name="app_yes">是</string>
+    <string name="dlg_tip">提示</string>
+    <string name="unzipping">正在解压数据</string>
+    <string name="unzip_failure">解压失败</string>
+    <string name="unzip_success">解压成功</string>
+</resources>

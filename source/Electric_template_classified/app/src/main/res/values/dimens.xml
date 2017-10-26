@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_view_item_height">48sp</dimen>
+    <dimen name="list_view_menu_width">45dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_small_padding">5dp</dimen>
+    <dimen name="activity_vertical_small_padding">5dp</dimen>
+    <dimen name="activity_horizontal_padding">10dp</dimen>
+    <dimen name="activity_vertical_padding">10dp</dimen>
+    <dimen name="linear_layout_text_view_width">90dp</dimen>
+
+    <dimen name="spinner_heigth">40dp</dimen>
+
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_super_large">20sp</dimen>
+    <dimen name="text_size_super_large1">22sp</dimen>
+    <dimen name="text_size_super_large2">28sp</dimen>
+    <dimen name="components_height">48dp</dimen>
+    <dimen name="components_scale_bottom_margin">24dp</dimen>
+    <dimen name="components_double_margin">16dp</dimen>
+    <dimen name="components_margin">8dp</dimen>
+    <dimen name="components_half_margin">4dp</dimen>
+    <dimen name="components_quarter_margin">2dp</dimen>
+    <dimen name="toolbar_height">72dp</dimen>
+    <dimen name="title_height">55dp</dimen>
+    <dimen name="blank_width">10dp</dimen>
+    <dimen name="compass_blank_width">64dp</dimen>
+    <dimen name="spinner_padding_left">30dp</dimen>
+    <dimen name="bitmap_size">48dp</dimen>
+
+    <dimen name="number_picker_width">150dp</dimen>
+    <dimen name="grid_view_vertical_interval">20dp</dimen>
+    <dimen name="grid_view_horizontal_interval">10dp</dimen>
+</resources>

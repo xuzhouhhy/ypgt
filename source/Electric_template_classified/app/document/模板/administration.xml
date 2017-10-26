@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ThreeLevelMenu FirstCaption = "省" SecondCaption = "市（自治州）" ThirdCaption = "县（县级市）">
+	<Group Name = "甘肃省">
+		<Group Name = "兰州市">
+        		<Item Value = "兰州市市辖区"/>
+        		<Item Value = "城关区"/>
+        		<Item Value = "七里河区"/>
+        		<Item Value = "西固区"/>
+        		<Item Value = "安宁区"/>
+        		<Item Value = "红古区"/>
+        		<Item Value = "榆中县"/>
+        		<Item Value = "皋兰县"/>
+        		<Item Value = "永登县"/>
+        </Group>
+        <Group Name = "嘉峪关市">
+        		<Item Value = "嘉峪关市市辖区"/>
+        </Group>
+        <Group Name = "金昌市">
+        		<Item Value = "金昌市市辖区"/>
+        		<Item Value = "金川区"/>
+        		<Item Value = "永昌县"/>
+        </Group>
+        <Group Name = "白银市">
+        		<Item Value = "白银市市辖区"/>
+        		<Item Value = "白银区"/>
+        		<Item Value = "平川区"/>
+        		<Item Value = "靖远县"/>
+        		<Item Value = "会宁县"/>
+        		<Item Value = "景泰县"/>
+        </Group>
+        <Group Name = "天水市">
+        		<Item Value = "天水市市辖区"/>
+        		<Item Value = "秦州区"/>
+        		<Item Value = "麦积区"/>
+        		<Item Value = "清水县"/>
+        		<Item Value = "秦安县"/>
+        		<Item Value = "甘谷县"/>
+        		<Item Value = "武山县"/>
+        		<Item Value = "张家川回族自治县"/>
+        </Group>
+        <Group Name = "武威市">
+        		<Item Value = "武威市市辖区"/>
+        		<Item Value = "凉州区"/>
+        		<Item Value = "民勤县"/>
+        		<Item Value = "古浪县"/>
+        		<Item Value = "天祝藏族自治县"/>
+        </Group>
+        <Group Name = "张掖市">
+        		<Item Value = "张掖市市辖区"/>
+        		<Item Value = "甘州区"/>
+        		<Item Value = "肃南裕固族自治县"/>
+        		<Item Value = "民乐县"/>
+        		<Item Value = "临泽县"/>
+        		<Item Value = "高台县"/>
+        		<Item Value = "山丹县"/>
+        </Group>
+        <Group Name = "平凉市">
+        		<Item Value = "平凉市市辖区"/>
+        		<Item Value = "崆峒区"/>
+        		<Item Value = "泾川县"/>
+        		<Item Value = "灵台县"/>
+        		<Item Value = "崇信县"/>
+        		<Item Value = "华亭县"/>
+        		<Item Value = "庄浪县"/>
+        		<Item Value = "静宁县"/>
+        </Group>
+        <Group Name = "酒泉市">
+        		<Item Value = "酒泉市市辖区"/>
+        		<Item Value = "肃州区"/>
+        		<Item Value = "金塔县"/>
+        		<Item Value = "瓜州县（原安西）"/>
+        		<Item Value = "肃北蒙古族自治县"/>
+        		<Item Value = "阿克塞哈萨克族自治县"/>
+        		<Item Value = "玉门市"/>
+        		<Item Value = "敦煌市"/>
+        </Group>
+        <Group Name = "庆阳市">
+        		<Item Value = "庆阳市市辖区"/>
+        		<Item Value = "西峰区"/>
+        		<Item Value = "庆城县"/>
+        		<Item Value = "环县"/>
+        		<Item Value = "华池县"/>
+        		<Item Value = "合水县"/>
+        		<Item Value = "正宁县"/>
+        		<Item Value = "宁县"/>
+        		<Item Value = "镇原县"/>
+        </Group>
+        <Group Name = "定西市">
+        		<Item Value = "定西市市辖区"/>
+        		<Item Value = "安定区"/>
+        		<Item Value = "通渭县"/>
+        		<Item Value = "陇西县"/>
+        		<Item Value = "渭源县"/>
+        		<Item Value = "临洮县"/>
+        		<Item Value = "漳县"/>
+        		<Item Value = "岷县"/>
+        </Group>
+        <Group Name = "陇南市">
+        		<Item Value = "陇南市市辖区"/>
+        		<Item Value = "武都区"/>
+        		<Item Value = "成县"/>
+        		<Item Value = "文县"/>
+        		<Item Value = "宕昌县"/>
+        		<Item Value = "康县"/>
+        		<Item Value = "西和县"/>
+        		<Item Value = "礼县"/>
+        		<Item Value = "徽县"/>
+        		<Item Value = "两当县"/>
+        </Group>
+        <Group Name = "临夏回族自治州">
+        		<Item Value = "临夏市"/>
+        		<Item Value = "临夏县"/>
+        		<Item Value = "康乐县"/>
+        		<Item Value = "永靖县"/>
+        		<Item Value = "广河县"/>
+        		<Item Value = "和政县"/>
+        		<Item Value = "东乡族自治县"/>
+        		<Item Value = "积石山保安族东乡族撒拉族自治县"/>
+        </Group>
+        <Group Name = "甘南藏族自治州">
+        		<Item Value = "合作市"/>
+        		<Item Value = "临潭县"/>
+        		<Item Value = "卓尼县"/>
+        		<Item Value = "舟曲县"/>
+        		<Item Value = "迭部县"/>
+        		<Item Value = "玛曲县"/>
+        		<Item Value = "碌曲县"/>
+        		<Item Value = "夏河县"/>
+        </Group>
+   </Group>
+</ThreeLevelMenu>

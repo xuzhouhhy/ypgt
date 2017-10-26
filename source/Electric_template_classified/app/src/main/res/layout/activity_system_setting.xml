@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/container"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingTop="@dimen/components_margin">
+
+    <LinearLayout
+        style="@style/horizontal_LinearLayout">
+        <TextView
+            style="@style/label_TextView.width_uncage"
+            android:text="@string/create_default_task"/>
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/switchCompatTaskDefault"
+            style="@style/switch_without_background"
+        />
+    </LinearLayout>
+    <LinearLayout
+
+        android:id="@+id/linearLayoutRegister"
+        android:background="@drawable/selector_sys_button_bg"
+        style="@style/horizontal_LinearLayout"
+        >
+        <TextView
+            style="@style/label_TextView.width_uncage"
+            android:text="@string/register"/>
+    </LinearLayout>
+
+</LinearLayout>

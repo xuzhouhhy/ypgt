@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/jrdbs_ywxtid"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessIDEditText
+            android:id="@+id/etYWXTID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/jrdbs_ywxtid"
+            />
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/jrdbs_gjsblx"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:id="@+id/spGJSBLX"
+            style="@style/SpinnerStyle"
+
+            android:prompt="@string/jrdbs_gjsblx"
+            android:tag="@string/jrdbs_gjsblx"
+            />
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/jrdbs_gjsbmc"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSearch_
+            android:id="@+id/viewGJSBMC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/jrdbs_gjsbmc"
+            />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.geocraft.homeapp.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/double_blank"
+        android:layout_marginTop="@dimen/margin"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btnAppYPGT"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/first_blank"
+            android:text="@string/YPGT"
+            android:textSize="@dimen/button_text_size"
+        />
+
+        <Button
+            android:id="@+id/btnRouteInspection"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/first_blank"
+            android:text="@string/ZNXJ"
+            android:textSize="@dimen/button_text_size"
+        />
+    </LinearLayout>
+
+
+</LinearLayout>

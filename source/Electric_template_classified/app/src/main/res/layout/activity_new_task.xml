@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_list_odd">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/horizontal_LinearLayout">
+
+            <TextView
+                android:id="@+id/tvCollector"
+                style="@style/label_TextView"
+                android:text="@string/collector"/>
+
+            <com.geocraft.electrics.ui.view.ElectricEditText
+                android:id="@+id/edtTxtCollector"
+                style="@style/parameter_EditText"
+                android:maxLength="100"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/horizontal_LinearLayout">
+
+            <TextView
+                android:id="@+id/tvTaskName"
+                style="@style/label_TextView"
+                android:text="@string/taskName"/>
+
+            <com.geocraft.electrics.ui.view.ElectricEditText
+                android:id="@+id/edtTxtTaskName"
+                style="@style/parameter_EditText"
+                android:hint="@string/app_hint"
+                android:maxLength="100"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_LinearLayout">
+
+            <TextView
+                style="@style/label_TextView"
+                android:text="@string/template"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView style="@style/label_TextView.width_uncage"/>
+
+                <Spinner
+                    android:id="@+id/spinnerTaskTemplate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:spinnerMode="dialog"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_LinearLayout_no_padding">
+
+            <TextView
+                style="@style/label_TextView"
+                android:text="@string/description"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/horizontal_LinearLayout.no_marginTop"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtTxtTaskDescription"
+                style="@style/parameter_EditText"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:minLines="5"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

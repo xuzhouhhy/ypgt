@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#187975</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="deepSkyBlue">#2CAEFF</color><!--深天蓝色 -->
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <!--白色 -->
+    <color name="ivory">#FFFFF0</color>
+    <!--象牙色 -->
+    <color name="red">#FF0000</color>
+    <!--红色 -->
+    <color name="black">#000000</color>
+    <!--黑色 -->
+    <color name="grey">#C7C7C7</color>
+    <!-- 灰色 -->
+    <color name="layer_text_color">#FF3da3f1</color>
+    <color name="collect_color">#CCFFA500</color>
+    <color name="collect_color_tint">#3FFFA500</color>
+    <color name="measure_color">#FF0000</color>
+    <color name="measure_color_tint">#3FFF0000</color>
+    <color name="transparent">#00FFFFFF</color>
+    <!-- 100%透明 -->
+    <color name="bg_panel">#44000000</color>
+    <!-- 弹出工具面板背景 -->
+    <color name="bg_action_bar">#343A41</color>
+    <!-- ActionBar背景 -->
+    <color name="bg_button_click">#FB9A00</color>
+    <!-- button click or focus -->
+    <color name="bg_toggle_button_disable">#ff475059</color>
+    <color name="bg_button">#99343A41</color>
+    <!-- 60%透明 -->
+    <color name="bg_square_button">#ff8d8d8d</color>
+    <color name="bg_square_button_pressed">#ffff7003</color>
+    <color name="bg_button_disable">#99687482</color>
+    <color name="bg_list_odd">#ffe1e1e1</color>
+    <!-- 列表奇数列背景色  从0开始-->
+    <color name="bg_list_even">#00e1e1e1</color>
+    <!-- 列表偶数列背景色  从0开始-->
+    <color name="text_circle_menu">#43d8df</color>
+    <!-- 主页面旋转按钮颜色 -->
+    <color name="barbk">#CC1C8F66</color>
+    <color name="weibo_listtab_off">#8d8d8d</color>
+</resources>

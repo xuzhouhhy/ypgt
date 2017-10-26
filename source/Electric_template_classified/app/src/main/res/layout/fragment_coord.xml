@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:text="@string/longtitude"/>
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/etLongtitude"
+            style="@style/business_editText_text"
+            android:enabled="false"
+            android:inputType="numberDecimal"
+            android:tag="@string/longtitude"
+            />
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:text="@string/latitude"/>
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/etLatitude"
+            style="@style/business_editText_text"
+            android:enabled="false"
+            android:inputType="numberDecimal"
+            android:tag="@string/latitude"/>
+
+        <TextView
+            style="@style/SimpleLabel.SimpleLabelRed"
+            android:text="@string/altitude"/>
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/etAltitude"
+            style="@style/business_editText_text"
+            android:enabled="true"
+            android:inputType="numberDecimal"
+            android:tag="@string/altitude"/>
+
+        <TextView
+            android:id="@+id/tvTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/locknumber"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        <Button
+            android:id="@+id/btnCoordUpdate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:text="@string/coord_update"/>
+            <Button
+                android:id="@+id/btnAltitudeUpdate"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:text="@string/altitude_update"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvJRDBS"
+            style="@style/SimpleLabel"
+            android:text="@string/jlx_jrdbs"
+            android:visibility="gone"/>
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSearch_
+            android:id="@+id/viewJRDBS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/jlx_jrdbs"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btnPreferenceJRD"
+            android:text="@string/tjjrdbs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+    </LinearLayout>
+</ScrollView>

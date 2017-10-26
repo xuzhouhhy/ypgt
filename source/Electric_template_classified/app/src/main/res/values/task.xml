@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="任务名称" value="ddd"/>
+    <string name="采集员"  value = "ccc"/>
+    <string name="采集时间" value ="ddd"/>
+    <string name="任务模板" value ="eee"/>
+    <string name="任务描述" value ="fff"/>
+</resources>
