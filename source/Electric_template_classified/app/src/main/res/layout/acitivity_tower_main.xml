@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_GH"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessIDEditText
+            android:id="@+id/edt_F_GH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_GH"
+            />
+
+        <RadioGroup
+            android:id="@+id/rg_tower_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/tower_jkx"
+                />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_dlx"
+                />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_dy"
+                />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <!-- 绝缘子-->
+            <CheckBox
+                android:id="@+id/ck_jyz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_jyz"/>
+
+            <!-- 断路其器-->
+            <CheckBox
+                android:id="@+id/ck_dlq"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_dlq"/>
+
+            <!-- 隔离刀闸-->
+            <CheckBox
+                android:id="@+id/ck_gldz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_gldz"/>
+
+            <!-- 变压器-->
+            <CheckBox
+                android:id="@+id/ck_byq"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_gldz"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -595,4 +595,11 @@
     <string name="exist_tower_id">杆塔已存在</string>
     <string name="btn_next">下一页</string>
     <string name="btn_back">返回</string>
+    <string name="F_GH">杆桩号</string>
+    <string name="tower_jkx">架空线</string>
+    <string name="tower_dlx">电缆线</string>
+    <string name="tower_jyz">绝缘子</string>
+    <string name="tower_dlq">短路器</string>
+    <string name="tower_gldz">隔离刀闸</string>
+    <string name="tower_dy">电源</string>
 </resources>

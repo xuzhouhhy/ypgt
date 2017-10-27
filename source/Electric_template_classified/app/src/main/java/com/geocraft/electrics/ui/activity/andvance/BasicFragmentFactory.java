@@ -114,8 +114,6 @@ public class BasicFragmentFactory {
         return mZSBYQFragments;
     }
 
-    //实例化开闭所fragment对象
-
     public static class DataFragment {
         String datasetName;
         BusinessFragment businessFragment;
