@@ -40,6 +40,8 @@ public class WellActivity extends BaseActivity {
     private int mFragemntIndex;
     private BusinessFragment mBasicDataFragment;
     private BasicFragmentFactory.DataFragment mDataFragment;
+    private WellMainFragment mWellMainFragment;
+    private boolean mIsNext;
 
     @AfterViews
     void init() {
@@ -52,6 +54,7 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_next() {
+        mIsNext = true;
         if (changeContentView(mFragemntIndex)) {
             mFragemntIndex++;
         }
@@ -59,6 +62,7 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_back() {
+        mIsNext = false;
         mFragemntIndex = mFragemntIndex - 2;
         if (mFragemntIndex < 0) {
             addMainFragment();
@@ -93,8 +97,8 @@ public class WellActivity extends BaseActivity {
     }
 
     public void addMainFragment() {
-        WellMainFragment wellMainFragment = new WellMainFragment_();
-        updateFrament(wellMainFragment);
+        mWellMainFragment = new WellMainFragment_();
+        updateFrament(mWellMainFragment);
         updateBtnViewStatus(btn_back, false);
     }
 
@@ -111,8 +115,12 @@ public class WellActivity extends BaseActivity {
     }
 
     private void saveFragmentData() {
-        if (mDataFragment != null) {
-            getValueFromFragment();
+        if (mFragemntIndex == 0 && mIsNext) {
+            mWellMainFragment.getValue();
+        } else {
+            if (mDataFragment != null) {
+                getValueFromFragment();
+            }
         }
     }
 
@@ -152,5 +160,9 @@ public class WellActivity extends BaseActivity {
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public boolean isNext() {
+        return mIsNext;
     }
 }

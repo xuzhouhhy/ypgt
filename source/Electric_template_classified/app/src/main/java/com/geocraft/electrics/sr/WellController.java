@@ -63,6 +63,7 @@ public class WellController extends BaseController {
             new ArrayList<BasicFragmentFactory.DataFragment>();
     private FragmentOption mFragmentOption = new FragmentOption();
 
+
     //是否创建标识
     //编辑需要传染id key
 
@@ -92,7 +93,7 @@ public class WellController extends BaseController {
     }
 
     public void initDataSet() throws CloneNotSupportedException {
-        List<String> datasetNames = mWellDatasets.getDatasetNames();
+        List<String> datasetNames = mWellDatasets.getWellDatasetNames();
         for (int i = 0; i < datasetNames.size(); i++) {
             initDataSetByDasetName(datasetNames.get(i));
         }
@@ -106,9 +107,13 @@ public class WellController extends BaseController {
         DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
         if (!mIsCreateRecord && mDataSetKey > 0) {
             dataset.PrimaryKey = mDataSetKey;
-            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
-            if (temp != null) {
-                dataset = temp;
+            if (mWellDatasets.isPropterDataset(dataset.Name)) {
+                // TODO: 2017/10/27
+            } else {
+                DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+                if (temp != null) {
+                    dataset = temp;
+                }
             }
         }
         mDataSets.add(dataset);
