@@ -10,6 +10,8 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.TowerMainFragment;
+import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.TowerMainFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -32,7 +34,6 @@ public class TowerActivity extends BaseActivity {
     @ViewById
     Button btn_next;
 
-
     private FragmentManager mFm = null;
     private FragmentTransaction mTransaction = null;
     private int mFragemntIndex;
@@ -45,6 +46,7 @@ public class TowerActivity extends BaseActivity {
         InitTowerInfoAsyncTask initRecordInfoAsyncTask = new InitTowerInfoAsyncTask(this,
                 mController);
         initRecordInfoAsyncTask.execute(mController);
+        updateBtnViewStatus(btn_back, false);
     }
 
     @Click
@@ -60,7 +62,6 @@ public class TowerActivity extends BaseActivity {
     }
 
     public void initView() {
-
         this.setTitle(mController.getTitle());
         changeFragment(mFragemntIndex);
     }
@@ -83,6 +84,24 @@ public class TowerActivity extends BaseActivity {
             mTransaction.replace(R.id.id_content, mBasicDataFragment);
         }
         mTransaction.commit();
+        updateBtnViewStatus(btn_back, true);
+    }
+
+    public void initMainFragment() {
+        mFm = getSupportFragmentManager();
+        mTransaction = mFm.beginTransaction();
+        TowerMainFragment towerMainFragment = new TowerMainFragment_();
+        if (!towerMainFragment.isAdded()) {
+            mTransaction.add(R.id.id_content, towerMainFragment);
+        } else {
+            mTransaction.replace(R.id.id_content, towerMainFragment);
+        }
+        mTransaction.commit();
+    }
+
+    private void updateBtnViewStatus(Button button, boolean IsUsed) {
+        button.setEnabled(false);
+        button.setClickable(false);
     }
 
     private void saveFragmentData() {

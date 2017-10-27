@@ -40,7 +40,7 @@ public class InitTowerInfoAsyncTask extends AsyncTask<TowerController, Integer, 
     protected Boolean doInBackground(TowerController... params) {
         try {
             mController.initDataSet();
-            mController.initDataFragments();
+            ((TowerActivity) mContext).initMainFragment();
             return true;
         } catch (CloneNotSupportedException e) {
             L.printException(e);

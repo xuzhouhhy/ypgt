@@ -1,7 +1,9 @@
 package com.geocraft.electrics.ui.fragment.business_basic_fragment.advance;
 
 
-import android.app.Fragment;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -27,11 +29,19 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
+import common.geocraft.untiltools.T;
+
 /**
  * 环网柜
  */
 @EFragment(R.layout.acitivity_tower_main)
 public class TowerMainFragment extends Fragment {
+    protected DataSet mDataSet;
+    protected Boolean mIsNew;
+    protected TaskManager taskManager = TaskManager_.getInstance_(
+            ElectricApplication_.getInstance().getApplicationContext());
+    protected DbManager dbManager = DbManager_.getInstance_(
+            ElectricApplication_.getInstance().getApplicationContext());
     @ViewById
     LinearLayout linearLayoutRoot;
     @ViewById
@@ -42,12 +52,29 @@ public class TowerMainFragment extends Fragment {
     GridView grd_ck_fragment;
     private FragmentAdapter mFragmentAdapter;
     private TowerController mTowerController;
-    protected DataSet mDataSet;
-    protected Boolean mIsNew;
-    protected TaskManager taskManager = TaskManager_.getInstance_(
-            ElectricApplication_.getInstance().getApplicationContext());
-    protected DbManager dbManager = DbManager_.getInstance_(
-            ElectricApplication_.getInstance().getApplicationContext());
+    RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
+            new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    WellType wellType = getWellType(checkedId);
+                    mTowerController.updateWellType(wellType);
+                    mFragmentAdapter.notifyDataSetChanged();
+                }
+            };
+    private Context mContext;
+
+    @NonNull
+    private WellType getWellType(int checkedId) {
+        WellType wellType = WellType.JK;
+        if (checkedId == R.id.rb_jk) {
+            wellType = WellType.JK;
+        } else if (checkedId == R.id.rb_dl) {
+            wellType = WellType.DL;
+        } else if (checkedId == R.id.rb_dy) {
+            wellType = WellType.DY;
+        }
+        return wellType;
+    }
 
     @AfterViews
     protected void init() {
@@ -55,7 +82,6 @@ public class TowerMainFragment extends Fragment {
         mIsNew = mTowerController.isCreateRecord();
         mDataSet = mTowerController.getCurrentDataSet();
         initViewData();
-
     }
 
     private void initViewData() {
@@ -80,9 +106,9 @@ public class TowerMainFragment extends Fragment {
                 if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
                         .equalsIgnoreCase(fieldInfo.Alias)) {
                     if (mIsNew) {
-                        setTowerType(fieldInfo.Default);
+                        setWellType(fieldInfo.Default);
                     } else {
-                        setTowerType(fieldInfo.Value);
+                        setWellType(fieldInfo.Value);
                     }
                 }
             }
@@ -91,36 +117,46 @@ public class TowerMainFragment extends Fragment {
         }
     }
 
-    private void setTowerType(String value) {
-        if (null == value || value.isEmpty()) {
-            rg_tower_type.check(R.id.rb_jk);
+    private void getValue() {
+        String wellName = edt_F_GH.getText().toString();
+        if (wellName.equals("")) {
+            T.showShort(mContext, mContext.getString(R.string.well_name_empty));
+            return;
         }
-        if (value.equals("0")) {
-            rg_tower_type.check(R.id.rb_jk);
-        }
-        if (value.equals("1")) {
-            rg_tower_type.check(R.id.rb_dl);
-        }
-        if (value.equals("2")) {
-            rg_tower_type.check(R.id.rb_dy);
+        List<FieldInfo> fieldInfoList = mDataSet.FieldInfos;
+        for (int i = 0; i < fieldInfoList.size(); i++) {
+            FieldInfo fieldInfo = fieldInfoList.get(i);
+            if (fieldInfo == null) {
+                continue;
+            }
+            if (edt_F_GH.getTag() != null && edt_F_GH.getTag().toString()
+                    .equalsIgnoreCase(fieldInfo.Alias)) {
+                fieldInfo.Value = wellName;
+            }
+            if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
+                    .equalsIgnoreCase(fieldInfo.Alias)) {
+                fieldInfo.Value = String.valueOf(getWellType());
+            }
         }
     }
 
-    RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
-            new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    WellType wellType = WellType.JK;
-                    if (checkedId == R.id.rb_jk) {
-                        wellType = WellType.JK;
-                    } else if (checkedId == R.id.rb_dl) {
-                        wellType = WellType.DL;
-                    } else if (checkedId == R.id.rb_dy) {
-                        wellType = WellType.DY;
-                    }
-                    mTowerController.setWellType(wellType);
-                    mFragmentAdapter.notifyDataSetChanged();
-                }
-            };
+    private WellType getWellType() {
+        return getWellType(rg_tower_type.getCheckedRadioButtonId());
+    }
+
+    private void setWellType(String value) {
+        if (null == value || value.isEmpty()) {
+            rg_tower_type.check(R.id.rb_jk);
+        }
+        if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
+            rg_tower_type.check(R.id.rb_jk);
+        }
+        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
+            rg_tower_type.check(R.id.rb_dl);
+        }
+        if (value.equals(String.valueOf(WellType.DY.ordinal()))) {
+            rg_tower_type.check(R.id.rb_dy);
+        }
+    }
 
 }

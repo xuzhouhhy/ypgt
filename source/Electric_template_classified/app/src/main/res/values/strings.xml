@@ -604,4 +604,5 @@
     <string name="tower_dy">电源</string>
     <string name="tower_hwg">环网柜</string>
     <string name="tower_type">杆桩号</string>
+    <string name="well_name_empty">井号名称不能为空!</string>
 </resources>
