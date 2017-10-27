@@ -8,6 +8,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
@@ -43,6 +44,9 @@ public class TowerController extends BaseController {
 
     @Bean
     BasicFragmentFactory mBasicFragmentFactory;
+    @Bean
+    WellDatasets mWellDatasets;
+
     WellType mWellType = WellType.JK;
     private String mFirstType;
     private String mSecondType;
@@ -110,8 +114,7 @@ public class TowerController extends BaseController {
         return mCurrentDataSet;
     }
 
-
-    public void setFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
+    public void upFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
         try {
             if (isCheked) {
                 mChekedFragments.add(dataFragment);
@@ -134,18 +137,25 @@ public class TowerController extends BaseController {
     }
 
     public void initDataSet() throws CloneNotSupportedException {
-        DataSet temp = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
-        if (mIsCreateRecord) {
-            mCurrentDataSet = (DataSet) temp.clone();
-        } else {
-            if (mDataSetKey > 0) {
-                temp.PrimaryKey = mDataSetKey;
-                mCurrentDataSet = mDbManager.queryByPrimaryKey(temp, true);
-            } else {
-                mCurrentDataSet = (DataSet) temp.clone();
+        List<String> datasetNames = mWellDatasets.getDatasetNames();
+        for (int i = 0; i < datasetNames.size(); i++) {
+            initDataSetByDasetName(datasetNames.get(i));
+        }
+        if (mDataSets.size() == 0) {
+            mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
+        }
+    }
+
+    public void initDataSetByDasetName(String datasetName) throws CloneNotSupportedException {
+        DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
+        if (!mIsCreateRecord && mDataSetKey > 0) {
+            dataset.PrimaryKey = mDataSetKey;
+            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+            if (temp != null) {
+                dataset = temp;
             }
         }
-        mDataSets.add(temp);
+        mDataSets.add(dataset);
     }
 
     public void initDataFragments() {
@@ -164,23 +174,15 @@ public class TowerController extends BaseController {
         return mDataFragments;
     }
 
-    public List<BasicFragmentFactory.DataFragment> getChekedFragments() {
-        return mChekedFragments;
-    }
-
-    public void setChekedFragments(List<BasicFragmentFactory.DataFragment> chekedFragments) {
-        mChekedFragments = chekedFragments;
-    }
-
     private void addDefaultFragments() {
         //mDataFragments.addAll(mBasicFragmentFactory.getTowerFragments(mTowerDataSet.Name));
     }
 
     public BasicFragmentFactory.DataFragment getDataFragment(int index) {
-        if (index < 0 || index > mDataFragments.size() - 1) {
+        if (index < 0 || index > mChekedFragments.size() - 1) {
             return null;
         }
-        return mDataFragments.get(index);
+        return mChekedFragments.get(index);
     }
 
     public boolean isEditParent() {
@@ -318,7 +320,9 @@ public class TowerController extends BaseController {
             if (photoItemInfo.photoPath.contains(Constants.TASK_CACHE_PATH)) {
                 File oldFile = new File(photoItemInfo.photoPath);
                 File newFile = new File(getNewPhotoPath(photoItemInfo));
-                File cacheFile = new File(getTaskPath() + File.separator + Constants.TASK_PHOTO_FOLDER + File.separator + Constants.TASK_CACHE_PATH + File.separator + newFile.getName());
+                File cacheFile = new File(getTaskPath() + File.separator +
+                        Constants.TASK_PHOTO_FOLDER + File.separator +
+                        Constants.TASK_CACHE_PATH + File.separator + newFile.getName());
                 try {
                     FileUtils.copyFile(oldFile, newFile);
                     FileUtils.copyFile(oldFile, cacheFile);
