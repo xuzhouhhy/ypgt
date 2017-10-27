@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_GH"
+            />
+
+        <EditText
+            android:id="@+id/edt_F_GH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_GH"
+            />
+
+        <RadioGroup
+            android:id="@+id/rg_tower_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:tag="@string/tower_type"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_jk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/tower_jkx"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_dl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_dlx"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_dy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tower_dy"
+                />
+        </RadioGroup>
+
+        <GridView
+            android:id="@+id/grd_ck_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            >
+
+        </GridView>
+
+    </LinearLayout>
+</LinearLayout>

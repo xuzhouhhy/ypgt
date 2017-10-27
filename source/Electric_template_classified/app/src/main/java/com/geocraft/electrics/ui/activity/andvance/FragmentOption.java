@@ -4,7 +4,7 @@ package com.geocraft.electrics.ui.activity.andvance;
  * 杆号配置信息
  */
 
-public class TowerOption {
+public class FragmentOption {
     private boolean mIsCheckJKXL;//架空线路
     private boolean mIsCheckDLXL;//电缆线路
     private boolean mIsCheckHWG;//环网柜

@@ -31,6 +31,8 @@ public class TowerActivity extends BaseActivity {
     Button btn_back;
     @ViewById
     Button btn_next;
+
+
     private FragmentManager mFm = null;
     private FragmentTransaction mTransaction = null;
     private int mFragemntIndex;
@@ -58,6 +60,7 @@ public class TowerActivity extends BaseActivity {
     }
 
     public void initView() {
+
         this.setTitle(mController.getTitle());
         changeFragment(mFragemntIndex);
     }
@@ -73,7 +76,7 @@ public class TowerActivity extends BaseActivity {
         if (null == mDataFragment) {
             return;
         }
-        mBasicDataFragment = mDataFragment.businessFragment;
+        mBasicDataFragment = mDataFragment.mFragment;
         if (!mBasicDataFragment.isAdded()) {
             mTransaction.add(R.id.id_content, mBasicDataFragment);
         } else {
@@ -83,8 +86,8 @@ public class TowerActivity extends BaseActivity {
     }
 
     private void saveFragmentData() {
-        if (mDataFragment != null && mDataFragment.isLast) {
-            mController.setsCurrentDataSet(mDataFragment.datasetName);
+        if (mDataFragment != null) {
+            mController.setsCurrentDataSet(mDataFragment.mDatasetName);
             getValueFromFragment();
         }
     }
@@ -93,7 +96,7 @@ public class TowerActivity extends BaseActivity {
         if (null == mDataFragment || null == mBasicDataFragment) {
             return;
         }
-        DataSet dataSet = mController.getCurrentDataSet(mDataFragment.datasetName);
+        DataSet dataSet = mController.getCurrentDataSet(mDataFragment.mDatasetName);
         if (null == dataSet) {
             return;
         }
