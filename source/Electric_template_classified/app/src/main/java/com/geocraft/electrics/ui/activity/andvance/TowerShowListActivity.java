@@ -9,10 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuCreator;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuItem;
@@ -26,6 +26,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import common.geocraft.untiltools.DensityUtils;
 import common.geocraft.untiltools.T;
@@ -118,6 +121,17 @@ public class TowerShowListActivity extends BaseActivity implements
                 mController);
         initDeviceListAsyncTask.execute(mController);
         etSearch.addTextChangedListener(SearchWatcher);
+        //模拟电杆等数据
+        List<DataSet> dataSets = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            DataSet dataSet = new DataSet();
+            dataSet.First = "first" + i;
+            dataSet.Second = "second" + i;
+            dataSet.Third = "third" + i;
+            dataSet.setmIsShowInDeviceList(true);
+            dataSets.add(dataSet);
+        }
+        mController.refreshList(dataSets);
     }
 
     @OptionsItem
