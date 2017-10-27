@@ -22,13 +22,13 @@ import com.huace.log.logger.L;
  */
 public class DeviceShowListAdapter extends BaseAdapter {
     private DeviceShowListController mController;
-    private String mFistrValue;
+    private String mFirstValue;
     private Context mContext;
 
     private OnClickEffectiveListener mOnClickEffectiveListener = new OnClickEffectiveListener() {
         @Override
         public void onEffectiveClick(View v) {
-            ((DeviceShowListActivity) mContext).openActivity(mFistrValue);
+            ((DeviceShowListActivity) mContext).openActivity(mFirstValue);
         }
     };
 
@@ -75,7 +75,7 @@ public class DeviceShowListAdapter extends BaseAdapter {
         String thirdField = temp.GetFieldNameByName(temp.Third) + ":";
         String third = temp.GetFieldValueByName(temp.Third);
 
-        mFistrValue = first;
+        mFirstValue = first;
         deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
                 thirdField, third, temp.isShowInDeviceList());
         deviceShowItemView.setNumberColor(getStatus(status));
