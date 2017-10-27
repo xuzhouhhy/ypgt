@@ -43,7 +43,7 @@ public class TowerController extends BaseController {
 
     @Bean
     BasicFragmentFactory mBasicFragmentFactory;
-
+    WellType mWellType = WellType.JK;
     private String mFirstType;
     private String mSecondType;
     private int mDataSetKey;
@@ -55,8 +55,11 @@ public class TowerController extends BaseController {
     private DataSet mTowerDataSet;
     private DataSet mWGFDataSet;
     private List<DataSet> mDataSets;
-    private List<BasicFragmentFactory.DataFragment> mDataFragments = new ArrayList<BasicFragmentFactory.DataFragment>();
-    private TowerOption mTowerOption = new TowerOption();
+    private List<BasicFragmentFactory.DataFragment> mDataFragments =
+            new ArrayList<BasicFragmentFactory.DataFragment>();
+    private List<BasicFragmentFactory.DataFragment> mChekedFragments =
+            new ArrayList<BasicFragmentFactory.DataFragment>();
+    private FragmentOption mFragmentOption = new FragmentOption();
 
     //是否创建标识
     //编辑需要传染id key
@@ -103,6 +106,23 @@ public class TowerController extends BaseController {
         return null;
     }
 
+    public DataSet getCurrentDataSet() {
+        return mCurrentDataSet;
+    }
+
+
+    public void setFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
+        try {
+            if (isCheked) {
+                mChekedFragments.add(dataFragment);
+            } else {
+                mChekedFragments.remove(dataFragment);
+            }
+        } catch (Exception e) {
+            L.printException(e);
+        }
+    }
+
     public void setsCurrentDataSet(String datasetName) {
         mCurrentDataSet = null;
         for (DataSet dataSet : mDataSets) {
@@ -132,18 +152,28 @@ public class TowerController extends BaseController {
         addDefaultFragments();
     }
 
-    private void addDefaultFragments() {
-        mDataFragments.addAll(mBasicFragmentFactory.getTowerFragments(mTowerDataSet.Name));
+    public List<BasicFragmentFactory.DataFragment> getDataFragments() {
+        mDataFragments.clear();
+        if (mWellType == WellType.JK) {
+            mDataFragments = mBasicFragmentFactory.getJKFramentItems();
+        } else if (mWellType == WellType.DL) {
+            mDataFragments = mBasicFragmentFactory.getDLFramentItems();
+        } else {
+            mDataFragments = mBasicFragmentFactory.getDYFramentItems();
+        }
+        return mDataFragments;
     }
 
-    public void setHwgFragments(boolean isChecked) {
-        mTowerOption.setCheckHWG(isChecked);
-        List<BasicFragmentFactory.DataFragment> dataFragments =
-                mBasicFragmentFactory.getHWGFragments(mWGFDataSet.Name);
-        dataFragments.removeAll(dataFragments);
-        if (mTowerOption.isCheckHWG()) {
-            dataFragments.addAll(dataFragments);
-        }
+    public List<BasicFragmentFactory.DataFragment> getChekedFragments() {
+        return mChekedFragments;
+    }
+
+    public void setChekedFragments(List<BasicFragmentFactory.DataFragment> chekedFragments) {
+        mChekedFragments = chekedFragments;
+    }
+
+    private void addDefaultFragments() {
+        //mDataFragments.addAll(mBasicFragmentFactory.getTowerFragments(mTowerDataSet.Name));
     }
 
     public BasicFragmentFactory.DataFragment getDataFragment(int index) {
@@ -374,6 +404,10 @@ public class TowerController extends BaseController {
 
     public int getDataSetParentKey() {
         return mDataSetParentKey;
+    }
+
+    public void setWellType(WellType wellType) {
+        mWellType = wellType;
     }
 
 

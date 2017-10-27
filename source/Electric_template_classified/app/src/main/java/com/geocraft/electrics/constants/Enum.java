@@ -664,6 +664,7 @@ public class Enum {
     public static String BRANCH_BOX = "branch_box";
     public static String GYCJ = "inspection";
     public static String GYCJ_LINE_F_GH = "F_GH";
+    public static String GY_HYGTZXX = "GY_HYGTZXX";
 
 
 }

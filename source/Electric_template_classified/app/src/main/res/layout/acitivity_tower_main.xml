@@ -18,7 +18,7 @@
             android:text="@string/F_GH"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessIDEditText
+        <EditText
             android:id="@+id/edt_F_GH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,9 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:tag="@string/tower_type"
             >
 
             <RadioButton
+                android:id="@+id/rb_jk"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -41,6 +43,7 @@
                 />
 
             <RadioButton
+                android:id="@+id/rb_dl"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -48,6 +51,7 @@
                 />
 
             <RadioButton
+                android:id="@+id/rb_dy"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -55,44 +59,14 @@
                 />
         </RadioGroup>
 
-        <LinearLayout
+        <GridView
+            android:id="@+id/grd_ck_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:numColumns="3"
             >
 
-            <!-- 绝缘子-->
-            <CheckBox
-                android:id="@+id/ck_jyz"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tower_jyz"/>
-
-            <!-- 断路其器-->
-            <CheckBox
-                android:id="@+id/ck_dlq"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tower_dlq"/>
-
-            <!-- 隔离刀闸-->
-            <CheckBox
-                android:id="@+id/ck_gldz"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tower_gldz"/>
-
-            <!-- 变压器-->
-            <CheckBox
-                android:id="@+id/ck_byq"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tower_gldz"/>
-
-        </LinearLayout>
+        </GridView>
 
     </LinearLayout>
 </LinearLayout>

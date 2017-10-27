@@ -602,4 +602,6 @@
     <string name="tower_dlq">短路器</string>
     <string name="tower_gldz">隔离刀闸</string>
     <string name="tower_dy">电源</string>
+    <string name="tower_hwg">环网柜</string>
+    <string name="tower_type">杆桩号</string>
 </resources>
