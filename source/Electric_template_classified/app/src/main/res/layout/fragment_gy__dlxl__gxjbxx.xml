@@ -1,0 +1,152 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GXJBXX">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+
+    <!--管沟敷设材质 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_GTFSCZ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_GTFSCZ"
+        android:tag="@string/GY_DLXLTZXX_F_GTFSCZ"/>
+
+
+    <!--管沟使用情况 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_GGSYQK"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_GGSYQK"
+        android:tag="@string/GY_DLXLTZXX_F_GGSYQK"/>
+
+
+    <!--同沟线路回数 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLHS"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLHS"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLHS"/>
+
+
+    <!--同沟线路名称1 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC1"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC1"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC1"/>
+
+
+    <!--同沟线路名称2 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC2"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC2"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC2"/>
+
+
+    <!--同沟线路名称3 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC3"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC3"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC3"/>
+
+
+    <!--同沟线路名称4 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC4"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC4"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC4"/>
+
+
+    <!--同沟线路名称5 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC5"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC5"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC5"/>
+
+
+    <!--同沟线路名称6 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC6"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC6"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC6"/>
+
+
+    <!--同沟线路名称7 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_TGXLMC7"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_TGXLMC7"
+        android:tag="@string/GY_DLXLTZXX_F_TGXLMC7"/>
+  </LinearLayout>
+</FrameLayout>

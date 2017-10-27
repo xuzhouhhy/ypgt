@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_DX">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot"
+        >
+    <!---导线型号-->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_JKXLTZXX_F_DXXH"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DXXH"
+        android:tag="@string/GY_JKXLTZXX_F_DXXH"/>
+
+
+    <!---排列方式-->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_JKXLTZXX_F_PLFS"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PLFS"
+        android:tag="@string/GY_JKXLTZXX_F_PLFS"/>
+
+    <!---导线长度-->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_JKXLTZXX_F_DXCD"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DXCD"
+        android:tag="@string/GY_JKXLTZXX_F_DXCD"/>
+</LinearLayout>
+</FrameLayout>

@@ -1,0 +1,41 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_SFKYFW">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+
+    <!---对房屋水平距离-->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_JKXLTZXX_F_FWSPJL"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FWSPJL"
+        android:tag="@string/GY_JKXLTZXX_F_FWSPJL"/>
+
+        <!---对房屋垂直距离-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_FWCZJL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FWCZJL"
+            android:tag="@string/GY_JKXLTZXX_F_FWCZJL"/>
+
+    </LinearLayout>
+
+</FrameLayout>

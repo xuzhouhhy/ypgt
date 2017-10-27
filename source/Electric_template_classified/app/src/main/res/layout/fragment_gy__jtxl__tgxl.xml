@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_HD">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+        
+        <!---同杆线路回数-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_TGXLHS"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_TGXLHS"
+            android:tag="@string/GY_JKXLTZXX_F_TGXLHS"/>
+
+        <!---同杆线路名称1-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_TGXLMC1"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_TGXLMC1"
+            android:tag="@string/GY_JKXLTZXX_F_TGXLMC1"/>
+
+        <!---同杆线路名称2-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_TGXLMC2"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_TGXLMC2"
+            android:tag="@string/GY_JKXLTZXX_F_TGXLMC2"/>
+
+        <!---同杆线路名称3-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_TGXLMC3"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_TGXLMC3"
+            android:tag="@string/GY_JKXLTZXX_F_TGXLMC3"/>
+
+        </LinearLayout>
+
+</FrameLayout>

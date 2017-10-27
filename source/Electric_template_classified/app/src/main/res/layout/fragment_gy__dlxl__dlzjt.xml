@@ -1,0 +1,124 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLZJT">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+
+    <!--电缆中间头1型号 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1XH"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1XH"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1XH"/>
+
+
+    <!--制作单位 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1ZZDW"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1ZZDW"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1ZZDW"/>
+
+
+    <!--制作人 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1ZZR"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1ZZR"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1ZZR"/>
+
+
+    <!--制作日期 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1ZZRQ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1ZZRQ"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1ZZRQ"/>
+
+
+    <!--中间头类型 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1ZJTXH"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1ZJTXH"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1ZJTXH"/>
+
+
+    <!--生产厂家 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1SCCJ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1SCCJ"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1SCCJ"/>
+
+
+    <!--北纬（N或B） -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1BW"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1BW"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1BW"/>
+
+
+    <!--东经（E或L） -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLXLTZXX_F_DLZJT1DJ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLZJT1DJ"
+        android:tag="@string/GY_DLXLTZXX_F_DLZJT1DJ"/>
+ </LinearLayout>
+</FrameLayout>
