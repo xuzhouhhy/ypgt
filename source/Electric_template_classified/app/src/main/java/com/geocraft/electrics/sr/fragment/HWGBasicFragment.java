@@ -1,4 +1,4 @@
-package com.geocraft.electrics.ui.fragment.business_basic_fragment.advance;
+package com.geocraft.electrics.sr.fragment;
 
 
 import android.widget.LinearLayout;

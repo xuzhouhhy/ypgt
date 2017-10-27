@@ -1,4 +1,4 @@
-package com.geocraft.electrics.ui.activity.andvance;
+package com.geocraft.electrics.sr;
 
 import android.content.Context;
 import android.view.View;
@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.ui.absinterface.OnClickEffectiveListener;
 import com.geocraft.electrics.ui.view.DeviceShowItemView;
 import com.geocraft.electrics.ui.view.DeviceShowItemView_;
 import com.huace.log.logger.L;

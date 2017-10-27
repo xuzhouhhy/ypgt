@@ -18,7 +18,7 @@ import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.event.SCanBarEvent;
 import com.geocraft.electrics.task.InitDeviceListAsyncTask;
 import com.geocraft.electrics.ui.absinterface.IButtonClickCallBack;
-import com.geocraft.electrics.ui.activity.andvance.TowerShowListActivity_;
+import com.geocraft.electrics.sr.TowerShowListActivity_;
 import com.geocraft.electrics.ui.adapter.DeviceShowListAdapter;
 import com.geocraft.electrics.ui.controller.DeviceShowListController;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;

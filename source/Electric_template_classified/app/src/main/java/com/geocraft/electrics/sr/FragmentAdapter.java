@@ -1,4 +1,4 @@
-package com.geocraft.electrics.ui.activity.andvance;
+package com.geocraft.electrics.sr;
 
 import android.content.Context;
 import android.view.View;
@@ -48,7 +48,7 @@ public class FragmentAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         FragmentItemView fragmentItemView = null;
         if (convertView == null) {
-            fragmentItemView = FragmentItemView_.build(parent.getContext());
+            fragmentItemView = com.geocraft.electrics.sr.FragmentItemView_.build(parent.getContext());
         } else {
             fragmentItemView = (FragmentItemView) convertView;
         }

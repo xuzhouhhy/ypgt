@@ -1,4 +1,4 @@
-package com.geocraft.electrics.ui.activity.andvance;
+package com.geocraft.electrics.sr;
 
 import android.content.Intent;
 import android.text.Editable;

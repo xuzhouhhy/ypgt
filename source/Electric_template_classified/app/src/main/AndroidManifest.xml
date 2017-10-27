@@ -120,14 +120,14 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.andvance.WellActivity_"
+            android:name="com.geocraft.electrics.sr.WellActivity_"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:configChanges="orientation|screenSize|locale|layoutDirection"
             android:label="@string/app_search"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ui.activity.andvance.TowerShowListActivity_"
+            android:name="com.geocraft.electrics.sr.TowerShowListActivity_"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:configChanges="orientation|screenSize|locale|layoutDirection"
             android:label="@string/app_search"

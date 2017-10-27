@@ -1,9 +1,9 @@
-package com.geocraft.electrics.ui.activity.andvance;
+package com.geocraft.electrics.sr;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.base.BusinessFragment;
-import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.HWGBasicFragment_;
+import com.geocraft.electrics.sr.fragment.HWGBasicFragment_;
 
 import org.androidannotations.annotations.EBean;
 

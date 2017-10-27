@@ -1,4 +1,4 @@
-package com.geocraft.electrics.ui.fragment.business_basic_fragment.advance;
+package com.geocraft.electrics.sr.fragment;
 
 
 import android.content.Context;
@@ -17,10 +17,10 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
-import com.geocraft.electrics.ui.activity.andvance.FragmentAdapter;
-import com.geocraft.electrics.ui.activity.andvance.WellActivity;
-import com.geocraft.electrics.ui.activity.andvance.WellController;
-import com.geocraft.electrics.ui.activity.andvance.WellType;
+import com.geocraft.electrics.sr.FragmentAdapter;
+import com.geocraft.electrics.sr.WellActivity;
+import com.geocraft.electrics.sr.WellController;
+import com.geocraft.electrics.sr.WellType;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.AfterViews;

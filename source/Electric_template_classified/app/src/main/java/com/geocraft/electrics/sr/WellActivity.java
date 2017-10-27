@@ -1,4 +1,4 @@
-package com.geocraft.electrics.ui.activity.andvance;
+package com.geocraft.electrics.sr;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
@@ -10,8 +10,8 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.WellMainFragment;
-import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.WellMainFragment_;
+import com.geocraft.electrics.sr.fragment.WellMainFragment;
+import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
