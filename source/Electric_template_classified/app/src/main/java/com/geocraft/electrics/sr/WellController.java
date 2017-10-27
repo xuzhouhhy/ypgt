@@ -147,7 +147,7 @@ public class WellController extends BaseController {
         return mCurrentDataSet;
     }
 
-    public void upFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
+    public void updateFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
         try {
             if (isCheked) {
                 mChekedFragments.add(dataFragment);

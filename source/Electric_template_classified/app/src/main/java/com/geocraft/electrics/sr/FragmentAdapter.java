@@ -19,7 +19,7 @@ public class FragmentAdapter extends BaseAdapter {
             new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    mController.upFragment(isChecked, (BasicFragmentFactory.DataFragment)
+                    mController.updateFragment(isChecked, (BasicFragmentFactory.DataFragment)
                             getItem(FragmentItemView.sPosition));
                 }
             };
