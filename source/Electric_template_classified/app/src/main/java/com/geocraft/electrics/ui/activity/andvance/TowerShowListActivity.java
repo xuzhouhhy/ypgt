@@ -13,7 +13,6 @@ import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
-import com.geocraft.electrics.event.SCanBarEvent;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuCreator;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuItem;
@@ -27,7 +26,6 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
-import org.greenrobot.eventbus.Subscribe;
 
 import common.geocraft.untiltools.DensityUtils;
 import common.geocraft.untiltools.T;
