@@ -102,9 +102,12 @@ public class TowerShowListActivity extends BaseActivity implements
 
     @AfterViews
     void init() {
-        if (!ElectricApplication.BUS.isRegistered(this)) {
-            ElectricApplication.BUS.register(this);
-        }
+        /**
+         * 没有接收方法的eventbus注册会引起异常，暂时注释掉
+         */
+//        if (!ElectricApplication.BUS.isRegistered(this)) {
+//            ElectricApplication.BUS.register(this);
+//        }
         mController.initCollectTypeList();
         listViewCommon.setOnItemClickListener(this);
         listViewCommon.setMenuCreator(menuCreator);
