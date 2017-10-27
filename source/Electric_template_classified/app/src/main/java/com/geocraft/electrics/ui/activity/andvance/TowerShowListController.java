@@ -146,14 +146,17 @@ public class TowerShowListController extends BaseController {
      * @param context ACTIVITY
      */
     public void openRecordActivityToAdd(Context context) {
-//        String rn = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
-//        if (null == rn || rn.isEmpty()) {
-//            Log.e(TAG, "road name null or empty");
-//            return;
-//        }
-//        Intent intent = new Intent(context, );
-//        intent.putExtra(Constants.INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER, rn);
-//        context.startActivity(intent);
+        String rn = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        if (null == rn || rn.isEmpty()) {
+            Log.e(TAG, "road name null or empty");
+            return;
+        }
+        // TODO: 2017/10/27 模拟数据
+        Intent intent = new Intent(context, WellActivity_.class);
+        intent.putExtra(Constants.INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER, rn);
+        intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
+        intent.putExtra(Constants.INTENT_DATA_IS_CREATE_RECORD, true);
+        context.startActivity(intent);
     }
 
 

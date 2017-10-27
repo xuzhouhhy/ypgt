@@ -662,7 +662,7 @@ public class Enum {
 
     public static String LINE_LEDGER = "line_ledger";
     public static String BRANCH_BOX = "branch_box";
-    public static String GYCJ = "inspection";
+    public static String GYCJ = "gycj";
     public static String GYCJ_LINE_F_GH = "F_GH";
     public static String GY_JKXLTZXX = "GY_JKXLTZXX";
     public static String GY_DLXLTZXX = "GY_DLXLTZXX";

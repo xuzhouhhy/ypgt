@@ -18,8 +18,8 @@ import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.ui.activity.andvance.FragmentAdapter;
-import com.geocraft.electrics.ui.activity.andvance.TowerActivity;
-import com.geocraft.electrics.ui.activity.andvance.TowerController;
+import com.geocraft.electrics.ui.activity.andvance.WellActivity;
+import com.geocraft.electrics.ui.activity.andvance.WellController;
 import com.geocraft.electrics.ui.activity.andvance.WellType;
 import com.huace.log.logger.L;
 
@@ -35,7 +35,7 @@ import common.geocraft.untiltools.T;
  * 环网柜
  */
 @EFragment(R.layout.acitivity_tower_main)
-public class TowerMainFragment extends Fragment {
+public class WellMainFragment extends Fragment {
     protected DataSet mDataSet;
     protected Boolean mIsNew;
     protected TaskManager taskManager = TaskManager_.getInstance_(
@@ -51,13 +51,13 @@ public class TowerMainFragment extends Fragment {
     @ViewById
     GridView grd_ck_fragment;
     private FragmentAdapter mFragmentAdapter;
-    private TowerController mTowerController;
+    private WellController mWellController;
     RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     WellType wellType = getWellType(checkedId);
-                    mTowerController.updateWellType(wellType);
+                    mWellController.updateWellType(wellType);
                     mFragmentAdapter.notifyDataSetChanged();
                 }
             };
@@ -78,16 +78,16 @@ public class TowerMainFragment extends Fragment {
 
     @AfterViews
     protected void init() {
-        mTowerController = ((TowerActivity) this.getActivity()).getController();
-        mIsNew = mTowerController.isCreateRecord();
-        mDataSet = mTowerController.getCurrentDataSet();
+        mWellController = ((WellActivity) this.getActivity()).getController();
+        mIsNew = mWellController.isCreateRecord();
+        mDataSet = mWellController.getCurrentDataSet();
         initViewData();
     }
 
     private void initViewData() {
         try {
             rg_tower_type.setOnCheckedChangeListener(mOnCheckedChangeListener);
-            mFragmentAdapter = new FragmentAdapter(this.getActivity(), mTowerController);
+            mFragmentAdapter = new FragmentAdapter(this.getActivity(), mWellController);
             grd_ck_fragment.setAdapter(mFragmentAdapter);
             List<FieldInfo> fieldInfoList = mDataSet.FieldInfos;
             for (int i = 0; i < fieldInfoList.size(); i++) {

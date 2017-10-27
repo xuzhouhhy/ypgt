@@ -12,7 +12,7 @@ import com.geocraft.electrics.R;
 /**
  */
 public class FragmentAdapter extends BaseAdapter {
-    private TowerController mController;
+    private WellController mController;
     private Context mContext;
 
     private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener =
@@ -24,7 +24,7 @@ public class FragmentAdapter extends BaseAdapter {
                 }
             };
 
-    public FragmentAdapter(Context context, TowerController controller) {
+    public FragmentAdapter(Context context, WellController controller) {
         mContext = context;
         mController = controller;
     }

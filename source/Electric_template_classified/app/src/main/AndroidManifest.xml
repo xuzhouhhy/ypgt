@@ -120,7 +120,7 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.andvance.TowerActivity_"
+            android:name=".ui.activity.andvance.WellActivity_"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:configChanges="orientation|screenSize|locale|layoutDirection"
             android:label="@string/app_search"

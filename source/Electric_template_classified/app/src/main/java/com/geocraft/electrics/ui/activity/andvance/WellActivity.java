@@ -10,8 +10,8 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.TowerMainFragment;
-import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.TowerMainFragment_;
+import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.WellMainFragment;
+import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.WellMainFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -25,10 +25,10 @@ import org.androidannotations.annotations.ViewById;
  */
 @EActivity(R.layout.activity_tower)
 @OptionsMenu(R.menu.menu_new_task)
-public class TowerActivity extends BaseActivity {
+public class WellActivity extends BaseActivity {
 
     @Bean
-    TowerController mController;
+    WellController mController;
     @ViewById
     Button btn_back;
     @ViewById
@@ -90,11 +90,11 @@ public class TowerActivity extends BaseActivity {
     public void initMainFragment() {
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
-        TowerMainFragment towerMainFragment = new TowerMainFragment_();
-        if (!towerMainFragment.isAdded()) {
-            mTransaction.add(R.id.id_content, towerMainFragment);
+        WellMainFragment wellMainFragment = new WellMainFragment_();
+        if (!wellMainFragment.isAdded()) {
+            mTransaction.add(R.id.id_content, wellMainFragment);
         } else {
-            mTransaction.replace(R.id.id_content, towerMainFragment);
+            mTransaction.replace(R.id.id_content, wellMainFragment);
         }
         mTransaction.commit();
     }
@@ -127,7 +127,7 @@ public class TowerActivity extends BaseActivity {
         // TODO: 2017/10/25
     }
 
-    public TowerController getController() {
+    public WellController getController() {
         return mController;
     }
 

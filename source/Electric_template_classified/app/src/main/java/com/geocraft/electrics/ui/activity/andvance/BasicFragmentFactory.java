@@ -39,7 +39,7 @@ public class BasicFragmentFactory {
     }
 
     public List<DataFragment> getJKFramentItems() {
-        if (null != mJKXLFragments) {
+        if (null != mJKXLFragments && mJKXLFragments.size() > 0) {
             return mJKXLFragments;
         }
         mJKXLFragments.add(getHWGFragment());
@@ -47,18 +47,16 @@ public class BasicFragmentFactory {
     }
 
     public List<DataFragment> getDLFramentItems() {
-        if (null != mDLXLFragments) {
+        if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
             return mDLXLFragments;
         }
-        mDLXLFragments.add(getHWGFragment());
         return mDLXLFragments;
     }
 
     public List<DataFragment> getDYFramentItems() {
-        if (null != mDYXLFragments) {
+        if (null != mDYXLFragments && mDYXLFragments.size() > 0) {
             return mDYXLFragments;
         }
-        mDYXLFragments.add(getHWGFragment());
         return mDYXLFragments;
     }
 

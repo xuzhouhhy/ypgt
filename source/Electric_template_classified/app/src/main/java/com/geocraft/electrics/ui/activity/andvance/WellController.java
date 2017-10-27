@@ -15,7 +15,6 @@ import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
-import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.TowerMainFragment_;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 import com.geocraft.electrics.utils.Utils;
@@ -35,7 +34,7 @@ import common.geocraft.untiltools.FileUtils;
 /**
  */
 @EBean
-public class TowerController extends BaseController {
+public class WellController extends BaseController {
 
     @Bean
     TaskManager mTaskManager;
@@ -57,9 +56,7 @@ public class TowerController extends BaseController {
     private boolean mIsCreateRecord;
     private DataSet mCurrentDataSet;
     private boolean mIsEditParent;
-    private DataSet mTowerDataSet;
-    private DataSet mWGFDataSet;
-    private List<DataSet> mDataSets;
+    private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.DataFragment> mDataFragments =
             new ArrayList<BasicFragmentFactory.DataFragment>();
     private List<BasicFragmentFactory.DataFragment> mChekedFragments =
@@ -92,6 +89,41 @@ public class TowerController extends BaseController {
         if (isPassedIsEditParent(context)) {
             getIsEditParent(context);
         }
+    }
+
+    public void initDataSet() throws CloneNotSupportedException {
+        List<String> datasetNames = mWellDatasets.getDatasetNames();
+        for (int i = 0; i < datasetNames.size(); i++) {
+            initDataSetByDasetName(datasetNames.get(i));
+        }
+        if (mDataSets.size() == 0) {
+            return;
+        }
+        mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
+    }
+
+    public void initDataSetByDasetName(String datasetName) throws CloneNotSupportedException {
+        DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
+        if (!mIsCreateRecord && mDataSetKey > 0) {
+            dataset.PrimaryKey = mDataSetKey;
+            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+            if (temp != null) {
+                dataset = temp;
+            }
+        }
+        mDataSets.add(dataset);
+    }
+
+    public List<BasicFragmentFactory.DataFragment> getDataFragments() {
+        mDataFragments.clear();
+        if (mWellType == WellType.JK) {
+            mDataFragments = mBasicFragmentFactory.getJKFramentItems();
+        } else if (mWellType == WellType.DL) {
+            mDataFragments = mBasicFragmentFactory.getDLFramentItems();
+        } else {
+            mDataFragments = mBasicFragmentFactory.getDYFramentItems();
+        }
+        return mDataFragments;
     }
 
     //是否新建
@@ -135,40 +167,6 @@ public class TowerController extends BaseController {
                 break;
             }
         }
-    }
-
-    public void initDataSet() throws CloneNotSupportedException {
-        List<String> datasetNames = mWellDatasets.getDatasetNames();
-        for (int i = 0; i < datasetNames.size(); i++) {
-            initDataSetByDasetName(datasetNames.get(i));
-        }
-        if (mDataSets.size() == 0) {
-            mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
-        }
-    }
-
-    public void initDataSetByDasetName(String datasetName) throws CloneNotSupportedException {
-        DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
-        if (!mIsCreateRecord && mDataSetKey > 0) {
-            dataset.PrimaryKey = mDataSetKey;
-            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
-            if (temp != null) {
-                dataset = temp;
-            }
-        }
-        mDataSets.add(dataset);
-    }
-
-    public List<BasicFragmentFactory.DataFragment> getDataFragments() {
-        mDataFragments.clear();
-        if (mWellType == WellType.JK) {
-            mDataFragments = mBasicFragmentFactory.getJKFramentItems();
-        } else if (mWellType == WellType.DL) {
-            mDataFragments = mBasicFragmentFactory.getDLFramentItems();
-        } else {
-            mDataFragments = mBasicFragmentFactory.getDYFramentItems();
-        }
-        return mDataFragments;
     }
 
     public BasicFragmentFactory.DataFragment getDataFragment(int index) {

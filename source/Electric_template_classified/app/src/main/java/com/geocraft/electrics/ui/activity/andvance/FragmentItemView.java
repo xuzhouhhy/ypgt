@@ -12,7 +12,7 @@ import org.androidannotations.annotations.ViewById;
 
 /**
  */
-@EViewGroup(R.layout.itemview_device_show_list)
+@EViewGroup(R.layout.itemview_fragment_checklist)
 public class FragmentItemView extends LinearLayout {
     public static int sPosition;
     @ViewById

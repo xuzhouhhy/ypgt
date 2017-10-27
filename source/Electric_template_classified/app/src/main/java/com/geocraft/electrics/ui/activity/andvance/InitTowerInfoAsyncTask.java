@@ -11,13 +11,13 @@ import common.geocraft.untiltools.T;
 
 /**
  */
-public class InitTowerInfoAsyncTask extends AsyncTask<TowerController, Integer, Boolean> {
+public class InitTowerInfoAsyncTask extends AsyncTask<WellController, Integer, Boolean> {
 
     Context mContext;
-    TowerController mController;
+    WellController mController;
     ProgressDialog mProgressDialog;
 
-    public InitTowerInfoAsyncTask(Context context, TowerController controller) {
+    public InitTowerInfoAsyncTask(Context context, WellController controller) {
         super();
         this.mContext = context;
         this.mController = controller;
@@ -37,10 +37,10 @@ public class InitTowerInfoAsyncTask extends AsyncTask<TowerController, Integer, 
     }
 
     @Override
-    protected Boolean doInBackground(TowerController... params) {
+    protected Boolean doInBackground(WellController... params) {
         try {
             mController.initDataSet();
-            ((TowerActivity) mContext).initMainFragment();
+            ((WellActivity) mContext).initMainFragment();
             return true;
         } catch (CloneNotSupportedException e) {
             L.printException(e);
@@ -66,7 +66,7 @@ public class InitTowerInfoAsyncTask extends AsyncTask<TowerController, Integer, 
                 mProgressDialog.dismiss();
                 T.showShort(mContext, message);
             } else {
-                ((TowerActivity) mContext).initView();
+                ((WellActivity) mContext).initView();
                 mProgressDialog.dismiss();
             }
         } catch (Exception e) {
