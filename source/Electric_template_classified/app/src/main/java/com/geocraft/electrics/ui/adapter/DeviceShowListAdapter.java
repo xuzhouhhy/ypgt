@@ -22,6 +22,9 @@ import com.huace.log.logger.L;
  */
 public class DeviceShowListAdapter extends BaseAdapter {
     private DeviceShowListController mController;
+    /**
+     * 线路名称
+     */
     private String mFirstValue;
     private Context mContext;
 
