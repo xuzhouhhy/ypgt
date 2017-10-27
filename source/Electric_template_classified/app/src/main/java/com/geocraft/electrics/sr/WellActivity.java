@@ -1,6 +1,7 @@
 package com.geocraft.electrics.sr;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_next() {
-        if (changeFragment(mFragemntIndex)) {
+        if (changeContentView(mFragemntIndex)) {
             mFragemntIndex++;
         }
     }
@@ -62,7 +63,7 @@ public class WellActivity extends BaseActivity {
         if (mFragemntIndex < 0) {
             addMainFragment();
         } else {
-            if (!changeFragment(mFragemntIndex)) {
+            if (!changeContentView(mFragemntIndex)) {
                 mFragemntIndex++;
             }
         }
@@ -75,34 +76,32 @@ public class WellActivity extends BaseActivity {
         this.setTitle(mController.getTitle());
     }
 
-    private boolean changeFragment(int index) {
+    private boolean changeContentView(int index) {
         if (index < 0) {
             return false;
         }
         saveFragmentData();
-        mFm = getSupportFragmentManager();
-        mTransaction = mFm.beginTransaction();
         mDataFragment = mController.getDataFragment(index);
         if (null == mDataFragment) {
             return false;
         }
         mController.setsCurrentDataSet(mDataFragment.mDatasetName);
         mBasicDataFragment = mDataFragment.mFragment;
-        mTransaction.replace(R.id.id_content, mBasicDataFragment);
-        mTransaction.commit();
+        updateFrament(mBasicDataFragment);
         updateBtnViewStatus(btn_back, true);
         return true;
     }
 
     public void addMainFragment() {
+        WellMainFragment wellMainFragment = new WellMainFragment_();
+        updateFrament(wellMainFragment);
+        updateBtnViewStatus(btn_back, false);
+    }
+
+    private void updateFrament(Fragment fragment) {
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
-        WellMainFragment wellMainFragment = new WellMainFragment_();
-        if (!wellMainFragment.isAdded()) {
-            mTransaction.add(R.id.id_content, wellMainFragment);
-        } else {
-            mTransaction.replace(R.id.id_content, wellMainFragment);
-        }
+        mTransaction.replace(R.id.id_content, fragment);
         mTransaction.commit();
     }
 
