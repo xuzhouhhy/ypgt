@@ -1,9 +1,9 @@
 package com.geocraft.electrics.ui.fragment.business_basic_fragment.advance;
 
 
-import android.app.Fragment;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -57,7 +57,7 @@ public class TowerMainFragment extends Fragment {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     WellType wellType = getWellType(checkedId);
-                    mTowerController.setWellType(wellType);
+                    mTowerController.updateWellType(wellType);
                     mFragmentAdapter.notifyDataSetChanged();
                 }
             };

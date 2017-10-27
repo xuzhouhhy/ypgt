@@ -15,6 +15,7 @@ import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
+import com.geocraft.electrics.ui.fragment.business_basic_fragment.advance.TowerMainFragment_;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 import com.geocraft.electrics.utils.Utils;
@@ -158,10 +159,6 @@ public class TowerController extends BaseController {
         mDataSets.add(dataset);
     }
 
-    public void initDataFragments() {
-        addDefaultFragments();
-    }
-
     public List<BasicFragmentFactory.DataFragment> getDataFragments() {
         mDataFragments.clear();
         if (mWellType == WellType.JK) {
@@ -172,10 +169,6 @@ public class TowerController extends BaseController {
             mDataFragments = mBasicFragmentFactory.getDYFramentItems();
         }
         return mDataFragments;
-    }
-
-    private void addDefaultFragments() {
-        //mDataFragments.addAll(mBasicFragmentFactory.getTowerFragments(mTowerDataSet.Name));
     }
 
     public BasicFragmentFactory.DataFragment getDataFragment(int index) {
@@ -410,7 +403,7 @@ public class TowerController extends BaseController {
         return mDataSetParentKey;
     }
 
-    public void setWellType(WellType wellType) {
+    public void updateWellType(WellType wellType) {
         mWellType = wellType;
     }
 
