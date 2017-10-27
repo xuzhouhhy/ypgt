@@ -14,6 +14,7 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.constants.Enum;
+import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.event.SCanBarEvent;
 import com.geocraft.electrics.task.InitDeviceListAsyncTask;
 import com.geocraft.electrics.ui.absinterface.IButtonClickCallBack;
@@ -34,6 +35,7 @@ import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import common.geocraft.untiltools.DensityUtils;
 import common.geocraft.untiltools.T;
@@ -256,4 +258,9 @@ public class DeviceShowListActivity extends BaseActivity implements
         this.startActivity(intent);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
+    public void onDataSynEvent(GaoyaLineRefreshEvent event) {
+        //参数-1是为了没有给选中项添加阴影
+        refreshListView(-1);
+    }
 }

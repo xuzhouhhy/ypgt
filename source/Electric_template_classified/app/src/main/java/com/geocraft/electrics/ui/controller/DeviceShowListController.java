@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
@@ -19,6 +20,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.DataSetGroup;
 import com.geocraft.electrics.entity.DataSource;
 import com.geocraft.electrics.entity.PhotoRules;
+import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.ui.activity.CommonListActivity_;
@@ -119,6 +121,7 @@ public class DeviceShowListController extends BaseController {
                 }
                 DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
                 mDataSets = mDbManager.queryByKeyword(dataSet, dataSet.First, keyWord, true);
+                ElectricApplication.BUS.post(new GaoyaLineRefreshEvent());
             }
         }).run();
 
