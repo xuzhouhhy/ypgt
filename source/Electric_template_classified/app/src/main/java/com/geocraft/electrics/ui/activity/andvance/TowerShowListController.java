@@ -1,8 +1,11 @@
 package com.geocraft.electrics.ui.activity.andvance;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BaseController;
@@ -33,6 +36,8 @@ import common.geocraft.untiltools.T;
  */
 @EBean
 public class TowerShowListController extends BaseController {
+
+    private static String TAG = TowerShowListController.class.getSimpleName();
 
     @Bean
     TaskManager mTaskManager;
@@ -90,7 +95,7 @@ public class TowerShowListController extends BaseController {
     }
 
     public void initIntentData(Context context) {
-        mQueryValue =  ((TowerShowListActivity) context).getIntent().getStringExtra(Constants.INTENT_DATA_SET_QUERY_VALUE);
+        mQueryValue = ((TowerShowListActivity) context).getIntent().getStringExtra(Constants.INTENT_DATA_SET_QUERY_VALUE);
 
     }
 
@@ -135,7 +140,20 @@ public class TowerShowListController extends BaseController {
 
     }
 
+    /**
+     * 打开新建杆塔、地井、电源点界面
+     *
+     * @param context ACTIVITY
+     */
     public void openRecordActivityToAdd(Context context) {
+//        String rn = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+//        if (null == rn || rn.isEmpty()) {
+//            Log.e(TAG, "road name null or empty");
+//            return;
+//        }
+//        Intent intent = new Intent(context, );
+//        intent.putExtra(Constants.INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER, rn);
+//        context.startActivity(intent);
     }
 
 
