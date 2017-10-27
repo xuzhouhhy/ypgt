@@ -68,4 +68,9 @@ public class Constants {
 
     public static final String INTENT_DATA_LINE_NAMES = "INTENT_DATA_LINE_NAMES";
 
+    /**
+     * 打开新建杆塔、地井、电源点界面，传递线路名
+     */
+    public static final String INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER = "INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER";
+
 }
