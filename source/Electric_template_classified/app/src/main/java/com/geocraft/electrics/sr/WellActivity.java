@@ -51,43 +51,50 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_next() {
-        mFragemntIndex++;
-        changeFragment(mFragemntIndex);
+        if (changeFragment(mFragemntIndex)) {
+            mFragemntIndex++;
+        }
     }
 
     @Click
     void btn_back() {
-        mFragemntIndex--;
-        changeFragment(mFragemntIndex);
+        mFragemntIndex = mFragemntIndex - 2;
+        if (mFragemntIndex < 0) {
+            addMainFragment();
+        } else {
+            if (!changeFragment(mFragemntIndex)) {
+                mFragemntIndex++;
+            }
+        }
+        if (mFragemntIndex < 0) {
+            mFragemntIndex = 0;
+        }
     }
 
     public void initView() {
         this.setTitle(mController.getTitle());
-        changeFragment(mFragemntIndex);
     }
 
-    private void changeFragment(int index) {
+    private boolean changeFragment(int index) {
         if (index < 0) {
-            return;
+            return false;
         }
         saveFragmentData();
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
         mDataFragment = mController.getDataFragment(index);
         if (null == mDataFragment) {
-            return;
+            return false;
         }
+        mController.setsCurrentDataSet(mDataFragment.mDatasetName);
         mBasicDataFragment = mDataFragment.mFragment;
-        if (!mBasicDataFragment.isAdded()) {
-            mTransaction.add(R.id.id_content, mBasicDataFragment);
-        } else {
-            mTransaction.replace(R.id.id_content, mBasicDataFragment);
-        }
+        mTransaction.replace(R.id.id_content, mBasicDataFragment);
         mTransaction.commit();
         updateBtnViewStatus(btn_back, true);
+        return true;
     }
 
-    public void initMainFragment() {
+    public void addMainFragment() {
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
         WellMainFragment wellMainFragment = new WellMainFragment_();
@@ -99,14 +106,13 @@ public class WellActivity extends BaseActivity {
         mTransaction.commit();
     }
 
-    private void updateBtnViewStatus(Button button, boolean IsUsed) {
-        button.setEnabled(false);
-        button.setClickable(false);
+    private void updateBtnViewStatus(Button button, boolean isEnable) {
+        button.setEnabled(isEnable);
+        button.setClickable(isEnable);
     }
 
     private void saveFragmentData() {
         if (mDataFragment != null) {
-            mController.setsCurrentDataSet(mDataFragment.mDatasetName);
             getValueFromFragment();
         }
     }

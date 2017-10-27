@@ -40,7 +40,7 @@ public class InitTowerInfoAsyncTask extends AsyncTask<WellController, Integer, B
     protected Boolean doInBackground(WellController... params) {
         try {
             mController.initDataSet();
-            ((WellActivity) mContext).initMainFragment();
+            ((WellActivity) mContext).addMainFragment();
             return true;
         } catch (CloneNotSupportedException e) {
             L.printException(e);
