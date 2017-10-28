@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
@@ -17,6 +18,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.DataSetGroup;
 import com.geocraft.electrics.entity.DataSource;
 import com.geocraft.electrics.entity.PhotoRules;
+import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.utils.Utils;
@@ -45,7 +47,6 @@ public class TowerShowListController extends BaseController {
     DbManager mDbManager;
     DataSetGroup dataSetGroup;
     private List<DataSet> mDataSets = new ArrayList<>();
-    private List<CollectTypeItem> mCollectTypeList = new ArrayList<>();
     private String mQueryValue;
     private String mFirstType;
     private String mSecondType;
@@ -55,7 +56,6 @@ public class TowerShowListController extends BaseController {
     }
 
     public void initCollectTypeList() {
-        mCollectTypeList.clear();
         DataSource dataSource = mTaskManager.getDataSource();
         if (null == dataSource) {
             return;
@@ -80,17 +80,13 @@ public class TowerShowListController extends BaseController {
         if (null == dataSetGroup) {
             return;
         }
+        mDataSets.clear();
         for (DataSet dataset : dataSetGroup.DataSets) {
-            if (dataset.isShowInDeviceList()) {
+            if (!LineFactory.oneOfLineDataset(dataset)) {
                 continue;
             }
-            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
-            dataSet.SearchField = Enum.GYCJ_LINE_F_GH;
-            if (mQueryValue.isEmpty()) {
-                mDataSets = mDbManager.queryAll(dataSet, true);
-            } else {
-                mDataSets = mDbManager.queryByCondition(dataSet, dataSet.SearchField, mQueryValue, true);
-            }
+            List<DataSet> dataSets = mDbManager.queryAll(dataset, true);
+            mDataSets.addAll(dataSets);
         }
     }
 
@@ -123,6 +119,9 @@ public class TowerShowListController extends BaseController {
                 if (mDataSets != null) {
                     mDataSets.clear();
                 }
+                DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
+                mDataSets = mDbManager.queryByKeyword(dataSet, dataSet.First, keyWord, true);
+                ElectricApplication.BUS.post(new GaoyaLineRefreshEvent());
             }
         }).run();
 
@@ -277,14 +276,7 @@ public class TowerShowListController extends BaseController {
         mDataSets.addAll(search);
     }
 
-    public CollectTypeItem getCollectType() {
-        if (null == mCollectTypeList || mCollectTypeList.size() == 0) {
-            return null;
-        }
-        return mCollectTypeList.get(0);//todo 默认返回第一个
-    }
-
-    public static class CollectTypeItem {
+    public static class CollectType {
         public String mItemAlias;
         public String mItemName;
         public boolean mIsSystemItem;
