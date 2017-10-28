@@ -78,6 +78,20 @@ public class BasicFragmentFactory {
         return mDYXLFragments;
     }
 
+    /**
+     * @param fragmentNameKey
+     * @return
+     */
+    public boolean isFragmentChecked(String fragmentNameKey) {
+        if (null == mJKXLFragments && mJKXLFragments.size() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 可选项fragment与对应的dataset配置关系
+     */
     public static class FragmentDatasetOption {
         private BusinessFragment mFragment;
         private String mFramentName;

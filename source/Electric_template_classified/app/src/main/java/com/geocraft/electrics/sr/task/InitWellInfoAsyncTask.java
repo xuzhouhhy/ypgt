@@ -1,23 +1,25 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.task;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.sr.WellActivity;
+import com.geocraft.electrics.sr.WellController;
 import com.huace.log.logger.L;
 
 import common.geocraft.untiltools.T;
 
 /**
  */
-public class InitTowerInfoAsyncTask extends AsyncTask<WellController, Integer, Boolean> {
+public class InitWellInfoAsyncTask extends AsyncTask<WellController, Integer, Boolean> {
 
     Context mContext;
     WellController mController;
     ProgressDialog mProgressDialog;
 
-    public InitTowerInfoAsyncTask(Context context, WellController controller) {
+    public InitWellInfoAsyncTask(Context context, WellController controller) {
         super();
         this.mContext = context;
         this.mController = controller;

@@ -13,6 +13,8 @@ import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
+import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
+import com.geocraft.electrics.ui.controller.PhotoManagerController;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -21,6 +23,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  */
@@ -46,10 +51,9 @@ public class WellActivity extends BaseActivity {
     @AfterViews
     void init() {
         mController.initIntentData(this);
-        InitTowerInfoAsyncTask initRecordInfoAsyncTask = new InitTowerInfoAsyncTask(this,
+        InitWellInfoAsyncTask initWellInfoAsyncTask = new InitWellInfoAsyncTask(this,
                 mController);
-        initRecordInfoAsyncTask.execute(mController);
-        updateBtnViewStatus(btn_back, false);
+        initWellInfoAsyncTask.execute(mController);
     }
 
     @Click
@@ -97,6 +101,7 @@ public class WellActivity extends BaseActivity {
     }
 
     public void addMainFragment() {
+        // TODO: 2017/10/28 设置当前dataset
         mWellMainFragment = new WellMainFragment_();
         updateFragment(mWellMainFragment);
         updateBtnViewStatus(btn_back, false);
@@ -133,6 +138,14 @@ public class WellActivity extends BaseActivity {
             return;
         }
         mBasicDataFragment.getValue(dataSet);
+    }
+
+    public List<PhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
+        List<PhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
+//        if (mPhotoFragment != null) {
+//            photoItemInfoList = mPhotoFragment.getTaskPhotoList();
+//        }
+        return photoItemInfoList;
     }
 
     @OptionsItem
