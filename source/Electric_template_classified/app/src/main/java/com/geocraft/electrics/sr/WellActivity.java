@@ -154,6 +154,7 @@ public class WellActivity extends BaseActivity {
 
     @OptionsItem
     void actionTaskCommit() {
+        saveFragmentData();
         WellCommitAsyncTask commitAsyncTask = new WellCommitAsyncTask(this, mController);
         commitAsyncTask.execute(mController);
     }
