@@ -165,6 +165,7 @@ public class DeviceShowListActivity extends BaseActivity implements
         mController.clearDataSetList();
         super.onDestroy();
         mController.unregisterScanReceiver(this);
+        ElectricApplication.BUS.unregister(this);
     }
 
     public void refreshListView(int position) {

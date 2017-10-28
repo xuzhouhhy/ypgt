@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
@@ -84,7 +85,7 @@ public class TowerShowListController extends BaseController {
             if (!LineFactory.oneOfLineDataset(dataset)) {
                 continue;
             }
-            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", mLineId, true);
+            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", "123456", true);
             mDataSets.addAll(dataSets);
         }
     }
@@ -127,9 +128,15 @@ public class TowerShowListController extends BaseController {
                 if (mDataSets != null) {
                     mDataSets.clear();
                 }
-//                DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
-//                mDataSets = mDbManager.queryByKeyword(dataSet, dataSet.First, keyWord, true);
-//                ElectricApplication.BUS.post(new GaoyaLineRefreshEvent());
+                for (DataSet dataset : dataSetGroup.DataSets) {
+                    if (!LineFactory.oneOfLineDataset(dataset)) {
+                        continue;
+                    }
+                    List<DataSet> dataSets = mDbManager.queryByKeywordAndPrimaryKey(dataset,
+                            "F_lineId", "123456", dataset.First, keyWord, true);
+                    mDataSets.addAll(dataSets);
+                }
+                ElectricApplication.BUS.post(new LineElementRefreshEvent());
             }
         }).run();
 

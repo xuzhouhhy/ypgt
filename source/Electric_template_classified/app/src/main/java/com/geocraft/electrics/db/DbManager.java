@@ -368,6 +368,49 @@ public class DbManager {
         return dataSetList;
     }
 
+
+    /**
+     * 根据关键词和模糊查询对应数据集
+     *
+     * @param dataSet             dataset
+     * @param primaryKeyFieldName 关键词字段名
+     * @param primaryKey          关键词字段值
+     * @param keyWordFieldName    迷糊查询字段名
+     * @param keyWord             模糊查询关键词
+     * @param isFilter            isFilter
+     * @return 查询到的数据集
+     */
+    public synchronized List<DataSet> queryByKeywordAndPrimaryKey(DataSet dataSet, String primaryKeyFieldName,
+                                                                  String primaryKey, String keyWordFieldName,
+                                                                  String keyWord, boolean isFilter) {
+        List<DataSet> dataSetList = new ArrayList<>();
+        if (dataSet == null) {
+            return dataSetList;
+        }
+        String dsName = dataSet.Name;
+        if (mSQLiteDatabase == null || null == dsName || dsName.isEmpty() ||
+                null == primaryKeyFieldName || primaryKeyFieldName.isEmpty() ||
+                null == primaryKey || primaryKey.isEmpty() ||
+                null == keyWordFieldName || keyWordFieldName.isEmpty() ||
+                null == keyWord) {
+            return dataSetList;
+        }
+        String tableName = dataSet.GroupName + "_" + dataSet.Name;
+        String sql = " SELECT * FROM " + tableName + " WHERE " + primaryKeyFieldName + " = '" + primaryKey + "' AND " + keyWordFieldName + " LIKE '%" + keyWord + "%'";
+        Cursor cursor = mSQLiteDatabase.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            do {
+                DataSet dataSetTemp = getDataSetByCursor(dataSet, cursor, isFilter);
+                if (dataSetTemp != null) {
+                    dataSetList.add(dataSetTemp);
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+//        SELECT * FROM gycj_GY_JKXLTZXX WHere F_lineId = '123456' and F_GZH like '%fs%'
+        return dataSetList;
+    }
+
     private synchronized DataSet getDataSetByCursor(DataSet dataSet, Cursor cursor, boolean isFilter) {
         DataSet dataSetClone = new DataSet();
         try {
@@ -438,4 +481,5 @@ public class DbManager {
 
         return true;
     }
+
 }
