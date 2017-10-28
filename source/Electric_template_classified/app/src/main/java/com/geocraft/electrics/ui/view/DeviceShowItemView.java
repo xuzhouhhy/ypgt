@@ -81,7 +81,23 @@ public class DeviceShowItemView extends LinearLayout {
         }
     }
 
-    public void setOnClickListener(OnClickEffectiveListener mOnClickEffectiveListener) {
+    public void setOnClickListener(OnClickEffectiveListener mOnClickEffectiveListener,
+                                   int primaryKey) {
+        DeviceShowItemView.ViewHodler viewHodler = new DeviceShowItemView.ViewHodler();
+        viewHodler.setPrimaryKey(primaryKey);
+        btnMenu.setTag(viewHodler);
         btnMenu.setOnClickListener(mOnClickEffectiveListener);
+    }
+
+    public static class ViewHodler {
+        private int mPrimaryKey;
+
+        public int getPrimaryKey() {
+            return mPrimaryKey;
+        }
+
+        public void setPrimaryKey(int primaryKey) {
+            this.mPrimaryKey = primaryKey;
+        }
     }
 }

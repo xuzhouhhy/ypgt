@@ -24,8 +24,9 @@ public class FragmentAdapter extends BaseAdapter {
                     }
                     FragmentItemView.ViewHodler viewHodler =
                             (FragmentItemView.ViewHodler) buttonView.getTag();
-                    mController.updateFragment(isChecked, (BasicFragmentFactory.FragmentDatasetOption)
-                            getItem(viewHodler.getPosition()));
+                    mController.updateFragment(isChecked,
+                            (BasicFragmentFactory.FragmentDatasetOption)
+                                    getItem(viewHodler.getPosition()));
                 }
             };
 

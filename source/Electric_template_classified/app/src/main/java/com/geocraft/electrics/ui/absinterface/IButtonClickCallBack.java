@@ -10,5 +10,5 @@ public interface IButtonClickCallBack {
     /**
      * 启动activity
      */
-    void openActivity(String nameValue);
+    void openActivity(int lineId);
 }

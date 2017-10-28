@@ -16,9 +16,9 @@ import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.event.SCanBarEvent;
+import com.geocraft.electrics.sr.TowerShowListActivity_;
 import com.geocraft.electrics.task.InitDeviceListAsyncTask;
 import com.geocraft.electrics.ui.absinterface.IButtonClickCallBack;
-import com.geocraft.electrics.sr.TowerShowListActivity_;
 import com.geocraft.electrics.ui.adapter.DeviceShowListAdapter;
 import com.geocraft.electrics.ui.controller.DeviceShowListController;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
@@ -231,16 +231,16 @@ public class DeviceShowListActivity extends BaseActivity implements
     }
 
     @Override
-    public void openActivity(String nameValue) {
+    public void openActivity(int lineId) {
         DeviceShowListController.CollectTypeItem collectTypeItem = mController.
                 getCollectType();
         if (null == collectTypeItem) {
             return;
         }
         if (collectTypeItem.mItemName.equals(Enum.GYCJ)) {
-            openTowerShowListActivity(nameValue);
+            openTowerShowListActivity(String.valueOf(lineId));
         } else {
-            openCommonListActivity(collectTypeItem, nameValue);
+            openCommonListActivity(collectTypeItem, String.valueOf(lineId));
         }
     }
 

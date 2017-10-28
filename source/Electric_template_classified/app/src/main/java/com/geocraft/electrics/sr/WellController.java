@@ -54,7 +54,6 @@ public class WellController extends BaseController {
     private int mDataSetParentKey = -1;
     private String mDataSetSearchValue = "";
     private boolean mIsCreateRecord;
-    private DataSet mCurrentDataSet;
     private boolean mIsEditParent;
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
@@ -62,6 +61,8 @@ public class WellController extends BaseController {
     private List<BasicFragmentFactory.FragmentDatasetOption> mChekedFragments =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private FragmentOption mFragmentOption = new FragmentOption();
+    private DataSet mCurrentDataSet;
+    private DataSet mWellDataset;
 
 
     //是否创建标识
@@ -152,7 +153,8 @@ public class WellController extends BaseController {
         return mCurrentDataSet;
     }
 
-    public void updateFragment(boolean isCheked, BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption) {
+    public void updateFragment(boolean isCheked,
+                               BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption) {
         try {
             if (isCheked) {
                 mChekedFragments.add(fragmentDatasetOption);
@@ -282,6 +284,30 @@ public class WellController extends BaseController {
             return false;
         }
         return true;
+    }
+
+    @Deprecated
+    public boolean saveRecord_(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
+        if (mCurrentDataSet == null) {
+            return false;
+        }
+        if (mIsCreateRecord) {
+            int key = mDbManager.insert(mCurrentDataSet);
+            if (key >= 0) {
+                mCurrentDataSet.PrimaryKey = key;
+                renamePhotoAndMove(taskPhotoList);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (mDbManager.update(mCurrentDataSet)) {
+                renamePhotoAndMove(taskPhotoList);
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     public boolean saveRecord(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {

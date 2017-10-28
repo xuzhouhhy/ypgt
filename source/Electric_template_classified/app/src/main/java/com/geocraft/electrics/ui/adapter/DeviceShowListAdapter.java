@@ -25,13 +25,14 @@ public class DeviceShowListAdapter extends BaseAdapter {
     /**
      * 线路名称
      */
-    private String mFirstValue;
     private Context mContext;
 
     private OnClickEffectiveListener mOnClickEffectiveListener = new OnClickEffectiveListener() {
         @Override
         public void onEffectiveClick(View v) {
-            ((DeviceShowListActivity) mContext).openActivity(mFirstValue);
+            DeviceShowItemView.ViewHodler viewHodler =
+                    (DeviceShowItemView.ViewHodler) v.getTag();
+            ((DeviceShowListActivity) mContext).openActivity(viewHodler.getPrimaryKey());
         }
     };
 
@@ -78,12 +79,11 @@ public class DeviceShowListAdapter extends BaseAdapter {
         String thirdField = temp.GetFieldNameByName(temp.Third) + ":";
         String third = temp.GetFieldValueByName(temp.Third);
 
-        mFirstValue = first;
         deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
                 thirdField, third, temp.isShowInDeviceList());
         deviceShowItemView.setNumberColor(getStatus(status));
         deviceShowItemView.setSelected(true);
-        deviceShowItemView.setOnClickListener(mOnClickEffectiveListener);
+        deviceShowItemView.setOnClickListener(mOnClickEffectiveListener, temp.PrimaryKey);
         return deviceShowItemView;
     }
 
