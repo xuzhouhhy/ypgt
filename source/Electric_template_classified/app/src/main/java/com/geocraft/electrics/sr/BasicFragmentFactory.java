@@ -348,6 +348,7 @@ public class BasicFragmentFactory {
         private String mFramentName;
         private String mDatasetName;
         private String mFramentNameKey;
+        private boolean mIsChecked;
 
         public FragmentDatasetOption(String mFramentNameKey, String framentName, String datasetName,
                                      BusinessFragment fragment) {
@@ -387,6 +388,14 @@ public class BasicFragmentFactory {
 
         public void setFramentNameKey(String framentNameKey) {
             mFramentNameKey = framentNameKey;
+        }
+
+        public boolean isChecked() {
+            return mIsChecked;
+        }
+
+        public void setChecked(boolean checked) {
+            mIsChecked = checked;
         }
     }
 
