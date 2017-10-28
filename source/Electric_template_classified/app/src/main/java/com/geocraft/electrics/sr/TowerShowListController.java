@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
@@ -18,7 +17,6 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.DataSetGroup;
 import com.geocraft.electrics.entity.DataSource;
 import com.geocraft.electrics.entity.PhotoRules;
-import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.utils.Utils;
@@ -47,9 +45,10 @@ public class TowerShowListController extends BaseController {
     DbManager mDbManager;
     DataSetGroup dataSetGroup;
     private List<DataSet> mDataSets = new ArrayList<>();
-    private String mQueryValue;
-    private String mFirstType;
-    private String mSecondType;
+    /**
+     * 线路ID
+     */
+    private String mLineId;
 
     public List<DataSet> getItems() {
         return mDataSets;
@@ -85,14 +84,23 @@ public class TowerShowListController extends BaseController {
             if (!LineFactory.oneOfLineDataset(dataset)) {
                 continue;
             }
-            List<DataSet> dataSets = mDbManager.queryAll(dataset, true);
+            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", mLineId, true);
             mDataSets.addAll(dataSets);
         }
     }
 
+    /**
+     * 获取上级activity传递来的intent值
+     *
+     * @param context activity
+     */
     public void initIntentData(Context context) {
-        mQueryValue = ((TowerShowListActivity) context).getIntent().getStringExtra(Constants.INTENT_DATA_SET_QUERY_VALUE);
-
+        String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        if (null == lineId || lineId.isEmpty()) {
+            Log.e(TAG, "line id null or empty");
+            return;
+        }
+        mLineId = lineId.trim();
     }
 
     public boolean hasChildDataSets() {
@@ -119,9 +127,9 @@ public class TowerShowListController extends BaseController {
                 if (mDataSets != null) {
                     mDataSets.clear();
                 }
-                DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
-                mDataSets = mDbManager.queryByKeyword(dataSet, dataSet.First, keyWord, true);
-                ElectricApplication.BUS.post(new GaoyaLineRefreshEvent());
+//                DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(mFirstType, mSecondType);
+//                mDataSets = mDbManager.queryByKeyword(dataSet, dataSet.First, keyWord, true);
+//                ElectricApplication.BUS.post(new GaoyaLineRefreshEvent());
             }
         }).run();
 
@@ -129,10 +137,6 @@ public class TowerShowListController extends BaseController {
 
     public void openChildDataSetActivity(Context context, int position) {
 
-    }
-
-    public void setQueryValue(String queryValue) {
-        mQueryValue = queryValue;
     }
 
     public void openRecordActivityToChange(Context context, int position) {
@@ -145,14 +149,14 @@ public class TowerShowListController extends BaseController {
      * @param context ACTIVITY
      */
     public void openRecordActivityToAdd(Context context) {
-        String rn = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
-        if (null == rn || rn.isEmpty()) {
-            Log.e(TAG, "road name null or empty");
+        String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        if (null == lineId || lineId.isEmpty()) {
+            Log.e(TAG, "line id null or empty");
             return;
         }
         // TODO: 2017/10/27 模拟数据
         Intent intent = new Intent(context, WellActivity_.class);
-        intent.putExtra(Constants.INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER, rn);
+        intent.putExtra(Constants.INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER, lineId);
         intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
         intent.putExtra(Constants.INTENT_DATA_IS_CREATE_RECORD, true);
         context.startActivity(intent);

@@ -106,6 +106,7 @@ public class TowerShowListActivity extends BaseActivity implements
     @AfterViews
     void init() {
         mController.initCollectTypeList();
+        mController.initIntentData(this);
         listViewCommon.setOnItemClickListener(this);
         listViewCommon.setMenuCreator(menuCreator);
         listViewCommon.setOnMenuItemClickListener(mOnMenuItemClickListener);
