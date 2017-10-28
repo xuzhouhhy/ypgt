@@ -63,9 +63,9 @@
             android:id="@+id/grd_ck_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
             android:numColumns="3"
             >
-
         </GridView>
 
     </LinearLayout>

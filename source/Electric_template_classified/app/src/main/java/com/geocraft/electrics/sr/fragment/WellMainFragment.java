@@ -31,7 +31,9 @@ import java.util.List;
 import common.geocraft.untiltools.T;
 
 /**
- * 环网柜
+ * 井号配置设置主界面
+ *
+ * @author kingdon
  */
 @EFragment(R.layout.fragment_well_main)
 public class WellMainFragment extends Fragment {

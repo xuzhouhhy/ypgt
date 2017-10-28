@@ -27,6 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 井号采集
+ *
+ * @author kingdon
  */
 @EActivity(R.layout.activity_well)
 @OptionsMenu(R.menu.menu_new_task)
