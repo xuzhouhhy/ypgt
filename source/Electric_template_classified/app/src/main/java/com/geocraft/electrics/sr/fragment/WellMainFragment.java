@@ -1,7 +1,6 @@
 package com.geocraft.electrics.sr.fragment;
 
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.widget.EditText;
@@ -61,7 +60,7 @@ public class WellMainFragment extends Fragment {
                     mFragmentAdapter.notifyDataSetChanged();
                 }
             };
-    private Context mContext;
+    private WellActivity mContext;
 
     @NonNull
     private WellType getWellType(int checkedId) {
@@ -78,7 +77,8 @@ public class WellMainFragment extends Fragment {
 
     @AfterViews
     protected void init() {
-        mWellController = ((WellActivity) this.getActivity()).getController();
+        mContext = ((WellActivity) this.getActivity());
+        mWellController = mContext.getController();
         mIsNew = mWellController.isCreateRecord();
         mDataSet = mWellController.getCurrentDataSet();
         initViewData();
@@ -117,7 +117,7 @@ public class WellMainFragment extends Fragment {
         }
     }
 
-    private void getValue() {
+    public void getValue() {
         String wellName = edt_F_GH.getText().toString();
         if (wellName.equals("")) {
             T.showShort(mContext, mContext.getString(R.string.well_name_empty));

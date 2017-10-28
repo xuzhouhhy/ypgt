@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_KYQK">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+
+        <!--是否跨越河流、湖泊-->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_JKXLTZXX_F_KYHLHB"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_KYHLHB"
+        android:tag="@string/GY_JKXLTZXX_F_KYHLHB"/>
+
+        <!--是否跨越山谷-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_KYSG"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_KYSG"
+            android:tag="@string/GY_JKXLTZXX_F_KYSG"/>
+
+        <!--是否交叉跨越线路-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_JCKYXL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_JCKYXL"
+            android:tag="@string/GY_JKXLTZXX_F_JCKYXL"/>
+
+        <!--跨越距离（m）-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_KYJL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_KYJL"
+            android:tag="@string/GY_JKXLTZXX_F_KYJL"/>
+
+    </LinearLayout>
+
+</FrameLayout>

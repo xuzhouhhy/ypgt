@@ -1,0 +1,143 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_Base">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+
+        <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_JKXLTZXX_F_GH"
+        />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GH"
+            android:tag="@string/GY_JKXLTZXX_F_GH"/>
+
+        <!--杆塔型号-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_GTXH"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GTXH"
+            android:tag="@string/GY_JKXLTZXX_F_GTXH"/>
+
+        <!--杆塔材质-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_GTCZ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GTCZ"
+            android:tag="@string/GY_JKXLTZXX_F_GTCZ"/>
+
+        <!--砼杆埋深（m）-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_GTSM"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GTSM"
+            android:tag="@string/GY_JKXLTZXX_F_GTSM"/>
+
+        <!--是否耐张杆塔-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_SFNZGT"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_SFNZGT"
+            android:tag="@string/GY_JKXLTZXX_F_SFNZGT"/>
+
+        <!--转角度数-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_ZJDS"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_ZJDS"
+            android:tag="@string/GY_JKXLTZXX_F_ZJDS"/>
+
+        <!--初投运日期-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_CTRQ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_CTRQ"
+            android:tag="@string/GY_JKXLTZXX_F_CTRQ"/>
+
+        <!--最近一次技改大修日期-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_ZHJGDXRQ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_ZHJGDXRQ"
+            android:tag="@string/GY_JKXLTZXX_F_ZHJGDXRQ"/>
+
+        <!--施工单位-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_SGDW"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_SGDW"
+            android:tag="@string/GY_JKXLTZXX_F_SGDW"/>
+
+        <!--地形地貌-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXLTZXX_F_DXDM"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DXDM"
+            android:tag="@string/GY_JKXLTZXX_F_DXDM"/>
+    </LinearLayout>
+
+</FrameLayout>

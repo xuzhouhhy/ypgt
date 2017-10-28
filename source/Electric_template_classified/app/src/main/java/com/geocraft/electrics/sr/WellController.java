@@ -57,11 +57,12 @@ public class WellController extends BaseController {
     private DataSet mCurrentDataSet;
     private boolean mIsEditParent;
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
-    private List<BasicFragmentFactory.DataFragment> mDataFragments =
-            new ArrayList<BasicFragmentFactory.DataFragment>();
-    private List<BasicFragmentFactory.DataFragment> mChekedFragments =
-            new ArrayList<BasicFragmentFactory.DataFragment>();
+    private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
+            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
+    private List<BasicFragmentFactory.FragmentDatasetOption> mChekedFragments =
+            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private FragmentOption mFragmentOption = new FragmentOption();
+
 
     //是否创建标识
     //编辑需要传染id key
@@ -92,7 +93,7 @@ public class WellController extends BaseController {
     }
 
     public void initDataSet() throws CloneNotSupportedException {
-        List<String> datasetNames = mWellDatasets.getDatasetNames();
+        List<String> datasetNames = mWellDatasets.getWellDatasetNames();
         for (int i = 0; i < datasetNames.size(); i++) {
             initDataSetByDasetName(datasetNames.get(i));
         }
@@ -106,24 +107,28 @@ public class WellController extends BaseController {
         DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
         if (!mIsCreateRecord && mDataSetKey > 0) {
             dataset.PrimaryKey = mDataSetKey;
-            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
-            if (temp != null) {
-                dataset = temp;
+            if (mWellDatasets.isPropterDataset(dataset.Name)) {
+                // TODO: 2017/10/27
+            } else {
+                DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+                if (temp != null) {
+                    dataset = temp;
+                }
             }
         }
         mDataSets.add(dataset);
     }
 
-    public List<BasicFragmentFactory.DataFragment> getDataFragments() {
-        mDataFragments.clear();
+    public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
+        mFragmentDatasetOptions.clear();
         if (mWellType == WellType.JK) {
-            mDataFragments = mBasicFragmentFactory.getJKFramentItems();
+            mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
         } else if (mWellType == WellType.DL) {
-            mDataFragments = mBasicFragmentFactory.getDLFramentItems();
+            mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
         } else {
-            mDataFragments = mBasicFragmentFactory.getDYFramentItems();
+            mFragmentDatasetOptions = mBasicFragmentFactory.getDYFramentItems();
         }
-        return mDataFragments;
+        return mFragmentDatasetOptions;
     }
 
     //是否新建
@@ -147,12 +152,12 @@ public class WellController extends BaseController {
         return mCurrentDataSet;
     }
 
-    public void updateFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
+    public void updateFragment(boolean isCheked, BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption) {
         try {
             if (isCheked) {
-                mChekedFragments.add(dataFragment);
+                mChekedFragments.add(fragmentDatasetOption);
             } else {
-                mChekedFragments.remove(dataFragment);
+                mChekedFragments.remove(fragmentDatasetOption);
             }
         } catch (Exception e) {
             L.printException(e);
@@ -169,7 +174,7 @@ public class WellController extends BaseController {
         }
     }
 
-    public BasicFragmentFactory.DataFragment getDataFragment(int index) {
+    public BasicFragmentFactory.FragmentDatasetOption getDataFragment(int index) {
         if (index < 0 || index > mChekedFragments.size() - 1) {
             return null;
         }

@@ -19,8 +19,13 @@ public class FragmentAdapter extends BaseAdapter {
             new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    mController.updateFragment(isChecked, (BasicFragmentFactory.DataFragment)
-                            getItem(FragmentItemView.sPosition));
+                    if (null == buttonView.getTag()) {
+                        return;
+                    }
+                    FragmentItemView.ViewHodler viewHodler =
+                            (FragmentItemView.ViewHodler) buttonView.getTag();
+                    mController.updateFragment(isChecked, (BasicFragmentFactory.FragmentDatasetOption)
+                            getItem(viewHodler.getPosition()));
                 }
             };
 
@@ -31,12 +36,12 @@ public class FragmentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mController.getDataFragments().size();
+        return mController.getFragmentDatasetOptions().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mController.getDataFragments().get(position);
+        return mController.getFragmentDatasetOptions().get(position);
     }
 
     @Override
@@ -52,14 +57,10 @@ public class FragmentAdapter extends BaseAdapter {
         } else {
             fragmentItemView = (FragmentItemView) convertView;
         }
-        if (position % 2 != 0) {
-            fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
-        } else {
-            fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        }
-        BasicFragmentFactory.DataFragment dataFragment = (BasicFragmentFactory.DataFragment)
+        fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = (BasicFragmentFactory.FragmentDatasetOption)
                 getItem(position);
-        fragmentItemView.bind(dataFragment.mFramentName);
+        fragmentItemView.bind(fragmentDatasetOption.getFramentName());
         fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener, position);
         fragmentItemView.setSelected(true);
         return fragmentItemView;

@@ -1,6 +1,7 @@
 package com.geocraft.electrics.sr;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
@@ -12,6 +13,8 @@ import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
+import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
+import com.geocraft.electrics.ui.controller.PhotoManagerController;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -20,6 +23,9 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  */
@@ -38,31 +44,34 @@ public class WellActivity extends BaseActivity {
     private FragmentTransaction mTransaction = null;
     private int mFragemntIndex;
     private BusinessFragment mBasicDataFragment;
-    private BasicFragmentFactory.DataFragment mDataFragment;
+    private BasicFragmentFactory.FragmentDatasetOption mFragmentDatasetOption;
+    private WellMainFragment mWellMainFragment;
+    private boolean mIsNext;
 
     @AfterViews
     void init() {
         mController.initIntentData(this);
-        InitTowerInfoAsyncTask initRecordInfoAsyncTask = new InitTowerInfoAsyncTask(this,
+        InitWellInfoAsyncTask initWellInfoAsyncTask = new InitWellInfoAsyncTask(this,
                 mController);
-        initRecordInfoAsyncTask.execute(mController);
-        updateBtnViewStatus(btn_back, false);
+        initWellInfoAsyncTask.execute(mController);
     }
 
     @Click
     void btn_next() {
-        if (changeFragment(mFragemntIndex)) {
+        mIsNext = true;
+        if (changeContentView(mFragemntIndex)) {
             mFragemntIndex++;
         }
     }
 
     @Click
     void btn_back() {
+        mIsNext = false;
         mFragemntIndex = mFragemntIndex - 2;
         if (mFragemntIndex < 0) {
             addMainFragment();
         } else {
-            if (!changeFragment(mFragemntIndex)) {
+            if (!changeContentView(mFragemntIndex)) {
                 mFragemntIndex++;
             }
         }
@@ -75,34 +84,33 @@ public class WellActivity extends BaseActivity {
         this.setTitle(mController.getTitle());
     }
 
-    private boolean changeFragment(int index) {
+    private boolean changeContentView(int index) {
         if (index < 0) {
             return false;
         }
         saveFragmentData();
-        mFm = getSupportFragmentManager();
-        mTransaction = mFm.beginTransaction();
-        mDataFragment = mController.getDataFragment(index);
-        if (null == mDataFragment) {
+        mFragmentDatasetOption = mController.getDataFragment(index);
+        if (null == mFragmentDatasetOption) {
             return false;
         }
-        mController.setsCurrentDataSet(mDataFragment.mDatasetName);
-        mBasicDataFragment = mDataFragment.mFragment;
-        mTransaction.replace(R.id.id_content, mBasicDataFragment);
-        mTransaction.commit();
+        mController.setsCurrentDataSet(mFragmentDatasetOption.getDatasetName());
+        mBasicDataFragment = mFragmentDatasetOption.getFragment();
+        updateFragment(mBasicDataFragment);
         updateBtnViewStatus(btn_back, true);
         return true;
     }
 
     public void addMainFragment() {
+        // TODO: 2017/10/28 设置当前dataset
+        mWellMainFragment = new WellMainFragment_();
+        updateFragment(mWellMainFragment);
+        updateBtnViewStatus(btn_back, false);
+    }
+
+    private void updateFragment(Fragment fragment) {
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
-        WellMainFragment wellMainFragment = new WellMainFragment_();
-        if (!wellMainFragment.isAdded()) {
-            mTransaction.add(R.id.id_content, wellMainFragment);
-        } else {
-            mTransaction.replace(R.id.id_content, wellMainFragment);
-        }
+        mTransaction.replace(R.id.id_content, fragment);
         mTransaction.commit();
     }
 
@@ -112,20 +120,32 @@ public class WellActivity extends BaseActivity {
     }
 
     private void saveFragmentData() {
-        if (mDataFragment != null) {
-            getValueFromFragment();
+        if (mFragemntIndex == 0 && mIsNext) {
+            mWellMainFragment.getValue();
+        } else {
+            if (mFragmentDatasetOption != null) {
+                getValueFromFragment();
+            }
         }
     }
 
     private void getValueFromFragment() {
-        if (null == mDataFragment || null == mBasicDataFragment) {
+        if (null == mFragmentDatasetOption || null == mBasicDataFragment) {
             return;
         }
-        DataSet dataSet = mController.getCurrentDataSet(mDataFragment.mDatasetName);
+        DataSet dataSet = mController.getCurrentDataSet(mFragmentDatasetOption.getDatasetName());
         if (null == dataSet) {
             return;
         }
         mBasicDataFragment.getValue(dataSet);
+    }
+
+    public List<PhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
+        List<PhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
+//        if (mPhotoFragment != null) {
+//            photoItemInfoList = mPhotoFragment.getTaskPhotoList();
+//        }
+        return photoItemInfoList;
     }
 
     @OptionsItem
@@ -153,5 +173,9 @@ public class WellActivity extends BaseActivity {
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public boolean isNext() {
+        return mIsNext;
     }
 }
