@@ -53,7 +53,9 @@ public class WellMainFragment extends Fragment {
     GridView grd_ck_fragment;
     private FragmentAdapter mFragmentAdapter;
     private WellController mWellController;
-    RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
+
+
+    private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -71,8 +73,6 @@ public class WellMainFragment extends Fragment {
             wellType = WellType.JK;
         } else if (checkedId == R.id.rb_dl) {
             wellType = WellType.DL;
-        } else if (checkedId == R.id.rb_dy) {
-            wellType = WellType.DY;
         }
         return wellType;
     }
@@ -155,9 +155,6 @@ public class WellMainFragment extends Fragment {
         }
         if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
             rg_tower_type.check(R.id.rb_dl);
-        }
-        if (value.equals(String.valueOf(WellType.DY.ordinal()))) {
-            rg_tower_type.check(R.id.rb_dy);
         }
     }
 

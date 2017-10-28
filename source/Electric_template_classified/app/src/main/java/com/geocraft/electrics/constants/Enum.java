@@ -673,4 +673,8 @@ public class Enum {
     public static String GY_XSBYQTZXX = "GY_XSBYQTZXX";
     public static String GY_ZSBYQTZXX = "GY_ZSBYQTZXX";
 
+    /**
+     * 电源字段 井号类型
+     */
+    public static String GY_JKXLTZXX_FIELD_GZlX = "F_gzlx";//杆桩类型
 }

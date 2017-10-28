@@ -17,15 +17,6 @@ import java.util.List;
  */
 @EBean
 public class BasicFragmentFactory {
-    //    private List<FragmentDatasetOption> mHwgFragments = new ArrayList<FragmentDatasetOption>();//环网柜
-//    private List<FragmentDatasetOption> mKBSFragments = new ArrayList<FragmentDatasetOption>();//开闭所
-//    private List<FragmentDatasetOption> mFJXFragments = new ArrayList<FragmentDatasetOption>();//分接箱
-//    private List<FragmentDatasetOption> mDLFJXFragments = new ArrayList<FragmentDatasetOption>();//电缆分接箱
-//    private List<FragmentDatasetOption> mXSBDZFragments = new ArrayList<FragmentDatasetOption>();//箱式变电站
-//    private List<FragmentDatasetOption> mZSBYQFragments = new ArrayList<FragmentDatasetOption>();//柱上变压器
-    //    private List<FragmentDatasetOption> mTowerFragments = new ArrayList<FragmentDatasetOption>();//杆号自带
-//    private List<FragmentDatasetOption> mWellFragments = new ArrayList<FragmentDatasetOption>();//工井自带
-
     private final String KEY_GY_JKXLTZXX_BASE = "GY_JKXLTZXX_BASE";
     private final String KEY_GY_HYGTZXX_BASE = "GY_HYGTZXX_BASE";
 
@@ -33,7 +24,10 @@ public class BasicFragmentFactory {
     private List<FragmentDatasetOption> mJKXLFragments = new ArrayList<FragmentDatasetOption>();//架空线路
     private List<FragmentDatasetOption> mDLXLFragments = new ArrayList<FragmentDatasetOption>();//电缆线路
 
-    private List<FragmentDatasetOption> mDYXLFragments = new ArrayList<FragmentDatasetOption>();//电源线路
+//    public void clear() {
+//        mJKXLFragments.clear();
+//        mDLXLFragments.clear();
+//    }
 
     public FragmentDatasetOption getHWGFragment() {
         String datasetName = Enum.GY_HYGTZXX;
@@ -59,8 +53,8 @@ public class BasicFragmentFactory {
         if (null != mJKXLFragments && mJKXLFragments.size() > 0) {
             return mJKXLFragments;
         }
-        mJKXLFragments.add(getHWGFragment());
         mJKXLFragments.add(getGY_JTXL_Base());
+        mJKXLFragments.add(getHWGFragment());
         mJKXLFragments.add(getGY_JTXL_Base());
         mJKXLFragments.add(getGY_JTXL_Base());
         mJKXLFragments.add(getGY_JTXL_Base());
@@ -320,13 +314,6 @@ public class BasicFragmentFactory {
             return mDLXLFragments;
         }
         return mDLXLFragments;
-    }
-
-    public List<FragmentDatasetOption> getDYFramentItems() {
-        if (null != mDYXLFragments && mDYXLFragments.size() > 0) {
-            return mDYXLFragments;
-        }
-        return mDYXLFragments;
     }
 
     /**

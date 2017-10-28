@@ -12,69 +12,71 @@ import com.huace.log.logger.L;
 import common.geocraft.untiltools.T;
 
 /**
+ * 采集提交任务
+ *
+ * @author kingdon
  */
 public class WellCommitAsyncTask extends AsyncTask<WellController, Integer, Boolean> {
 
+    private Context mContext;
+    private WellController mController;
+    private ProgressDialog mProgressDialog;
 
-	Context mContext;
-	WellController mController;
-	ProgressDialog mProgressDialog;
+    public WellCommitAsyncTask(Context context, WellController controller) {
+        super();
+        this.mContext = context;
+        this.mController = controller;
+    }
 
-	public WellCommitAsyncTask(Context context, WellController controller) {
-		super();
-		this.mContext = context;
-		this.mController = controller;
-	}
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        mProgressDialog = ProgressDialog.show(mContext,
+                mContext.getString(R.string.dlg_tip),
+                mContext.getString(R.string.save_record_info_loading),
+                false);
+    }
 
-	@Override
-	protected void onPreExecute() {
-		super.onPreExecute();
-		mProgressDialog = ProgressDialog.show(mContext,
-				mContext.getString(R.string.dlg_tip),
-				mContext.getString(R.string.save_record_info_loading),
-				false);
-	}
+    @Override
+    protected Boolean doInBackground(WellController... params) {
+        try {
+            return mController.saveRecord(((WellActivity) mContext).getPhotoInfoList());
+        } catch (Exception e) {
+            L.printException(e);
+            return false;
+        }
+    }
 
-	@Override
-	protected Boolean doInBackground(WellController... params) {
-		try {
-			return mController.saveRecord(((WellActivity) mContext).getPhotoInfoList());
-		} catch (Exception e) {
-			L.printException(e);
-			return false;
-		}
-	}
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        super.onProgressUpdate(values);
+    }
 
-	@Override
-	protected void onProgressUpdate(Integer... values) {
-		super.onProgressUpdate(values);
-	}
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        try {
+            mProgressDialog.dismiss();
+            if (mController.isCreateRecord()) {
+                if (aBoolean) {
+                    finishAndBackResult();
+                    T.showShort(mContext, R.string.save_data_set_succeed);
+                } else {
+                    T.showShort(mContext, R.string.save_data_set_failed);
+                }
+            } else {
+                if (aBoolean) {
+                    finishAndBackResult();
+                    T.showShort(mContext, R.string.change_data_set_succeed);
+                } else {
+                    T.showShort(mContext, R.string.change_data_set_failed);
+                }
+            }
+        } catch (Exception e) {
+            L.printException(e);
+        }
+    }
 
-	@Override
-	protected void onPostExecute(Boolean aBoolean) {
-		try {
-			mProgressDialog.dismiss();
-			if (mController.isCreateRecord()) {
-				if (aBoolean) {
-					finishAndBackResult();
-					T.showShort(mContext, R.string.save_data_set_succeed);
-				} else {
-					T.showShort(mContext, R.string.save_data_set_failed);
-				}
-			} else {
-				if (aBoolean) {
-					finishAndBackResult();
-					T.showShort(mContext, R.string.change_data_set_succeed);
-				} else {
-					T.showShort(mContext, R.string.change_data_set_failed);
-				}
-			}
-		} catch (Exception e) {
-			L.printException(e);
-		}
-	}
-
-	public void finishAndBackResult() {
+    public void finishAndBackResult() {
 //		if (mController.isEditParent()) {
 //			Intent intent = new Intent(mContext, CommonListActivity_.class);
 //			((RecordActivity) mContext).setResult(
@@ -89,6 +91,6 @@ public class WellCommitAsyncTask extends AsyncTask<WellController, Integer, Bool
 //			}*/
 //			((RecordActivity) mContext).finish();
 //		}
-	}
+    }
 
 }

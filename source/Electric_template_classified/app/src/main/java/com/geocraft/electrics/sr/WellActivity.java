@@ -13,6 +13,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
+import com.geocraft.electrics.sr.task.WellCommitAsyncTask;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
 
 import org.androidannotations.annotations.AfterViews;
@@ -93,8 +94,8 @@ public class WellActivity extends BaseActivity {
         }
         saveFragmentData();
         mFragmentDatasetOption = fragmentDatasetOption;
-        mController.setCurrentDataSet(mFragmentDatasetOption.getDatasetName());
-        updateFragment(mFragmentDatasetOption.getFragment());
+        updateFragment(mFragmentDatasetOption.getFragment(),
+                mFragmentDatasetOption.getDatasetName());
         updateBtnViewStatus(btn_back, true);
         return true;
     }
@@ -102,12 +103,16 @@ public class WellActivity extends BaseActivity {
     public void addMainFragment() {
         // TODO: 2017/10/28 设置当前dataset
         mController.setFramgmentIndex(-1);
+        mController.setCurrentDataSet(WellDatasets.getMainDatasetName(
+                mController.getWellType()));
         mWellMainFragment = new WellMainFragment_();
-        updateFragment(mWellMainFragment);
+        updateFragment(mWellMainFragment, WellDatasets.getMainDatasetName(
+                mController.getWellType()));
         updateBtnViewStatus(btn_back, false);
     }
 
-    private void updateFragment(Fragment fragment) {
+    private void updateFragment(Fragment fragment, String datasetName) {
+        mController.setCurrentDataSet(datasetName);
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
         mTransaction.replace(R.id.id_content, fragment);
@@ -149,7 +154,8 @@ public class WellActivity extends BaseActivity {
 
     @OptionsItem
     void actionTaskCommit() {
-        // TODO: 2017/10/25
+        WellCommitAsyncTask commitAsyncTask = new WellCommitAsyncTask(this, mController);
+        commitAsyncTask.execute(mController);
     }
 
     public WellController getController() {
@@ -173,6 +179,7 @@ public class WellActivity extends BaseActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 
     public boolean isNext() {
         return mIsNext;

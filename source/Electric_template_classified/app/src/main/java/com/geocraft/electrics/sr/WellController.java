@@ -47,7 +47,7 @@ public class WellController extends BaseController {
     @Bean
     WellDatasets mWellDatasets;
 
-    WellType mWellType = WellType.JK;
+    private WellType mWellType = WellType.JK;
     private String mFirstType;
     private String mSecondType;
     private int mDataSetKey;
@@ -92,28 +92,38 @@ public class WellController extends BaseController {
         }
     }
 
-    public void initDataSet() throws CloneNotSupportedException {
+    public void initDatas() throws CloneNotSupportedException {
+        initDataset();
+        initCurrentDataSet();
+    }
+
+    private void initWellType(String value) throws CloneNotSupportedException {
+        if (null == value || value.isEmpty()) {
+            return;
+        }
+        if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
+            mWellType = WellType.JK;
+        }
+        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
+            mWellType = WellType.DL;
+        }
+    }
+
+    private void initDataset() throws CloneNotSupportedException {
         List<String> datasetNames = mWellDatasets.getWellDatasetNames();
         for (int i = 0; i < datasetNames.size(); i++) {
             initDataSetByDasetName(datasetNames.get(i));
         }
-        if (mDataSets.size() == 0) {
-            return;
-        }
-        mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
     }
 
     public void initDataSetByDasetName(String datasetName) throws CloneNotSupportedException {
         DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
         if (!mIsCreateRecord && mDataSetKey > 0) {
             dataset.PrimaryKey = mDataSetKey;
-            if (mWellDatasets.isPropterDataset(dataset.Name)) {
-                // TODO: 2017/10/27
-            } else {
-                DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
-                if (temp != null) {
-                    dataset = temp;
-                }
+            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+            if (temp != null) {
+                dataset = temp;
+                initWellType(temp.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
             }
         }
         mDataSets.add(dataset);
@@ -124,7 +134,6 @@ public class WellController extends BaseController {
         mCurrentDataSet = null;
         for (DataSet dataSet : mDataSets) {
             if (datasetName.equals(dataSet.Name)) {
-                mCurrentDataSet = dataSet;
                 return dataSet;
             }
         }
@@ -136,12 +145,14 @@ public class WellController extends BaseController {
     }
 
     public void setCurrentDataSet(String datasetName) {
-        mCurrentDataSet = null;
-        for (DataSet dataSet : mDataSets) {
-            if (datasetName.equals(dataSet.Name)) {
-                mCurrentDataSet = dataSet;
-                break;
-            }
+        mCurrentDataSet = getCurrentDataSet(datasetName);
+    }
+
+    public void initCurrentDataSet() {
+        if (mWellType == WellType.JK) {
+            mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
+        } else if (mWellType == WellType.DL) {
+            mCurrentDataSet = getCurrentDataSet(Enum.GY_DLXLTZXX);
         }
     }
 
@@ -150,14 +161,11 @@ public class WellController extends BaseController {
             mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
         } else if (mWellType == WellType.DL) {
             mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
-        } else {
-            mFragmentDatasetOptions = mBasicFragmentFactory.getDYFramentItems();
         }
         return mFragmentDatasetOptions;
     }
 
     public void refreshFragmentDatasetOptions() {
-        mFragmentDatasetOptions.clear();
         getFragmentDatasetOptions();
     }
 
@@ -392,6 +400,13 @@ public class WellController extends BaseController {
         }
     }
 
+    private boolean save() {
+        //保存当前记录
+        //获取main 配置信息
+        //获取fragment配置信息
+        return true;
+    }
+
     private void renamePhotoAndMove(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
         for (int i = 0; i < taskPhotoList.size(); i++) {
             PhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
@@ -496,6 +511,9 @@ public class WellController extends BaseController {
         refreshFragmentDatasetOptions();
     }
 
+    public WellType getWellType() {
+        return mWellType;
+    }
 
     class ExtensionFilter implements FilenameFilter {
         String ext;
