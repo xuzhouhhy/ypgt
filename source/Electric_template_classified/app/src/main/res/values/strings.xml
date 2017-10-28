@@ -933,4 +933,5 @@
     <string name="GY_HYGTZXX_F_PHOTO_HWGQM">环网柜全貌照片</string>
     <string name="GY_HYGTZXX_F_PHOTO_BSP">标识牌照片</string>
     <string name="GY_HYGTZXX_F_PHOTO_MP">铭牌照片</string>
+    <string name="well_jk_base">架空电线</string>
 </resources>

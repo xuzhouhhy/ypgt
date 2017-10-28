@@ -19,8 +19,13 @@ public class FragmentAdapter extends BaseAdapter {
             new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (null == buttonView.getTag()) {
+                        return;
+                    }
+                    FragmentItemView.ViewHodler viewHodler =
+                            (FragmentItemView.ViewHodler) buttonView.getTag();
                     mController.updateFragment(isChecked, (BasicFragmentFactory.DataFragment)
-                            getItem(FragmentItemView.sPosition));
+                            getItem(viewHodler.getPosition()));
                 }
             };
 
@@ -52,11 +57,7 @@ public class FragmentAdapter extends BaseAdapter {
         } else {
             fragmentItemView = (FragmentItemView) convertView;
         }
-        if (position % 2 != 0) {
-            fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
-        } else {
-            fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        }
+        fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
         BasicFragmentFactory.DataFragment dataFragment = (BasicFragmentFactory.DataFragment)
                 getItem(position);
         fragmentItemView.bind(dataFragment.mFramentName);

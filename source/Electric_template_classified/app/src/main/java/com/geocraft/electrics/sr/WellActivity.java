@@ -91,18 +91,18 @@ public class WellActivity extends BaseActivity {
         }
         mController.setsCurrentDataSet(mDataFragment.mDatasetName);
         mBasicDataFragment = mDataFragment.mFragment;
-        updateFrament(mBasicDataFragment);
+        updateFragment(mBasicDataFragment);
         updateBtnViewStatus(btn_back, true);
         return true;
     }
 
     public void addMainFragment() {
         mWellMainFragment = new WellMainFragment_();
-        updateFrament(mWellMainFragment);
+        updateFragment(mWellMainFragment);
         updateBtnViewStatus(btn_back, false);
     }
 
-    private void updateFrament(Fragment fragment) {
+    private void updateFragment(Fragment fragment) {
         mFm = getSupportFragmentManager();
         mTransaction = mFm.beginTransaction();
         mTransaction.replace(R.id.id_content, fragment);

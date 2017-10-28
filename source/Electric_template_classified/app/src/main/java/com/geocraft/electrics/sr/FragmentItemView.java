@@ -14,7 +14,6 @@ import org.androidannotations.annotations.ViewById;
  */
 @EViewGroup(R.layout.itemview_fragment_checklist)
 public class FragmentItemView extends LinearLayout {
-    public static int sPosition;
     @ViewById
     CheckBox ck;
 
@@ -28,8 +27,22 @@ public class FragmentItemView extends LinearLayout {
 
     public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
                                                    onCheckedChangeListener, int position) {
-        sPosition = position;
+        ViewHodler viewHodler = new ViewHodler();
+        viewHodler.setPosition(position);
+        ck.setTag(viewHodler);
         ck.setOnCheckedChangeListener(onCheckedChangeListener);
+    }
+
+    public static class ViewHodler {
+        private int mPosition;
+
+        public int getPosition() {
+            return mPosition;
+        }
+
+        public void setPosition(int position) {
+            mPosition = position;
+        }
     }
 
 }

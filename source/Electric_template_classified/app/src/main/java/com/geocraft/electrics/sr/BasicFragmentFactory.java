@@ -3,7 +3,10 @@ package com.geocraft.electrics.sr;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.base.BusinessFragment;
+import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.sr.fragment.HWGBasicFragment_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_Base;
+import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_Base_;
 
 import org.androidannotations.annotations.EBean;
 
@@ -30,11 +33,20 @@ public class BasicFragmentFactory {
     private List<DataFragment> mDYXLFragments = new ArrayList<DataFragment>();//电源线路
 
     public DataFragment getHWGFragment() {
-        String datasetName = "GY_HYGTZXX";
+        String datasetName = Enum.GY_HYGTZXX;
         BusinessFragment fragment = new HWGBasicFragment_();
         String HWG = ElectricApplication_.getInstance().
                 getApplicationContext().getResources().getString(R.string.tower_hwg);
         DataFragment dataFragment = new DataFragment(HWG, datasetName, fragment);
+        return dataFragment;
+    }
+
+    public DataFragment getGY_JTXL_Base() {
+        String datasetName = Enum.GY_JKXLTZXX;
+        GY_JTXL_Base fragment = new GY_JTXL_Base_();
+        String title = ElectricApplication_.getInstance().
+                getApplicationContext().getResources().getString(R.string.well_jk_base);
+        DataFragment dataFragment = new DataFragment(title, datasetName, fragment);
         return dataFragment;
     }
 
@@ -43,6 +55,7 @@ public class BasicFragmentFactory {
             return mJKXLFragments;
         }
         mJKXLFragments.add(getHWGFragment());
+        mJKXLFragments.add(getGY_JTXL_Base());
         return mJKXLFragments;
     }
 
