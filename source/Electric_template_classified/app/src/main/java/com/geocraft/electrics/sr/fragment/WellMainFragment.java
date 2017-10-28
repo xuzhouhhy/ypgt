@@ -33,7 +33,7 @@ import common.geocraft.untiltools.T;
 /**
  * 环网柜
  */
-@EFragment(R.layout.acitivity_tower_main)
+@EFragment(R.layout.acitivity_well_main)
 public class WellMainFragment extends Fragment {
     protected DataSet mDataSet;
     protected Boolean mIsNew;

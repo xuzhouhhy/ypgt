@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  */
-@EActivity(R.layout.activity_tower)
+@EActivity(R.layout.activity_well)
 @OptionsMenu(R.menu.menu_new_task)
 public class WellActivity extends BaseActivity {
 
