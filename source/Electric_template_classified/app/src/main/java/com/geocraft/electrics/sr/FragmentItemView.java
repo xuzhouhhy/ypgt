@@ -21,15 +21,15 @@ public class FragmentItemView extends LinearLayout {
         super(context);
     }
 
-    public void bind(String fragmentName) {
+    public void bind(int position, String fragmentName) {
         ck.setText(fragmentName);
-    }
-
-    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
-                                                   onCheckedChangeListener, int position) {
         ViewHodler viewHodler = new ViewHodler();
         viewHodler.setPosition(position);
         ck.setTag(viewHodler);
+    }
+
+    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
+                                                   onCheckedChangeListener) {
         ck.setOnCheckedChangeListener(onCheckedChangeListener);
     }
 

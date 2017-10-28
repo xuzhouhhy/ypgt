@@ -58,8 +58,6 @@ public class WellController extends BaseController {
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
-    private List<BasicFragmentFactory.FragmentDatasetOption> mChekedFragments =
-            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private FragmentOption mFragmentOption = new FragmentOption();
     private DataSet mCurrentDataSet;
     private DataSet mWellDataset;
@@ -67,6 +65,7 @@ public class WellController extends BaseController {
 
     //是否创建标识
     //编辑需要传染id key
+    private int mFramgmentIndex = -1;//第一个为main非控
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
@@ -121,7 +120,6 @@ public class WellController extends BaseController {
     }
 
     public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
-        mFragmentDatasetOptions.clear();
         if (mWellType == WellType.JK) {
             mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
         } else if (mWellType == WellType.DL) {
@@ -130,6 +128,11 @@ public class WellController extends BaseController {
             mFragmentDatasetOptions = mBasicFragmentFactory.getDYFramentItems();
         }
         return mFragmentDatasetOptions;
+    }
+
+    public void refreshFragmentDatasetOptions() {
+        mFragmentDatasetOptions.clear();
+        getFragmentDatasetOptions();
     }
 
     //是否新建
@@ -153,19 +156,6 @@ public class WellController extends BaseController {
         return mCurrentDataSet;
     }
 
-    public void updateFragment(boolean isCheked,
-                               BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption) {
-        try {
-            if (isCheked) {
-                mChekedFragments.add(fragmentDatasetOption);
-            } else {
-                mChekedFragments.remove(fragmentDatasetOption);
-            }
-        } catch (Exception e) {
-            L.printException(e);
-        }
-    }
-
     public void setsCurrentDataSet(String datasetName) {
         mCurrentDataSet = null;
         for (DataSet dataSet : mDataSets) {
@@ -177,10 +167,80 @@ public class WellController extends BaseController {
     }
 
     public BasicFragmentFactory.FragmentDatasetOption getDataFragment(int index) {
-        if (index < 0 || index > mChekedFragments.size() - 1) {
+        if (index < 0 || index > mFragmentDatasetOptions.size() - 1) {
             return null;
         }
-        return mChekedFragments.get(index);
+        return mFragmentDatasetOptions.get(index);
+    }
+
+    public int getFramgmentIndex() {
+        return mFramgmentIndex;
+    }
+
+    public void setFramgmentIndex(int framgmentIndex) {
+        mFramgmentIndex = framgmentIndex;
+    }
+
+    public BasicFragmentFactory.FragmentDatasetOption getFirstDataFragment() {
+        int index = 0;
+        if (mFragmentDatasetOptions.size() == 0) {
+            return null;
+        }
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                = mFragmentDatasetOptions.get(index);
+        if (null == fragmentDatasetOption) {
+            for (int i = index; i < mFragmentDatasetOptions.size(); i++) {
+                fragmentDatasetOption = mFragmentDatasetOptions.get(i);
+                if (i > index) {
+                    if (fragmentDatasetOption.isChecked()) {
+                        mFramgmentIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+        if (null == fragmentDatasetOption) {
+            return null;
+        }
+        if (fragmentDatasetOption.isChecked()) {
+            mFramgmentIndex++;
+            return fragmentDatasetOption;
+        }
+        return null;
+    }
+
+    public BasicFragmentFactory.FragmentDatasetOption getNextCheckedDataFragment() {
+        if (mFramgmentIndex < 0 || mFramgmentIndex >= mFragmentDatasetOptions.size() - 1) {
+            return null;
+        }
+        for (int i = mFramgmentIndex; i < mFragmentDatasetOptions.size(); i++) {
+            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                    = mFragmentDatasetOptions.get(i);
+            if (i > mFramgmentIndex) {
+                if (fragmentDatasetOption.isChecked()) {
+                    mFramgmentIndex = i;
+                    return fragmentDatasetOption;
+                }
+            }
+        }
+        return null;
+    }
+
+    public BasicFragmentFactory.FragmentDatasetOption getPreCheckedDataFragment() {
+        if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentDatasetOptions.size() - 1) {
+            return null;
+        }
+        for (int i = mFramgmentIndex; i >= 0; i--) {
+            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                    = mFragmentDatasetOptions.get(i);
+            if (i < mFramgmentIndex) {
+                if (fragmentDatasetOption.isChecked()) {
+                    mFramgmentIndex = i;
+                    return fragmentDatasetOption;
+                }
+            }
+        }
+        return null;
     }
 
     public boolean isEditParent() {
@@ -434,6 +494,7 @@ public class WellController extends BaseController {
 
     public void updateWellType(WellType wellType) {
         mWellType = wellType;
+        refreshFragmentDatasetOptions();
     }
 
 

@@ -22,17 +22,22 @@ public class FragmentAdapter extends BaseAdapter {
                     if (null == buttonView.getTag()) {
                         return;
                     }
-                    FragmentItemView.ViewHodler viewHodler =
-                            (FragmentItemView.ViewHodler) buttonView.getTag();
-                    mController.updateFragment(isChecked,
-                            (BasicFragmentFactory.FragmentDatasetOption)
-                                    getItem(viewHodler.getPosition()));
+                    updateFragmentStatus(buttonView, isChecked);
                 }
             };
 
     public FragmentAdapter(Context context, WellController controller) {
         mContext = context;
         mController = controller;
+    }
+
+    private void updateFragmentStatus(CompoundButton buttonView, boolean isChecked) {
+        FragmentItemView.ViewHodler viewHodler =
+                (FragmentItemView.ViewHodler) buttonView.getTag();
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
+                (BasicFragmentFactory.FragmentDatasetOption)
+                        getItem(viewHodler.getPosition());
+        fragmentDatasetOption.setChecked(isChecked);
     }
 
     @Override
@@ -59,10 +64,11 @@ public class FragmentAdapter extends BaseAdapter {
             fragmentItemView = (FragmentItemView) convertView;
         }
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = (BasicFragmentFactory.FragmentDatasetOption)
-                getItem(position);
-        fragmentItemView.bind(fragmentDatasetOption.getFramentName());
-        fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener, position);
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
+                (BasicFragmentFactory.FragmentDatasetOption)
+                        getItem(position);
+        fragmentItemView.bind(position, fragmentDatasetOption.getFramentName());
+        fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener);
         fragmentItemView.setSelected(true);
         return fragmentItemView;
     }
