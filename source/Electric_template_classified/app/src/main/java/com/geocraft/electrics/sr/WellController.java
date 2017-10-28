@@ -188,7 +188,10 @@ public class WellController extends BaseController {
         }
         BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
                 = mFragmentDatasetOptions.get(index);
-        if (null == fragmentDatasetOption) {
+        if (fragmentDatasetOption.isChecked()) {
+            mFramgmentIndex++;
+            return fragmentDatasetOption;
+        } else {
             for (int i = index; i < mFragmentDatasetOptions.size(); i++) {
                 fragmentDatasetOption = mFragmentDatasetOptions.get(i);
                 if (i > index) {
@@ -199,11 +202,7 @@ public class WellController extends BaseController {
                 }
             }
         }
-        if (null == fragmentDatasetOption) {
-            return null;
-        }
-        if (fragmentDatasetOption.isChecked()) {
-            mFramgmentIndex++;
+        if (mFramgmentIndex >= 0) {
             return fragmentDatasetOption;
         }
         return null;

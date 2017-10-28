@@ -80,6 +80,7 @@ public class WellActivity extends BaseActivity {
 
     public void initView() {
         this.setTitle(mController.getTitle());
+        addMainFragment();
     }
 
     private boolean changeContentView(BasicFragmentFactory.FragmentDatasetOption
@@ -93,25 +94,6 @@ public class WellActivity extends BaseActivity {
         updateFragment(mFragmentDatasetOption.getFragment());
         updateBtnViewStatus(btn_back, true);
         return true;
-    }
-
-    private BasicFragmentFactory.FragmentDatasetOption getNextFrament(int index) {
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
-                = mController.getDataFragment(index);
-        if (null == fragmentDatasetOption) {
-            return null;
-        }
-        if (!fragmentDatasetOption.isChecked()) {
-            if (mIsNext) {
-                index++;
-            } else {
-                index--;
-            }
-            getNextFrament(index);
-        } else {
-            return fragmentDatasetOption;
-        }
-        return null;
     }
 
     public void addMainFragment() {
