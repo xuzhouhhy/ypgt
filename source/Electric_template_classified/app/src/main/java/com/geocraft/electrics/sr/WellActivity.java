@@ -39,7 +39,7 @@ public class WellActivity extends BaseActivity {
     private FragmentTransaction mTransaction = null;
     private int mFragemntIndex;
     private BusinessFragment mBasicDataFragment;
-    private BasicFragmentFactory.DataFragment mDataFragment;
+    private BasicFragmentFactory.FragmentDatasetOption mFragmentDatasetOption;
     private WellMainFragment mWellMainFragment;
     private boolean mIsNext;
 
@@ -85,12 +85,12 @@ public class WellActivity extends BaseActivity {
             return false;
         }
         saveFragmentData();
-        mDataFragment = mController.getDataFragment(index);
-        if (null == mDataFragment) {
+        mFragmentDatasetOption = mController.getDataFragment(index);
+        if (null == mFragmentDatasetOption) {
             return false;
         }
-        mController.setsCurrentDataSet(mDataFragment.mDatasetName);
-        mBasicDataFragment = mDataFragment.mFragment;
+        mController.setsCurrentDataSet(mFragmentDatasetOption.getDatasetName());
+        mBasicDataFragment = mFragmentDatasetOption.getFragment();
         updateFragment(mBasicDataFragment);
         updateBtnViewStatus(btn_back, true);
         return true;
@@ -118,17 +118,17 @@ public class WellActivity extends BaseActivity {
         if (mFragemntIndex == 0 && mIsNext) {
             mWellMainFragment.getValue();
         } else {
-            if (mDataFragment != null) {
+            if (mFragmentDatasetOption != null) {
                 getValueFromFragment();
             }
         }
     }
 
     private void getValueFromFragment() {
-        if (null == mDataFragment || null == mBasicDataFragment) {
+        if (null == mFragmentDatasetOption || null == mBasicDataFragment) {
             return;
         }
-        DataSet dataSet = mController.getCurrentDataSet(mDataFragment.mDatasetName);
+        DataSet dataSet = mController.getCurrentDataSet(mFragmentDatasetOption.getDatasetName());
         if (null == dataSet) {
             return;
         }

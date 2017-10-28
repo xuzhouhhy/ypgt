@@ -57,10 +57,10 @@ public class WellController extends BaseController {
     private DataSet mCurrentDataSet;
     private boolean mIsEditParent;
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
-    private List<BasicFragmentFactory.DataFragment> mDataFragments =
-            new ArrayList<BasicFragmentFactory.DataFragment>();
-    private List<BasicFragmentFactory.DataFragment> mChekedFragments =
-            new ArrayList<BasicFragmentFactory.DataFragment>();
+    private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
+            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
+    private List<BasicFragmentFactory.FragmentDatasetOption> mChekedFragments =
+            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private FragmentOption mFragmentOption = new FragmentOption();
 
 
@@ -119,16 +119,16 @@ public class WellController extends BaseController {
         mDataSets.add(dataset);
     }
 
-    public List<BasicFragmentFactory.DataFragment> getDataFragments() {
-        mDataFragments.clear();
+    public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
+        mFragmentDatasetOptions.clear();
         if (mWellType == WellType.JK) {
-            mDataFragments = mBasicFragmentFactory.getJKFramentItems();
+            mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
         } else if (mWellType == WellType.DL) {
-            mDataFragments = mBasicFragmentFactory.getDLFramentItems();
+            mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
         } else {
-            mDataFragments = mBasicFragmentFactory.getDYFramentItems();
+            mFragmentDatasetOptions = mBasicFragmentFactory.getDYFramentItems();
         }
-        return mDataFragments;
+        return mFragmentDatasetOptions;
     }
 
     //是否新建
@@ -152,12 +152,12 @@ public class WellController extends BaseController {
         return mCurrentDataSet;
     }
 
-    public void updateFragment(boolean isCheked, BasicFragmentFactory.DataFragment dataFragment) {
+    public void updateFragment(boolean isCheked, BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption) {
         try {
             if (isCheked) {
-                mChekedFragments.add(dataFragment);
+                mChekedFragments.add(fragmentDatasetOption);
             } else {
-                mChekedFragments.remove(dataFragment);
+                mChekedFragments.remove(fragmentDatasetOption);
             }
         } catch (Exception e) {
             L.printException(e);
@@ -174,7 +174,7 @@ public class WellController extends BaseController {
         }
     }
 
-    public BasicFragmentFactory.DataFragment getDataFragment(int index) {
+    public BasicFragmentFactory.FragmentDatasetOption getDataFragment(int index) {
         if (index < 0 || index > mChekedFragments.size() - 1) {
             return null;
         }

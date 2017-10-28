@@ -24,7 +24,7 @@ public class FragmentAdapter extends BaseAdapter {
                     }
                     FragmentItemView.ViewHodler viewHodler =
                             (FragmentItemView.ViewHodler) buttonView.getTag();
-                    mController.updateFragment(isChecked, (BasicFragmentFactory.DataFragment)
+                    mController.updateFragment(isChecked, (BasicFragmentFactory.FragmentDatasetOption)
                             getItem(viewHodler.getPosition()));
                 }
             };
@@ -36,12 +36,12 @@ public class FragmentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mController.getDataFragments().size();
+        return mController.getFragmentDatasetOptions().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mController.getDataFragments().get(position);
+        return mController.getFragmentDatasetOptions().get(position);
     }
 
     @Override
@@ -58,9 +58,9 @@ public class FragmentAdapter extends BaseAdapter {
             fragmentItemView = (FragmentItemView) convertView;
         }
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        BasicFragmentFactory.DataFragment dataFragment = (BasicFragmentFactory.DataFragment)
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = (BasicFragmentFactory.FragmentDatasetOption)
                 getItem(position);
-        fragmentItemView.bind(dataFragment.mFramentName);
+        fragmentItemView.bind(fragmentDatasetOption.getFramentName());
         fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener, position);
         fragmentItemView.setSelected(true);
         return fragmentItemView;
