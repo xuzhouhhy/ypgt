@@ -115,17 +115,6 @@ public class TowerShowListActivity extends BaseActivity implements
                 mController);
         initDeviceListAsyncTask.execute(mController);
         etSearch.addTextChangedListener(SearchWatcher);
-        //模拟电杆等数据
-        List<DataSet> dataSets = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            DataSet dataSet = new DataSet();
-            dataSet.First = "first" + i;
-            dataSet.Second = "second" + i;
-            dataSet.Third = "third" + i;
-            dataSet.setmIsShowInDeviceList(true);
-            dataSets.add(dataSet);
-        }
-        mController.refreshList(dataSets);
     }
 
     @OptionsItem
