@@ -93,7 +93,7 @@ public class WellActivity extends BaseActivity {
         }
         saveFragmentData();
         mFragmentDatasetOption = fragmentDatasetOption;
-        mController.setsCurrentDataSet(mFragmentDatasetOption.getDatasetName());
+        mController.setCurrentDataSet(mFragmentDatasetOption.getDatasetName());
         updateFragment(mFragmentDatasetOption.getFragment());
         updateBtnViewStatus(btn_back, true);
         return true;
@@ -123,9 +123,7 @@ public class WellActivity extends BaseActivity {
         if (mController.getFramgmentIndex() == 0 && mIsNext) {
             mWellMainFragment.getValue();
         } else {
-            if (mFragmentDatasetOption != null) {
-                getValueFromFragment();
-            }
+            getValueFromFragment();
         }
     }
 
@@ -133,7 +131,8 @@ public class WellActivity extends BaseActivity {
         if (null == mFragmentDatasetOption || mFragmentDatasetOption.isChecked()) {
             return;
         }
-        DataSet dataSet = mController.getCurrentDataSet(mFragmentDatasetOption.getDatasetName());
+        DataSet dataSet = mController.getCurrentDataSet(
+                mFragmentDatasetOption.getDatasetName());
         if (null == dataSet) {
             return;
         }

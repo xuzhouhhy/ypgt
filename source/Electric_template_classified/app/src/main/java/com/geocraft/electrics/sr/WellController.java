@@ -119,6 +119,32 @@ public class WellController extends BaseController {
         mDataSets.add(dataset);
     }
 
+    //获取当前数据集
+    public DataSet getCurrentDataSet(String datasetName) {
+        mCurrentDataSet = null;
+        for (DataSet dataSet : mDataSets) {
+            if (datasetName.equals(dataSet.Name)) {
+                mCurrentDataSet = dataSet;
+                return dataSet;
+            }
+        }
+        return null;
+    }
+
+    public DataSet getCurrentDataSet() {
+        return mCurrentDataSet;
+    }
+
+    public void setCurrentDataSet(String datasetName) {
+        mCurrentDataSet = null;
+        for (DataSet dataSet : mDataSets) {
+            if (datasetName.equals(dataSet.Name)) {
+                mCurrentDataSet = dataSet;
+                break;
+            }
+        }
+    }
+
     public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
         if (mWellType == WellType.JK) {
             mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
@@ -140,45 +166,11 @@ public class WellController extends BaseController {
         return mIsCreateRecord;
     }
 
-    //获取当前数据集
-    public DataSet getCurrentDataSet(String datasetName) {
-        mCurrentDataSet = null;
-        for (DataSet dataSet : mDataSets) {
-            if (datasetName.equals(dataSet.Name)) {
-                mCurrentDataSet = dataSet;
-                return dataSet;
-            }
-        }
-        return null;
-    }
-
-    public DataSet getCurrentDataSet() {
-        return mCurrentDataSet;
-    }
-
-    public void setsCurrentDataSet(String datasetName) {
-        mCurrentDataSet = null;
-        for (DataSet dataSet : mDataSets) {
-            if (datasetName.equals(dataSet.Name)) {
-                mCurrentDataSet = dataSet;
-                break;
-            }
-        }
-    }
-
     public BasicFragmentFactory.FragmentDatasetOption getDataFragment(int index) {
         if (index < 0 || index > mFragmentDatasetOptions.size() - 1) {
             return null;
         }
         return mFragmentDatasetOptions.get(index);
-    }
-
-    public int getFramgmentIndex() {
-        return mFramgmentIndex;
-    }
-
-    public void setFramgmentIndex(int framgmentIndex) {
-        mFramgmentIndex = framgmentIndex;
     }
 
     public BasicFragmentFactory.FragmentDatasetOption getFirstDataFragment() {
@@ -307,6 +299,14 @@ public class WellController extends BaseController {
     private void getDataSetKey(Context context) {
         mDataSetKey = ((Activity) context).getIntent()
                 .getIntExtra(Constants.INTENT_DATA_SET_KEY, -1);
+    }
+
+    public int getFramgmentIndex() {
+        return mFramgmentIndex;
+    }
+
+    public void setFramgmentIndex(int framgmentIndex) {
+        mFramgmentIndex = framgmentIndex;
     }
 
 
