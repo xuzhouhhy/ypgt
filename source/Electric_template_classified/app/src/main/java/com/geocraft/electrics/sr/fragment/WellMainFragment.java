@@ -3,6 +3,7 @@ package com.geocraft.electrics.sr.fragment;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -89,6 +90,11 @@ public class WellMainFragment extends Fragment {
         initViewData();
     }
 
+    private void updateViewClickable(View view, boolean isEnable) {
+        view.setEnabled(isEnable);
+        view.setClickable(isEnable);
+    }
+
     private void initViewData() {
         try {
             rg_tower_type.setOnCheckedChangeListener(mOnCheckedChangeListener);
@@ -125,6 +131,7 @@ public class WellMainFragment extends Fragment {
                     }
                 }
             }
+            updateViewClickable(rg_tower_type, mIsNew);
         } catch (Exception e) {
             L.printException(e);
         }

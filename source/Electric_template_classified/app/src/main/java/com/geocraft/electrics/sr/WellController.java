@@ -33,6 +33,9 @@ import java.util.List;
 import common.geocraft.untiltools.FileUtils;
 
 /**
+ * 杆桩/井界面contrlloer
+ *
+ * @author kingdon
  */
 @EBean
 public class WellController extends BaseController {
@@ -50,24 +53,15 @@ public class WellController extends BaseController {
 
     private WellType mWellType = WellType.JK;
     private String mFirstType;
-    private String mSecondType;
-    private int mDataSetKey;
-    private int mDataSetParentKey = -1;
-    private String mDataSetSearchValue = "";
+    //是否创建标识
     private boolean mIsCreateRecord;
-    private boolean mIsEditParent;
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private DataSet mCurrentDataSet;
     private int mLineId;
     private int mWellId;
-    private String WellTypeValue;
-
-
-    //是否创建标识
-    //编辑需要传染id key
-    private int mFramgmentIndex = -1;//第一个为main非控
+    private int mFramgmentIndex = -1;//第一个为mainfragment,不在可选项fragment栈列表中维护
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
@@ -77,28 +71,10 @@ public class WellController extends BaseController {
         if (isPassedFirstType(context)) {
             getFirstTypeFromIntent(context);
         }
-        if (isPassedSecondType(context)) {
-            getSecondTypeFromIntent(context);
-        }
-        if (isPassedCreateTag(context)) {
-            getCreatedRecordFromIntent(context);
-        }
-        if (isPasseDataSetKey(context)) {
-            getDataSetKey(context);
-        }
-        if (isPassedParentDataSetKey(context)) {
-            getParentDataSetKey(context);
-        }
-        if (isPassedSearchFieldValue(context)) {
-            getSearchFieldValue(context);
-        }
-        if (isPassedIsEditParent(context)) {
-            getIsEditParent(context);
-        }
     }
 
     public void initDatas() throws CloneNotSupportedException {
-        initDataset();
+        initDatasets();
         refreshCurDatasetAndFragments();
     }
 
@@ -108,36 +84,21 @@ public class WellController extends BaseController {
         getCurFragmentDatasetOptions();
     }
 
-    private void initWellType(String value) throws CloneNotSupportedException {
-        if (null == value || value.isEmpty()) {
-            return;
-        }
-        if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
-            mWellType = WellType.JK;
-        }
-        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
-            mWellType = WellType.DL;
-        }
-    }
-
-    private void initDataset() throws CloneNotSupportedException {
-        List<String> datasetNames = mWellDatasets.getWellDatasetNames();
-        for (int i = 0; i < datasetNames.size(); i++) {
-            initDataSetByDasetName(datasetNames.get(i));
-        }
-    }
-
-    public void initDataSetByDasetName(String datasetName) throws CloneNotSupportedException {
-        DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
-        if (!mIsCreateRecord && mDataSetKey > 0) {
-            dataset.PrimaryKey = mDataSetKey;
-            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
-            if (temp != null) {
-                dataset = temp;
-                initWellType(temp.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
+    private void initDatasets() throws CloneNotSupportedException {
+        List<DatasetOption> datasetOptions = mWellDatasets.getWellDataSets();
+        for (int i = 0; i < datasetOptions.size(); i++) {
+            DatasetOption datasetOption = datasetOptions.get(i);
+            DataSet dataset = mTaskManager.getDataSource().
+                    getDataSetByName(mFirstType, datasetOption.getDatasetName());
+            if (!mIsCreateRecord && datasetOption.getWellType() == mWellType) {
+                dataset.PrimaryKey = mWellId;
+                DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+                if (temp != null) {
+                    dataset = temp;
+                }
             }
+            mDataSets.add(dataset);
         }
-        mDataSets.add(dataset);
     }
 
     //获取当前数据集
@@ -158,7 +119,7 @@ public class WellController extends BaseController {
         mCurrentDataSet = getCurrentDataSet(datasetName);
     }
 
-    public void initCurrentDataSet() {
+    private void initCurrentDataSet() {
         if (mWellType == WellType.JK) {
             mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
         } else if (mWellType == WellType.DL) {
@@ -274,37 +235,6 @@ public class WellController extends BaseController {
         return null;
     }
 
-    public boolean isEditParent() {
-        return mIsEditParent;
-    }
-
-    private void getIsEditParent(Context context) {
-        mIsEditParent = ((Activity) context).getIntent().getBooleanExtra(
-                Constants.INTENT_DATA_IS_FROM_EDIT_PARENT, false);
-    }
-
-    private boolean isPassedIsEditParent(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_IS_FROM_EDIT_PARENT);
-    }
-
-    private void getSearchFieldValue(Context context) {
-        mDataSetSearchValue = ((Activity) context).getIntent()
-                .getStringExtra(Constants.INTENT_DATA_SEARCH_FIELD_VALUE);
-    }
-
-    private boolean isPassedSearchFieldValue(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SEARCH_FIELD_VALUE);
-    }
-
-    private void getParentDataSetKey(Context context) {
-        mDataSetParentKey = ((Activity) context).getIntent()
-                .getIntExtra(Constants.INTENT_DATA_SET_PARENT_KEY, -1);
-    }
-
-    private boolean isPassedParentDataSetKey(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_PARENT_KEY);
-    }
-
     private void initLineIdFromIntent(Context context) {
         if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_LINE_ID)) {
             mLineId = ((Activity) context).getIntent()
@@ -320,13 +250,33 @@ public class WellController extends BaseController {
         if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_WELL_ID)) {
             mWellId = ((Activity) context).getIntent()
                     .getIntExtra(Constants.INTENT_DATA_WELL_ID, -1);
+            if (mWellId > 0) {
+                mIsCreateRecord = true;
+            }
         }
     }
 
     private void initWellTyepFromIntent(Context context) {
         if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_WELL_TYPE)) {
-            WellTypeValue = ((Activity) context).getIntent()
+            String wellTypeKey = ((Activity) context).getIntent()
                     .getStringExtra(Constants.INTENT_DATA_WELL_TYPE);
+            try {
+                initWellType(wellTypeKey);
+            } catch (CloneNotSupportedException e) {
+                L.printException(e);
+            }
+        }
+    }
+
+    private void initWellType(String value) throws CloneNotSupportedException {
+        if (null == value || value.isEmpty()) {
+            return;
+        }
+        if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
+            mWellType = WellType.JK;
+        }
+        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
+            mWellType = WellType.DL;
         }
     }
 
@@ -334,36 +284,9 @@ public class WellController extends BaseController {
         return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
     }
 
-    private boolean isPassedSecondType(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_NAME);
-    }
-
-    private boolean isPassedCreateTag(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_IS_CREATE_RECORD);
-    }
-
-    private boolean isPasseDataSetKey(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_KEY);
-    }
-
     private void getFirstTypeFromIntent(Context context) {
         mFirstType = ((Activity) context).getIntent()
                 .getStringExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
-    }
-
-    private void getSecondTypeFromIntent(Context context) {
-        mSecondType = ((Activity) context).getIntent()
-                .getStringExtra(Constants.INTENT_DATA_SET_NAME);
-    }
-
-    private void getCreatedRecordFromIntent(Context context) {
-        mIsCreateRecord = ((Activity) context).getIntent()
-                .getBooleanExtra(Constants.INTENT_DATA_IS_CREATE_RECORD, true);
-    }
-
-    private void getDataSetKey(Context context) {
-        mDataSetKey = ((Activity) context).getIntent()
-                .getIntExtra(Constants.INTENT_DATA_SET_KEY, -1);
     }
 
     public int getFramgmentIndex() {
@@ -557,10 +480,6 @@ public class WellController extends BaseController {
     //获取Activity标题
     public String getTitle() {
         return mCurrentDataSet.Alias;
-    }
-
-    public int getDataSetParentKey() {
-        return mDataSetParentKey;
     }
 
     public void updateWellType(WellType wellType) {

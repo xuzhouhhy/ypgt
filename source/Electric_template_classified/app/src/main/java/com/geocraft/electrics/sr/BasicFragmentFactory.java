@@ -108,7 +108,7 @@ public class BasicFragmentFactory {
 
         for (int i = 0; i < mDLXLFragments.size(); i++) {
             FragmentDatasetOption option = mDLXLFragments.get(i);
-            option.setDatasetName(Enum.GY_DLFJXTZXX);
+            option.setDatasetName(Enum.GY_DLXLTZXX);
         }
         return mDLXLFragments;
     }

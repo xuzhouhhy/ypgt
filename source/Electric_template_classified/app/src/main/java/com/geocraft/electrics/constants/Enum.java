@@ -666,12 +666,6 @@ public class Enum {
     public static String GYCJ_LINE_F_GH = "F_GH";
     public static String GY_JKXLTZXX = "GY_JKXLTZXX";
     public static String GY_DLXLTZXX = "GY_DLXLTZXX";
-    public static String GY_HYGTZXX = "GY_HYGTZXX";
-    public static String GY_KBSTZXX = "GY_KBSTZXX";
-    public static String GY_FZXTZXX = "GY_FZXTZXX";
-    public static String GY_DLFJXTZXX = "GY_DLFJXTZXX";
-    public static String GY_XSBYQTZXX = "GY_XSBYQTZXX";
-    public static String GY_ZSBYQTZXX = "GY_ZSBYQTZXX";
 
     /**
      * 杆桩井号表字段名称

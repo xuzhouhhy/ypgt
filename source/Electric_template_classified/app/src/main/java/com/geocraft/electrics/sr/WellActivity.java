@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.Button;
 
 import com.geocraft.electrics.R;
@@ -108,7 +109,7 @@ public class WellActivity extends BaseActivity {
         mFragmentDatasetOption = fragmentDatasetOption;
         updateFragment(mFragmentDatasetOption.getFragment(),
                 mFragmentDatasetOption.getDatasetName());
-        updateBtnViewStatus(btn_back, true);
+        updateViewClickable(btn_back, true);
         updateNextBtnStatus();
         return true;
     }
@@ -119,7 +120,7 @@ public class WellActivity extends BaseActivity {
             msg = getResources().getString(R.string.btn_confrim);
         } else {
             msg = getResources().getString(R.string.btn_next);
-            updateBtnViewStatus(btn_next, true);
+            updateViewClickable(btn_next, true);
         }
         btn_next.setText(msg);
     }
@@ -133,7 +134,7 @@ public class WellActivity extends BaseActivity {
         updateFragment(mWellMainFragment, WellDatasets.getMainDatasetName(
                 mController.getWellType()));
         updateNextBtnStatus();
-        updateBtnViewStatus(btn_back, false);
+        updateViewClickable(btn_back, false);
     }
 
     private void updateFragment(Fragment fragment, String datasetName) {
@@ -144,9 +145,9 @@ public class WellActivity extends BaseActivity {
         mTransaction.commit();
     }
 
-    private void updateBtnViewStatus(Button button, boolean isEnable) {
-        button.setEnabled(isEnable);
-        button.setClickable(isEnable);
+    private void updateViewClickable(View view, boolean isEnable) {
+        view.setEnabled(isEnable);
+        view.setClickable(isEnable);
     }
 
     private void saveFragmentData() {

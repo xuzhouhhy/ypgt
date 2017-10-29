@@ -12,7 +12,7 @@ import java.util.List;
  */
 @EBean
 public class WellDatasets {
-    private List<String> mPropterDatasets = new ArrayList<String>();
+    private List<DatasetOption> mDatasetOptions = new ArrayList<DatasetOption>();
 
     public static String getMainDatasetName(WellType wellType) {
         if (wellType == WellType.JK) {
@@ -23,34 +23,18 @@ public class WellDatasets {
     }
 
     /**
-     * 获取井号表
-     *
-     * @return
+     * 获取井号表(前期业务考虑)
      */
-    public List<String> getWellDatasetNames() {
-        List<String> datsetNames = new ArrayList<String>();
-        datsetNames.add(Enum.GY_JKXLTZXX);
-        datsetNames.add(Enum.GY_DLXLTZXX);
-        return datsetNames;
-    }
-
-    /**
-     * 获取井号表属性
-     *
-     * @return
-     */
-    public List<String> getGetPropterDatasets() {
-        if (mPropterDatasets.size() > 0) {
-            return mPropterDatasets;
+    public List<DatasetOption> getWellDataSets() { // TODO: 2017/10/29 待优化
+        if (mDatasetOptions != null || mDatasetOptions.size() > 0) {
+            return mDatasetOptions;
         }
-        return mPropterDatasets;
+        List<DatasetOption> datasetOptions = new ArrayList<DatasetOption>();
+        DatasetOption jk = new DatasetOption(Enum.GY_JKXLTZXX, WellType.JK);
+        DatasetOption dl = new DatasetOption(Enum.GY_DLXLTZXX, WellType.DL);
+        datasetOptions.add(jk);
+        datasetOptions.add(dl);
+        return datasetOptions;
     }
 
-    /**
-     * 当前表是否为井号属性表
-     */
-    public boolean isPropterDataset(String datasetName) {
-        mPropterDatasets = getGetPropterDatasets();
-        return mPropterDatasets.contains(datasetName);
-    }
 }
