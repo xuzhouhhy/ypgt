@@ -73,4 +73,18 @@ public class Constants {
      */
     public static final String INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER = "INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER";
 
+    /**
+     * 传递线路id
+     */
+    public final static String INTENT_DATA_LINE_ID = "intent_data_line_id";
+    /**
+     * 传递杆桩/井id
+     */
+    public final static String INTENT_DATA_WELL_ID = "intent_data_well_id";
+
+    /**
+     * 传递杆桩/井类型
+     */
+    public final static String INTENT_DATA_WELL_TYPE = "intent_data_well_type";
+
 }

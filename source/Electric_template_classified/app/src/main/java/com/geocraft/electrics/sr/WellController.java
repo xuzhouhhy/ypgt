@@ -60,6 +60,9 @@ public class WellController extends BaseController {
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private DataSet mCurrentDataSet;
+    private int mLineId;
+    private int mWellId;
+    private String WellTypeValue;
 
 
     //是否创建标识
@@ -68,6 +71,9 @@ public class WellController extends BaseController {
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
+        initLineIdFromIntent(context);
+        initWellIdFromIntent(context);
+        initWellTyepFromIntent(context);
         if (isPassedFirstType(context)) {
             getFirstTypeFromIntent(context);
         }
@@ -297,6 +303,31 @@ public class WellController extends BaseController {
 
     private boolean isPassedParentDataSetKey(Context context) {
         return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_PARENT_KEY);
+    }
+
+    private void initLineIdFromIntent(Context context) {
+        if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_LINE_ID)) {
+            mLineId = ((Activity) context).getIntent()
+                    .getIntExtra(Constants.INTENT_DATA_LINE_ID, -1);
+        }
+    }
+
+    public int getLineId() {
+        return mLineId;
+    }
+
+    private void initWellIdFromIntent(Context context) {
+        if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_WELL_ID)) {
+            mWellId = ((Activity) context).getIntent()
+                    .getIntExtra(Constants.INTENT_DATA_WELL_ID, -1);
+        }
+    }
+
+    private void initWellTyepFromIntent(Context context) {
+        if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_WELL_TYPE)) {
+            WellTypeValue = ((Activity) context).getIntent()
+                    .getStringExtra(Constants.INTENT_DATA_WELL_TYPE);
+        }
     }
 
     private boolean isPassedFirstType(Context context) {

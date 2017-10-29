@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
+import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.db.DbManager_;
 import com.geocraft.electrics.entity.DataSet;
@@ -145,12 +146,17 @@ public class WellMainFragment extends Fragment {
                     .equalsIgnoreCase(fieldInfo.Alias)) {
                 fieldInfo.Value = wellName;
             }
+            if (grd_ck_fragment.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
+                fieldInfo.Value = getCheckedFragmentkeyValue();
+            }
+            //类型
             if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
                     .equalsIgnoreCase(fieldInfo.Alias)) {
                 fieldInfo.Value = String.valueOf(getWellType());
             }
-            if (grd_ck_fragment.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
-                fieldInfo.Value = getCheckedFragmentkeyValue();
+            //线路id
+            if (Enum.GY_JKXLTZXX_FIELD_LINEID.equalsIgnoreCase(fieldInfo.Name)) {
+                fieldInfo.Value = String.valueOf(mWellController.getLineId());
             }
         }
     }
