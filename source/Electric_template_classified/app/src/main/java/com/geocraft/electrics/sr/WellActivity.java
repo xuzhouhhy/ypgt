@@ -60,6 +60,7 @@ public class WellActivity extends BaseActivity {
     @Click
     void btn_next() {
         mIsNext = true;
+        saveFragmentData();
         BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = null;
         if (mController.getFramgmentIndex() == -1) {
             fragmentDatasetOption = mController.getFirstDataFragment();
@@ -73,6 +74,7 @@ public class WellActivity extends BaseActivity {
     @Click
     void btn_back() {
         mIsNext = false;
+        saveFragmentData();
         BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
                 mController.getPreCheckedDataFragment();
         if (mController.getFramgmentIndex() == -1 || null == fragmentDatasetOption) {
@@ -92,7 +94,6 @@ public class WellActivity extends BaseActivity {
         if (null == fragmentDatasetOption) {
             return false;
         }
-        saveFragmentData();
         mFragmentDatasetOption = fragmentDatasetOption;
         updateFragment(mFragmentDatasetOption.getFragment(),
                 mFragmentDatasetOption.getDatasetName());
@@ -125,7 +126,7 @@ public class WellActivity extends BaseActivity {
     }
 
     private void saveFragmentData() {
-        if (mController.getFramgmentIndex() == 0 && mIsNext) {
+        if (mController.getFramgmentIndex() == -1) {
             mWellMainFragment.getValue();
         } else {
             getValueFromFragment();
@@ -133,10 +134,10 @@ public class WellActivity extends BaseActivity {
     }
 
     private void getValueFromFragment() {
-        if (null == mFragmentDatasetOption || mFragmentDatasetOption.isChecked()) {
+        if (null == mFragmentDatasetOption || !mFragmentDatasetOption.isChecked()) {
             return;
         }
-        DataSet dataSet = mController.getCurrentDataSet(
+         DataSet dataSet = mController.getCurrentDataSet(
                 mFragmentDatasetOption.getDatasetName());
         if (null == dataSet) {
             return;

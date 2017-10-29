@@ -93,6 +93,7 @@ public class WellController extends BaseController {
     public void initDatas() throws CloneNotSupportedException {
         initDataset();
         initCurrentDataSet();
+        mBasicFragmentFactory.initFragments();
     }
 
     private void initWellType(String value) throws CloneNotSupportedException {
@@ -123,6 +124,8 @@ public class WellController extends BaseController {
                 dataset = temp;
                 initWellType(temp.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
             }
+        } else {
+            //TODO: 2017/10/29 设置杆井号类型
         }
         mDataSets.add(dataset);
     }
