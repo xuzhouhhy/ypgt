@@ -23,8 +23,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.OptionsItem;
-import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -38,7 +36,6 @@ import java.util.List;
  * @author kingdon
  */
 @EActivity(R.layout.activity_well)
-@OptionsMenu(R.menu.menu_new_task)
 public class WellActivity extends BaseActivity {
 
     @Bean
@@ -69,6 +66,9 @@ public class WellActivity extends BaseActivity {
     void btn_next() {
         mIsNext = true;
         saveFragmentData();
+        if (!(boolean) btn_next.getTag()) {
+            excuteCommitTask();
+        }
         BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = null;
         if (mController.getFramgmentIndex() == -1) {
             fragmentDatasetOption = mController.getFirstDataFragment();
@@ -118,9 +118,10 @@ public class WellActivity extends BaseActivity {
         String msg;
         if (mController.getCheckedFragmentSize() == mController.getFramgmentIndex() + 1) {
             msg = getResources().getString(R.string.btn_confrim);
+            btn_next.setTag(false);
         } else {
             msg = getResources().getString(R.string.btn_next);
-            updateViewClickable(btn_next, true);
+            btn_next.setTag(true);
         }
         btn_next.setText(msg);
     }
@@ -178,9 +179,7 @@ public class WellActivity extends BaseActivity {
         return photoItemInfoList;
     }
 
-    @OptionsItem
-    void actionTaskCommit() {
-        saveFragmentData();
+    private void excuteCommitTask() {
         WellCommitAsyncTask commitAsyncTask = new WellCommitAsyncTask(this, mController);
         commitAsyncTask.execute(mController);
     }
