@@ -54,7 +54,7 @@ public class WellController extends BaseController {
     private WellType mWellType = WellType.JK;
     private String mFirstType;
     //是否创建标识
-    private boolean mIsCreateRecord;
+    private boolean mIsCreateRecord = true;
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
@@ -251,7 +251,7 @@ public class WellController extends BaseController {
             mWellId = ((Activity) context).getIntent()
                     .getIntExtra(Constants.INTENT_DATA_WELL_ID, -1);
             if (mWellId > 0) {
-                mIsCreateRecord = true;
+                mIsCreateRecord = false;
             }
         }
     }
@@ -380,13 +380,6 @@ public class WellController extends BaseController {
         }
     }
 
-    private boolean save() {
-        //保存当前记录
-        //获取main 配置信息
-        //获取fragment配置信息
-        return true;
-    }
-
     private void renamePhotoAndMove(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
         for (int i = 0; i < taskPhotoList.size(); i++) {
             PhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
@@ -430,10 +423,10 @@ public class WellController extends BaseController {
         }
         String[] photoRuleArray = photoRules.Rules.split(",");
         String photoPrefix = "";
-        for (int i = 0; i < photoRuleArray.length; i++) {
-            photoPrefix += mCurrentDataSet.GetFieldValueByName(photoRuleArray[i]) + "_";
+        for (String aPhotoRuleArray : photoRuleArray) {
+            photoPrefix += mCurrentDataSet.GetFieldValueByName(aPhotoRuleArray) + "_";
         }
-        String photoName = "";
+        String photoName;
         if (photoItemInfo.mPhotoType.equals(Constants.TEXT_PHOTO_SUFFIX)) {
             if (photoPrefix.contains("_")) {
                 photoPrefix = photoPrefix.substring(0, photoPrefix.lastIndexOf('_'));
@@ -491,7 +484,7 @@ public class WellController extends BaseController {
         return mWellType;
     }
 
-    class ExtensionFilter implements FilenameFilter {
+    private class ExtensionFilter implements FilenameFilter {
         String ext;
 
         public ExtensionFilter(String ext) {

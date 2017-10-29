@@ -26,7 +26,7 @@ public class WellDatasets {
      * 获取井号表(前期业务考虑)
      */
     public List<DatasetOption> getWellDataSets() { // TODO: 2017/10/29 待优化
-        if (mDatasetOptions != null || mDatasetOptions.size() > 0) {
+        if (mDatasetOptions != null && mDatasetOptions.size() > 0) {
             return mDatasetOptions;
         }
         List<DatasetOption> datasetOptions = new ArrayList<DatasetOption>();

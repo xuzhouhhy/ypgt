@@ -114,18 +114,11 @@ public class WellMainFragment extends Fragment {
                         edt_F_GH.setText(fieldInfo.Value);
                     }
                 }
+                //初始化类型
                 if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
                         .equalsIgnoreCase(fieldInfo.Alias)) {
                     if (mIsNew) {
                         setWellType(fieldInfo.Default);
-                    } else {
-                        setWellType(fieldInfo.Value);
-                    }
-                }
-                if (grd_ck_fragment.getTag() != null && grd_ck_fragment.getTag().toString()
-                        .equalsIgnoreCase(fieldInfo.Alias)) {
-                    if (mIsNew) {
-                        // TODO: 2017/10/29
                     } else {
                         setWellType(fieldInfo.Value);
                     }
@@ -156,14 +149,17 @@ public class WellMainFragment extends Fragment {
             if (grd_ck_fragment.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
                 fieldInfo.Value = getCheckedFragmentkeyValue();
             }
-            //类型
-            if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
-                    .equalsIgnoreCase(fieldInfo.Alias)) {
-                fieldInfo.Value = String.valueOf(getWellType());
+            if (mIsNew) {
+                //类型 编辑状态不需要改变
+                if (Enum.GY_JKXLTZXX_FIELD_GZlX.equalsIgnoreCase(fieldInfo.Name)) {
+                    fieldInfo.Value = String.valueOf(getWellType());
+                }
             }
-            //线路id
-            if (Enum.GY_JKXLTZXX_FIELD_LINEID.equalsIgnoreCase(fieldInfo.Name)) {
-                fieldInfo.Value = String.valueOf(mWellController.getLineId());
+            if (mIsNew) {
+                //线路id 编辑状态不需要改变
+                if (Enum.GY_JKXLTZXX_FIELD_LINEID.equalsIgnoreCase(fieldInfo.Name)) {
+                    fieldInfo.Value = String.valueOf(mWellController.getLineId());
+                }
             }
         }
     }
