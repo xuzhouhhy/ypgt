@@ -19,6 +19,7 @@ import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
+import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.event.SCanBarEvent;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 import com.geocraft.electrics.utils.Utils;
@@ -91,6 +92,11 @@ public class BusinessScanEdit extends LinearLayout implements DataInterActionInt
         {
             ElectricApplication.BUS.register(this);
         }
+    }
+
+    @Override
+    public int getControlerType() {
+        return PropertyDictionay.OperateCode.Type_Scan;
     }
 
     @Override

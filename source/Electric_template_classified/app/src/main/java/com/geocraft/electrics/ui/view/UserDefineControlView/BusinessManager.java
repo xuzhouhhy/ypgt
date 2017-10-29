@@ -14,6 +14,7 @@ import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.db.DbManager_;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
+import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.ui.fragment.control_fragment.AdministrationDialogFragment;
@@ -59,6 +60,11 @@ public class BusinessManager extends LinearLayout implements DataInterActionInte
     public BusinessManager(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+    }
+
+    @Override
+    public int getControlerType() {
+        return PropertyDictionay.OperateCode.Type_Manager;
     }
 
     @Override

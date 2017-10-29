@@ -14,6 +14,7 @@ import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.ui.activity.RecordActivity;
+import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessAddress;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessAdministrator;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessCombinationMenu;
@@ -78,9 +79,7 @@ public class BusinessFragment extends BaseFragment {
                             continue;
                         }
                         if (view.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
-
-                            L.i(fieldInfo.Alias);
-                            switch (fieldInfo.OperateCode) {
+                            switch (((DataInterActionInterface) view).getControlerType()) {
                                 case PropertyDictionay.OperateCode.Type_BaseText: {
                                     if (isNew) {
                                         ((BusinessEditText) view).setControlValue(fieldInfo, fieldInfo.Default);
@@ -198,7 +197,7 @@ public class BusinessFragment extends BaseFragment {
                         continue;
                     }
                     if (view.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
-                        switch (fieldInfo.OperateCode) {
+                        switch (((DataInterActionInterface) view).getControlerType()) {
                             case PropertyDictionay.OperateCode.Type_BaseText: {
                                 fieldInfo.Value = ((BusinessEditText) view).getControlValue();
                                 break;

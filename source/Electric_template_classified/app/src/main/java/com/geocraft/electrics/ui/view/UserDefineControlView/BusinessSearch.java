@@ -53,6 +53,11 @@ public class BusinessSearch extends LinearLayout implements DataInterActionInter
     }
 
     @Override
+    public int getControlerType() {
+        return PropertyDictionay.OperateCode.Type_Search;
+    }
+
+    @Override
     public void setControlValue(String text) {
         etText.setText(text);
     }
