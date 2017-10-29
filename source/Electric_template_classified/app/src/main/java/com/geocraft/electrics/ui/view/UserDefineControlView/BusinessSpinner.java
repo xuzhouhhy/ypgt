@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.entity.FieldInfo;
+import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class BusinessSpinner extends Spinner implements DataInterActionInterface
 
 	public BusinessSpinner(Context context, AttributeSet attrs) {
 		super(context, attrs);
+	}
+
+	@Override
+	public int getControlerType() {
+		return PropertyDictionay.OperateCode.Type_MenuList;
 	}
 
 	@Override

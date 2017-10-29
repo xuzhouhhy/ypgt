@@ -78,6 +78,13 @@ public class BusinessTreeLevelMenu extends LinearLayout implements DataInterActi
         mThreeLevelMenuDialogFragment.show(((Activity) mContext).getFragmentManager(), "threelevel");
     }
 
+
+
+    @Override
+    public int getControlerType() {
+        return PropertyDictionay.OperateCode.Type_ThreeLevelMenu;
+    }
+
     @Override
     public void setControlValue(String text) {
         etText.setText(text);

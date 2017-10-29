@@ -41,8 +41,7 @@ public class InitWellInfoAsyncTask extends AsyncTask<WellController, Integer, Bo
     @Override
     protected Boolean doInBackground(WellController... params) {
         try {
-            mController.initDataSet();
-            ((WellActivity) mContext).addMainFragment();
+            mController.initDatas();
             return true;
         } catch (CloneNotSupportedException e) {
             L.printException(e);

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:gravity="center_horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/"/>-->
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+    <!-- 杆号 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_GH"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_GH"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_GH"/>
+
+
+
+    <!-- 柱上变压器全貌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_QM"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_QM"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_QM"/>
+
+
+
+
+    <!-- 变压器标识牌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_BSP"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_BSP"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_BSP"/>
+
+
+    <!-- 变压器铭牌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_XBMP"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_XBMP"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_XBMP"/>
+
+
+    <!-- JB柜标识牌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGBSP"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGBSP"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGBSP"/>
+
+
+    <!-- JB柜铭牌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGMP"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGMP"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGMP"/>
+
+
+
+    <!-- JB柜柜内低压总空开照片1 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP1"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP1"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP1"/>
+
+
+
+
+    <!-- JB柜柜内低压总空开照片2 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP2"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP2"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP2"/>
+
+
+    <!-- JB柜柜内低压总空开照片3 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP3"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP3"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP3"/>
+
+
+    <!-- JB柜柜内低压总空开照片4 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP4"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP4"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP4"/>
+
+
+    <!-- JB柜柜内低压总空开照片5 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP5"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP5"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP5"/>
+
+
+    <!-- JB柜柜内低压总空开照片6 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP6"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP6"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP6"/>
+
+
+
+    <!-- JB柜柜内低压总空开照片7 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP7"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGNDYZKZP7"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGNDYZKZP7"/>
+
+
+
+    <!-- JB柜内无功补偿装置照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_ZSBYQTZXX_F_PHOTO_JBGWGBCZZ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_JBGWGBCZZ"
+        android:tag="@string/GY_ZSBYQTZXX_F_PHOTO_JBGWGBCZZ"/>
+    </LinearLayout>
+</ScrollView>

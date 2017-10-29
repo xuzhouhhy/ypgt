@@ -1,7 +1,5 @@
 package com.geocraft.electrics.ui.view.UserDefineControlView;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
@@ -9,28 +7,16 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.app.ElectricApplication_;
-import com.geocraft.electrics.constants.Enum;
-import com.geocraft.electrics.db.DbManager;
-import com.geocraft.electrics.db.DbManager_;
-import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
-import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.manager.TaskManager_;
+import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.task.LoadAddressListAsyncTask;
 import com.geocraft.electrics.ui.fragment.control_fragment.AddressDialogFragment;
 import com.geocraft.electrics.ui.fragment.control_fragment.AddressDialogFragment_;
-import com.geocraft.electrics.ui.fragment.control_fragment.AdministrationDialogFragment;
-import com.geocraft.electrics.ui.fragment.control_fragment.ManagerDialogFragment;
-import com.geocraft.electrics.ui.fragment.control_fragment.ManagerDialogFragment_;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by hanpengfei on 2016/6/26.
@@ -67,6 +53,11 @@ public class BusinessAddress extends LinearLayout implements DataInterActionInte
     {
         super(context, attrs, defStyle);
         mContext =context;
+    }
+
+    @Override
+    public int getControlerType() {
+        return PropertyDictionay.OperateCode.Type_Address;
     }
 
     @Override

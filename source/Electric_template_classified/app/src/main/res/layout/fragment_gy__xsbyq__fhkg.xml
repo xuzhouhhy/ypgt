@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_XSBDZ_TITLE_FHKG"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutRoot">
+
+    <!-- 所属电站 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGSFDZ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGSFDZ"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGSFDZ"/>
+
+
+    <!-- 间隔单元 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGJGDY"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGJGDY"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGJGDY"/>
+
+
+
+    <!-- 额定电压(kV) -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGEDDY"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGEDDY"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGEDDY"/>
+
+
+
+    <!-- 最大开断电流 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGZDKDDL"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGZDKDDL"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGZDKDDL"/>
+
+
+
+    <!-- 额定电流(A) -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGEDDL"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGEDDL"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGEDDL"/>
+
+
+    <!-- 额定频率(Hz) -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGEDPL"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGEDPL"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGEDPL"/>
+
+
+    <!-- 灭弧介质 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGMHJZ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGMHJZ"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGMHJZ"/>
+
+
+
+    <!-- 型号 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGXH"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGXH"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGXH"/>
+
+
+
+    <!-- 厂家 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_XSBYQTZXX_F_FHKGCJ"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_FHKGCJ"
+        android:tag="@string/GY_XSBYQTZXX_F_FHKGCJ"/>
+    </LinearLayout>
+</ScrollView>

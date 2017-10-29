@@ -14,6 +14,14 @@ import java.util.List;
 public class WellDatasets {
     private List<String> mPropterDatasets = new ArrayList<String>();
 
+    public static String getMainDatasetName(WellType wellType) {
+        if (wellType == WellType.JK) {
+            return Enum.GY_JKXLTZXX;
+        } else {
+            return Enum.GY_DLXLTZXX;
+        }
+    }
+
     /**
      * 获取井号表
      *
@@ -23,8 +31,6 @@ public class WellDatasets {
         List<String> datsetNames = new ArrayList<String>();
         datsetNames.add(Enum.GY_JKXLTZXX);
         datsetNames.add(Enum.GY_DLXLTZXX);
-        datsetNames.add(Enum.GY_HYGTZXX);
-        // TODO: 2017/10/27 待完善
         return datsetNames;
     }
 

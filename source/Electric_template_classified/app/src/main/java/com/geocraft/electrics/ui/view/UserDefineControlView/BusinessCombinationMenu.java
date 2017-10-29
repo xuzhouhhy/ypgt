@@ -33,14 +33,13 @@ import java.util.Map;
  */
 @EViewGroup(R.layout.view_combinationmenu)
 public class BusinessCombinationMenu extends LinearLayout implements DataInterActionInterface {
+    public String firstValue = "";
+    public String secondValue = "";
     @ViewById
     EditText etText;
     @ViewById
     Button btnMore;
-
     private CombinationMenuDialogFragment mCombinationMenuDialogFragment;
-    public String firstValue = "";
-    public String secondValue = "";
     private Context mContext;
 
     private PropertyDictionay.CombinationMenu combinationMenu = new PropertyDictionay.CombinationMenu();
@@ -70,8 +69,8 @@ public class BusinessCombinationMenu extends LinearLayout implements DataInterAc
     }
 
     @Override
-    public void setControlValue(String text) {
-
+    public int getControlerType() {
+        return PropertyDictionay.OperateCode.Type_CombinationMenu;
     }
 
     @Override
@@ -80,9 +79,14 @@ public class BusinessCombinationMenu extends LinearLayout implements DataInterAc
     }
 
     @Override
+    public void setControlValue(String text) {
+
+    }
+
+    @Override
     public void setControlValue(FieldInfo fieldInfo, String text) {
         combinationMenu = fieldInfo.Dictionay.combinationMenu;
-        if (!text.isEmpty()){
+        if (!text.isEmpty()) {
             initValue(text);
             etText.setText(secondValue);
         }

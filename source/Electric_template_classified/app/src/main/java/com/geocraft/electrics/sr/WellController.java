@@ -47,7 +47,7 @@ public class WellController extends BaseController {
     @Bean
     WellDatasets mWellDatasets;
 
-    WellType mWellType = WellType.JK;
+    private WellType mWellType = WellType.JK;
     private String mFirstType;
     private String mSecondType;
     private int mDataSetKey;
@@ -58,15 +58,12 @@ public class WellController extends BaseController {
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
-    private List<BasicFragmentFactory.FragmentDatasetOption> mChekedFragments =
-            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
-    private FragmentOption mFragmentOption = new FragmentOption();
     private DataSet mCurrentDataSet;
-    private DataSet mWellDataset;
 
 
     //是否创建标识
     //编辑需要传染id key
+    private int mFramgmentIndex = -1;//第一个为main非控
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
@@ -93,48 +90,44 @@ public class WellController extends BaseController {
         }
     }
 
-    public void initDataSet() throws CloneNotSupportedException {
+    public void initDatas() throws CloneNotSupportedException {
+        initDataset();
+        initCurrentDataSet();
+        mBasicFragmentFactory.initFragments();
+    }
+
+    private void initWellType(String value) throws CloneNotSupportedException {
+        if (null == value || value.isEmpty()) {
+            return;
+        }
+        if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
+            mWellType = WellType.JK;
+        }
+        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
+            mWellType = WellType.DL;
+        }
+    }
+
+    private void initDataset() throws CloneNotSupportedException {
         List<String> datasetNames = mWellDatasets.getWellDatasetNames();
         for (int i = 0; i < datasetNames.size(); i++) {
             initDataSetByDasetName(datasetNames.get(i));
         }
-        if (mDataSets.size() == 0) {
-            return;
-        }
-        mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
     }
 
     public void initDataSetByDasetName(String datasetName) throws CloneNotSupportedException {
         DataSet dataset = mTaskManager.getDataSource().getDataSetByName(mFirstType, datasetName);
         if (!mIsCreateRecord && mDataSetKey > 0) {
             dataset.PrimaryKey = mDataSetKey;
-            if (mWellDatasets.isPropterDataset(dataset.Name)) {
-                // TODO: 2017/10/27
-            } else {
-                DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
-                if (temp != null) {
-                    dataset = temp;
-                }
+            DataSet temp = mDbManager.queryByPrimaryKey(dataset, true);
+            if (temp != null) {
+                dataset = temp;
+                initWellType(temp.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
             }
+        } else {
+            //TODO: 2017/10/29 设置杆井号类型
         }
         mDataSets.add(dataset);
-    }
-
-    public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
-        mFragmentDatasetOptions.clear();
-        if (mWellType == WellType.JK) {
-            mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
-        } else if (mWellType == WellType.DL) {
-            mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
-        } else {
-            mFragmentDatasetOptions = mBasicFragmentFactory.getDYFramentItems();
-        }
-        return mFragmentDatasetOptions;
-    }
-
-    //是否新建
-    public boolean isCreateRecord() {
-        return mIsCreateRecord;
     }
 
     //获取当前数据集
@@ -142,7 +135,6 @@ public class WellController extends BaseController {
         mCurrentDataSet = null;
         for (DataSet dataSet : mDataSets) {
             if (datasetName.equals(dataSet.Name)) {
-                mCurrentDataSet = dataSet;
                 return dataSet;
             }
         }
@@ -153,34 +145,102 @@ public class WellController extends BaseController {
         return mCurrentDataSet;
     }
 
-    public void updateFragment(boolean isCheked,
-                               BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption) {
-        try {
-            if (isCheked) {
-                mChekedFragments.add(fragmentDatasetOption);
-            } else {
-                mChekedFragments.remove(fragmentDatasetOption);
-            }
-        } catch (Exception e) {
-            L.printException(e);
+    public void setCurrentDataSet(String datasetName) {
+        mCurrentDataSet = getCurrentDataSet(datasetName);
+    }
+
+    public void initCurrentDataSet() {
+        if (mWellType == WellType.JK) {
+            mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
+        } else if (mWellType == WellType.DL) {
+            mCurrentDataSet = getCurrentDataSet(Enum.GY_DLXLTZXX);
         }
     }
 
-    public void setsCurrentDataSet(String datasetName) {
-        mCurrentDataSet = null;
-        for (DataSet dataSet : mDataSets) {
-            if (datasetName.equals(dataSet.Name)) {
-                mCurrentDataSet = dataSet;
-                break;
-            }
+    public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
+        if (mWellType == WellType.JK) {
+            mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
+        } else if (mWellType == WellType.DL) {
+            mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
         }
+        return mFragmentDatasetOptions;
+    }
+
+    public void refreshFragmentDatasetOptions() {
+        getFragmentDatasetOptions();
+    }
+
+    //是否新建
+    public boolean isCreateRecord() {
+        return mIsCreateRecord;
     }
 
     public BasicFragmentFactory.FragmentDatasetOption getDataFragment(int index) {
-        if (index < 0 || index > mChekedFragments.size() - 1) {
+        if (index < 0 || index > mFragmentDatasetOptions.size() - 1) {
             return null;
         }
-        return mChekedFragments.get(index);
+        return mFragmentDatasetOptions.get(index);
+    }
+
+    public BasicFragmentFactory.FragmentDatasetOption getFirstDataFragment() {
+        int index = 0;
+        if (mFragmentDatasetOptions.size() == 0) {
+            return null;
+        }
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                = mFragmentDatasetOptions.get(index);
+        if (fragmentDatasetOption.isChecked()) {
+            mFramgmentIndex++;
+            return fragmentDatasetOption;
+        } else {
+            for (int i = index; i < mFragmentDatasetOptions.size(); i++) {
+                fragmentDatasetOption = mFragmentDatasetOptions.get(i);
+                if (i > index) {
+                    if (fragmentDatasetOption.isChecked()) {
+                        mFramgmentIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+        if (mFramgmentIndex >= 0) {
+            return fragmentDatasetOption;
+        }
+        return null;
+    }
+
+    public BasicFragmentFactory.FragmentDatasetOption getNextCheckedDataFragment() {
+        if (mFramgmentIndex < 0 || mFramgmentIndex >= mFragmentDatasetOptions.size() - 1) {
+            return null;
+        }
+        for (int i = mFramgmentIndex; i < mFragmentDatasetOptions.size(); i++) {
+            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                    = mFragmentDatasetOptions.get(i);
+            if (i > mFramgmentIndex) {
+                if (fragmentDatasetOption.isChecked()) {
+                    mFramgmentIndex = i;
+                    return fragmentDatasetOption;
+                }
+            }
+        }
+        return null;
+    }
+
+    public BasicFragmentFactory.FragmentDatasetOption getPreCheckedDataFragment() {
+        if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentDatasetOptions.size() - 1) {
+            return null;
+        }
+        for (int i = mFramgmentIndex; i >= 0; i--) {
+            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                    = mFragmentDatasetOptions.get(i);
+            if (i < mFramgmentIndex) {
+                if (fragmentDatasetOption.isChecked()) {
+                    mFramgmentIndex = i;
+                    return fragmentDatasetOption;
+                }
+            }
+        }
+        return null;
     }
 
     public boolean isEditParent() {
@@ -248,6 +308,14 @@ public class WellController extends BaseController {
     private void getDataSetKey(Context context) {
         mDataSetKey = ((Activity) context).getIntent()
                 .getIntExtra(Constants.INTENT_DATA_SET_KEY, -1);
+    }
+
+    public int getFramgmentIndex() {
+        return mFramgmentIndex;
+    }
+
+    public void setFramgmentIndex(int framgmentIndex) {
+        mFramgmentIndex = framgmentIndex;
     }
 
 
@@ -331,6 +399,13 @@ public class WellController extends BaseController {
                 return false;
             }
         }
+    }
+
+    private boolean save() {
+        //保存当前记录
+        //获取main 配置信息
+        //获取fragment配置信息
+        return true;
     }
 
     private void renamePhotoAndMove(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
@@ -434,8 +509,12 @@ public class WellController extends BaseController {
 
     public void updateWellType(WellType wellType) {
         mWellType = wellType;
+        refreshFragmentDatasetOptions();
     }
 
+    public WellType getWellType() {
+        return mWellType;
+    }
 
     class ExtensionFilter implements FilenameFilter {
         String ext;

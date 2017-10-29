@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 
 import com.andreabaccega.widget.FormEditText;
 import com.geocraft.electrics.entity.FieldInfo;
+import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
 import common.geocraft.untiltools.Tools;
@@ -24,6 +25,11 @@ public class BusinessIDEditText extends FormEditText implements DataInterActionI
 
 	public BusinessIDEditText(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+	}
+
+	@Override
+	public int getControlerType() {
+		return PropertyDictionay.OperateCode.Type_BusinessID;
 	}
 
 	@Override
