@@ -12,20 +12,14 @@ import android.widget.LinearLayout;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link GY_FZX_FZX.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link GY_FZX_FZX#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 @EFragment(R.layout.fragment_gy__fzx__fzx)
-public class GY_FZX_FZX extends BusinessFragment {
+public class GY_FZX_FZX extends WellBaseFragment {
 
     @ViewById
     LinearLayout linearLayoutRoot;

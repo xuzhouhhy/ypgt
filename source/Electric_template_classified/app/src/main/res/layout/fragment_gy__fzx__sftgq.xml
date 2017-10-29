@@ -16,12 +16,12 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_SFTGQ"
+        android:text="@string/GY_FZXTZXX_F_FZXSFTGQ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_SFTGQ"
-        android:tag="@string/GY_FZXTZXX_F_SFTGQ"/>
+        android:id="@+id/F_FZXSFTGQ"
+        android:tag="@string/GY_FZXTZXX_F_FZXSFTGQ"/>
     </LinearLayout>
 </ScrollView>

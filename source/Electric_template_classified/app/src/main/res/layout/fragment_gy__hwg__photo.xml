@@ -3,16 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:gravity="center_horizontal">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/"/>-->
-    <!--</LinearLayout>-->
+
 
 
     <LinearLayout
@@ -39,13 +30,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_PHOTO_BSP"
+        android:text="@string/GY_HYGTZXX_F_PHOTO_HWGBSP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_BSP"
-        android:tag="@string/GY_HYGTZXX_F_PHOTO_BSP"/>
+        android:id="@+id/F_PHOTO_HWGBSP"
+        android:tag="@string/GY_HYGTZXX_F_PHOTO_HWGBSP"/>
 
 
     <!--铭牌照片 -->
@@ -53,12 +44,12 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_PHOTO_MP"
+        android:text="@string/GY_HYGTZXX_F_PHOTO_HWGMP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_MP"
-        android:tag="@string/GY_HYGTZXX_F_PHOTO_MP"/>
+        android:id="@+id/F_PHOTO_HWGMP"
+        android:tag="@string/GY_HYGTZXX_F_PHOTO_HWGMP"/>
     </LinearLayout>
 </ScrollView>

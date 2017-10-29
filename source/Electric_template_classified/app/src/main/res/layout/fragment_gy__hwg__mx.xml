@@ -3,34 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_HWG_TITLE_MX"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_HWG_TITLE_MX"/>
+        </LinearLayout>
+
     <!--生产厂家 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_MXSCCJ"
+        android:text="@string/GY_HYGTZXX_F_HWGMXSCCJ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_MXSCCJ"
-        android:tag="@string/GY_HYGTZXX_F_MXSCCJ"/>
+        android:id="@+id/F_HWGMXSCCJ"
+        android:tag="@string/GY_HYGTZXX_F_HWGMXSCCJ"/>
 
 
 
@@ -39,13 +43,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_MXJMJ"
+        android:text="@string/GY_HYGTZXX_F_HWGMXJMJ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_MXJMJ"
-        android:tag="@string/GY_HYGTZXX_F_MXJMJ"/>
+        android:id="@+id/F_HWGMXJMJ"
+        android:tag="@string/GY_HYGTZXX_F_HWGMXJMJ"/>
 
 
 
@@ -54,13 +58,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_MXXH"
+        android:text="@string/GY_HYGTZXX_F_HWGMXXH"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_MXXH"
-        android:tag="@string/GY_HYGTZXX_F_MXXH"/>
+        android:id="@+id/F_HWGMXXH"
+        android:tag="@string/GY_HYGTZXX_F_HWGMXXH"/>
 
 
     <!--材质 -->
@@ -68,25 +72,25 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_MXCZ"
+        android:text="@string/GY_HYGTZXX_F_HWGMXCZ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_MXCZ"
-        android:tag="@string/GY_HYGTZXX_F_MXCZ"/>
+        android:id="@+id/F_HWGMXCZ"
+        android:tag="@string/GY_HYGTZXX_F_HWGMXCZ"/>
 
     <!--载流量 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_MXJLL"
+        android:text="@string/GY_HYGTZXX_F_HWGMXJLL"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_MXJLL"
-        android:tag="@string/GY_HYGTZXX_F_MXJLL"/>
+        android:id="@+id/F_HWGMXJLL"
+        android:tag="@string/GY_HYGTZXX_F_HWGMXJLL"/>
     </LinearLayout>
 </ScrollView>

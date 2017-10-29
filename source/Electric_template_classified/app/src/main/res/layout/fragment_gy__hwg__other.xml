@@ -3,22 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_OTHER"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_OTHER"/>
+        </LinearLayout>
+
     <!--是否具备电操机构 -->
     <TextView
         style="@style/SimpleLabel"
@@ -38,12 +42,12 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_SFTGQ"
+        android:text="@string/GY_HYGTZXX_F_HWGSFTGQ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_SFTGQ"
-        android:tag="@string/GY_HYGTZXX_F_SFTGQ"/>
+        android:id="@+id/F_HWGSFTGQ"
+        android:tag="@string/GY_HYGTZXX_F_HWGSFTGQ"/>
     </LinearLayout>
 </ScrollView>

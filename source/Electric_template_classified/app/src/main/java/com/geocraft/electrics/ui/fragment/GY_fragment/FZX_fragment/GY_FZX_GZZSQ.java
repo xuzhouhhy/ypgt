@@ -3,15 +3,15 @@ package com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 
 @EFragment(R.layout.fragment_gy__fzx__gzzsq)
-public class GY_FZX_GZZSQ extends BusinessFragment {
+public class GY_FZX_GZZSQ extends WellBaseFragment {
 
     @ViewById
     LinearLayout linearLayoutRoot;

@@ -5,12 +5,13 @@ import android.widget.LinearLayout;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 @EFragment(R.layout.fragment_gy__xsbdz__dyzkk6)
-public class GY_XSBDZ_DYZKK6 extends BusinessFragment {
+public class GY_XSBDZ_DYZKK6 extends WellBaseFragment {
 
     @ViewById
     LinearLayout linearLayoutRoot;

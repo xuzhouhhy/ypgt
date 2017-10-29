@@ -16,13 +16,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_PHOTO_QM"
+        android:text="@string/GY_FZXTZXX_F_PHOTO_FZXQM"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_QM"
-        android:tag="@string/GY_FZXTZXX_F_PHOTO_QM"/>
+        android:id="@+id/F_PHOTO_FZXQM"
+        android:tag="@string/GY_FZXTZXX_F_PHOTO_FZXQM"/>
 
 
 
@@ -31,13 +31,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_PHOTO_BSP"
+        android:text="@string/GY_FZXTZXX_F_PHOTO_FZXBSP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_BSP"
-        android:tag="@string/GY_FZXTZXX_F_PHOTO_BSP"/>
+        android:id="@+id/F_PHOTO_FZXBSP"
+        android:tag="@string/GY_FZXTZXX_F_PHOTO_FZXBSP"/>
 
 
 
@@ -46,13 +46,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_PHOTO_MP"
+        android:text="@string/GY_FZXTZXX_F_PHOTO_FZXMP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_MP"
-        android:tag="@string/GY_FZXTZXX_F_PHOTO_MP"/>
+        android:id="@+id/F_PHOTO_FZXMP"
+        android:tag="@string/GY_FZXTZXX_F_PHOTO_FZXMP"/>
 
 
 
@@ -61,12 +61,12 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_PHOTO_GM"
+        android:text="@string/GY_FZXTZXX_F_PHOTO_FZXGM"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_GM"
-        android:tag="@string/GY_FZXTZXX_F_PHOTO_GM"/>
+        android:id="@+id/F_PHOTO_FZXGM"
+        android:tag="@string/GY_FZXTZXX_F_PHOTO_FZXGM"/>
     </LinearLayout>
 </ScrollView>

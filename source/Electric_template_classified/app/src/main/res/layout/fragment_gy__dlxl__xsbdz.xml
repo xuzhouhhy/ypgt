@@ -3,22 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_DLX_TITLE_XSBDZ"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_DLX_TITLE_XSBDZ"/>
+        </LinearLayout>
 
     <!--箱式变电站设备名称 -->
     <TextView
@@ -116,34 +119,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_XSBDZJYJZ"
         android:tag="@string/GY_DLXLTZXX_F_XSBDZJYJZ"/>
-
-
-    <!--额定容量 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_XSBDZWDRL"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_XSBDZWDRL"
-        android:tag="@string/GY_DLXLTZXX_F_XSBDZWDRL"/>
-
-
-    <!--电源点名称 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_XSBDZDYDMC"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_XSBDZDYDMC"
-        android:tag="@string/GY_DLXLTZXX_F_XSBDZDYDMC"/>
 
 
     <!--北纬（N或B） -->

@@ -3,34 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_HWG_TITLE_DLHGQ"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_HWG_TITLE_DLHGQ"/>
+        </LinearLayout>
+
     <!--电流互感器型号 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLHGQXH"
+        android:text="@string/GY_HYGTZXX_F_HWGDLHGQXH"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQXH"
-        android:tag="@string/GY_HYGTZXX_F_DLHGQXH"/>
+        android:id="@+id/F_HWGDLHGQXH"
+        android:tag="@string/GY_HYGTZXX_F_HWGDLHGQXH"/>
 
 
 
@@ -39,13 +43,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLHGQCJ"
+        android:text="@string/GY_HYGTZXX_F_HWGDLHGQCJ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQCJ"
-        android:tag="@string/GY_HYGTZXX_F_DLHGQCJ"/>
+        android:id="@+id/F_HWGDLHGQCJ"
+        android:tag="@string/GY_HYGTZXX_F_HWGDLHGQCJ"/>
 
 
     <!--变比 -->
@@ -53,12 +57,12 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLHGQBB"
+        android:text="@string/GY_HYGTZXX_F_HWGDLHGQBB"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQBB"
-        android:tag="@string/GY_HYGTZXX_F_DLHGQBB"/>
+        android:id="@+id/F_HWGDLHGQBB"
+        android:tag="@string/GY_HYGTZXX_F_HWGDLHGQBB"/>
     </LinearLayout>
 </ScrollView>

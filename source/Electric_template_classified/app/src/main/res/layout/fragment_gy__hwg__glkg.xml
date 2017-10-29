@@ -3,34 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_HWG_TITLE_GLKG"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_HWG_TITLE_GLKG"/>
+        </LinearLayout>
+
     <!--设备名称 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGSBMC"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGSBMC"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGSBMC"
-        android:tag="@string/GY_HYGTZXX_F_GLKGSBMC"/>
+        android:id="@+id/F_HWGGLKGSBMC"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGSBMC"/>
 
 
     <!--所属电站 -->
@@ -38,13 +42,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGSSDZ"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGSSDZ"
-        android:tag="@string/GY_HYGTZXX_F_GLKGSSDZ"/>
+        android:id="@+id/F_HWGGLKGSSDZ"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"/>
 
 
     <!--隔离开关型号 -->
@@ -52,26 +56,26 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGXH"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGXH"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGXH"
-        android:tag="@string/GY_HYGTZXX_F_GLKGXH"/>
+        android:id="@+id/F_HWGGLKGXH"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGXH"/>
 
     <!--额定电压 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGEDDY"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGEDDY"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGEDDY"
-        android:tag="@string/GY_HYGTZXX_F_GLKGEDDY"/>
+        android:id="@+id/F_HWGGLKGEDDY"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGEDDY"/>
 
 
     <!--额定电流 -->
@@ -79,13 +83,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGEDDL"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGEDDL"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGEDDL"
-        android:tag="@string/GY_HYGTZXX_F_GLKGEDDL"/>
+        android:id="@+id/F_HWGGLKGEDDL"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGEDDL"/>
 
 
     <!--额定频率 -->
@@ -93,13 +97,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGEDPL"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGEDPL"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGEDPL"
-        android:tag="@string/GY_HYGTZXX_F_GLKGEDPL"/>
+        android:id="@+id/F_HWGGLKGEDPL"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGEDPL"/>
 
 
 
@@ -108,13 +112,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGDWDDL"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGDWDDL"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGDWDDL"
-        android:tag="@string/GY_HYGTZXX_F_GLKGDWDDL"/>
+        android:id="@+id/F_HWGGLKGDWDDL"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGDWDDL"/>
 
 
     <!--热稳定电流 -->
@@ -122,13 +126,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGRWDDL"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGRWDDL"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGRWDDL"
-        android:tag="@string/GY_HYGTZXX_F_GLKGRWDDL"/>
+        android:id="@+id/F_HWGGLKGRWDDL"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGRWDDL"/>
 
 
     <!--额定短时耐受时间 -->
@@ -136,25 +140,25 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGEDDSNSSJ"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGEDDSNSSJ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGEDDSNSSJ"
-        android:tag="@string/GY_HYGTZXX_F_GLKGEDDSNSSJ"/>
+        android:id="@+id/F_HWGGLKGEDDSNSSJ"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGEDDSNSSJ"/>
 
     <!--隔离开关厂家 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_GLKGGLKGCJ"
+        android:text="@string/GY_HYGTZXX_F_HWGGLKGGLKGCJ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGGLKGCJ"
-        android:tag="@string/GY_HYGTZXX_F_GLKGGLKGCJ"/>
+        android:id="@+id/F_HWGGLKGGLKGCJ"
+        android:tag="@string/GY_HYGTZXX_F_HWGGLKGGLKGCJ"/>
     </LinearLayout>
 </ScrollView>

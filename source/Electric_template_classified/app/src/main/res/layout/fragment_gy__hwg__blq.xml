@@ -3,16 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_HWG_TITLE_BLQ"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,18 +11,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_HWG_TITLE_BLQ"/>
+        </LinearLayout>
+
     <!--避雷器型号 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_BLQXH"
+        android:text="@string/GY_HYGTZXX_F_HWGBLQXH"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_BLQXH"
-        android:tag="@string/GY_HYGTZXX_F_BLQXH"/>
+        android:id="@+id/F_HWGBLQXH"
+        android:tag="@string/GY_HYGTZXX_F_HWGBLQXH"/>
 
 
 
@@ -40,12 +43,12 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_BLQCJ"
+        android:text="@string/GY_HYGTZXX_F_HWGBLQCJ"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_BLQCJ"
-        android:tag="@string/GY_HYGTZXX_F_BLQCJ"/>
+        android:id="@+id/F_HWGBLQCJ"
+        android:tag="@string/GY_HYGTZXX_F_HWGBLQCJ"/>
  </LinearLayout>
 </ScrollView>

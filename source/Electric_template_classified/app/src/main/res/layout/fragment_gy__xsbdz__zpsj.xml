@@ -2,16 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:gravity="center_horizontal">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/"/>-->
-    <!--</LinearLayout>-->
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,18 +10,29 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
 
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:gravity="center_horizontal">-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/"/>-->
+        <!--</LinearLayout>-->
+
     <!-- 箱式变电站全貌照片 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_QM"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZQM"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_QM"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_QM"/>
+        android:id="@+id/F_PHOTO_XSBDZQM"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZQM"/>
 
 
     <!-- 标识牌照片 -->
@@ -38,13 +40,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_BSP"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZBSP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_BSP"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_BSP"/>
+        android:id="@+id/F_PHOTO_XSBDZBSP"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZBSP"/>
 
 
     <!-- 箱变铭牌照片 -->
@@ -52,13 +54,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XBMP"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZXBMP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_XBMP"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XBMP"/>
+        android:id="@+id/F_PHOTO_XSBDZXBMP"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZXBMP"/>
 
 
     <!-- 低压总空开照片 -->
@@ -66,13 +68,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK"/>
 
 
     <!-- 低压空气开关照片1 -->
@@ -80,13 +82,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK1"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK1"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK1"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK1"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK1"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK1"/>
 
 
     <!-- 低压空气开关照片2 -->
@@ -94,13 +96,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK2"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK2"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK2"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK2"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK2"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK2"/>
 
 
     <!-- 低压空气开关照片3 -->
@@ -108,13 +110,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK3"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK3"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK3"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK3"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK3"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK3"/>
 
 
 
@@ -123,13 +125,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK4"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK4"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK4"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK4"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK4"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK4"/>
 
 
     <!-- 低压空气开关照片5 -->
@@ -137,13 +139,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK5"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK5"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK5"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK5"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK5"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK5"/>
 
 
     <!-- 低压空气开关照片6 -->
@@ -151,13 +153,13 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK6"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK6"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK6"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK6"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK6"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK6"/>
 
 
     <!-- 低压空气开关照片7 -->
@@ -165,25 +167,25 @@
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_DYZK7"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK7"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_DYZK7"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_DYZK7"/>
+        android:id="@+id/F_PHOTO_XSBDZDYZK7"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZDYZK7"/>
 
     <!-- 低压无功补偿装置铭牌照片 -->
     <TextView
         style="@style/SimpleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/GY_XSBYQTZXX_F_PHOTO_BCZZMP"
+        android:text="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZBCZZMP"
         />
     <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/F_PHOTO_BCZZMP"
-        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_BCZZMP"/>
+        android:id="@+id/F_PHOTO_XSBDZBCZZMP"
+        android:tag="@string/GY_XSBYQTZXX_F_PHOTO_XSBDZBCZZMP"/>
     </LinearLayout>
 </ScrollView>

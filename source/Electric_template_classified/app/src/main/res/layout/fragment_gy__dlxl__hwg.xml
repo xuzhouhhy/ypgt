@@ -3,22 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_DLX_TITLE_HWG"/>
-    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_DLX_TITLE_HWG"/>
+        </LinearLayout>
 
     <!--环网柜名称 -->
     <TextView
@@ -76,6 +79,7 @@
         android:tag="@string/GY_DLXLTZXX_F_HWGCJ"/>
 
 
+
     <!--环网柜出厂日期 -->
     <TextView
         style="@style/SimpleLabel"
@@ -117,6 +121,32 @@
         android:id="@+id/F_HWGJDDZ"
         android:tag="@string/GY_DLXLTZXX_F_HWGJDDZ"/>
 
+        <!--设备状态 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_SBZT"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_SBZT"
+            android:tag="@string/GY_HYGTZXX_F_SBZT"/>
+
+
+        <!--设备主人 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_SBZR"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_SBZR"
+            android:tag="@string/GY_HYGTZXX_F_SBZR"/>
 
     <!--北纬（N或B） -->
     <TextView
@@ -188,241 +218,241 @@
         android:tag="@string/GY_DLXLTZXX_F_SFSYZNHWG"/>
 
 
-    <!--DTU 型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_DTUXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DTUXH"
-        android:tag="@string/GY_DLXLTZXX_F_DTUXH"/>
+    <!--&lt;!&ndash;DTU 型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_DTUXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_DTUXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_DTUXH"/>-->
 
 
-    <!--DTU厂家 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_DTUCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DTUCJ"
-        android:tag="@string/GY_DLXLTZXX_F_DTUCJ"/>
+    <!--&lt;!&ndash;DTU厂家 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_DTUCJ"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_DTUCJ"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_DTUCJ"/>-->
 
 
-    <!--PT型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_PTXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_PTXH"
-        android:tag="@string/GY_DLXLTZXX_F_PTXH"/>
+    <!--&lt;!&ndash;PT型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_PTXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_PTXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_PTXH"/>-->
 
 
-    <!--PT厂家 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_PTCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_PTCJ"
-        android:tag="@string/GY_DLXLTZXX_F_PTCJ"/>
+    <!--&lt;!&ndash;PT厂家 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_PTCJ"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_PTCJ"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_PTCJ"/>-->
 
 
-    <!--PT变比 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_PTBB"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_PTBB"
-        android:tag="@string/GY_DLXLTZXX_F_PTBB"/>
+    <!--&lt;!&ndash;PT变比 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_PTBB"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_PTBB"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_PTBB"/>-->
 
 
-    <!--环网柜901开关型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG901KGXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG901KGXH"
-        android:tag="@string/GY_DLXLTZXX_F_HWG901KGXH"/>
+    <!--&lt;!&ndash;环网柜901开关型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG901KGXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG901KGXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG901KGXH"/>-->
 
 
-    <!--环网柜901开关进线起始点 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG901KGJXQSD"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG901KGJXQSD"
-        android:tag="@string/GY_DLXLTZXX_F_HWG901KGJXQSD"/>
+    <!--&lt;!&ndash;环网柜901开关进线起始点 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG901KGJXQSD"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG901KGJXQSD"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG901KGJXQSD"/>-->
 
 
-    <!--环网柜902开关型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG902KGXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG902KGXH"
-        android:tag="@string/GY_DLXLTZXX_F_HWG902KGXH"/>
+    <!--&lt;!&ndash;环网柜902开关型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG902KGXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG902KGXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG902KGXH"/>-->
 
 
-    <!--环网柜902开关进线起始点 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG902KGJXQSD"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG902KGJXQSD"
-        android:tag="@string/GY_DLXLTZXX_F_HWG902KGJXQSD"/>
+    <!--&lt;!&ndash;环网柜902开关进线起始点 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG902KGJXQSD"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG902KGJXQSD"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG902KGJXQSD"/>-->
 
 
-    <!--环网柜903开关型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG903KGXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG903KGXH"
-        android:tag="@string/GY_DLXLTZXX_F_HWG903KGXH"/>
+    <!--&lt;!&ndash;环网柜903开关型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG903KGXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG903KGXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG903KGXH"/>-->
 
 
-    <!--环网柜903开关进线起始点 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG903KGJXQSD"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG903KGJXQSD"
-        android:tag="@string/GY_DLXLTZXX_F_HWG903KGJXQSD"/>
+    <!--&lt;!&ndash;环网柜903开关进线起始点 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG903KGJXQSD"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG903KGJXQSD"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG903KGJXQSD"/>-->
 
 
-    <!--环网柜904开关型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG904KGXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG904KGXH"
-        android:tag="@string/GY_DLXLTZXX_F_HWG904KGXH"/>
+    <!--&lt;!&ndash;环网柜904开关型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG904KGXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG904KGXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG904KGXH"/>-->
 
 
-    <!--环网柜904开关进线起始点 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG904KGJXQSD"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG904KGJXQSD"
-        android:tag="@string/GY_DLXLTZXX_F_HWG904KGJXQSD"/>
+    <!--&lt;!&ndash;环网柜904开关进线起始点 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG904KGJXQSD"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG904KGJXQSD"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG904KGJXQSD"/>-->
 
 
-    <!--环网柜905开关型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG905KGXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG905KGXH"
-        android:tag="@string/GY_DLXLTZXX_F_HWG905KGXH"/>
+    <!--&lt;!&ndash;环网柜905开关型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG905KGXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG905KGXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG905KGXH"/>-->
 
 
-    <!--环网柜905开关进线起始点 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG905KGJXQSD"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG905KGJXQSD"
-        android:tag="@string/GY_DLXLTZXX_F_HWG905KGJXQSD"/>
+    <!--&lt;!&ndash;环网柜905开关进线起始点 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG905KGJXQSD"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG905KGJXQSD"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG905KGJXQSD"/>-->
 
 
-    <!--环网柜906开关型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG906KGXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG906KGXH"
-        android:tag="@string/GY_DLXLTZXX_F_HWG906KGXH"/>
+    <!--&lt;!&ndash;环网柜906开关型号 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG906KGXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG906KGXH"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG906KGXH"/>-->
 
 
-    <!--环网柜906开关进线起始点 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_DLXLTZXX_F_HWG906KGJXQSD"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWG906KGJXQSD"
-        android:tag="@string/GY_DLXLTZXX_F_HWG906KGJXQSD"/>
+    <!--&lt;!&ndash;环网柜906开关进线起始点 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_DLXLTZXX_F_HWG906KGJXQSD"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWG906KGJXQSD"-->
+        <!--android:tag="@string/GY_DLXLTZXX_F_HWG906KGJXQSD"/>-->
   </LinearLayout>
 </ScrollView>
