@@ -3,6 +3,7 @@ package com.geocraft.electrics.sr;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.support.annotation.Nullable;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BaseController;
@@ -207,15 +208,7 @@ public class WellController extends BaseController {
             mFramgmentIndex++;
             return fragmentDatasetOption;
         } else {
-            for (int i = index; i < mFragmentDatasetOptions.size(); i++) {
-                fragmentDatasetOption = mFragmentDatasetOptions.get(i);
-                if (i > index) {
-                    if (fragmentDatasetOption.isChecked()) {
-                        mFramgmentIndex = i;
-                        break;
-                    }
-                }
-            }
+            fragmentDatasetOption = getFragmentDatasetOption(index);
         }
         if (mFramgmentIndex >= 0) {
             return fragmentDatasetOption;
@@ -227,10 +220,21 @@ public class WellController extends BaseController {
         if (mFramgmentIndex < 0 || mFramgmentIndex >= mFragmentDatasetOptions.size() - 1) {
             return null;
         }
-        for (int i = mFramgmentIndex; i < mFragmentDatasetOptions.size(); i++) {
+        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
+                getFragmentDatasetOption(mFramgmentIndex);
+        if (fragmentDatasetOption != null) {
+            return fragmentDatasetOption;
+        }
+        return null;
+    }
+
+    @Nullable
+    private BasicFragmentFactory.FragmentDatasetOption getFragmentDatasetOption(
+            int framgmentIndex) {
+        for (int i = framgmentIndex; i < mFragmentDatasetOptions.size(); i++) {
             BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
                     = mFragmentDatasetOptions.get(i);
-            if (i > mFramgmentIndex) {
+            if (i > framgmentIndex) {
                 if (fragmentDatasetOption.isChecked()) {
                     mFramgmentIndex = i;
                     return fragmentDatasetOption;

@@ -71,8 +71,7 @@ public class WellActivity extends BaseActivity {
         BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = null;
         if (mController.getFramgmentIndex() == -1) {
             fragmentDatasetOption = mController.getFirstDataFragment();
-        }
-        if (null == fragmentDatasetOption) {
+        } else {
             fragmentDatasetOption = mController.getNextCheckedDataFragment();
         }
         changeContentView(fragmentDatasetOption);

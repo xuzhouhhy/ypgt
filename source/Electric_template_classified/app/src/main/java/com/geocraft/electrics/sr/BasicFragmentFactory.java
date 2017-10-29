@@ -20,14 +20,8 @@ public class BasicFragmentFactory {
     private final String KEY_GY_JKXLTZXX_BASE = "GY_JKXLTZXX_BASE";
     private final String KEY_GY_HYGTZXX_BASE = "GY_HYGTZXX_BASE";
 
-
     private List<FragmentDatasetOption> mJKXLFragments = new ArrayList<FragmentDatasetOption>();//架空线路
     private List<FragmentDatasetOption> mDLXLFragments = new ArrayList<FragmentDatasetOption>();//电缆线路
-
-//    public void clear() {
-//        mJKXLFragments.clear();
-//        mDLXLFragments.clear();
-//    }
 
     public void initFragments() {
         getJKFramentItems();
@@ -35,22 +29,22 @@ public class BasicFragmentFactory {
     }
 
     public FragmentDatasetOption getHWGFragment() {
-        String datasetName = Enum.GY_HYGTZXX;
         BusinessFragment fragment = new HWGBasicFragment_();
         String HWG = ElectricApplication_.getInstance().
                 getApplicationContext().getResources().getString(R.string.tower_hwg);
-        FragmentDatasetOption fragmentDatasetOption = new FragmentDatasetOption(KEY_GY_HYGTZXX_BASE, HWG,
-                datasetName, fragment);
+        FragmentDatasetOption fragmentDatasetOption =
+                new FragmentDatasetOption(KEY_GY_HYGTZXX_BASE, HWG,
+                        "", fragment);
         return fragmentDatasetOption;
     }
 
     public FragmentDatasetOption getGY_JTXL_Base() {
-        String datasetName = Enum.GY_JKXLTZXX;
         GY_JTXL_Base fragment = new GY_JTXL_Base_();
         String fragmentName = ElectricApplication_.getInstance().
                 getApplicationContext().getResources().getString(R.string.well_jk_base);
-        FragmentDatasetOption fragmentDatasetOption = new FragmentDatasetOption(KEY_GY_JKXLTZXX_BASE,
-                fragmentName, datasetName, fragment);
+        FragmentDatasetOption fragmentDatasetOption =
+                new FragmentDatasetOption(KEY_GY_JKXLTZXX_BASE,
+                        fragmentName, "", fragment);
         return fragmentDatasetOption;
     }
 
@@ -60,12 +54,23 @@ public class BasicFragmentFactory {
         }
         mJKXLFragments.add(getGY_JTXL_Base());
         mJKXLFragments.add(getHWGFragment());
+        // TODO: 2017/10/29 完善
+
+        for (int i = 0; i < mJKXLFragments.size(); i++) {
+            FragmentDatasetOption option = mJKXLFragments.get(i);
+            option.setDatasetName(Enum.GY_JKXLTZXX);
+        }
         return mJKXLFragments;
     }
 
     public List<FragmentDatasetOption> getDLFramentItems() {
         if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
             return mDLXLFragments;
+        }
+
+        for (int i = 0; i < mDLXLFragments.size(); i++) {
+            FragmentDatasetOption option = mDLXLFragments.get(i);
+            option.setDatasetName(Enum.GY_DLFJXTZXX);
         }
         return mDLXLFragments;
     }
@@ -91,8 +96,8 @@ public class BasicFragmentFactory {
         private String mFramentNameKey;
         private boolean mIsChecked;
 
-        public FragmentDatasetOption(String mFramentNameKey, String framentName, String datasetName,
-                                     BusinessFragment fragment) {
+        public FragmentDatasetOption(String mFramentNameKey, String framentName,
+                                     String datasetName, BusinessFragment fragment) {
             mFramentNameKey = mFramentNameKey;
             mFramentName = framentName;
             mDatasetName = datasetName;
