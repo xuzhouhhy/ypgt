@@ -59,8 +59,8 @@ public class WellController extends BaseController {
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
     private DataSet mCurrentDataSet;
-    private int mLineId;
-    private int mWellId;
+    private int mLineId = -1;
+    private int mWellId = -1;
     private int mFramgmentIndex = -1;//第一个为mainfragment,不在可选项fragment栈列表中维护
 
     //获取Intent传递参数

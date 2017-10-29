@@ -152,7 +152,8 @@ public class WellMainFragment extends Fragment {
             if (mIsNew) {
                 //类型 编辑状态不需要改变
                 if (Enum.GY_JKXLTZXX_FIELD_GZlX.equalsIgnoreCase(fieldInfo.Name)) {
-                    fieldInfo.Value = String.valueOf(getWellType());
+                    fieldInfo.Value = String.valueOf(getWellType(rg_tower_type
+                            .getCheckedRadioButtonId()).ordinal());
                 }
             }
             if (mIsNew) {
@@ -162,10 +163,6 @@ public class WellMainFragment extends Fragment {
                 }
             }
         }
-    }
-
-    private WellType getWellType() {
-        return getWellType(rg_tower_type.getCheckedRadioButtonId());
     }
 
     private void setWellType(String value) {
