@@ -58,9 +58,7 @@ public class WellController extends BaseController {
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
     private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
             new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
-    private FragmentOption mFragmentOption = new FragmentOption();
     private DataSet mCurrentDataSet;
-    private DataSet mWellDataset;
 
 
     //是否创建标识
