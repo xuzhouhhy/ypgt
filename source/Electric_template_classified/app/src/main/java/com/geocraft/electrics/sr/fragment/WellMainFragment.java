@@ -4,7 +4,6 @@ package com.geocraft.electrics.sr.fragment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -31,8 +30,6 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
-import common.geocraft.untiltools.T;
-
 /**
  * 井号配置设置主界面
  *
@@ -52,9 +49,8 @@ public class WellMainFragment extends Fragment {
     @ViewById
     RadioGroup rg_tower_type;
     @ViewById
-    EditText edt_F_GH;
-    @ViewById
     GridView grd_ck_fragment;
+    private WellActivity mContext;
     private FragmentAdapter mFragmentAdapter;
     private WellController mWellController;
 
@@ -68,7 +64,6 @@ public class WellMainFragment extends Fragment {
                     mFragmentAdapter.notifyDataSetChanged();
                 }
             };
-    private WellActivity mContext;
 
     @NonNull
     private WellType getWellType(int checkedId) {
@@ -106,14 +101,6 @@ public class WellMainFragment extends Fragment {
                 if (fieldInfo == null) {
                     continue;
                 }
-                if (edt_F_GH.getTag() != null && edt_F_GH.getTag().toString()
-                        .equalsIgnoreCase(fieldInfo.Alias)) {
-                    if (mIsNew) {
-                        edt_F_GH.setText(fieldInfo.Default);
-                    } else {
-                        edt_F_GH.setText(fieldInfo.Value);
-                    }
-                }
                 //初始化类型
                 if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
                         .equalsIgnoreCase(fieldInfo.Alias)) {
@@ -131,20 +118,11 @@ public class WellMainFragment extends Fragment {
     }
 
     public void getValue() {
-        String wellName = edt_F_GH.getText().toString();
-        if (wellName.equals("")) {
-            T.showShort(mContext, mContext.getString(R.string.well_name_empty));
-            return;
-        }
         List<FieldInfo> fieldInfoList = mDataSet.FieldInfos;
         for (int i = 0; i < fieldInfoList.size(); i++) {
             FieldInfo fieldInfo = fieldInfoList.get(i);
             if (fieldInfo == null) {
                 continue;
-            }
-            if (edt_F_GH.getTag() != null && edt_F_GH.getTag().toString()
-                    .equalsIgnoreCase(fieldInfo.Alias)) {
-                fieldInfo.Value = wellName;
             }
             if (grd_ck_fragment.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
                 fieldInfo.Value = getCheckedFragmentkeyValue();

@@ -8,22 +8,10 @@
         android:id="@+id/linearLayoutRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_padding"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:orientation="vertical"
         >
-
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/F_GH"
-            />
-
-        <EditText
-            android:id="@+id/edt_F_GH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/F_GH"
-            />
 
         <RadioGroup
             android:id="@+id/rg_tower_type"
