@@ -85,7 +85,7 @@ public class TowerShowListController extends BaseController {
             if (!LineFactory.oneOfLineDataset(dataset)) {
                 continue;
             }
-            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", "123456", true);
+            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", mLineId, true);
             mDataSets.addAll(dataSets);
         }
     }
@@ -146,9 +146,7 @@ public class TowerShowListController extends BaseController {
 
     }
 
-    public void openRecordActivityToChange(Context context, int position) {
 
-    }
 
     /**
      * 打开新建杆塔、地井、电源点界面
@@ -158,17 +156,28 @@ public class TowerShowListController extends BaseController {
     public void openRecordActivityToAdd(Context context) {
         String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
         if (null == lineId || lineId.isEmpty()) {
-            Log.e(TAG, "line id null or empty");
             return;
         }
-        // TODO: 2017/10/27 模拟数据
         Intent intent = new Intent(context, WellActivity_.class);
-        intent.putExtra(Constants.INTENT_DATA_LINE_NAMES_FOR_NEW_TOWEER, lineId);
+        intent.putExtra(Constants.INTENT_DATA_LINE_ID, lineId);
         intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
-        intent.putExtra(Constants.INTENT_DATA_IS_CREATE_RECORD, true);
         context.startActivity(intent);
     }
 
+    /**
+     * 打开编辑线路子元素界面
+     * @param context activity
+     * @param position 子元素位置
+     */
+    public void openRecordActivityToChange(Context context, int position) {
+        DataSet dataSet = mDataSets.get(position);
+        Intent intent = new Intent(context, WellActivity_.class);
+        intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
+        intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
+        intent.putExtra(Constants.INTENT_DATA_WELL_ID, dataSet.GetFieldValueByName(Enum.GYCJ_LINE_F_GH));
+        intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, dataSet.GetFieldValueByName(dataSet.GroupName));
+        context.startActivity(intent);
+    }
 
     public String getDataSetAlias() {
         try {
