@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
+import com.geocraft.electrics.event.CheckFragmentEvent;
 
 
 /**
@@ -38,6 +40,7 @@ public class FragmentAdapter extends BaseAdapter {
                 (BasicFragmentFactory.FragmentDatasetOption)
                         getItem(viewHodler.getPosition());
         fragmentDatasetOption.setChecked(isChecked);
+        ElectricApplication.BUS.post(new CheckFragmentEvent());
     }
 
     @Override

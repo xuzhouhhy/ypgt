@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.Button;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
@@ -23,6 +25,8 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +55,9 @@ public class WellActivity extends BaseActivity {
 
     @AfterViews
     void init() {
+        if (!ElectricApplication.BUS.isRegistered(this)) {
+            ElectricApplication.BUS.register(this);
+        }
         mController.initIntentData(this);
         InitWellInfoAsyncTask initWellInfoAsyncTask = new InitWellInfoAsyncTask(this,
                 mController);
@@ -84,6 +91,11 @@ public class WellActivity extends BaseActivity {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
+    public void onDataSynEvent(CheckFragmentEvent event) {
+        updateNextBtnStatus();
+    }
+
     public void initView() {
         this.setTitle(mController.getTitle());
         addMainFragment();
@@ -98,7 +110,19 @@ public class WellActivity extends BaseActivity {
         updateFragment(mFragmentDatasetOption.getFragment(),
                 mFragmentDatasetOption.getDatasetName());
         updateBtnViewStatus(btn_back, true);
+        updateNextBtnStatus();
         return true;
+    }
+
+    public void updateNextBtnStatus() {
+        String msg;
+        if (mController.getCheckedFragmentSize() == mController.getFramgmentIndex() + 1) {
+            msg = getResources().getString(R.string.btn_confrim);
+        } else {
+            msg = getResources().getString(R.string.btn_next);
+            updateBtnViewStatus(btn_next, true);
+        }
+        btn_next.setText(msg);
     }
 
     public void addMainFragment() {
@@ -109,6 +133,7 @@ public class WellActivity extends BaseActivity {
         mWellMainFragment = new WellMainFragment_();
         updateFragment(mWellMainFragment, WellDatasets.getMainDatasetName(
                 mController.getWellType()));
+        updateNextBtnStatus();
         updateBtnViewStatus(btn_back, false);
     }
 
@@ -137,7 +162,7 @@ public class WellActivity extends BaseActivity {
         if (null == mFragmentDatasetOption || !mFragmentDatasetOption.isChecked()) {
             return;
         }
-         DataSet dataSet = mController.getCurrentDataSet(
+        DataSet dataSet = mController.getCurrentDataSet(
                 mFragmentDatasetOption.getDatasetName());
         if (null == dataSet) {
             return;
@@ -166,6 +191,9 @@ public class WellActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        if (ElectricApplication.BUS.isRegistered(this)) {
+            ElectricApplication.BUS.unregister(this);
+        }
         super.onDestroy();
     }
 

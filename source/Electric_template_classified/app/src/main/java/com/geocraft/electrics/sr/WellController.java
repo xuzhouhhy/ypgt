@@ -132,7 +132,6 @@ public class WellController extends BaseController {
 
     //获取当前数据集
     public DataSet getCurrentDataSet(String datasetName) {
-        mCurrentDataSet = null;
         for (DataSet dataSet : mDataSets) {
             if (datasetName.equals(dataSet.Name)) {
                 return dataSet;
@@ -180,6 +179,21 @@ public class WellController extends BaseController {
             return null;
         }
         return mFragmentDatasetOptions.get(index);
+    }
+
+    /**
+     * 获取选中的fragment项大小
+     */
+    public int getCheckedFragmentSize() {
+        int number = 0;
+        for (int i = 0; i < mFragmentDatasetOptions.size(); i++) {
+            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
+                    = mFragmentDatasetOptions.get(i);
+            if (fragmentDatasetOption.isChecked()) {
+                number++;
+            }
+        }
+        return number;
     }
 
     public BasicFragmentFactory.FragmentDatasetOption getFirstDataFragment() {

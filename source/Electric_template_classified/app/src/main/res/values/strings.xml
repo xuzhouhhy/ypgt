@@ -1343,4 +1343,5 @@
     <string name="GY_ZSBYQ_TITLE_DYKK6">柱上变压器（低压空开6）</string>
     <string name="GY_ZSBYQ_TITLE_DYKK7">柱上变压器（低压空开7）</string>
     <string name="GY_OTHER">其他</string>
+    <string name="btn_confrim">确认</string>
 </resources>
