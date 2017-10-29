@@ -67,7 +67,7 @@ public class WellController extends BaseController {
     public void initIntentData(Context context) {
         initLineIdFromIntent(context);
         initWellIdFromIntent(context);
-        initWellTyepFromIntent(context);
+        initWellTypeFromIntent(context);
         if (isPassedFirstType(context)) {
             getFirstTypeFromIntent(context);
         }
@@ -256,7 +256,7 @@ public class WellController extends BaseController {
         }
     }
 
-    private void initWellTyepFromIntent(Context context) {
+    private void initWellTypeFromIntent(Context context) {
         if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_WELL_TYPE)) {
             String wellTypeKey = ((Activity) context).getIntent()
                     .getStringExtra(Constants.INTENT_DATA_WELL_TYPE);
