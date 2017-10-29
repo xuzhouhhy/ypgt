@@ -45,12 +45,12 @@ public class FragmentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mController.getFragmentDatasetOptions().size();
+        return mController.getCurFragmentDatasetOptions().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mController.getFragmentDatasetOptions().get(position);
+        return mController.getCurFragmentDatasetOptions().get(position);
     }
 
     @Override
@@ -67,10 +67,10 @@ public class FragmentAdapter extends BaseAdapter {
             fragmentItemView = (FragmentItemView) convertView;
         }
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
-                (BasicFragmentFactory.FragmentDatasetOption)
-                        getItem(position);
-        fragmentItemView.bind(position, fragmentDatasetOption.getFramentName());
+        BasicFragmentFactory.FragmentDatasetOption datasetOption =
+                (BasicFragmentFactory.FragmentDatasetOption) getItem(position);
+        boolean isChecked = datasetOption.isChecked();
+        fragmentItemView.bind(position, datasetOption.getFramentName(), isChecked);
         fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener);
         fragmentItemView.setSelected(true);
         return fragmentItemView;

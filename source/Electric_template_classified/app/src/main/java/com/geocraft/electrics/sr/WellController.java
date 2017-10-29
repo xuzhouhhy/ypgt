@@ -93,8 +93,13 @@ public class WellController extends BaseController {
 
     public void initDatas() throws CloneNotSupportedException {
         initDataset();
+        refreshCurDatasetAndFragments();
+    }
+
+    private void refreshCurDatasetAndFragments() {
         initCurrentDataSet();
-        mBasicFragmentFactory.initFragments();
+        mBasicFragmentFactory.initFragments(mWellType, mCurrentDataSet);
+        getCurFragmentDatasetOptions();
     }
 
     private void initWellType(String value) throws CloneNotSupportedException {
@@ -125,8 +130,6 @@ public class WellController extends BaseController {
                 dataset = temp;
                 initWellType(temp.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
             }
-        } else {
-            //TODO: 2017/10/29 设置杆井号类型
         }
         mDataSets.add(dataset);
     }
@@ -157,17 +160,16 @@ public class WellController extends BaseController {
         }
     }
 
-    public List<BasicFragmentFactory.FragmentDatasetOption> getFragmentDatasetOptions() {
+    /**
+     * 获取当前类型可选采集项
+     */
+    public List<BasicFragmentFactory.FragmentDatasetOption> getCurFragmentDatasetOptions() {
         if (mWellType == WellType.JK) {
             mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
         } else if (mWellType == WellType.DL) {
             mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
         }
         return mFragmentDatasetOptions;
-    }
-
-    public void refreshFragmentDatasetOptions() {
-        getFragmentDatasetOptions();
     }
 
     //是否新建
@@ -186,15 +188,20 @@ public class WellController extends BaseController {
      * 获取选中的fragment项大小
      */
     public int getCheckedFragmentSize() {
-        int number = 0;
+        return getCheckedFragments().size();
+    }
+
+    public List<BasicFragmentFactory.FragmentDatasetOption> getCheckedFragments() {
+        List<BasicFragmentFactory.FragmentDatasetOption> fragmentDatasetOptions =
+                new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
         for (int i = 0; i < mFragmentDatasetOptions.size(); i++) {
             BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
                     = mFragmentDatasetOptions.get(i);
             if (fragmentDatasetOption.isChecked()) {
-                number++;
+                fragmentDatasetOptions.add(fragmentDatasetOption);
             }
         }
-        return number;
+        return fragmentDatasetOptions;
     }
 
     public BasicFragmentFactory.FragmentDatasetOption getFirstDataFragment() {
@@ -527,7 +534,7 @@ public class WellController extends BaseController {
 
     public void updateWellType(WellType wellType) {
         mWellType = wellType;
-        refreshFragmentDatasetOptions();
+        refreshCurDatasetAndFragments();
     }
 
     public WellType getWellType() {

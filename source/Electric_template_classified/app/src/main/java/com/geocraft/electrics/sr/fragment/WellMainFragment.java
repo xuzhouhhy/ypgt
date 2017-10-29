@@ -16,6 +16,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
+import com.geocraft.electrics.sr.BasicFragmentFactory;
 import com.geocraft.electrics.sr.FragmentAdapter;
 import com.geocraft.electrics.sr.WellActivity;
 import com.geocraft.electrics.sr.WellController;
@@ -37,6 +38,7 @@ import common.geocraft.untiltools.T;
  */
 @EFragment(R.layout.fragment_well_main)
 public class WellMainFragment extends Fragment {
+    private final static String NAME_KEY_MARK = "&";
     protected DataSet mDataSet;
     protected Boolean mIsNew;
     protected TaskManager taskManager = TaskManager_.getInstance_(
@@ -113,6 +115,14 @@ public class WellMainFragment extends Fragment {
                         setWellType(fieldInfo.Value);
                     }
                 }
+                if (grd_ck_fragment.getTag() != null && grd_ck_fragment.getTag().toString()
+                        .equalsIgnoreCase(fieldInfo.Alias)) {
+                    if (mIsNew) {
+                        // TODO: 2017/10/29
+                    } else {
+                        setWellType(fieldInfo.Value);
+                    }
+                }
             }
         } catch (Exception e) {
             L.printException(e);
@@ -139,6 +149,9 @@ public class WellMainFragment extends Fragment {
                     .equalsIgnoreCase(fieldInfo.Alias)) {
                 fieldInfo.Value = String.valueOf(getWellType());
             }
+            if (grd_ck_fragment.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
+                fieldInfo.Value = getCheckedFragmentkeyValue();
+            }
         }
     }
 
@@ -156,6 +169,19 @@ public class WellMainFragment extends Fragment {
         if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
             rg_tower_type.check(R.id.rb_dl);
         }
+    }
+
+    private String getCheckedFragmentkeyValue() {
+        StringBuilder sb = new StringBuilder();
+        List<BasicFragmentFactory.FragmentDatasetOption> fragmentDatasetOptions =
+                mWellController.getCheckedFragments();
+        for (int i = 0; i < fragmentDatasetOptions.size(); i++) {
+            sb.append(NAME_KEY_MARK + fragmentDatasetOptions.get(i).getFramentNameKey());
+        }
+        if (sb.toString().trim().length() > 0) {
+            sb.replace(0, 1, "");
+        }
+        return sb.toString();
     }
 
 }

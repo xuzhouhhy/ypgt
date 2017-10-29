@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:fadeScrollbars="false"
             android:numColumns="3"
+            android:tag="@string/F_ColletObject"
             >
         </GridView>
 

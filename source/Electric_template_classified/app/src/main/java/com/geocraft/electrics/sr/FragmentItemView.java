@@ -21,8 +21,9 @@ public class FragmentItemView extends LinearLayout {
         super(context);
     }
 
-    public void bind(int position, String fragmentName) {
+    public void bind(int position, String fragmentName, boolean isChecked) {
         ck.setText(fragmentName);
+        ck.setChecked(isChecked);
         ViewHodler viewHodler = new ViewHodler();
         viewHodler.setPosition(position);
         ck.setTag(viewHodler);

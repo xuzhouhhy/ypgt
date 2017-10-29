@@ -4,6 +4,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.Enum;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.fragment.HWGBasicFragment_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_Base;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_Base_;
@@ -17,15 +18,52 @@ import java.util.List;
  */
 @EBean
 public class BasicFragmentFactory {
+    private final static String NAME_KEY_MARK = "&";
     private final String KEY_GY_JKXLTZXX_BASE = "GY_JKXLTZXX_BASE";
     private final String KEY_GY_HYGTZXX_BASE = "GY_HYGTZXX_BASE";
-
     private List<FragmentDatasetOption> mJKXLFragments = new ArrayList<FragmentDatasetOption>();//架空线路
     private List<FragmentDatasetOption> mDLXLFragments = new ArrayList<FragmentDatasetOption>();//电缆线路
 
-    public void initFragments() {
+    public void initFragments(WellType wellType, DataSet dataset) {
+        if (wellType == WellType.JK) {
+            initJKFramentDtatas(dataset);
+        } else if (wellType == WellType.DL) {
+            initDLFramentDtatas(dataset);
+        }
+    }
+
+    private void initJKFramentDtatas(DataSet dataset) {
         getJKFramentItems();
+        String checkedFragmentkeyValue = dataset.
+                GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_COLLECTOBJECT);
+        initCheckedFragmentkeyValue(checkedFragmentkeyValue, mJKXLFragments);
+    }
+
+    private void initDLFramentDtatas(DataSet dataset) {
         getDLFramentItems();
+        String checkedFragmentkeyValue = dataset.
+                GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_COLLECTOBJECT);
+        initCheckedFragmentkeyValue(checkedFragmentkeyValue, mDLXLFragments);
+    }
+
+    private void initCheckedFragmentkeyValue(String checkedFragmentkeyValue,
+                                             List<FragmentDatasetOption> fragmentDatasetOptions) {
+        if (null == checkedFragmentkeyValue || checkedFragmentkeyValue.isEmpty()) {
+            return;
+        }
+        String[] keyArry = checkedFragmentkeyValue.split(NAME_KEY_MARK);
+        if (null == keyArry) {
+            return;
+        }
+        for (int i = 0; i < fragmentDatasetOptions.size(); i++) {
+            FragmentDatasetOption option = fragmentDatasetOptions.get(i);
+            String fragmentNameKey = option.getFramentNameKey();
+            for (String key : keyArry) {
+                if (key.equals(fragmentNameKey)) {
+                    option.setChecked(true);
+                }
+            }
+        }
     }
 
     public FragmentDatasetOption getHWGFragment() {
@@ -75,6 +113,7 @@ public class BasicFragmentFactory {
         return mDLXLFragments;
     }
 
+
     /**
      * @param fragmentNameKey
      * @return
@@ -96,9 +135,9 @@ public class BasicFragmentFactory {
         private String mFramentNameKey;
         private boolean mIsChecked;
 
-        public FragmentDatasetOption(String mFramentNameKey, String framentName,
+        public FragmentDatasetOption(String framentNameKey, String framentName,
                                      String datasetName, BusinessFragment fragment) {
-            mFramentNameKey = mFramentNameKey;
+            mFramentNameKey = framentNameKey;
             mFramentName = framentName;
             mDatasetName = datasetName;
             mFragment = fragment;
