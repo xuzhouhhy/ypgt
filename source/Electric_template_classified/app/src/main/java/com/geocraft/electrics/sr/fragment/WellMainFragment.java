@@ -19,6 +19,7 @@ import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.sr.BasicFragmentFactory;
 import com.geocraft.electrics.sr.FragmentAdapter;
+import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.WellActivity;
 import com.geocraft.electrics.sr.WellController;
 import com.geocraft.electrics.sr.WellType;
@@ -157,10 +158,10 @@ public class WellMainFragment extends Fragment {
 
     private String getCheckedFragmentkeyValue() {
         StringBuilder sb = new StringBuilder();
-        List<BasicFragmentFactory.FragmentDatasetOption> fragmentDatasetOptions =
+        List<FragmentOption> fragmentOptions =
                 mWellController.getCheckedFragments();
-        for (int i = 0; i < fragmentDatasetOptions.size(); i++) {
-            sb.append(NAME_KEY_MARK + fragmentDatasetOptions.get(i).getFramentNameKey());
+        for (int i = 0; i < fragmentOptions.size(); i++) {
+            sb.append(NAME_KEY_MARK + fragmentOptions.get(i).getFramentNameKey());
         }
         if (sb.toString().trim().length() > 0) {
             sb.replace(0, 1, "");
