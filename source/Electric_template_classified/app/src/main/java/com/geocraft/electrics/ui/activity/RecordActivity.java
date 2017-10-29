@@ -11,6 +11,8 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.SrPhotoManagerController;
+import com.geocraft.electrics.sr.SrPhotoManagerFragment;
 import com.geocraft.electrics.task.InitRecordInfoAsyncTask;
 import com.geocraft.electrics.task.RecordCommitAsyncTask;
 import com.geocraft.electrics.ui.adapter.RecordFragmentAdapter;
@@ -63,7 +65,7 @@ public class RecordActivity extends BaseActivity implements
 	public BusinessFragment mBasicDataFragment;
 	public BusinessFragment mNecessaryDataFragment;
 	public BusinessFragment mCoordinateFragment;
-	PhotoManagerFragment mPhotoFragment;
+	SrPhotoManagerFragment mPhotoFragment;
 	RecordFragmentAdapter mAdapter;
 
 	@AfterViews
@@ -109,8 +111,8 @@ public class RecordActivity extends BaseActivity implements
 		}
 	}
 
-	public List<PhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
-		List<PhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
+	public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
+		List<SrPhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
 		if (mPhotoFragment != null) {
 			photoItemInfoList = mPhotoFragment.getTaskPhotoList();
 		}

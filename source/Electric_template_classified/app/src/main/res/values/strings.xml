@@ -1345,4 +1345,7 @@
     <string name="GY_OTHER">其他</string>
     <string name="btn_confrim">确认</string>
     <string name="F_ColletObject">采集对象</string>
+    <string name="button_title_take_photo">拍照</string>
+    <string name="button_title_import_photo">导入</string>
+    <string name="button_title_delete_photo">删除</string>
 </resources>

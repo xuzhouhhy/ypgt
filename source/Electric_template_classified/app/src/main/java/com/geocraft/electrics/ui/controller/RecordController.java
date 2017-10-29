@@ -16,8 +16,9 @@ import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.factory.BusinessFragmentFactory;
 import com.geocraft.electrics.manager.TaskManager;
+import com.geocraft.electrics.sr.SrPhotoManagerController;
+import com.geocraft.electrics.sr.SrPhotoManagerFragment;
 import com.geocraft.electrics.ui.activity.RecordActivity;
-import com.geocraft.electrics.ui.fragment.PhotoManagerFragment;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 import com.geocraft.electrics.utils.Utils;
@@ -55,25 +56,6 @@ public class RecordController extends BaseController {
     private boolean mIsCreateRecord;
     private DataSet mCurrentDataSet;
     private boolean mIsEditParent;
-
-    public class DataFragmentGroup {
-        public BusinessFragment mNecessaryDataFragment;
-        public BusinessFragment mBasicDataFragment;
-        public PhotoManagerFragment mPhotoManagerFragment;
-        public BusinessFragment mCoordinateFragment;
-    }
-
-    class ExtensionFilter implements FilenameFilter {
-        String ext;
-
-        public ExtensionFilter(String ext) {
-            this.ext = ext;
-        }
-
-        public boolean accept(File dir, String name) {
-            return name.contains(ext);
-        }
-    }
 
     //是否新建
     public boolean isCreateRecord() {
@@ -204,7 +186,7 @@ public class RecordController extends BaseController {
     }
 
     public boolean checkDataValidity(Context context,
-                                     List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
+                                     List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
         List<String> illegalFieldList = new ArrayList<>();
         List<String> illegalPhotoList = new ArrayList<>();
         illegalFieldList.clear();
@@ -238,7 +220,7 @@ public class RecordController extends BaseController {
         return true;
     }
 
-    public boolean saveRecord(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    public boolean saveRecord(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
         if (mCurrentDataSet == null) {
             return false;
         }
@@ -261,9 +243,9 @@ public class RecordController extends BaseController {
         }
     }
 
-    private void renamePhotoAndMove(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    private void renamePhotoAndMove(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
         for (int i = 0; i < taskPhotoList.size(); i++) {
-            PhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
+            SrPhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
             if (photoItemInfo == null) {
                 continue;
             }
@@ -295,7 +277,7 @@ public class RecordController extends BaseController {
         return ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
     }
 
-    private String getNewPhotoPath(PhotoManagerController.PhotoItemInfo photoItemInfo) {
+    private String getNewPhotoPath(SrPhotoManagerController.PhotoItemInfo photoItemInfo) {
         PhotoRules photoRules = getPhotoRules(photoItemInfo.mPhotoType);
         if (photoRules == null) {
             return "";
@@ -410,9 +392,27 @@ public class RecordController extends BaseController {
         }
     }
 
-
     public int getDataSetParentKey() {
         return mDataSetParentKey;
+    }
+
+    public class DataFragmentGroup {
+        public BusinessFragment mNecessaryDataFragment;
+        public BusinessFragment mBasicDataFragment;
+        public SrPhotoManagerFragment mPhotoManagerFragment;
+        public BusinessFragment mCoordinateFragment;
+    }
+
+    class ExtensionFilter implements FilenameFilter {
+        String ext;
+
+        public ExtensionFilter(String ext) {
+            this.ext = ext;
+        }
+
+        public boolean accept(File dir, String name) {
+            return name.contains(ext);
+        }
     }
 
 

@@ -2,8 +2,9 @@ package com.geocraft.electrics.factory;
 
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.Enum;
+import com.geocraft.electrics.sr.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.SrPhotoManagerFragment_;
 import com.geocraft.electrics.ui.fragment.CoordinateFragment_;
-import com.geocraft.electrics.ui.fragment.PhotoManagerFragment;
 import com.geocraft.electrics.ui.fragment.PhotoManagerFragment_;
 import com.geocraft.electrics.ui.fragment.business_basic_fragment.AccessPointNWBasicFragment_;
 import com.geocraft.electrics.ui.fragment.business_basic_fragment.CalculateBoxBasicFragment_;
@@ -202,9 +203,9 @@ public class BusinessFragmentFactory {
                 return new LineGroupBasicFragment_();
             } else if (mDataSetName.equals(Enum.LINE_LEDGER)) {
                 return new XLTZ_DY_();
-            } else if(mDataSetName.equals(Enum.BRANCH_BOX)){
+            } else if (mDataSetName.equals(Enum.BRANCH_BOX)) {
                 return new LowVoltageBrachBoxBasicFragment_();
-            }else {
+            } else {
                 return null;
             }
         } else {
@@ -320,9 +321,9 @@ public class BusinessFragmentFactory {
                 return new MeterNWNecessaryFragment_();
             } else if (mDataSetName.equals(Enum.LINE_LEDGER)) {
                 return new XLTZ_DY_();
-            } else if(mDataSetName.equals(Enum.BRANCH_BOX)){
+            } else if (mDataSetName.equals(Enum.BRANCH_BOX)) {
                 return new LowVoltageBrachBoxBasicFragment_();
-            }else {
+            } else {
                 return null;
             }
         } else {
@@ -330,9 +331,9 @@ public class BusinessFragmentFactory {
         }
     }
 
-    public PhotoManagerFragment getPhotoManagerFragment(boolean isShowPhoto) {
+    public SrPhotoManagerFragment getPhotoManagerFragment(boolean isShowPhoto) {
         if (isShowPhoto) {
-            return new PhotoManagerFragment_();
+            return new SrPhotoManagerFragment_();
         } else {
             return null;
         }

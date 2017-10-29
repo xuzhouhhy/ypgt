@@ -149,6 +149,14 @@ public class DataSet implements Cloneable {
         return dataSet;
     }
 
+    public boolean isShowInDeviceList() {
+        return mIsShowInDeviceList;
+    }
+
+    public void setmIsShowInDeviceList(boolean mIsShowInDeviceList) {
+        this.mIsShowInDeviceList = mIsShowInDeviceList;
+    }
+
     public class ViewEntiry {
         public String First;
         public String Second;
@@ -159,13 +167,5 @@ public class DataSet implements Cloneable {
             Second = null;
             Third = null;
         }
-    }
-
-    public boolean isShowInDeviceList() {
-        return mIsShowInDeviceList;
-    }
-
-    public void setmIsShowInDeviceList(boolean mIsShowInDeviceList) {
-        this.mIsShowInDeviceList = mIsShowInDeviceList;
     }
 }

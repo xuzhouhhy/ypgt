@@ -11,4 +11,6 @@ public class ConstRequestCode {
 	public final static int REQUEST_CODE_OPEN_RECORDACTIVITY = 3;
 	public static final int REQUEST_CODE_EDIT_PARENT_DATA_SET = 4;
 	public final static int REQUEST_CODE_FINISH_RECORD_ACTIVITY = 5;
+	public final static int REQUEST_CODE_IMPORT_PHOTO = 6;
+
 }
