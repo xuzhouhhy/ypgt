@@ -4,10 +4,32 @@ import android.content.res.Resources;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
-import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.sr.fragment.HWGBasicFragment_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_Base;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_Base_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DJX;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DJX_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLJ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLJ_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLZJT;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLZJT_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_FZX;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_FZX_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GXJBXX;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GXJBXX_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GZZSQ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GZZSQ_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_HWG;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_HWG_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_KYQK;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_KYQK_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_SKQK;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_SKQK_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_TSPDBYQ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_TSPDBYQ_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_XSBDZ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_XSBDZ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_BGXJ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_BGXJ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_BYQ;
@@ -77,9 +99,20 @@ public class BasicFragmentFactory {
     private final String KEY_GY_JTXL_SKQK = "GY_JTXL_SKQK";
     private final String KEY_GY_JTXL_TGXLHS = "GY_JTXL_TGXLHS";
     private final String KEY_GY_JTXL_XLBLQ = "GY_JTXL_XLBLQ";
+    //DL
+    private final String KEY_GY_DLXL_Base = "GY_DLXL_Base";
+    private final String KEY_GY_DLXL_DJX = "GY_DLXL_DJX";
+    private final String KEY_GY_DLXL_DLJ = "GY_DLXL_DLJ";
+    private final String KEY_GY_DLXL_DLZJT = "GY_DLXL_DLZJT";
+    private final String KEY_GY_DLXL_FZX = "GY_DLXL_FZX";
+    private final String KEY_GY_DLXL_GXJBXX = "GY_DLXL_GXJBXX";
+    private final String KEY_GY_DLXL_GZZSQ = "GY_DLXL_GZZSQ";
+    private final String KEY_GY_DLXL_HWG = "GY_DLXL_HWG";
+    private final String KEY_GY_DLXL_KYQK = "GY_DLXL_KYQK";
+    private final String KEY_GY_DLXL_SKQK = "GY_DLXL_SKQK";
+    private final String KEY_GY_DLXL_TSPDBYQ = "GY_DLXL_TSPDBYQ";
+    private final String KEY_GY_DLXL_XSBDZ = "GY_DLXL_XSBDZ";
 
-
-    private final String KEY_GY_HYGTZXX_BASE = "GY_HYGTZXX_BASE";
     private List<FragmentOption> mJKXLFragments = new ArrayList<FragmentOption>();//架空线路
     private List<FragmentOption> mDLXLFragments = new ArrayList<FragmentOption>();//电缆线路
     private Resources mResources = ElectricApplication_.getInstance().
@@ -116,9 +149,6 @@ public class BasicFragmentFactory {
         mJKXLFragments.add(generateGY_JTXL_SKQK());
         mJKXLFragments.add(generateGY_JTXL_TGXLHS());
         mJKXLFragments.add(generateGY_JTXL_XLBLQ());
-
-        // TODO: 2017/10/29 完善
-
         for (int i = 0; i < mJKXLFragments.size(); i++) {
             FragmentOption option = mJKXLFragments.get(i);
             option.setDatasetName(Enum.GY_JKXLTZXX);
@@ -130,6 +160,18 @@ public class BasicFragmentFactory {
         if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
             return mDLXLFragments;
         }
+        mDLXLFragments.add(getGY_DLXL_Base());
+        mDLXLFragments.add(getGY_DLXL_DJX());
+        mDLXLFragments.add(getGY_DLXL_DLJ());
+        mDLXLFragments.add(getGY_DLXL_DLZJT());
+        mDLXLFragments.add(getGY_DLXL_FZX());
+        mDLXLFragments.add(getGY_DLXL_GXJBXX());
+        mDLXLFragments.add(getGY_DLXL_GZZSQ());
+        mDLXLFragments.add(getGY_DLXL_HWG());
+        mDLXLFragments.add(getGY_DLXL_KYQK());
+        mDLXLFragments.add(getGY_DLXL_SKQK());
+        mDLXLFragments.add(getGY_DLXL_TSPDBYQ());
+        mDLXLFragments.add(getGY_DLXL_XSBDZ());
 
         for (int i = 0; i < mDLXLFragments.size(); i++) {
             FragmentOption option = mDLXLFragments.get(i);
@@ -172,7 +214,7 @@ public class BasicFragmentFactory {
         }
     }
 
-    // =======================================fragment 生成============================
+    // =======================================jk fragment 生成============================
 
     private FragmentOption generateGY_JTXL_Base() {
         GY_JTXL_Base fragment = new GY_JTXL_Base_();
@@ -326,13 +368,101 @@ public class BasicFragmentFactory {
         return fragmentOption;
     }
 
+    // =======================================DL: fragment 生成============================
 
-    private FragmentOption getHWGFragment() {
-        BusinessFragment fragment = new HWGBasicFragment_();
-        String fragmentName = mResources.getString(R.string.tower_hwg);
+    private FragmentOption getGY_DLXL_Base() {
+        GY_DLXL_Base fragment = new GY_DLXL_Base_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_Base);
         FragmentOption fragmentOption = new FragmentOption(
-                KEY_GY_HYGTZXX_BASE, fragmentName, "", fragment);
+                KEY_GY_DLXL_Base, fragmentName, "", fragment);
         return fragmentOption;
     }
 
+    private FragmentOption getGY_DLXL_DJX() {
+        GY_DLXL_DJX fragment = new GY_DLXL_DJX_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_DJX);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_DJX,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_DLJ() {
+        GY_DLXL_DLJ fragment = new GY_DLXL_DLJ_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_DLJ);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_DLJ,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_DLZJT() {
+        GY_DLXL_DLZJT fragment = new GY_DLXL_DLZJT_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_DLZJT);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_DLZJT,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_FZX() {
+        GY_DLXL_FZX fragment = new GY_DLXL_FZX_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_FZX);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_FZX,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_GXJBXX() {
+        GY_DLXL_GXJBXX fragment = new GY_DLXL_GXJBXX_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_GXJBXX);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_GXJBXX,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_GZZSQ() {
+        GY_DLXL_GZZSQ fragment = new GY_DLXL_GZZSQ_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_GZZSQ);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_GZZSQ,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_HWG() {
+        GY_DLXL_HWG fragment = new GY_DLXL_HWG_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_HWG);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_HWG,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_KYQK() {
+        GY_DLXL_KYQK fragment = new GY_DLXL_KYQK_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_KYQK);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_KYQK,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_SKQK() {
+        GY_DLXL_SKQK fragment = new GY_DLXL_SKQK_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_SKQK);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_SKQK,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_TSPDBYQ() {
+        GY_DLXL_TSPDBYQ fragment = new GY_DLXL_TSPDBYQ_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_TSPDBYQ);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_TSPDBYQ,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
+
+    private FragmentOption getGY_DLXL_XSBDZ() {
+        GY_DLXL_XSBDZ fragment = new GY_DLXL_XSBDZ_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_XSBDZ);
+        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_XSBDZ,
+                fragmentName, "", fragment);
+        return fragmentOption;
+    }
 }
