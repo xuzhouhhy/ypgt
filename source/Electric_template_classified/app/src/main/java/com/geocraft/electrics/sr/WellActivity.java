@@ -45,9 +45,7 @@ public class WellActivity extends BaseActivity {
     @ViewById
     Button btn_next;
 
-    private FragmentManager mFm = null;
-    private FragmentTransaction mTransaction = null;
-    private BasicFragmentFactory.FragmentDatasetOption mFragmentDatasetOption;
+    private FragmentOption mFragmentOption;
     private WellMainFragment mWellMainFragment;
     private boolean mIsNext;
 
@@ -69,25 +67,25 @@ public class WellActivity extends BaseActivity {
         if (!(boolean) btn_next.getTag()) {
             excuteCommitTask();
         }
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption = null;
+        FragmentOption fragmentOption;
         if (mController.getFramgmentIndex() == -1) {
-            fragmentDatasetOption = mController.getFirstDataFragment();
+            fragmentOption = mController.getFirstDataFragment();
         } else {
-            fragmentDatasetOption = mController.getNextCheckedDataFragment();
+            fragmentOption = mController.getNextCheckedDataFragment();
         }
-        changeContentView(fragmentDatasetOption);
+        changeContentView(fragmentOption);
     }
 
     @Click
     void btn_back() {
         mIsNext = false;
         saveFragmentData();
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
+        FragmentOption fragmentOption =
                 mController.getPreCheckedDataFragment();
-        if (mController.getFramgmentIndex() == -1 || null == fragmentDatasetOption) {
+        if (mController.getFramgmentIndex() == -1 || null == fragmentOption) {
             addMainFragment();
         } else {
-            changeContentView(fragmentDatasetOption);
+            changeContentView(fragmentOption);
         }
     }
 
@@ -101,14 +99,14 @@ public class WellActivity extends BaseActivity {
         addMainFragment();
     }
 
-    private boolean changeContentView(BasicFragmentFactory.FragmentDatasetOption
-                                              fragmentDatasetOption) {
-        if (null == fragmentDatasetOption) {
+    private boolean changeContentView(FragmentOption
+                                              fragmentOption) {
+        if (null == fragmentOption) {
             return false;
         }
-        mFragmentDatasetOption = fragmentDatasetOption;
-        updateFragment(mFragmentDatasetOption.getFragment(),
-                mFragmentDatasetOption.getDatasetName());
+        mFragmentOption = fragmentOption;
+        updateFragment(mFragmentOption.getFragment(),
+                mFragmentOption.getDatasetName());
         updateViewClickable(btn_back, true);
         updateNextBtnStatus();
         return true;
@@ -140,10 +138,10 @@ public class WellActivity extends BaseActivity {
 
     private void updateFragment(Fragment fragment, String datasetName) {
         mController.setCurrentDataSet(datasetName);
-        mFm = getSupportFragmentManager();
-        mTransaction = mFm.beginTransaction();
-        mTransaction.replace(R.id.id_content, fragment);
-        mTransaction.commit();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.id_content, fragment);
+        transaction.commit();
     }
 
     private void updateViewClickable(View view, boolean isEnable) {
@@ -160,15 +158,15 @@ public class WellActivity extends BaseActivity {
     }
 
     private void getValueFromFragment() {
-        if (null == mFragmentDatasetOption || !mFragmentDatasetOption.isChecked()) {
+        if (null == mFragmentOption || !mFragmentOption.isChecked()) {
             return;
         }
         DataSet dataSet = mController.getCurrentDataSet(
-                mFragmentDatasetOption.getDatasetName());
+                mFragmentOption.getDatasetName());
         if (null == dataSet) {
             return;
         }
-        mFragmentDatasetOption.getFragment().getValue(dataSet);
+        mFragmentOption.getFragment().getValue(dataSet);
     }
 
     public List<PhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
@@ -208,7 +206,6 @@ public class WellActivity extends BaseActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
 
     public boolean isNext() {
         return mIsNext;

@@ -56,8 +56,8 @@ public class WellController extends BaseController {
     //是否创建标识
     private boolean mIsCreateRecord = true;
     private List<DataSet> mDataSets = new ArrayList<DataSet>();
-    private List<BasicFragmentFactory.FragmentDatasetOption> mFragmentDatasetOptions =
-            new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
+    private List<FragmentOption> mFragmentOptions =
+            new ArrayList<FragmentOption>();
     private DataSet mCurrentDataSet;
     private int mLineId = -1;
     private int mWellId = -1;
@@ -130,13 +130,13 @@ public class WellController extends BaseController {
     /**
      * 获取当前类型可选采集项
      */
-    public List<BasicFragmentFactory.FragmentDatasetOption> getCurFragmentDatasetOptions() {
+    public List<FragmentOption> getCurFragmentDatasetOptions() {
         if (mWellType == WellType.JK) {
-            mFragmentDatasetOptions = mBasicFragmentFactory.getJKFramentItems();
+            mFragmentOptions = mBasicFragmentFactory.getJKFramentItems();
         } else if (mWellType == WellType.DL) {
-            mFragmentDatasetOptions = mBasicFragmentFactory.getDLFramentItems();
+            mFragmentOptions = mBasicFragmentFactory.getDLFramentItems();
         }
-        return mFragmentDatasetOptions;
+        return mFragmentOptions;
     }
 
     //是否新建
@@ -144,11 +144,11 @@ public class WellController extends BaseController {
         return mIsCreateRecord;
     }
 
-    public BasicFragmentFactory.FragmentDatasetOption getDataFragment(int index) {
-        if (index < 0 || index > mFragmentDatasetOptions.size() - 1) {
+    public FragmentOption getDataFragment(int index) {
+        if (index < 0 || index > mFragmentOptions.size() - 1) {
             return null;
         }
-        return mFragmentDatasetOptions.get(index);
+        return mFragmentOptions.get(index);
     }
 
     /**
@@ -158,77 +158,77 @@ public class WellController extends BaseController {
         return getCheckedFragments().size();
     }
 
-    public List<BasicFragmentFactory.FragmentDatasetOption> getCheckedFragments() {
-        List<BasicFragmentFactory.FragmentDatasetOption> fragmentDatasetOptions =
-                new ArrayList<BasicFragmentFactory.FragmentDatasetOption>();
-        for (int i = 0; i < mFragmentDatasetOptions.size(); i++) {
-            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
-                    = mFragmentDatasetOptions.get(i);
-            if (fragmentDatasetOption.isChecked()) {
-                fragmentDatasetOptions.add(fragmentDatasetOption);
+    public List<FragmentOption> getCheckedFragments() {
+        List<FragmentOption> fragmentOptions =
+                new ArrayList<FragmentOption>();
+        for (int i = 0; i < mFragmentOptions.size(); i++) {
+            FragmentOption fragmentOption
+                    = mFragmentOptions.get(i);
+            if (fragmentOption.isChecked()) {
+                fragmentOptions.add(fragmentOption);
             }
         }
-        return fragmentDatasetOptions;
+        return fragmentOptions;
     }
 
-    public BasicFragmentFactory.FragmentDatasetOption getFirstDataFragment() {
+    public FragmentOption getFirstDataFragment() {
         int index = 0;
-        if (mFragmentDatasetOptions.size() == 0) {
+        if (mFragmentOptions.size() == 0) {
             return null;
         }
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
-                = mFragmentDatasetOptions.get(index);
-        if (fragmentDatasetOption.isChecked()) {
+        FragmentOption fragmentOption
+                = mFragmentOptions.get(index);
+        if (fragmentOption.isChecked()) {
             mFramgmentIndex++;
-            return fragmentDatasetOption;
+            return fragmentOption;
         } else {
-            fragmentDatasetOption = getFragmentDatasetOption(index);
+            fragmentOption = getFragmentDatasetOption(index);
         }
         if (mFramgmentIndex >= 0) {
-            return fragmentDatasetOption;
+            return fragmentOption;
         }
         return null;
     }
 
-    public BasicFragmentFactory.FragmentDatasetOption getNextCheckedDataFragment() {
-        if (mFramgmentIndex < 0 || mFramgmentIndex >= mFragmentDatasetOptions.size() - 1) {
+    public FragmentOption getNextCheckedDataFragment() {
+        if (mFramgmentIndex < 0 || mFramgmentIndex >= mFragmentOptions.size() - 1) {
             return null;
         }
-        BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption =
+        FragmentOption fragmentOption =
                 getFragmentDatasetOption(mFramgmentIndex);
-        if (fragmentDatasetOption != null) {
-            return fragmentDatasetOption;
+        if (fragmentOption != null) {
+            return fragmentOption;
         }
         return null;
     }
 
     @Nullable
-    private BasicFragmentFactory.FragmentDatasetOption getFragmentDatasetOption(
+    private FragmentOption getFragmentDatasetOption(
             int framgmentIndex) {
-        for (int i = framgmentIndex; i < mFragmentDatasetOptions.size(); i++) {
-            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
-                    = mFragmentDatasetOptions.get(i);
+        for (int i = framgmentIndex; i < mFragmentOptions.size(); i++) {
+            FragmentOption fragmentOption
+                    = mFragmentOptions.get(i);
             if (i > framgmentIndex) {
-                if (fragmentDatasetOption.isChecked()) {
+                if (fragmentOption.isChecked()) {
                     mFramgmentIndex = i;
-                    return fragmentDatasetOption;
+                    return fragmentOption;
                 }
             }
         }
         return null;
     }
 
-    public BasicFragmentFactory.FragmentDatasetOption getPreCheckedDataFragment() {
-        if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentDatasetOptions.size() - 1) {
+    public FragmentOption getPreCheckedDataFragment() {
+        if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentOptions.size() - 1) {
             return null;
         }
         for (int i = mFramgmentIndex; i >= 0; i--) {
-            BasicFragmentFactory.FragmentDatasetOption fragmentDatasetOption
-                    = mFragmentDatasetOptions.get(i);
+            FragmentOption fragmentOption
+                    = mFragmentOptions.get(i);
             if (i < mFramgmentIndex) {
-                if (fragmentDatasetOption.isChecked()) {
+                if (fragmentOption.isChecked()) {
                     mFramgmentIndex = i;
-                    return fragmentDatasetOption;
+                    return fragmentOption;
                 }
             }
         }

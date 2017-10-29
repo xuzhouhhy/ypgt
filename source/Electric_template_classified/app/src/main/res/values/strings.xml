@@ -1348,4 +1348,22 @@
     <string name="GY_ZSBYQ_TITLE_DYKK6">柱上变压器（低压空开6）</string>
     <string name="GY_ZSBYQ_TITLE_DYKK7">柱上变压器（低压空开7）</string>
     <string name="GY_OTHER">其他</string>
+    <string name="GY_JKXI_BGXJ">并沟线夹</string>
+    <string name="GY_JTXL_BYQ">高压T接杆</string>
+    <string name="GY_JTXL_DLQ">断路器</string>
+    <string name="GY_JTXL_DX">导线</string>
+    <string name="GY_JTXL_FHKG">负荷开关</string>
+    <string name="GY_JTXL_GLKG">隔离开关</string>
+    <string name="GY_JTXL_GZZSQ">故障指示器</string>
+    <string name="GY_JTXL_HD">横档</string>
+    <string name="GY_JTXL_JKBLZ">架空避雷线</string>
+    <string name="GY_JTXL_JYZ">绝缘子</string>
+    <string name="GY_JTXL_KSRDQ">快速熔断器</string>
+    <string name="GY_JTXL_KYQK">跨越情况</string>
+    <string name="GY_JTXL_LX">拉线</string>
+    <string name="GY_JTXL_NZXJ">耐张线夹</string>
+    <string name="GY_JTXL_SFKYFW">是否跨越房屋</string>
+    <string name="GY_JTXL_SKQK">三跨情况</string>
+    <string name="GY_JTXL_TGXLHS">架空线路（同杆线路回数）</string>
+    <string name="GY_JTXL_XLBLQ">线路避雷器</string>
 </resources>
