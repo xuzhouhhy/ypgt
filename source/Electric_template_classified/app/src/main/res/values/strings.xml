@@ -934,4 +934,7 @@
     <string name="GY_HYGTZXX_F_PHOTO_BSP">标识牌照片</string>
     <string name="GY_HYGTZXX_F_PHOTO_MP">铭牌照片</string>
     <string name="well_jk_base">架空电线</string>
+    <string name="button_title_take_photo">拍照</string>
+    <string name="button_title_import_photo">导入</string>
+    <string name="button_title_delete_photo">删除</string>
 </resources>

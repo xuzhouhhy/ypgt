@@ -13,8 +13,6 @@ import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
-import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuCreator;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuItem;
@@ -30,9 +28,6 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import common.geocraft.untiltools.DensityUtils;
 import common.geocraft.untiltools.T;
