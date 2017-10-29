@@ -609,7 +609,7 @@
     <string name="well_jk_base">架空电线</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="GY_JKXLTZXX_F_GH">杆号</string>
+    <string name="GY_JKXLTZXX_F_GH">杆桩号</string>
     <string name="GY_JKXLTZXX_F_GTXH">杆塔型号</string>
     <string name="GY_JKXLTZXX_F_GTCZ">杆塔材质</string>
     <string name="GY_JKXLTZXX_F_GTSM">砼杆埋深（m）</string>
