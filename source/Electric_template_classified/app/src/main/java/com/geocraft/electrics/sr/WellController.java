@@ -141,13 +141,6 @@ public class WellController extends BaseController {
         return mIsCreateRecord;
     }
 
-    public FragmentOption getDataFragment(int index) {
-        if (index < 0 || index > mFragmentOptions.size() - 1) {
-            return null;
-        }
-        return mFragmentOptions.get(index);
-    }
-
     /**
      * 获取选中的fragment项大小
      */

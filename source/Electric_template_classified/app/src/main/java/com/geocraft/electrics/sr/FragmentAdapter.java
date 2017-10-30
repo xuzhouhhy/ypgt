@@ -72,7 +72,6 @@ public class FragmentAdapter extends BaseAdapter {
         boolean isChecked = datasetOption.isChecked();
         fragmentItemView.bind(position, datasetOption.getFramentNameKey(),
                 datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
-        fragmentItemView.setSelected(true);
         return fragmentItemView;
     }
 

@@ -28,21 +28,6 @@
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/line_area"
-            />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/etArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/line_area"
-            />
-
-
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/line_construction_unit"
             />
 

@@ -216,6 +216,13 @@ public class BasicFragmentFactory {
         initCheckedFragmentkeyValue(checkedFragmentkeyValue, mDLXLFragments);
     }
 
+    private void initKBFramentDtatas(DataSet dataset) {
+        getDLFramentItems();
+        String checkedFragmentkeyValue = dataset.
+                GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_COLLECTOBJECT);
+        initCheckedFragmentkeyValue(checkedFragmentkeyValue, mDLXLFragments);
+    }
+
     private void initCheckedFragmentkeyValue(String checkedFragmentkeyValue,
                                              List<FragmentOption> fragmentOptions) {
         if (null == checkedFragmentkeyValue || checkedFragmentkeyValue.isEmpty()) {

@@ -605,7 +605,7 @@
     <string name="tower_hwg">环网柜</string>
     <string name="well_type">杆桩类型</string>
     <string name="well_name_empty">井号名称不能为空!</string>
-    <string name="well_jk_base">架空电线</string>
+    <string name="well_jk_base">杆塔</string>
     <string name="btn_confrim">确认</string>
     <string name="F_ColletObject">采集对象</string>
     <string name="button_title_take_photo">拍照</string>
