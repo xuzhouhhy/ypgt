@@ -156,11 +156,9 @@ public class WellController extends BaseController {
     }
 
     public List<FragmentOption> getCheckedFragments() {
-        List<FragmentOption> fragmentOptions =
-                new ArrayList<FragmentOption>();
+        List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
         for (int i = 0; i < mFragmentOptions.size(); i++) {
-            FragmentOption fragmentOption
-                    = mFragmentOptions.get(i);
+            FragmentOption fragmentOption = mFragmentOptions.get(i);
             if (fragmentOption.isChecked()) {
                 fragmentOptions.add(fragmentOption);
             }

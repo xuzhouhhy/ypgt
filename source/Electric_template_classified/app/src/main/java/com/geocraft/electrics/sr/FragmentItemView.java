@@ -17,26 +17,24 @@ public class FragmentItemView extends LinearLayout {
     @ViewById
     CheckBox ck;
 
+
     public FragmentItemView(Context context) {
         super(context);
     }
 
-    public void bind(int position, String fragmentKey, String fragmentName, boolean isChecked) {
+    public void bind(int position, String fragmentKey, String fragmentName, boolean isChecked,
+                     CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+        ck.setOnCheckedChangeListener(onCheckedChangeListener);
         ck.setText(fragmentName);
         ck.setChecked(isChecked);
         ViewHodler viewHodler = new ViewHodler();
         viewHodler.setPosition(position);
         ck.setTag(viewHodler);
-        if(BasicFragmentFactory.isBaseFragment(fragmentKey)){
+        if (BasicFragmentFactory.isBaseFragment(fragmentKey)) {
             ck.setClickable(false);
-        }else {
+        } else {
             ck.setClickable(true);
         }
-    }
-
-    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
-                                                   onCheckedChangeListener) {
-        ck.setOnCheckedChangeListener(onCheckedChangeListener);
     }
 
     public static class ViewHodler {

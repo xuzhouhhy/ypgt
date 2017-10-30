@@ -49,7 +49,6 @@ public class WellMainFragment extends Fragment {
     RadioGroup rg_tower_type;
     @ViewById
     GridView grd_ck_fragment;
-    private WellActivity mContext;
     private FragmentAdapter mFragmentAdapter;
     private WellController mWellController;
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
@@ -64,8 +63,7 @@ public class WellMainFragment extends Fragment {
 
     @AfterViews
     protected void init() {
-        mContext = ((WellActivity) this.getActivity());
-        mWellController = mContext.getController();
+        mWellController = ((WellActivity) this.getActivity()).getController();
         mIsNew = mWellController.isCreateRecord();
         mDataSet = mWellController.getCurrentDataSet();
         initViewData();
@@ -141,6 +139,7 @@ public class WellMainFragment extends Fragment {
     private void setWellType(String value) {
         if (null == value || value.isEmpty()) {
             rg_tower_type.check(R.id.rb_jk);
+            return;
         }
         if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
             rg_tower_type.check(R.id.rb_jk);
@@ -152,10 +151,9 @@ public class WellMainFragment extends Fragment {
 
     private String getCheckedFragmentkeyValue() {
         StringBuilder sb = new StringBuilder();
-        List<FragmentOption> fragmentOptions =
-                mWellController.getCheckedFragments();
+        List<FragmentOption> fragmentOptions = mWellController.getCheckedFragments();
         for (int i = 0; i < fragmentOptions.size(); i++) {
-            sb.append(NAME_KEY_MARK + fragmentOptions.get(i).getFramentNameKey());
+            sb.append(NAME_KEY_MARK).append(fragmentOptions.get(i).getFramentNameKey());
         }
         if (sb.toString().trim().length() > 0) {
             sb.replace(0, 1, "");
