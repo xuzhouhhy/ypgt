@@ -3,7 +3,6 @@ package com.geocraft.electrics.sr;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.support.annotation.Nullable;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BaseController;
@@ -68,9 +67,7 @@ public class WellController extends BaseController {
         initLineIdFromIntent(context);
         initWellIdFromIntent(context);
         initWellTypeFromIntent(context);
-        if (isPassedFirstType(context)) {
-            getFirstTypeFromIntent(context);
-        }
+        isFirstTypeFromIntent(context);
     }
 
     public void initDatas() throws CloneNotSupportedException {
@@ -202,13 +199,14 @@ public class WellController extends BaseController {
         return null;
     }
 
-    @Nullable
-    private FragmentOption getFragmentDatasetOption(
-            int framgmentIndex) {
-        for (int i = framgmentIndex; i < mFragmentOptions.size(); i++) {
+    public FragmentOption getPreCheckedDataFragment() {
+        if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentOptions.size() - 1) {
+            return null;
+        }
+        for (int i = mFramgmentIndex; i >= 0; i--) {
             FragmentOption fragmentOption
                     = mFragmentOptions.get(i);
-            if (i > framgmentIndex) {
+            if (i < mFramgmentIndex) {
                 if (fragmentOption.isChecked()) {
                     mFramgmentIndex = i;
                     return fragmentOption;
@@ -218,14 +216,34 @@ public class WellController extends BaseController {
         return null;
     }
 
-    public FragmentOption getPreCheckedDataFragment() {
-        if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentOptions.size() - 1) {
-            return null;
+    /**
+     * 判断是否还有未弹出界面
+     */
+    public boolean isHasNextDatasetOption() {
+        if (mFramgmentIndex < 0) {
+            if (getCheckedFragmentSize() > 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        for (int i = mFramgmentIndex; i >= 0; i--) {
+        for (int i = mFramgmentIndex; i < mFragmentOptions.size(); i++) {
+            FragmentOption fragmentOption = mFragmentOptions.get(i);
+            if (i > mFramgmentIndex) {
+                if (fragmentOption.isChecked()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private FragmentOption getFragmentDatasetOption(
+            int framgmentIndex) {
+        for (int i = framgmentIndex; i < mFragmentOptions.size(); i++) {
             FragmentOption fragmentOption
                     = mFragmentOptions.get(i);
-            if (i < mFramgmentIndex) {
+            if (i > framgmentIndex) {
                 if (fragmentOption.isChecked()) {
                     mFramgmentIndex = i;
                     return fragmentOption;
@@ -282,13 +300,11 @@ public class WellController extends BaseController {
         }
     }
 
-    private boolean isPassedFirstType(Context context) {
-        return ((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
-    }
-
-    private void getFirstTypeFromIntent(Context context) {
-        mFirstType = ((Activity) context).getIntent()
-                .getStringExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
+    private void isFirstTypeFromIntent(Context context) {
+        if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_SET_GROUP_NAME)) {
+            mFirstType = ((Activity) context).getIntent()
+                    .getStringExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
+        }
     }
 
     public int getFramgmentIndex() {
@@ -333,30 +349,6 @@ public class WellController extends BaseController {
             return false;
         }
         return true;
-    }
-
-    @Deprecated
-    public boolean saveRecord_(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
-        if (mCurrentDataSet == null) {
-            return false;
-        }
-        if (mIsCreateRecord) {
-            int key = mDbManager.insert(mCurrentDataSet);
-            if (key >= 0) {
-                mCurrentDataSet.PrimaryKey = key;
-                renamePhotoAndMove(taskPhotoList);
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            if (mDbManager.update(mCurrentDataSet)) {
-                renamePhotoAndMove(taskPhotoList);
-                return true;
-            } else {
-                return false;
-            }
-        }
     }
 
     public boolean saveRecord(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {

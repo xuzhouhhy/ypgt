@@ -114,9 +114,9 @@ public class WellActivity extends BaseActivity {
 
     public void updateNextBtnStatus() {
         String msg;
-        if (mController.getCheckedFragmentSize() == mController.getFramgmentIndex() + 1) {
+        if (!mController.isHasNextDatasetOption()) {
             msg = getResources().getString(R.string.btn_confrim);
-            btn_next.setTag(false);
+            btn_next.setTag(false);//是否可继续
         } else {
             msg = getResources().getString(R.string.btn_next);
             btn_next.setTag(true);
@@ -151,7 +151,7 @@ public class WellActivity extends BaseActivity {
 
     private void saveFragmentData() {
         if (mController.getFramgmentIndex() == -1) {
-            mWellMainFragment.getValue();
+            mWellMainFragment.getValue(mController.getCurrentDataSet());
         } else {
             getValueFromFragment();
         }

@@ -147,7 +147,6 @@ public class TowerShowListController extends BaseController {
     }
 
 
-
     /**
      * 打开新建杆塔、地井、电源点界面
      *
@@ -166,17 +165,18 @@ public class TowerShowListController extends BaseController {
 
     /**
      * 打开编辑线路子元素界面
-     * @param context activity
+     *
+     * @param context  activity
      * @param position 子元素位置
      */
     public void openRecordActivityToChange(Context context, int position) {
         DataSet dataSet = mDataSets.get(position);
         Intent intent = new Intent(context, WellActivity_.class);
-        intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
+        intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, dataSet.
+                GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
-        intent.putExtra(Constants.INTENT_DATA_WELL_ID,
-                dataSet.GetFieldValueByName(String.valueOf(dataSet.PrimaryKey)));
-        intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, dataSet.GetFieldValueByName(dataSet.GroupName));
+        intent.putExtra(Constants.INTENT_DATA_WELL_ID, String.valueOf(dataSet.PrimaryKey));
+        intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
         context.startActivity(intent);
     }
 

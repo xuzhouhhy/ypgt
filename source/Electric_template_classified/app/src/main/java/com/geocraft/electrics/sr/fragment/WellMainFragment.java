@@ -3,7 +3,6 @@ package com.geocraft.electrics.sr.fragment;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -17,7 +16,6 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
-import com.geocraft.electrics.sr.BasicFragmentFactory;
 import com.geocraft.electrics.sr.FragmentAdapter;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.WellActivity;
@@ -86,9 +84,11 @@ public class WellMainFragment extends Fragment {
         initViewData();
     }
 
-    private void updateViewClickable(View view, boolean isEnable) {
-        view.setEnabled(isEnable);
-        view.setClickable(isEnable);
+    private void updateRadioClickable(RadioGroup radioGroup, boolean isEnable) {
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            radioGroup.getChildAt(i).setEnabled(isEnable);
+            radioGroup.getChildAt(i).setClickable(isEnable);
+        }
     }
 
     private void initViewData() {
@@ -112,14 +112,14 @@ public class WellMainFragment extends Fragment {
                     }
                 }
             }
-            updateViewClickable(rg_tower_type, mIsNew);
+            updateRadioClickable(rg_tower_type, mIsNew);
         } catch (Exception e) {
             L.printException(e);
         }
     }
 
-    public void getValue() {
-        List<FieldInfo> fieldInfoList = mDataSet.FieldInfos;
+    public void getValue(DataSet dataSet) {
+        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
         for (int i = 0; i < fieldInfoList.size(); i++) {
             FieldInfo fieldInfo = fieldInfoList.get(i);
             if (fieldInfo == null) {
