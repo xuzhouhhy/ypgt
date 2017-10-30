@@ -58,7 +58,7 @@ public class WellBaseInfoFragment extends WellBaseFragment {
 
     private boolean isDataValid(View view, FieldInfo fieldInfo) {
         if (view.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
-            switch (((DataInterActionInterface) view).getControlerType()) {
+            switch (((DataInterActionInterface) view).geteControlType()) {
                 case PropertyDictionay.OperateCode.Type_BaseText: {
                     if (fieldInfo.Name.equals(Enum.GYCJ_LINE_F_GH)) {
                         String wellName = ((BusinessEditText) view).getControlValue();

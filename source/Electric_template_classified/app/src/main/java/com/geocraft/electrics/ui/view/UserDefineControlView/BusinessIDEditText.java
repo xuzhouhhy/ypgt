@@ -28,7 +28,7 @@ public class BusinessIDEditText extends FormEditText implements DataInterActionI
 	}
 
 	@Override
-	public int getControlerType() {
+	public int geteControlType() {
 		return PropertyDictionay.OperateCode.Type_BusinessID;
 	}
 

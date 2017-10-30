@@ -81,7 +81,7 @@ public class BusinessTreeLevelMenu extends LinearLayout implements DataInterActi
 
 
     @Override
-    public int getControlerType() {
+    public int geteControlType() {
         return PropertyDictionay.OperateCode.Type_ThreeLevelMenu;
     }
 

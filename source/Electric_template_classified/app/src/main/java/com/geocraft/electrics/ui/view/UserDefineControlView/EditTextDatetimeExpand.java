@@ -15,7 +15,8 @@ import android.widget.TimePicker;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.entity.FieldInfo;
-import com.geocraft.electrics.sr.DATETIMETYPE;
+import com.geocraft.electrics.entity.PropertyDictionay;
+import com.geocraft.electrics.sr.enums.DATETIMETYPE;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
 import java.text.ParseException;
@@ -432,8 +433,8 @@ public class EditTextDatetimeExpand extends BaseControl implements DataInterActi
     }
 
     @Override
-    public int getControlerType() {
-        return 0;
+    public int geteControlType() {
+        return PropertyDictionay.OperateCode.Type_dateTime;
     }
 
     private class MyOnDateSetListener implements DatePickerDialog.OnDateSetListener {
@@ -466,7 +467,7 @@ public class EditTextDatetimeExpand extends BaseControl implements DataInterActi
         }
     }
 
-    private class MyOnClickListener implements OnClickListener {
+    private class MyOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             try {

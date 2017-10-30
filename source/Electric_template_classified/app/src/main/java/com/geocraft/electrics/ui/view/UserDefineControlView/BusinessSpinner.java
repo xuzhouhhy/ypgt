@@ -39,7 +39,7 @@ public class BusinessSpinner extends Spinner implements DataInterActionInterface
 	}
 
 	@Override
-	public int getControlerType() {
+	public int geteControlType() {
 		return PropertyDictionay.OperateCode.Type_MenuList;
 	}
 

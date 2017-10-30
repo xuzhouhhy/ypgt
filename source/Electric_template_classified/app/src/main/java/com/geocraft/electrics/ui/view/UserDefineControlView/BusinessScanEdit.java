@@ -95,7 +95,7 @@ public class BusinessScanEdit extends LinearLayout implements DataInterActionInt
     }
 
     @Override
-    public int getControlerType() {
+    public int geteControlType() {
         return PropertyDictionay.OperateCode.Type_Scan;
     }
 

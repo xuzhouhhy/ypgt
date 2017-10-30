@@ -56,7 +56,7 @@ public class BusinessAddress extends LinearLayout implements DataInterActionInte
     }
 
     @Override
-    public int getControlerType() {
+    public int geteControlType() {
         return PropertyDictionay.OperateCode.Type_Address;
     }
 

@@ -151,7 +151,7 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     }
 
     @Override
-    public int getControlerType() {
+    public int geteControlType() {
         return 0;
     }
 }

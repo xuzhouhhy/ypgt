@@ -69,7 +69,7 @@ public class BusinessCombinationMenu extends LinearLayout implements DataInterAc
     }
 
     @Override
-    public int getControlerType() {
+    public int geteControlType() {
         return PropertyDictionay.OperateCode.Type_CombinationMenu;
     }
 

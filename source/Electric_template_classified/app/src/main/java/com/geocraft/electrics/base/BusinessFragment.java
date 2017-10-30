@@ -25,6 +25,7 @@ import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessScanEdit;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSearch;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessTreeLevelMenu;
+import com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.AfterViews;
@@ -68,114 +69,151 @@ public class BusinessFragment extends BaseFragment {
                     View viewTemp = mLinearLayout.getChildAt(i);
                     childViewGroup.add(viewTemp);
                 }
-                List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
-                for (int i = 0; i < fieldInfoList.size(); i++) {
-                    FieldInfo fieldInfo = fieldInfoList.get(i);
-                    if (fieldInfo == null) {
-                        continue;
-                    }
-                    for (View view : childViewGroup) {
-                        if (view.getTag() == null) {
-                            continue;
-                        }
-                        if (view.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
-                            switch (((DataInterActionInterface) view).getControlerType()) {
-                                case PropertyDictionay.OperateCode.Type_BaseText: {
-                                    if (isNew) {
-                                        ((BusinessEditText) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessEditText) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_MenuList: {
-                                    if (isNew) {
-                                        ((BusinessSpinner) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessSpinner) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_Search: {
-                                    if (isNew) {
-                                        ((BusinessSearch) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessSearch) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    ((BusinessSearch) view).searchEntiry.uniqueFlag = dataSet.Name;
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_CombinationMenu: {
-                                    if (isNew) {
-                                        ((BusinessCombinationMenu) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessCombinationMenu) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_ThreeLevelMenu: {
-
-                                    if (!fieldInfo.Dictionay.threeLevelMenu.fileName.contains(File.separator)) {
-                                        fieldInfo.Dictionay.threeLevelMenu.fileName = ConstPath.getTaskRootFolder() + taskManager.getTaskInfo().getTaskName() + "/模板/" + fieldInfo.Dictionay.threeLevelMenu.fileName;
-                                    }
-                                    L.i("三级菜单路径：" + fieldInfo.Dictionay.threeLevelMenu.fileName);
-                                    if (isNew) {
-                                        ((BusinessTreeLevelMenu) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessTreeLevelMenu) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_Scan: {
-                                    if (isNew) {
-                                        ((BusinessScanEdit) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessScanEdit) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_Administrator: {
-                                    if (isNew) {
-                                        ((BusinessAdministrator) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessAdministrator) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_Manager: {
-                                    if (isNew) {
-                                        ((BusinessManager) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessManager) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_Address: {
-                                    if (isNew) {
-                                        ((BusinessAddress) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessAddress) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                case PropertyDictionay.OperateCode.Type_BusinessID: {
-                                    if (isNew) {
-                                        ((BusinessIDEditText) view).setControlValue(fieldInfo, fieldInfo.Default);
-                                    } else {
-                                        ((BusinessIDEditText) view).setControlValue(fieldInfo, fieldInfo.Value);
-                                    }
-                                    break;
-                                }
-                                default:
-                                    break;
-                            }
-                            break;
-                        }
-                    }
-                }
+                initFieldValue(isNew, dataSet, childViewGroup);
             }
         } catch (Exception e) {
             L.printException(e);
+        }
+    }
+
+    private void initFieldValue(boolean isNew, DataSet dataSet, List<View> childViewGroup) {
+        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
+        for (int i = 0; i < fieldInfoList.size(); i++) {
+            FieldInfo fieldInfo = fieldInfoList.get(i);
+            if (fieldInfo == null) {
+                continue;
+            }
+            for (View view : childViewGroup) {
+                if (view.getTag() == null) {
+                    continue;
+                }
+                if (view.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
+                    switch (((DataInterActionInterface) view).geteControlType()) {
+                        case PropertyDictionay.OperateCode.Type_BaseText: {
+                            if (isNew) {
+                                ((BusinessEditText) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessEditText) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_MenuList: {
+                            if (isNew) {
+                                ((BusinessSpinner) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessSpinner) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_Search: {
+                            if (isNew) {
+                                ((BusinessSearch) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessSearch) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            ((BusinessSearch) view).searchEntiry.uniqueFlag = dataSet.Name;
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_CombinationMenu: {
+                            if (isNew) {
+                                ((BusinessCombinationMenu) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessCombinationMenu) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_ThreeLevelMenu: {
+
+                            if (!fieldInfo.Dictionay.threeLevelMenu.fileName.
+                                    contains(File.separator)) {
+                                fieldInfo.Dictionay.threeLevelMenu.fileName =
+                                        ConstPath.getTaskRootFolder() + taskManager.getTaskInfo()
+                                                .getTaskName() + "/模板/" +
+                                                fieldInfo.Dictionay.threeLevelMenu.fileName;
+                            }
+                            L.i("三级菜单路径：" + fieldInfo.Dictionay.threeLevelMenu.fileName);
+                            if (isNew) {
+                                ((BusinessTreeLevelMenu) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessTreeLevelMenu) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_Scan: {
+                            if (isNew) {
+                                ((BusinessScanEdit) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessScanEdit) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_Administrator: {
+                            if (isNew) {
+                                ((BusinessAdministrator) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessAdministrator) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_Manager: {
+                            if (isNew) {
+                                ((BusinessManager) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessManager) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_Address: {
+                            if (isNew) {
+                                ((BusinessAddress) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessAddress) view).setControlValue(fieldInfo, fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_BusinessID: {
+                            if (isNew) {
+                                ((BusinessIDEditText) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((BusinessIDEditText) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.Type_dateTime: {
+                            if (isNew) {
+                                ((EditTextDatetimeExpand) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                            } else {
+                                ((EditTextDatetimeExpand) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            }
         }
     }
 
@@ -197,7 +235,7 @@ public class BusinessFragment extends BaseFragment {
                         continue;
                     }
                     if (view.getTag().toString().equalsIgnoreCase(fieldInfo.Alias)) {
-                        switch (((DataInterActionInterface) view).getControlerType()) {
+                        switch (((DataInterActionInterface) view).geteControlType()) {
                             case PropertyDictionay.OperateCode.Type_BaseText: {
                                 fieldInfo.Value = ((BusinessEditText) view).getControlValue();
                                 break;
@@ -236,6 +274,10 @@ public class BusinessFragment extends BaseFragment {
                             }
                             case PropertyDictionay.OperateCode.Type_BusinessID: {
                                 fieldInfo.Value = ((BusinessIDEditText) view).getControlValue();
+                                break;
+                            }
+                            case PropertyDictionay.OperateCode.Type_dateTime: {
+                                fieldInfo.Value = ((EditTextDatetimeExpand) view).getControlValue();
                                 break;
                             }
                             default:

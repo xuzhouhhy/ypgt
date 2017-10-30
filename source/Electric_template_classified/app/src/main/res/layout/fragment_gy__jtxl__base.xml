@@ -114,7 +114,7 @@
             android:text="@string/GY_JKXLTZXX_F_CTRQ"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:id="@+id/F_CTRQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

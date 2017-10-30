@@ -53,7 +53,7 @@ public class BusinessSearch extends LinearLayout implements DataInterActionInter
     }
 
     @Override
-    public int getControlerType() {
+    public int geteControlType() {
         return PropertyDictionay.OperateCode.Type_Search;
     }
 

@@ -15,6 +15,6 @@ public interface DataInterActionInterface {
 
 	public String getControlValue();
 
-	public int getControlerType();
+	public int geteControlType();
 
 }
