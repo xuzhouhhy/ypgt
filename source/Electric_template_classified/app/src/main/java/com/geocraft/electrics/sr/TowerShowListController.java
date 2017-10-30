@@ -87,18 +87,18 @@ public class TowerShowListController extends BaseController {
             if (!LineFactory.oneOfLineDataset(dataset)) {
                 continue;
             }
-            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", mLineId, true);
+            List<DataSet> dataSets = mDbManager.queryByCondition(dataset,
+                    Enum.GY_JKXLTZXX_FIELD_LINEID, mLineId, true);
             mDataSets.addAll(dataSets);
         }
     }
 
     /**
      * 获取上级activity传递来的intent值
-     *
-     * @param context activity
      */
     public void initIntentData(Context context) {
-        String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        String lineId = ((Activity) context).getIntent().getStringExtra(
+                Constants.INTENT_DATA_LINE_NAMES);
         if (null == lineId || lineId.isEmpty()) {
             Log.e(TAG, "line id null or empty");
             return;
@@ -134,20 +134,20 @@ public class TowerShowListController extends BaseController {
                         continue;
                     }
                     List<DataSet> dataSets = mDbManager.queryByKeywordAndPrimaryKey(dataset,
-                            "F_lineId", "123456", dataset.First, keyWord, true);
+                            Enum.GY_JKXLTZXX_FIELD_LINEID, mLineId, dataset.First, keyWord, true);
                     mDataSets.addAll(dataSets);
                 }
                 ElectricApplication.BUS.post(new LineElementRefreshEvent());
             }
         }).run();
-
     }
 
     /**
      * 打开新建杆塔、地井、电源点界面
      */
     public void openRecordActivityToAdd(Context context) {
-        String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        String lineId = ((Activity) context).getIntent().getStringExtra(
+                Constants.INTENT_DATA_LINE_NAMES);
         if (null == lineId || lineId.isEmpty()) {
             return;
         }
@@ -249,7 +249,9 @@ public class TowerShowListController extends BaseController {
                 for (int i = 0; i < dataSet.DataSets.size(); i++) {
                     //搜索相关子数据集
                     DataSet dataSetTmp = dataSet.DataSets.get(i);
-                    List<DataSet> listTmp = mDbManager.queryByCondition(dataSetTmp, dataSetTmp.SearchField, dataSet.GetFieldValueByName(dataSetTmp.ValueField), true);
+                    List<DataSet> listTmp = mDbManager.queryByCondition(dataSetTmp,
+                            dataSetTmp.SearchField, dataSet.GetFieldValueByName(
+                                    dataSetTmp.ValueField), true);
                     for (DataSet data : listTmp) {
                         deleteAllPhotoFiles(data);
                     }
@@ -262,7 +264,6 @@ public class TowerShowListController extends BaseController {
         if (photoRules == null) {
             return "";
         }
-
         String[] photoRuleArray = photoRules.Rules.split(",");
         String photoPrefix = "";
         for (int i = 0; i < photoRuleArray.length; i++) {
@@ -279,16 +280,13 @@ public class TowerShowListController extends BaseController {
         }
         String taskPath = ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
         String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER;
-
         photoPath = Utils.getPhotoDir(photoPath, photoRules, dataSet);
-
         return photoPath + photoName;
     }
 
 
     public void refreshList(List<DataSet> search) {
         clearDataSetList();
-
         mDataSets.addAll(search);
     }
 
