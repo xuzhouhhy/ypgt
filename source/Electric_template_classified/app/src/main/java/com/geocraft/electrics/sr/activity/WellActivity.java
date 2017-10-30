@@ -10,14 +10,17 @@ import android.widget.Button;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
+import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.FragmentOption;
-import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.WellDatasets;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
+import com.geocraft.electrics.sr.fragment.Well_PreFragment;
+import com.geocraft.electrics.sr.fragment.Well_PreFragment_;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
 import com.geocraft.electrics.sr.task.WellCommitAsyncTask;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
@@ -49,7 +52,8 @@ public class WellActivity extends BaseActivity {
     Button btn_next;
 
     private FragmentOption mFragmentOption;
-    private WellMainFragment mWellMainFragment;
+    private WellMainFragment mMainFragment;
+    private Well_PreFragment mPreFragment;
 
     @AfterViews
     void init() {
@@ -70,23 +74,29 @@ public class WellActivity extends BaseActivity {
         if (!(boolean) btn_next.getTag()) {
             excuteCommitTask();
         }
-        FragmentOption fragmentOption;
-        if (mController.getFramgmentIndex() == -1) {
-            fragmentOption = mController.getFirstDataFragment();
+        if (mController.getFramgmentIndex() == -2) {
+            addMainFragment();
         } else {
-            fragmentOption = mController.getNextCheckedDataFragment();
+            FragmentOption fragmentOption;
+            if (mController.getFramgmentIndex() == -1) {
+                fragmentOption = mController.getFirstDataFragment();
+            } else {
+                fragmentOption = mController.getNextCheckedDataFragment();
+            }
+            changeContentView(fragmentOption);
         }
-        changeContentView(fragmentOption);
     }
 
     @Click
     void btn_back() {
         saveFragmentData();
-        FragmentOption fragmentOption =
-                mController.getPreCheckedDataFragment();
-        if (mController.getFramgmentIndex() == -1 || null == fragmentOption) {
+        int curFragmentIndex = mController.getFramgmentIndex();
+        if (curFragmentIndex == 0) {
             addMainFragment();
+        } else if (curFragmentIndex == -1) {
+            addPreFragment();
         } else {
+            FragmentOption fragmentOption = mController.getPreCheckedDataFragment();
             changeContentView(fragmentOption);
         }
     }
@@ -98,11 +108,10 @@ public class WellActivity extends BaseActivity {
 
     public void initView() {
         this.setTitle(mController.getTitle());
-        addMainFragment();
+        addPreFragment();
     }
 
-    private boolean changeContentView(FragmentOption
-                                              fragmentOption) {
+    private boolean changeContentView(FragmentOption fragmentOption) {
         if (null == fragmentOption) {
             return false;
         }
@@ -126,16 +135,26 @@ public class WellActivity extends BaseActivity {
         btn_next.setText(msg);
     }
 
-    public void addMainFragment() {
-        // TODO: 2017/10/28 设置当前dataset
-        mController.setFramgmentIndex(-1);
+    public void addPreFragment() {
+        mController.setFramgmentIndex(-2);
         mController.setCurrentDataSet(WellDatasets.getMainDatasetName(
                 mController.getWellType()));
-        mWellMainFragment = new WellMainFragment_();
-        updateFragment(mWellMainFragment, WellDatasets.getMainDatasetName(
+        mPreFragment = new Well_PreFragment_();
+        updateFragment(mPreFragment, WellDatasets.getMainDatasetName(
                 mController.getWellType()));
         updateNextBtnStatus();
         updateViewClickable(btn_back, false);
+    }
+
+    public void addMainFragment() {
+        mController.setFramgmentIndex(-1);
+        mController.setCurrentDataSet(WellDatasets.getMainDatasetName(
+                mController.getWellType()));
+        mMainFragment = new WellMainFragment_();
+        updateFragment(mMainFragment, WellDatasets.getMainDatasetName(
+                mController.getWellType()));
+        updateViewClickable(btn_back, true);
+        updateNextBtnStatus();
     }
 
     private void updateFragment(Fragment fragment, String datasetName) {
@@ -152,8 +171,10 @@ public class WellActivity extends BaseActivity {
     }
 
     private boolean saveFragmentData() {
-        if (mController.getFramgmentIndex() == -1) {
-            mWellMainFragment.getValue(mController.getCurrentDataSet());
+        if (mController.getFramgmentIndex() == -2) {
+            return excuteSaveAction(mController.getCurrentDataSet(), mPreFragment);
+        } else if (mController.getFramgmentIndex() == -1) {
+            mMainFragment.getValue(mController.getCurrentDataSet());
         } else {
             return getValueFromFragment();
         }
@@ -169,10 +190,14 @@ public class WellActivity extends BaseActivity {
         if (null == dataSet) {
             return false;
         }
-        if (!mFragmentOption.getFragment().logicCheck()) {
+        return excuteSaveAction(dataSet, mFragmentOption.getFragment());
+    }
+
+    private boolean excuteSaveAction(DataSet dataSet, BusinessFragment fragment) {
+        if (!fragment.logicCheck()) {
             return false;
         }
-        mFragmentOption.getFragment().getValue(dataSet);
+        fragment.getValue(dataSet);
         return true;
     }
 

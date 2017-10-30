@@ -65,7 +65,7 @@ public class WellController extends BaseController {
     private DataSet mCurrentDataSet;
     private int mLineId = -1;
     private int mWellId = -1;
-    private int mFramgmentIndex = -1;//第一个为mainfragment,不在可选项fragment栈列表中维护
+    private int mFramgmentIndex = -2;//前两个不在可选项fragment栈列表中维护
 
     //获取Intent传递参数
     public void initIntentData(Context context) {

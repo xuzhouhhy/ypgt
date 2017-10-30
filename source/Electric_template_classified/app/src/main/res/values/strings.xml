@@ -1378,4 +1378,5 @@
     <string name="GY_DLXL_SKQK">三跨情况</string>
     <string name="GY_DLXL_TSPDBYQ">台式配电变压器</string>
     <string name="GY_DLXL_XSBDZ">箱式变电站</string>
+    <string name="GY_well_base_info">杆桩/井信息</string>
 </resources>

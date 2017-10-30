@@ -80,6 +80,7 @@ import java.util.List;
 @EBean
 public class BasicFragmentFactory {
 
+    public final static String KEY_GY_PRE_BASE = "Well_PreFragment";
     public final static String KEY_GY_JKXLTZXX_BASE = "GY_JKXLTZXX_BASE";
     public final static String KEY_GY_DLXL_Base = "GY_DLXL_Base";
     //JK
