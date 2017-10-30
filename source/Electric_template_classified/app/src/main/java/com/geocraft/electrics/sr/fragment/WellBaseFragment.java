@@ -2,7 +2,7 @@ package com.geocraft.electrics.sr.fragment;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BusinessFragment;
-import com.geocraft.electrics.sr.WellActivity;
+import com.geocraft.electrics.sr.activity.WellActivity;
 
 import org.androidannotations.annotations.EFragment;
 

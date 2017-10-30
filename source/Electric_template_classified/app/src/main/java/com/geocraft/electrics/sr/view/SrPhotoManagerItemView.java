@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

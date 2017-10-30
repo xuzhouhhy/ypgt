@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -9,6 +9,9 @@ import android.widget.CompoundButton;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.event.CheckFragmentEvent;
+import com.geocraft.electrics.sr.view.FragmentItemView;
+import com.geocraft.electrics.sr.FragmentOption;
+import com.geocraft.electrics.sr.controller.WellController;
 
 
 /**
@@ -60,7 +63,7 @@ public class FragmentAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         FragmentItemView fragmentItemView =
-                com.geocraft.electrics.sr.FragmentItemView_.build(parent.getContext());
+                com.geocraft.electrics.sr.view.FragmentItemView_.build(parent.getContext());
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
         FragmentOption datasetOption = (FragmentOption) getItem(position);
         boolean isChecked = datasetOption.isChecked();

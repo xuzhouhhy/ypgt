@@ -2,10 +2,9 @@ package com.geocraft.electrics.factory;
 
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.Enum;
-import com.geocraft.electrics.sr.SrPhotoManagerFragment;
-import com.geocraft.electrics.sr.SrPhotoManagerFragment_;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_;
 import com.geocraft.electrics.ui.fragment.CoordinateFragment_;
-import com.geocraft.electrics.ui.fragment.PhotoManagerFragment_;
 import com.geocraft.electrics.ui.fragment.business_basic_fragment.AccessPointNWBasicFragment_;
 import com.geocraft.electrics.ui.fragment.business_basic_fragment.CalculateBoxBasicFragment_;
 import com.geocraft.electrics.ui.fragment.business_basic_fragment.CalculateBoxGroupBasicFragment_;

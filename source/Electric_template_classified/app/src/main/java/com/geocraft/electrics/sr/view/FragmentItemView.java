@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.view;
 
 import android.content.Context;
 import android.widget.CheckBox;
@@ -6,6 +6,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.sr.BasicFragmentFactory;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;

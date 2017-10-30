@@ -5,8 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.sr.WellActivity;
-import com.geocraft.electrics.sr.WellController;
+import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.huace.log.logger.L;
 
 import common.geocraft.untiltools.T;

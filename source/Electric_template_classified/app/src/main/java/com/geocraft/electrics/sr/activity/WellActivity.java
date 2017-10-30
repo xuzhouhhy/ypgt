@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.activity;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,9 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
+import com.geocraft.electrics.sr.FragmentOption;
+import com.geocraft.electrics.sr.controller.WellController;
+import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;

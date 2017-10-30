@@ -2,7 +2,6 @@ package com.geocraft.electrics.ui.activity;
 
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -11,14 +10,12 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.sr.SrPhotoManagerController;
-import com.geocraft.electrics.sr.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
 import com.geocraft.electrics.task.InitRecordInfoAsyncTask;
 import com.geocraft.electrics.task.RecordCommitAsyncTask;
 import com.geocraft.electrics.ui.adapter.RecordFragmentAdapter;
-import com.geocraft.electrics.ui.controller.PhotoManagerController;
 import com.geocraft.electrics.ui.controller.RecordController;
-import com.geocraft.electrics.ui.fragment.PhotoManagerFragment;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.AfterViews;

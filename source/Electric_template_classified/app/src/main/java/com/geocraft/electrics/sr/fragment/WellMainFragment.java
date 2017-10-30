@@ -16,10 +16,10 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
-import com.geocraft.electrics.sr.FragmentAdapter;
+import com.geocraft.electrics.sr.adapters.FragmentAdapter;
 import com.geocraft.electrics.sr.FragmentOption;
-import com.geocraft.electrics.sr.WellActivity;
-import com.geocraft.electrics.sr.WellController;
+import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.WellType;
 import com.huace.log.logger.L;
 

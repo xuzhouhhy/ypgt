@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,9 +22,13 @@ import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
 import com.geocraft.electrics.event.RefreshPhotoAdapterEventArgs;
+import com.geocraft.electrics.sr.event.CopyImportFileFinishedEvent;
+import com.geocraft.electrics.sr.event.OpenSystemImportePhotoEventArgs;
+import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
+import com.geocraft.electrics.sr.view.SrPhotoManagerItemView;
+import com.geocraft.electrics.sr.view.SrPhotoManagerItemView_;
+import com.geocraft.electrics.sr.UtilFile;
 import com.geocraft.electrics.ui.activity.RecordActivity;
-import com.geocraft.electrics.ui.view.PhotoManagerItemView;
-import com.geocraft.electrics.ui.view.PhotoManagerItemView_;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.AfterViews;

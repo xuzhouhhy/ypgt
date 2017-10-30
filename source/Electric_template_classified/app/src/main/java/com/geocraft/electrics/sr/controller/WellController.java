@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.controller;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +14,11 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.manager.TaskManager;
+import com.geocraft.electrics.sr.BasicFragmentFactory;
+import com.geocraft.electrics.sr.DatasetOption;
+import com.geocraft.electrics.sr.FragmentOption;
+import com.geocraft.electrics.sr.WellDatasets;
+import com.geocraft.electrics.sr.WellType;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;

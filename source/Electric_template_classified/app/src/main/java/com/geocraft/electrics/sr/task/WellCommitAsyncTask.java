@@ -8,9 +8,9 @@ import android.os.AsyncTask;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
-import com.geocraft.electrics.sr.TowerShowListActivity_;
-import com.geocraft.electrics.sr.WellActivity;
-import com.geocraft.electrics.sr.WellController;
+import com.geocraft.electrics.sr.activity.TowerShowListActivity_;
+import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.huace.log.logger.L;
 
 import common.geocraft.untiltools.T;

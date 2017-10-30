@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr;
+package com.geocraft.electrics.sr.controller;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,6 +20,7 @@ import com.geocraft.electrics.entity.TaskInfo;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
 import com.geocraft.electrics.event.RefreshPhotoAdapterEventArgs;
 import com.geocraft.electrics.manager.TaskManager;
+import com.geocraft.electrics.sr.event.OpenSystemImportePhotoEventArgs;
 import com.geocraft.electrics.utils.ElectricBitmapUtils;
 import com.geocraft.electrics.utils.Utils;
 
