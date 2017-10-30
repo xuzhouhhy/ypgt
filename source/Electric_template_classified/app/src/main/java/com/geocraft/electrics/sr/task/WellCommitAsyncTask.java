@@ -2,9 +2,13 @@ package com.geocraft.electrics.sr.task;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.constants.ConstRequestCode;
+import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.sr.TowerShowListActivity_;
 import com.geocraft.electrics.sr.WellActivity;
 import com.geocraft.electrics.sr.WellController;
 import com.huace.log.logger.L;
@@ -77,20 +81,11 @@ public class WellCommitAsyncTask extends AsyncTask<WellController, Integer, Bool
     }
 
     public void finishAndBackResult() {
-//		if (mController.isEditParent()) {
-//			Intent intent = new Intent(mContext, CommonListActivity_.class);
-//			((RecordActivity) mContext).setResult(
-//					ConstRequestCode.REQUEST_CODE_EDIT_PARENT_DATA_SET, intent);
-//			((RecordActivity) mContext).finish();
-//		} else {
-//			Intent intent = new Intent(mContext, DeviceShowListActivity_.class);
-//			intent.putExtra(Constants.INTENT_DATA_IS_REFRESH_DATA_SET_LIST, true);
-//			((RecordActivity) mContext).setResult(
-//					ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY, intent);
-//		/*	if(!mController.isShowContinueDialog(mContext)) {
-//			}*/
-//			((RecordActivity) mContext).finish();
-//		}
+        Intent intent = new Intent(mContext, TowerShowListActivity_.class);
+        intent.putExtra(Constants.INTENT_DATA_IS_REFRESH_DATA_SET_LIST, true);
+        ((WellActivity) mContext).setResult(
+                ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY, intent);
+        ((WellActivity) mContext).finish();
     }
 
 }

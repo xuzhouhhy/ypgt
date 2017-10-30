@@ -11,6 +11,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
+import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
@@ -34,6 +35,7 @@ import common.geocraft.untiltools.FileUtils;
 import common.geocraft.untiltools.T;
 
 /**
+ * 杆塔列表界面
  */
 @EBean
 public class TowerShowListController extends BaseController {
@@ -124,7 +126,6 @@ public class TowerShowListController extends BaseController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 if (mDataSets != null) {
                     mDataSets.clear();
                 }
@@ -142,15 +143,8 @@ public class TowerShowListController extends BaseController {
 
     }
 
-    public void openChildDataSetActivity(Context context, int position) {
-
-    }
-
-
     /**
      * 打开新建杆塔、地井、电源点界面
-     *
-     * @param context ACTIVITY
      */
     public void openRecordActivityToAdd(Context context) {
         String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
@@ -160,13 +154,13 @@ public class TowerShowListController extends BaseController {
         Intent intent = new Intent(context, WellActivity_.class);
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, lineId);
         intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
-        context.startActivity(intent);
+        ((TowerShowListActivity) context).startActivityForResult(
+                intent, ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY);
     }
 
     /**
      * 打开编辑线路子元素界面
      *
-     * @param context  activity
      * @param position 子元素位置
      */
     public void openRecordActivityToChange(Context context, int position) {
@@ -177,7 +171,8 @@ public class TowerShowListController extends BaseController {
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
         intent.putExtra(Constants.INTENT_DATA_WELL_ID, String.valueOf(dataSet.PrimaryKey));
         intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
-        context.startActivity(intent);
+        ((TowerShowListActivity) context).startActivityForResult(
+                intent, ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY);
     }
 
     public String getDataSetAlias() {
