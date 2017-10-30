@@ -11,11 +11,13 @@ import org.androidannotations.annotations.EFragment;
  */
 @EFragment(R.layout.fragment_business)
 public class WellBaseFragment extends BusinessFragment {
+    protected WellActivity mActivity;
 
     @Override
     protected void init() {
-        mIsNew = ((WellActivity) this.getActivity()).getController().isCreateRecord();
-        mDataSet = ((WellActivity) this.getActivity()).getController().getCurrentDataSet();
+        mActivity = ((WellActivity) this.getActivity());
+        mIsNew = mActivity.getController().isCreateRecord();
+        mDataSet = mActivity.getController().getCurrentDataSet();
         super.initData(mIsNew, mDataSet);
     }
 }
