@@ -127,7 +127,8 @@ public class BasicFragmentFactory {
      * @param fragmentKey 界面标识key
      */
     public static boolean isBaseFragment(String fragmentKey) {
-        if (fragmentKey.equals(KEY_GY_JKXLTZXX_BASE) || fragmentKey.equals(KEY_GY_DLXL_Base)) {
+        if (fragmentKey.equals(KEY_GY_JKXLTZXX_BASE) ||
+                fragmentKey.equals(KEY_GY_DLXL_Base)) {
             return true;
         }
         return false;
@@ -221,9 +222,6 @@ public class BasicFragmentFactory {
             return;
         }
         String[] keyArry = checkedFragmentkeyValue.split(NAME_KEY_MARK);
-        if (null == keyArry) {
-            return;
-        }
         for (int i = 0; i < fragmentOptions.size(); i++) {
             FragmentOption option = fragmentOptions.get(i);
             String fragmentNameKey = option.getFramentNameKey();
@@ -240,153 +238,134 @@ public class BasicFragmentFactory {
     private FragmentOption generateGY_JTXL_Base() {
         GY_JTXL_Base fragment = new GY_JTXL_Base_();
         String fragmentName = mResources.getString(R.string.well_jk_base);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JKXLTZXX_BASE,
+        return new FragmentOption(KEY_GY_JKXLTZXX_BASE,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_BGXJ() {
         GY_JTXL_BGXJ fragment = new GY_JTXL_BGXJ_();
         String fragmentName = mResources.getString(R.string.GY_JKXI_BGXJ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_BGXJ,
+        return new FragmentOption(KEY_GY_JTXL_BGXJ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_BYQ() {
         GY_JTXL_BYQ fragment = new GY_JTXL_BYQ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_BYQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_BYQ,
+        return new FragmentOption(KEY_GY_JTXL_BYQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_DLQ() {
         GY_JTXL_DLQ fragment = new GY_JTXL_DLQ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_DLQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_DLQ,
+        return new FragmentOption(KEY_GY_JTXL_DLQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_DX() {
         GY_JTXL_DX fragment = new GY_JTXL_DX_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_DX);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_DX,
+        return new FragmentOption(KEY_GY_JTXL_DX,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_FHKG() {
         GY_JTXL_FHKG fragment = new GY_JTXL_FHKG_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_FHKG);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_FHKG,
+        return new FragmentOption(KEY_GY_JTXL_FHKG,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_GLKG() {
         GY_JTXL_GLKG fragment = new GY_JTXL_GLKG_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_GLKG);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_GLKG,
+        return new FragmentOption(KEY_GY_JTXL_GLKG,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_GZZSQ() {
         GY_JTXL_GZZSQ fragment = new GY_JTXL_GZZSQ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_GZZSQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_GZZSQ,
+        return new FragmentOption(KEY_GY_JTXL_GZZSQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_HD() {
         GY_JTXL_HD fragment = new GY_JTXL_HD_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_HD);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_HD,
+        return new FragmentOption(KEY_GY_JTXL_HD,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_JKBLZ() {
         GY_JTXL_JKBLZ fragment = new GY_JTXL_JKBLZ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_JKBLZ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_JKBLZ,
+        return new FragmentOption(KEY_GY_JTXL_JKBLZ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_JYZ() {
         GY_JTXL_JYZ fragment = new GY_JTXL_JYZ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_JYZ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_JYZ,
+        return new FragmentOption(KEY_GY_JTXL_JYZ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_KSRDQ() {
         GY_JTXL_KSRDQ fragment = new GY_JTXL_KSRDQ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_KSRDQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_KSRDQ,
+        return new FragmentOption(KEY_GY_JTXL_KSRDQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_KYQK() {
         GY_JTXL_KYQK fragment = new GY_JTXL_KYQK_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_KYQK);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_KYQK,
+        return new FragmentOption(KEY_GY_JTXL_KYQK,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_LX() {
         GY_JTXL_LX fragment = new GY_JTXL_LX_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_LX);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_LX,
+        return new FragmentOption(KEY_GY_JTXL_LX,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_NZXJ() {
         GY_JTXL_NZXJ fragment = new GY_JTXL_NZXJ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_NZXJ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_NZXJ,
+        return new FragmentOption(KEY_GY_JTXL_NZXJ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_SFKYFW() {
         GY_JTXL_SFKYFW fragment = new GY_JTXL_SFKYFW_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_SFKYFW);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_SFKYFW,
+        return new FragmentOption(KEY_GY_JTXL_SFKYFW,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_SKQK() {
         GY_JTXL_SKQK fragment = new GY_JTXL_SKQK_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_SKQK);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_SKQK,
+        return new FragmentOption(KEY_GY_JTXL_SKQK,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_TGXLHS() {
         GY_JTXL_TGXLHS fragment = new GY_JTXL_TGXLHS_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_TGXLHS);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_TGXLHS,
+        return new FragmentOption(KEY_GY_JTXL_TGXLHS,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption generateGY_JTXL_XLBLQ() {
         GY_JTXL_XLBLQ fragment = new GY_JTXL_XLBLQ_();
         String fragmentName = mResources.getString(R.string.GY_JTXL_XLBLQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_JTXL_XLBLQ,
+        return new FragmentOption(KEY_GY_JTXL_XLBLQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     // =======================================DL: fragment 生成============================
@@ -394,96 +373,84 @@ public class BasicFragmentFactory {
     private FragmentOption getGY_DLXL_Base() {
         GY_DLXL_Base fragment = new GY_DLXL_Base_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_Base);
-        FragmentOption fragmentOption = new FragmentOption(
+        return new FragmentOption(
                 KEY_GY_DLXL_Base, fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_DJX() {
         GY_DLXL_DJX fragment = new GY_DLXL_DJX_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_DJX);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_DJX,
+        return new FragmentOption(KEY_GY_DLXL_DJX,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_DLJ() {
         GY_DLXL_DLJ fragment = new GY_DLXL_DLJ_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_DLJ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_DLJ,
+        return new FragmentOption(KEY_GY_DLXL_DLJ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_DLZJT() {
         GY_DLXL_DLZJT fragment = new GY_DLXL_DLZJT_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_DLZJT);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_DLZJT,
+        return new FragmentOption(KEY_GY_DLXL_DLZJT,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_FZX() {
         GY_DLXL_FZX fragment = new GY_DLXL_FZX_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_FZX);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_FZX,
+        return new FragmentOption(KEY_GY_DLXL_FZX,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_GXJBXX() {
         GY_DLXL_GXJBXX fragment = new GY_DLXL_GXJBXX_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_GXJBXX);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_GXJBXX,
+        return new FragmentOption(KEY_GY_DLXL_GXJBXX,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_GZZSQ() {
         GY_DLXL_GZZSQ fragment = new GY_DLXL_GZZSQ_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_GZZSQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_GZZSQ,
+        return new FragmentOption(KEY_GY_DLXL_GZZSQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_HWG() {
         GY_DLXL_HWG fragment = new GY_DLXL_HWG_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_HWG);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_HWG,
+        return new FragmentOption(KEY_GY_DLXL_HWG,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_KYQK() {
         GY_DLXL_KYQK fragment = new GY_DLXL_KYQK_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_KYQK);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_KYQK,
+        return new FragmentOption(KEY_GY_DLXL_KYQK,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_SKQK() {
         GY_DLXL_SKQK fragment = new GY_DLXL_SKQK_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_SKQK);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_SKQK,
+        return new FragmentOption(KEY_GY_DLXL_SKQK,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_TSPDBYQ() {
         GY_DLXL_TSPDBYQ fragment = new GY_DLXL_TSPDBYQ_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_TSPDBYQ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_TSPDBYQ,
+        return new FragmentOption(KEY_GY_DLXL_TSPDBYQ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 
     private FragmentOption getGY_DLXL_XSBDZ() {
         GY_DLXL_XSBDZ fragment = new GY_DLXL_XSBDZ_();
         String fragmentName = mResources.getString(R.string.GY_DLXL_XSBDZ);
-        FragmentOption fragmentOption = new FragmentOption(KEY_GY_DLXL_XSBDZ,
+        return new FragmentOption(KEY_GY_DLXL_XSBDZ,
                 fragmentName, "", fragment);
-        return fragmentOption;
     }
 }
