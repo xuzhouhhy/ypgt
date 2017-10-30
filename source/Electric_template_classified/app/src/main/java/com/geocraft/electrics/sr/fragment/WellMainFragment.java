@@ -52,8 +52,6 @@ public class WellMainFragment extends Fragment {
     private WellActivity mContext;
     private FragmentAdapter mFragmentAdapter;
     private WellController mWellController;
-
-
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
@@ -64,17 +62,6 @@ public class WellMainFragment extends Fragment {
                 }
             };
 
-    @NonNull
-    private WellType getWellType(int checkedId) {
-        WellType wellType = WellType.JK;
-        if (checkedId == R.id.rb_jk) {
-            wellType = WellType.JK;
-        } else if (checkedId == R.id.rb_dl) {
-            wellType = WellType.DL;
-        }
-        return wellType;
-    }
-
     @AfterViews
     protected void init() {
         mContext = ((WellActivity) this.getActivity());
@@ -82,13 +69,6 @@ public class WellMainFragment extends Fragment {
         mIsNew = mWellController.isCreateRecord();
         mDataSet = mWellController.getCurrentDataSet();
         initViewData();
-    }
-
-    private void updateRadioClickable(RadioGroup radioGroup, boolean isEnable) {
-        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-            radioGroup.getChildAt(i).setEnabled(isEnable);
-            radioGroup.getChildAt(i).setClickable(isEnable);
-        }
     }
 
     private void initViewData() {
@@ -105,11 +85,7 @@ public class WellMainFragment extends Fragment {
                 //初始化类型
                 if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
                         .equalsIgnoreCase(fieldInfo.Alias)) {
-                    if (mIsNew) {
-                        setWellType(fieldInfo.Default);
-                    } else {
-                        setWellType(fieldInfo.Value);
-                    }
+                    setWellType(fieldInfo.Value);
                 }
             }
             updateRadioClickable(rg_tower_type, mIsNew);
@@ -142,6 +118,24 @@ public class WellMainFragment extends Fragment {
                 }
             }
         }
+    }
+
+    private void updateRadioClickable(RadioGroup radioGroup, boolean isEnable) {
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            radioGroup.getChildAt(i).setEnabled(isEnable);
+            radioGroup.getChildAt(i).setClickable(isEnable);
+        }
+    }
+
+    @NonNull
+    private WellType getWellType(int checkedId) {
+        WellType wellType = WellType.JK;
+        if (checkedId == R.id.rb_jk) {
+            wellType = WellType.JK;
+        } else if (checkedId == R.id.rb_dl) {
+            wellType = WellType.DL;
+        }
+        return wellType;
     }
 
     private void setWellType(String value) {
