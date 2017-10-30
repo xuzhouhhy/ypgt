@@ -11,6 +11,7 @@ import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * 采集项处理
  */
 @EViewGroup(R.layout.itemview_fragment_checklist)
 public class FragmentItemView extends LinearLayout {
