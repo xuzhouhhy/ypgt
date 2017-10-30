@@ -54,6 +54,7 @@ public class WellActivity extends BaseActivity {
     private FragmentOption mFragmentOption;
     private WellMainFragment mMainFragment;
     private Well_PreFragment mPreFragment;
+    private boolean isGoNext;
 
     @AfterViews
     void init() {
@@ -68,6 +69,7 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_next() {
+        isGoNext = true;
         if (!saveFragmentData()) {
             return;
         }
@@ -89,6 +91,7 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_back() {
+        isGoNext = false;
         saveFragmentData();
         int curFragmentIndex = mController.getFramgmentIndex();
         if (curFragmentIndex == 0) {
@@ -239,4 +242,7 @@ public class WellActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public boolean isGoNext() {
+        return isGoNext;
+    }
 }

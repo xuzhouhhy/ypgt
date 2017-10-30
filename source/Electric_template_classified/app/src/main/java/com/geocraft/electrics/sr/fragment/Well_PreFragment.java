@@ -34,7 +34,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     @ViewById
     RadioGroup rg_tower_type;
     private WellController mWellController;
-
+    private boolean mIsCreateForDefine;
 
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
             new RadioGroup.OnCheckedChangeListener() {
@@ -48,8 +48,13 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     @Override
     protected void init() {
         mLinearLayout = linearLayoutRoot;
-        super.init();
+        mActivity = ((WellActivity) this.getActivity());
+        mDataSet = mActivity.getController().getCurrentDataSet();
+        mIsCreateForDefine = mActivity.getController().isCreateRecord();
+        mIsNew = mIsCreateForDefine ?
+                ((WellActivity) this.getActivity()).isGoNext() : false;
         mWellController = ((WellActivity) this.getActivity()).getController();
+        super.initData(mIsNew, mDataSet);
         initDefineViewData();
     }
 
@@ -68,7 +73,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
                     setWellType(fieldInfo.Value);
                 }
             }
-            updateRadioClickable(rg_tower_type, mIsNew);
+            updateRadioClickable(rg_tower_type, mIsCreateForDefine);
         } catch (Exception e) {
             L.printException(e);
         }
