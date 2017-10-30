@@ -271,7 +271,7 @@
             android:text="@string/GY_DLXLTZXX_F_TYRQ"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:id="@+id/F_TYRQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -286,7 +286,7 @@
             android:text="@string/GY_DLXLTZXX_F_ZHYCGZRQ"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:id="@+id/F_ZHYCGZRQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
