@@ -174,7 +174,8 @@ public class TowerShowListController extends BaseController {
         Intent intent = new Intent(context, WellActivity_.class);
         intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
-        intent.putExtra(Constants.INTENT_DATA_WELL_ID, dataSet.GetFieldValueByName(Enum.GYCJ_LINE_F_GH));
+        intent.putExtra(Constants.INTENT_DATA_WELL_ID,
+                dataSet.GetFieldValueByName(String.valueOf(dataSet.PrimaryKey)));
         intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, dataSet.GetFieldValueByName(dataSet.GroupName));
         context.startActivity(intent);
     }

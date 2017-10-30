@@ -237,8 +237,9 @@ public class WellController extends BaseController {
 
     private void initLineIdFromIntent(Context context) {
         if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_LINE_ID)) {
-            mLineId = ((Activity) context).getIntent()
-                    .getIntExtra(Constants.INTENT_DATA_LINE_ID, -1);
+            String lineId = ((Activity) context).getIntent()
+                    .getStringExtra(Constants.INTENT_DATA_LINE_ID);
+            mLineId = Integer.valueOf(lineId);
         }
     }
 
@@ -248,8 +249,9 @@ public class WellController extends BaseController {
 
     private void initWellIdFromIntent(Context context) {
         if (((Activity) context).getIntent().hasExtra(Constants.INTENT_DATA_WELL_ID)) {
-            mWellId = ((Activity) context).getIntent()
-                    .getIntExtra(Constants.INTENT_DATA_WELL_ID, -1);
+            String wellId = ((Activity) context).getIntent()
+                    .getStringExtra(Constants.INTENT_DATA_WELL_ID);
+            mWellId = Integer.valueOf(wellId);
             if (mWellId > 0) {
                 mIsCreateRecord = false;
             }
