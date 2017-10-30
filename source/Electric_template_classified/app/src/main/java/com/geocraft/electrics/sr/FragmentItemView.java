@@ -11,27 +11,31 @@ import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 /**
+ * 采集项处理
  */
 @EViewGroup(R.layout.itemview_fragment_checklist)
 public class FragmentItemView extends LinearLayout {
     @ViewById
     CheckBox ck;
 
+
     public FragmentItemView(Context context) {
         super(context);
     }
 
-    public void bind(int position, String fragmentName, boolean isChecked) {
+    public void bind(int position, String fragmentKey, String fragmentName, boolean isChecked,
+                     CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+        ck.setOnCheckedChangeListener(onCheckedChangeListener);
         ck.setText(fragmentName);
         ck.setChecked(isChecked);
         ViewHodler viewHodler = new ViewHodler();
         viewHodler.setPosition(position);
         ck.setTag(viewHodler);
-    }
-
-    public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener
-                                                   onCheckedChangeListener) {
-        ck.setOnCheckedChangeListener(onCheckedChangeListener);
+        if (BasicFragmentFactory.isBaseFragment(fragmentKey)) {
+            ck.setClickable(false);
+        } else {
+            ck.setClickable(true);
+        }
     }
 
     public static class ViewHodler {

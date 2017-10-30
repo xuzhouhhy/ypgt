@@ -407,7 +407,7 @@ public class DbManager {
             } while (cursor.moveToNext());
         }
         cursor.close();
-//        SELECT * FROM gycj_GY_JKXLTZXX WHere F_lineId = '123456' and F_GZH like '%fs%'
+//        SELECT * FROM gycj_GY_JKXLTZXX WHere F_lineId = '123456' and F_GH like '%fs%'
         return dataSetList;
     }
 

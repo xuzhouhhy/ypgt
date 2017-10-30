@@ -127,11 +127,7 @@ public class TowerShowListActivity extends BaseActivity implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (mController.hasChildDataSets()) {
-            mController.openChildDataSetActivity(TowerShowListActivity.this, position);
-        } else {
-            mController.openRecordActivityToChange(TowerShowListActivity.this, position);
-        }
+        mController.openRecordActivityToChange(TowerShowListActivity.this, position);
     }
 
     @Override

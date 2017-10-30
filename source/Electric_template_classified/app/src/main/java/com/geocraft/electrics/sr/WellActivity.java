@@ -47,7 +47,6 @@ public class WellActivity extends BaseActivity {
 
     private FragmentOption mFragmentOption;
     private WellMainFragment mWellMainFragment;
-    private boolean mIsNext;
 
     @AfterViews
     void init() {
@@ -62,8 +61,9 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_next() {
-        mIsNext = true;
-        saveFragmentData();
+        if (!saveFragmentData()) {
+            return;
+        }
         if (!(boolean) btn_next.getTag()) {
             excuteCommitTask();
         }
@@ -78,7 +78,6 @@ public class WellActivity extends BaseActivity {
 
     @Click
     void btn_back() {
-        mIsNext = false;
         saveFragmentData();
         FragmentOption fragmentOption =
                 mController.getPreCheckedDataFragment();
@@ -114,9 +113,9 @@ public class WellActivity extends BaseActivity {
 
     public void updateNextBtnStatus() {
         String msg;
-        if (mController.getCheckedFragmentSize() == mController.getFramgmentIndex() + 1) {
+        if (!mController.isHasNextDatasetOption()) {
             msg = getResources().getString(R.string.btn_confrim);
-            btn_next.setTag(false);
+            btn_next.setTag(false);//是否可继续
         } else {
             msg = getResources().getString(R.string.btn_next);
             btn_next.setTag(true);
@@ -149,24 +148,29 @@ public class WellActivity extends BaseActivity {
         view.setClickable(isEnable);
     }
 
-    private void saveFragmentData() {
+    private boolean saveFragmentData() {
         if (mController.getFramgmentIndex() == -1) {
-            mWellMainFragment.getValue();
+            mWellMainFragment.getValue(mController.getCurrentDataSet());
         } else {
-            getValueFromFragment();
+            return getValueFromFragment();
         }
+        return true;
     }
 
-    private void getValueFromFragment() {
+    private boolean getValueFromFragment() {
         if (null == mFragmentOption || !mFragmentOption.isChecked()) {
-            return;
+            return false;
         }
         DataSet dataSet = mController.getCurrentDataSet(
                 mFragmentOption.getDatasetName());
         if (null == dataSet) {
-            return;
+            return false;
+        }
+        if (!mFragmentOption.getFragment().logicCheck()) {
+            return false;
         }
         mFragmentOption.getFragment().getValue(dataSet);
+        return true;
     }
 
     public List<PhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
@@ -207,7 +211,4 @@ public class WellActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public boolean isNext() {
-        return mIsNext;
-    }
 }

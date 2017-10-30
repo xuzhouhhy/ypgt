@@ -7,4 +7,5 @@ package com.geocraft.electrics.sr;
 public enum WellType {
     JK,//架空杠
     DL,//电缆井
+    KB,//开闭所
 }

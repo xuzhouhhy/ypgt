@@ -12,6 +12,7 @@ import com.geocraft.electrics.event.CheckFragmentEvent;
 
 
 /**
+ * 采集可选项
  */
 public class FragmentAdapter extends BaseAdapter {
     private WellController mController;
@@ -36,9 +37,7 @@ public class FragmentAdapter extends BaseAdapter {
     private void updateFragmentStatus(CompoundButton buttonView, boolean isChecked) {
         FragmentItemView.ViewHodler viewHodler =
                 (FragmentItemView.ViewHodler) buttonView.getTag();
-        FragmentOption fragmentOption =
-                (FragmentOption)
-                        getItem(viewHodler.getPosition());
+        FragmentOption fragmentOption = (FragmentOption) getItem(viewHodler.getPosition());
         fragmentOption.setChecked(isChecked);
         ElectricApplication.BUS.post(new CheckFragmentEvent());
     }
@@ -60,19 +59,13 @@ public class FragmentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FragmentItemView fragmentItemView = null;
-        if (convertView == null) {
-            fragmentItemView = com.geocraft.electrics.sr.FragmentItemView_.build(parent.getContext());
-        } else {
-            fragmentItemView = (FragmentItemView) convertView;
-        }
+        FragmentItemView fragmentItemView =
+                com.geocraft.electrics.sr.FragmentItemView_.build(parent.getContext());
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        FragmentOption datasetOption =
-                (FragmentOption) getItem(position);
+        FragmentOption datasetOption = (FragmentOption) getItem(position);
         boolean isChecked = datasetOption.isChecked();
-        fragmentItemView.bind(position, datasetOption.getFramentName(), isChecked);
-        fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        fragmentItemView.setSelected(true);
+        fragmentItemView.bind(position, datasetOption.getFramentNameKey(),
+                datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
         return fragmentItemView;
     }
 

@@ -605,7 +605,7 @@
     <string name="tower_hwg">环网柜</string>
     <string name="well_type">杆桩类型</string>
     <string name="well_name_empty">井号名称不能为空!</string>
-    <string name="well_jk_base">架空电线</string>
+    <string name="well_jk_base">杆塔</string>
     <string name="btn_confrim">确认</string>
     <string name="F_ColletObject">采集对象</string>
     <string name="button_title_take_photo">拍照</string>
@@ -1366,4 +1366,16 @@
     <string name="GY_JTXL_SKQK">三跨情况</string>
     <string name="GY_JTXL_TGXLHS">架空线路（同杆线路回数）</string>
     <string name="GY_JTXL_XLBLQ">线路避雷器</string>
+    <string name="GY_DLXL_Base">基本信息</string>
+    <string name="GY_DLXL_DJX">对接箱</string>
+    <string name="GY_DLXL_DLJ">电缆井</string>
+    <string name="GY_DLXL_DLZJT">电缆中间头#1</string>
+    <string name="GY_DLXL_FZX">分支箱</string>
+    <string name="GY_DLXL_GXJBXX">管线基本信息</string>
+    <string name="GY_DLXL_GZZSQ">故障指示器</string>
+    <string name="GY_DLXL_HWG">环网柜</string>
+    <string name="GY_DLXL_KYQK">跨越情况</string>
+    <string name="GY_DLXL_SKQK">三跨情况</string>
+    <string name="GY_DLXL_TSPDBYQ">台式配电变压器</string>
+    <string name="GY_DLXL_XSBDZ">箱式变电站</string>
 </resources>

@@ -11,6 +11,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
+import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
@@ -34,6 +35,7 @@ import common.geocraft.untiltools.FileUtils;
 import common.geocraft.untiltools.T;
 
 /**
+ * 杆塔列表界面
  */
 @EBean
 public class TowerShowListController extends BaseController {
@@ -85,18 +87,18 @@ public class TowerShowListController extends BaseController {
             if (!LineFactory.oneOfLineDataset(dataset)) {
                 continue;
             }
-            List<DataSet> dataSets = mDbManager.queryByCondition(dataset, "F_lineId", mLineId, true);
+            List<DataSet> dataSets = mDbManager.queryByCondition(dataset,
+                    Enum.GY_JKXLTZXX_FIELD_LINEID, mLineId, true);
             mDataSets.addAll(dataSets);
         }
     }
 
     /**
      * 获取上级activity传递来的intent值
-     *
-     * @param context activity
      */
     public void initIntentData(Context context) {
-        String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        String lineId = ((Activity) context).getIntent().getStringExtra(
+                Constants.INTENT_DATA_LINE_NAMES);
         if (null == lineId || lineId.isEmpty()) {
             Log.e(TAG, "line id null or empty");
             return;
@@ -124,7 +126,6 @@ public class TowerShowListController extends BaseController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 if (mDataSets != null) {
                     mDataSets.clear();
                 }
@@ -133,50 +134,45 @@ public class TowerShowListController extends BaseController {
                         continue;
                     }
                     List<DataSet> dataSets = mDbManager.queryByKeywordAndPrimaryKey(dataset,
-                            "F_lineId", "123456", dataset.First, keyWord, true);
+                            Enum.GY_JKXLTZXX_FIELD_LINEID, mLineId, dataset.First, keyWord, true);
                     mDataSets.addAll(dataSets);
                 }
                 ElectricApplication.BUS.post(new LineElementRefreshEvent());
             }
         }).run();
-
     }
-
-    public void openChildDataSetActivity(Context context, int position) {
-
-    }
-
-
 
     /**
      * 打开新建杆塔、地井、电源点界面
-     *
-     * @param context ACTIVITY
      */
     public void openRecordActivityToAdd(Context context) {
-        String lineId = ((Activity) context).getIntent().getStringExtra(Constants.INTENT_DATA_LINE_NAMES);
+        String lineId = ((Activity) context).getIntent().getStringExtra(
+                Constants.INTENT_DATA_LINE_NAMES);
         if (null == lineId || lineId.isEmpty()) {
             return;
         }
         Intent intent = new Intent(context, WellActivity_.class);
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, lineId);
         intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
-        context.startActivity(intent);
+        ((TowerShowListActivity) context).startActivityForResult(
+                intent, ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY);
     }
 
     /**
      * 打开编辑线路子元素界面
-     * @param context activity
+     *
      * @param position 子元素位置
      */
     public void openRecordActivityToChange(Context context, int position) {
         DataSet dataSet = mDataSets.get(position);
         Intent intent = new Intent(context, WellActivity_.class);
-        intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
+        intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, dataSet.
+                GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX));
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
-        intent.putExtra(Constants.INTENT_DATA_WELL_ID, dataSet.GetFieldValueByName(Enum.GYCJ_LINE_F_GH));
-        intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, dataSet.GetFieldValueByName(dataSet.GroupName));
-        context.startActivity(intent);
+        intent.putExtra(Constants.INTENT_DATA_WELL_ID, String.valueOf(dataSet.PrimaryKey));
+        intent.putExtra(Constants.INTENT_DATA_SET_GROUP_NAME, Enum.GYCJ);
+        ((TowerShowListActivity) context).startActivityForResult(
+                intent, ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY);
     }
 
     public String getDataSetAlias() {
@@ -253,7 +249,9 @@ public class TowerShowListController extends BaseController {
                 for (int i = 0; i < dataSet.DataSets.size(); i++) {
                     //搜索相关子数据集
                     DataSet dataSetTmp = dataSet.DataSets.get(i);
-                    List<DataSet> listTmp = mDbManager.queryByCondition(dataSetTmp, dataSetTmp.SearchField, dataSet.GetFieldValueByName(dataSetTmp.ValueField), true);
+                    List<DataSet> listTmp = mDbManager.queryByCondition(dataSetTmp,
+                            dataSetTmp.SearchField, dataSet.GetFieldValueByName(
+                                    dataSetTmp.ValueField), true);
                     for (DataSet data : listTmp) {
                         deleteAllPhotoFiles(data);
                     }
@@ -266,7 +264,6 @@ public class TowerShowListController extends BaseController {
         if (photoRules == null) {
             return "";
         }
-
         String[] photoRuleArray = photoRules.Rules.split(",");
         String photoPrefix = "";
         for (int i = 0; i < photoRuleArray.length; i++) {
@@ -283,16 +280,13 @@ public class TowerShowListController extends BaseController {
         }
         String taskPath = ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
         String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER;
-
         photoPath = Utils.getPhotoDir(photoPath, photoRules, dataSet);
-
         return photoPath + photoName;
     }
 
 
     public void refreshList(List<DataSet> search) {
         clearDataSetList();
-
         mDataSets.addAll(search);
     }
 

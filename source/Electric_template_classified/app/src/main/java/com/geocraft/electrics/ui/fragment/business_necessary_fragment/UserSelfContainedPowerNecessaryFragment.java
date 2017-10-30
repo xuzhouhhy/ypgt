@@ -81,8 +81,6 @@ public class UserSelfContainedPowerNecessaryFragment extends BusinessFragment {
 		return super.logicCheck();
 	}
 
-
-
 	@Override
 	public void getValue(DataSet dataSet) {
 

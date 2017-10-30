@@ -3,7 +3,6 @@ package com.geocraft.electrics.sr.fragment;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -17,7 +16,6 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
-import com.geocraft.electrics.sr.BasicFragmentFactory;
 import com.geocraft.electrics.sr.FragmentAdapter;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.WellActivity;
@@ -51,11 +49,8 @@ public class WellMainFragment extends Fragment {
     RadioGroup rg_tower_type;
     @ViewById
     GridView grd_ck_fragment;
-    private WellActivity mContext;
     private FragmentAdapter mFragmentAdapter;
     private WellController mWellController;
-
-
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
@@ -66,29 +61,12 @@ public class WellMainFragment extends Fragment {
                 }
             };
 
-    @NonNull
-    private WellType getWellType(int checkedId) {
-        WellType wellType = WellType.JK;
-        if (checkedId == R.id.rb_jk) {
-            wellType = WellType.JK;
-        } else if (checkedId == R.id.rb_dl) {
-            wellType = WellType.DL;
-        }
-        return wellType;
-    }
-
     @AfterViews
     protected void init() {
-        mContext = ((WellActivity) this.getActivity());
-        mWellController = mContext.getController();
+        mWellController = ((WellActivity) this.getActivity()).getController();
         mIsNew = mWellController.isCreateRecord();
         mDataSet = mWellController.getCurrentDataSet();
         initViewData();
-    }
-
-    private void updateViewClickable(View view, boolean isEnable) {
-        view.setEnabled(isEnable);
-        view.setClickable(isEnable);
     }
 
     private void initViewData() {
@@ -105,21 +83,17 @@ public class WellMainFragment extends Fragment {
                 //初始化类型
                 if (rg_tower_type.getTag() != null && rg_tower_type.getTag().toString()
                         .equalsIgnoreCase(fieldInfo.Alias)) {
-                    if (mIsNew) {
-                        setWellType(fieldInfo.Default);
-                    } else {
-                        setWellType(fieldInfo.Value);
-                    }
+                    setWellType(fieldInfo.Value);
                 }
             }
-            updateViewClickable(rg_tower_type, mIsNew);
+            updateRadioClickable(rg_tower_type, mIsNew);
         } catch (Exception e) {
             L.printException(e);
         }
     }
 
-    public void getValue() {
-        List<FieldInfo> fieldInfoList = mDataSet.FieldInfos;
+    public void getValue(DataSet dataSet) {
+        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
         for (int i = 0; i < fieldInfoList.size(); i++) {
             FieldInfo fieldInfo = fieldInfoList.get(i);
             if (fieldInfo == null) {
@@ -144,9 +118,28 @@ public class WellMainFragment extends Fragment {
         }
     }
 
+    private void updateRadioClickable(RadioGroup radioGroup, boolean isEnable) {
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            radioGroup.getChildAt(i).setEnabled(isEnable);
+            radioGroup.getChildAt(i).setClickable(isEnable);
+        }
+    }
+
+    @NonNull
+    private WellType getWellType(int checkedId) {
+        WellType wellType = WellType.JK;
+        if (checkedId == R.id.rb_jk) {
+            wellType = WellType.JK;
+        } else if (checkedId == R.id.rb_dl) {
+            wellType = WellType.DL;
+        }
+        return wellType;
+    }
+
     private void setWellType(String value) {
         if (null == value || value.isEmpty()) {
             rg_tower_type.check(R.id.rb_jk);
+            return;
         }
         if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
             rg_tower_type.check(R.id.rb_jk);
@@ -158,10 +151,9 @@ public class WellMainFragment extends Fragment {
 
     private String getCheckedFragmentkeyValue() {
         StringBuilder sb = new StringBuilder();
-        List<FragmentOption> fragmentOptions =
-                mWellController.getCheckedFragments();
+        List<FragmentOption> fragmentOptions = mWellController.getCheckedFragments();
         for (int i = 0; i < fragmentOptions.size(); i++) {
-            sb.append(NAME_KEY_MARK + fragmentOptions.get(i).getFramentNameKey());
+            sb.append(NAME_KEY_MARK).append(fragmentOptions.get(i).getFramentNameKey());
         }
         if (sb.toString().trim().length() > 0) {
             sb.replace(0, 1, "");
