@@ -147,7 +147,7 @@ public class BasicFragmentFactory {
         if (null != mJKXLFragments && mJKXLFragments.size() > 0) {
             return mJKXLFragments;
         }
-        mJKXLFragments.add(generateGY_JTXL_Base());
+        //mJKXLFragments.add(generateGY_JTXL_Base());
         mJKXLFragments.add(generateGY_JTXL_BGXJ());
         mJKXLFragments.add(generateGY_JTXL_BYQ());
         mJKXLFragments.add(generateGY_JTXL_DLQ());
@@ -180,7 +180,7 @@ public class BasicFragmentFactory {
         if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
             return mDLXLFragments;
         }
-        mDLXLFragments.add(getGY_DLXL_Base());
+        //mDLXLFragments.add(getGY_DLXL_Base());
         mDLXLFragments.add(getGY_DLXL_DJX());
         mDLXLFragments.add(getGY_DLXL_DLJ());
         mDLXLFragments.add(getGY_DLXL_DLZJT());

@@ -216,6 +216,9 @@ public class WellController extends BaseController {
      * 判断是否还有未弹出界面
      */
     public boolean isHasNextDatasetOption() {
+        if (mFramgmentIndex == -2) {
+            return true;
+        }
         if (mFramgmentIndex < 0) {
             if (getCheckedFragmentSize() > 0) {
                 return true;
