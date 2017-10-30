@@ -12,6 +12,9 @@ import com.geocraft.electrics.event.CheckFragmentEvent;
 
 
 /**
+ * 采集可选项
+ *
+ * @author kingdon
  */
 public class FragmentAdapter extends BaseAdapter {
     private WellController mController;
@@ -36,9 +39,7 @@ public class FragmentAdapter extends BaseAdapter {
     private void updateFragmentStatus(CompoundButton buttonView, boolean isChecked) {
         FragmentItemView.ViewHodler viewHodler =
                 (FragmentItemView.ViewHodler) buttonView.getTag();
-        FragmentOption fragmentOption =
-                (FragmentOption)
-                        getItem(viewHodler.getPosition());
+        FragmentOption fragmentOption = (FragmentOption) getItem(viewHodler.getPosition());
         fragmentOption.setChecked(isChecked);
         ElectricApplication.BUS.post(new CheckFragmentEvent());
     }
@@ -60,17 +61,17 @@ public class FragmentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FragmentItemView fragmentItemView = null;
+        FragmentItemView fragmentItemView;
         if (convertView == null) {
             fragmentItemView = com.geocraft.electrics.sr.FragmentItemView_.build(parent.getContext());
         } else {
             fragmentItemView = (FragmentItemView) convertView;
         }
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
-        FragmentOption datasetOption =
-                (FragmentOption) getItem(position);
+        FragmentOption datasetOption = (FragmentOption) getItem(position);
         boolean isChecked = datasetOption.isChecked();
-        fragmentItemView.bind(position, datasetOption.getFramentName(), isChecked);
+        fragmentItemView.bind(position, datasetOption.getFramentNameKey(),
+                datasetOption.getFramentName(), isChecked);
         fragmentItemView.setOnCheckedChangeListener(mOnCheckedChangeListener);
         fragmentItemView.setSelected(true);
         return fragmentItemView;

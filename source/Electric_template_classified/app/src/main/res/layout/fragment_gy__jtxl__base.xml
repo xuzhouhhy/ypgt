@@ -37,7 +37,7 @@
             android:tag="@string/GY_JKXLTZXX_F_GH"/>
 
         <!--杆塔型号-->
-        <TextView
+        <!--<TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:id="@+id/F_GTXH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_JKXLTZXX_F_GTXH"/>
+            android:tag="@string/GY_JKXLTZXX_F_GTXH"/>-->
 
         <!--杆塔材质-->
         <TextView

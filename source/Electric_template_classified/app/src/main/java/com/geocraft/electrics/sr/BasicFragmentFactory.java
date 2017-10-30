@@ -79,44 +79,59 @@ import java.util.List;
  */
 @EBean
 public class BasicFragmentFactory {
+
+    public final static String KEY_GY_JKXLTZXX_BASE = "GY_JKXLTZXX_BASE";
+    public final static String KEY_GY_DLXL_Base = "GY_DLXL_Base";
+    //JK
     private final static String NAME_KEY_MARK = "&";
-    private final String KEY_GY_JKXLTZXX_BASE = "GY_JKXLTZXX_BASE";
-    private final String KEY_GY_JTXL_BGXJ = "GY_JTXL_BGXJ";
-    private final String KEY_GY_JTXL_BYQ = "GY_JTXL_BYQ";
-    private final String KEY_GY_JTXL_DLQ = "GY_JTXL_DLQ";
-    private final String KEY_GY_JTXL_DX = "GY_JTXL_DX";
-    private final String KEY_GY_JTXL_FHKG = "GY_JTXL_FHKG";
-    private final String KEY_GY_JTXL_GLKG = "GY_JTXL_GLKG";
-    private final String KEY_GY_JTXL_GZZSQ = "GY_JTXL_GZZSQ";
-    private final String KEY_GY_JTXL_HD = "GY_JTXL_HD";
-    private final String KEY_GY_JTXL_JKBLZ = "GY_JTXL_JKBLZ";
-    private final String KEY_GY_JTXL_JYZ = "GY_JTXL_JYZ";
-    private final String KEY_GY_JTXL_KSRDQ = "GY_JTXL_KSRDQ";
-    private final String KEY_GY_JTXL_KYQK = "GY_JTXL_KYQK";
-    private final String KEY_GY_JTXL_LX = "GY_JTXL_LX";
-    private final String KEY_GY_JTXL_NZXJ = "GY_JTXL_NZXJ";
-    private final String KEY_GY_JTXL_SFKYFW = "GY_JTXL_SFKYFW";
-    private final String KEY_GY_JTXL_SKQK = "GY_JTXL_SKQK";
-    private final String KEY_GY_JTXL_TGXLHS = "GY_JTXL_TGXLHS";
-    private final String KEY_GY_JTXL_XLBLQ = "GY_JTXL_XLBLQ";
-    //DL
-    private final String KEY_GY_DLXL_Base = "GY_DLXL_Base";
-    private final String KEY_GY_DLXL_DJX = "GY_DLXL_DJX";
-    private final String KEY_GY_DLXL_DLJ = "GY_DLXL_DLJ";
-    private final String KEY_GY_DLXL_DLZJT = "GY_DLXL_DLZJT";
-    private final String KEY_GY_DLXL_FZX = "GY_DLXL_FZX";
-    private final String KEY_GY_DLXL_GXJBXX = "GY_DLXL_GXJBXX";
-    private final String KEY_GY_DLXL_GZZSQ = "GY_DLXL_GZZSQ";
-    private final String KEY_GY_DLXL_HWG = "GY_DLXL_HWG";
-    private final String KEY_GY_DLXL_KYQK = "GY_DLXL_KYQK";
-    private final String KEY_GY_DLXL_SKQK = "GY_DLXL_SKQK";
-    private final String KEY_GY_DLXL_TSPDBYQ = "GY_DLXL_TSPDBYQ";
-    private final String KEY_GY_DLXL_XSBDZ = "GY_DLXL_XSBDZ";
+    private final static String KEY_GY_JTXL_BGXJ = "GY_JTXL_BGXJ";
+    private final static String KEY_GY_JTXL_BYQ = "GY_JTXL_BYQ";
+    private final static String KEY_GY_JTXL_DLQ = "GY_JTXL_DLQ";
+    private final static String KEY_GY_JTXL_DX = "GY_JTXL_DX";
+    private final static String KEY_GY_JTXL_FHKG = "GY_JTXL_FHKG";
+    private final static String KEY_GY_JTXL_GLKG = "GY_JTXL_GLKG";
+    private final static String KEY_GY_JTXL_GZZSQ = "GY_JTXL_GZZSQ";
+    private final static String KEY_GY_JTXL_HD = "GY_JTXL_HD";
+    private final static String KEY_GY_JTXL_JKBLZ = "GY_JTXL_JKBLZ";
+    private final static String KEY_GY_JTXL_JYZ = "GY_JTXL_JYZ";
+    private final static String KEY_GY_JTXL_KSRDQ = "GY_JTXL_KSRDQ";
+    private final static String KEY_GY_JTXL_KYQK = "GY_JTXL_KYQK";
+    private final static String KEY_GY_JTXL_LX = "GY_JTXL_LX";
+    private final static String KEY_GY_JTXL_NZXJ = "GY_JTXL_NZXJ";
+    private final static String KEY_GY_JTXL_SFKYFW = "GY_JTXL_SFKYFW";
+    private final static String KEY_GY_JTXL_SKQK = "GY_JTXL_SKQK";
+    private final static String KEY_GY_JTXL_TGXLHS = "GY_JTXL_TGXLHS";
+    private final static String KEY_GY_JTXL_XLBLQ = "GY_JTXL_XLBLQ";
+
+    //Dl
+    private final static String KEY_GY_DLXL_DJX = "GY_DLXL_DJX";
+    private final static String KEY_GY_DLXL_DLJ = "GY_DLXL_DLJ";
+    private final static String KEY_GY_DLXL_DLZJT = "GY_DLXL_DLZJT";
+    private final static String KEY_GY_DLXL_FZX = "GY_DLXL_FZX";
+    private final static String KEY_GY_DLXL_GXJBXX = "GY_DLXL_GXJBXX";
+    private final static String KEY_GY_DLXL_GZZSQ = "GY_DLXL_GZZSQ";
+    private final static String KEY_GY_DLXL_HWG = "GY_DLXL_HWG";
+    private final static String KEY_GY_DLXL_KYQK = "GY_DLXL_KYQK";
+    private final static String KEY_GY_DLXL_SKQK = "GY_DLXL_SKQK";
+    private final static String KEY_GY_DLXL_TSPDBYQ = "GY_DLXL_TSPDBYQ";
+    private final static String KEY_GY_DLXL_XSBDZ = "GY_DLXL_XSBDZ";
 
     private List<FragmentOption> mJKXLFragments = new ArrayList<FragmentOption>();//架空线路
     private List<FragmentOption> mDLXLFragments = new ArrayList<FragmentOption>();//电缆线路
     private Resources mResources = ElectricApplication_.getInstance().
             getApplicationContext().getResources();
+
+    /**
+     * 判断当前fragment是否为基础必填界面
+     *
+     * @param fragmentKey 界面标识key
+     */
+    public static boolean isBaseFragment(String fragmentKey) {
+        if (fragmentKey.equals(KEY_GY_JKXLTZXX_BASE) || fragmentKey.equals(KEY_GY_DLXL_Base)) {
+            return true;
+        }
+        return false;
+    }
 
     public void initFragments(WellType wellType, DataSet dataset) {
         if (wellType == WellType.JK) {
@@ -152,6 +167,9 @@ public class BasicFragmentFactory {
         for (int i = 0; i < mJKXLFragments.size(); i++) {
             FragmentOption option = mJKXLFragments.get(i);
             option.setDatasetName(Enum.GY_JKXLTZXX);
+            if (isBaseFragment(option.getFramentNameKey())) {
+                option.setChecked(true);
+            }
         }
         return mJKXLFragments;
     }
@@ -176,6 +194,9 @@ public class BasicFragmentFactory {
         for (int i = 0; i < mDLXLFragments.size(); i++) {
             FragmentOption option = mDLXLFragments.get(i);
             option.setDatasetName(Enum.GY_DLXLTZXX);
+            if (isBaseFragment(option.getFramentNameKey())) {
+                option.setChecked(true);
+            }
         }
         return mDLXLFragments;
     }
