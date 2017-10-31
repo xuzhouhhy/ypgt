@@ -32,6 +32,18 @@ public class GY_HWG_HWG extends WellBaseFragment {
             switch (view.getId()) {
                 case R.id.btnGyHwgInterval:
                     onGyHwgIntervalDetail();
+                    break;
+                case R.id.btnYes:
+                    onSaveInterval();
+                    break;
+                case R.id.btnNo:
+                    dialogDismiss();
+                    break;
+                case R.id.btnNext:
+                    onNextInterval();
+                    break;
+                default:
+                    break;
             }
         }
     };
@@ -43,9 +55,17 @@ public class GY_HWG_HWG extends WellBaseFragment {
         Context context = getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View dialogView = inflater.inflate(R.layout.view_gy__hwg__jg_extend, null);
+        Button button = (Button) dialogView.findViewById(R.id.btnYes);
+        button.setOnClickListener(mOnClickListener);
+        button = (Button) dialogView.findViewById(R.id.btnNo);
+        button.setOnClickListener(mOnClickListener);
+        button = (Button) dialogView.findViewById(R.id.btnNext);
+        button.setOnClickListener(mOnClickListener);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(dialogView).setCancelable(true);
         mDialog = builder.create();
+        mDialog.setCancelable(false);
+        mDialog.setCanceledOnTouchOutside(false);
         mDialog.show();
     }
 
@@ -72,6 +92,17 @@ public class GY_HWG_HWG extends WellBaseFragment {
         return true;
     }
 
+
+    private void dialogDismiss() {
+        if (mDialog != null) {
+            mDialog.dismiss();
+        }
+    }
+
+    private void onSaveInterval() {
+
+    }
+
     @Override
     protected void init() {
         mLinearLayout = linearLayoutRoot;
@@ -87,5 +118,9 @@ public class GY_HWG_HWG extends WellBaseFragment {
 //            etSJDW.setControlValue(viewGLDW.strSecondManager);
 //        }
         super.getValue(dataSet);
+    }
+
+    private void onNextInterval() {
+
     }
 }

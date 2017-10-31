@@ -15,6 +15,13 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"/>
+
+        <Button
             android:id="@+id/btnYes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -22,10 +29,10 @@
             android:text="确定"/>
 
         <Button
-            android:id="@+id/btnNo"
+            android:id="@+id/btnNext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="取消"/>
+            android:text="下一个"/>
     </LinearLayout>
 </LinearLayout>
