@@ -41,7 +41,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     WellType wellType = getWellType(checkedId);
-                    mWellController.updateWellType(wellType);
+                    mWellController.switchWellType(wellType);
                 }
             };
 

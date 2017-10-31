@@ -45,12 +45,12 @@ public class FragmentAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mController.getCurFragmentDatasetOptions().size();
+        return mController.getCurVisibleFragmentOptions().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mController.getCurFragmentDatasetOptions().get(position);
+        return mController.getCurVisibleFragmentOptions().get(position);
     }
 
     @Override
@@ -65,15 +65,13 @@ public class FragmentAdapter extends BaseAdapter {
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
         FragmentOption datasetOption = (FragmentOption) getItem(position);
         boolean isChecked = datasetOption.isChecked();
-        boolean isVisible = true;
-        String parentNamekey = datasetOption.getParentNameKey();
-        if (null == parentNamekey || parentNamekey.isEmpty()) {
-            isVisible = false;
-        }
-        if (null == datasetOption.getParentNameKey()) {
-            fragmentItemView.bind(position, isVisible, datasetOption.getFramentNameKey(),
-                    datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
-        }
+//        boolean isVisible = false;
+//        String parentNamekey = datasetOption.getParentNameKey();
+//        if (null == parentNamekey || parentNamekey.isEmpty()) {
+//            isVisible = true;
+//        }
+        fragmentItemView.bind(position,  datasetOption.getFramentNameKey(),
+                datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
         return fragmentItemView;
     }
 

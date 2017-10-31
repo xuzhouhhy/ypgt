@@ -186,7 +186,7 @@ public class DLFragments {
             if (i == 0) {
                 continue;
             }
-            fragmentOptions.get(i).setParentNameKey(KEY_GY_DLXL_HWG);
+            fragmentOptions.get(i).setParentNameKey(KEY_GY_HWG_HWG);
         }
         return fragmentOptions;
     }

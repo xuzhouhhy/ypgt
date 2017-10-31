@@ -77,13 +77,13 @@ public class WellController extends BaseController {
 
     public void initDatas() throws CloneNotSupportedException {
         initDatasets();
-        refreshCurDatasetAndFragments();
+        initCurDatasetAndFragments();
     }
 
-    private void refreshCurDatasetAndFragments() {
+    private void initCurDatasetAndFragments() {
         initCurrentDataSet();
         mFragmentOptions = mBasicFragmentProxy.
-                refreshDatasetOptions(mWellType, mCurrentDataSet);
+                initFragmentOptions(mWellType, mCurrentDataSet);
     }
 
     private void initDatasets() throws CloneNotSupportedException {
@@ -132,8 +132,16 @@ public class WellController extends BaseController {
     /**
      * 获取当前类型可选采集项
      */
-    public List<FragmentOption> getCurFragmentDatasetOptions() {
-        return mBasicFragmentProxy.getFragmentDatasetOptions(mWellType);
+    public List<FragmentOption> getCurVisibleFragmentOptions() {
+        List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
+        for (int i = 0; i < mFragmentOptions.size(); i++) {
+            FragmentOption option = mFragmentOptions.get(i);
+            String parentNameKey = option.getParentNameKey();
+            if (null == parentNameKey || parentNameKey.isEmpty()) {
+                fragmentOptions.add(option);
+            }
+        }
+        return fragmentOptions;
     }
 
     //是否新建
@@ -490,9 +498,9 @@ public class WellController extends BaseController {
         return mCurrentDataSet.Alias;
     }
 
-    public void updateWellType(WellType wellType) {
+    public void switchWellType(WellType wellType) {
         mWellType = wellType;
-        refreshCurDatasetAndFragments();
+        initCurDatasetAndFragments();
     }
 
     public WellType getWellType() {

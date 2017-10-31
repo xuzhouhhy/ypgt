@@ -19,18 +19,18 @@ public class BasicFragmentProxy {
     DLFragments mDLFragments;
 
 
-    public void initFragments(WellType wellType, DataSet dataset) {
-        if (wellType == WellType.JK) {
-            mJKFragments.initJKFramentDtatas(dataset);
-        } else if (wellType == WellType.DL) {
-            mDLFragments.initDLFramentDtatas(dataset);
-        }
+    /**
+     * 初始化获取当前类型可选采集项
+     * @param wellType
+     * @param dataset
+     * @return
+     */
+    public List<FragmentOption> initFragmentOptions(WellType wellType, DataSet dataset) {
+        initFragments(wellType, dataset);
+        return getFragmentDatasetOptions(wellType);
     }
 
-    /**
-     * 获取当前类型可选采集项
-     */
-    public List<FragmentOption> getFragmentDatasetOptions(WellType wellType) {
+    private List<FragmentOption> getFragmentDatasetOptions(WellType wellType) {
         if (wellType == WellType.JK) {
             return mJKFragments.getJKFramentItems();
         } else if (wellType == WellType.DL) {
@@ -39,9 +39,13 @@ public class BasicFragmentProxy {
         return null;
     }
 
-    public List<FragmentOption> refreshDatasetOptions(WellType wellType, DataSet dataset) {
-        initFragments(wellType, dataset);
-        return getFragmentDatasetOptions(wellType);
+    private void initFragments(WellType wellType, DataSet dataset) {
+        if (wellType == WellType.JK) {
+            mJKFragments.initJKFramentDtatas(dataset);
+        } else if (wellType == WellType.DL) {
+            mDLFragments.initDLFramentDtatas(dataset);
+        }
     }
+
 
 }
