@@ -9,9 +9,9 @@ import android.widget.CompoundButton;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.event.CheckFragmentEvent;
-import com.geocraft.electrics.sr.view.FragmentItemView;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.controller.WellController;
+import com.geocraft.electrics.sr.view.FragmentItemView;
 
 
 /**
@@ -40,9 +40,7 @@ public class FragmentAdapter extends BaseAdapter {
     private void updateFragmentStatus(CompoundButton buttonView, boolean isChecked) {
         FragmentItemView.ViewHodler viewHodler =
                 (FragmentItemView.ViewHodler) buttonView.getTag();
-        FragmentOption fragmentOption = (FragmentOption) getItem(viewHodler.getPosition());
-        fragmentOption.setChecked(isChecked);
-        ElectricApplication.BUS.post(new CheckFragmentEvent());
+        ElectricApplication.BUS.post(new CheckFragmentEvent(viewHodler.getPosition(), isChecked));
     }
 
     @Override
@@ -67,8 +65,15 @@ public class FragmentAdapter extends BaseAdapter {
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
         FragmentOption datasetOption = (FragmentOption) getItem(position);
         boolean isChecked = datasetOption.isChecked();
-        fragmentItemView.bind(position, datasetOption.getFramentNameKey(),
-                datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
+        boolean isVisible = true;
+        String parentNamekey = datasetOption.getParentNameKey();
+        if (null == parentNamekey || parentNamekey.isEmpty()) {
+            isVisible = false;
+        }
+        if (null == datasetOption.getParentNameKey()) {
+            fragmentItemView.bind(position, isVisible, datasetOption.getFramentNameKey(),
+                    datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
+        }
         return fragmentItemView;
     }
 

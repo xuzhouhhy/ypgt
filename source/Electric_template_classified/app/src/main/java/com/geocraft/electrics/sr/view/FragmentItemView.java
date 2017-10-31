@@ -24,7 +24,8 @@ public class FragmentItemView extends LinearLayout {
         super(context);
     }
 
-    public void bind(int position, String fragmentKey, String fragmentName, boolean isChecked,
+    public void bind(int position, boolean isVisible, String fragmentKey,
+                     String fragmentName, boolean isChecked,
                      CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
         ck.setOnCheckedChangeListener(onCheckedChangeListener);
         ck.setText(fragmentName);
@@ -36,6 +37,11 @@ public class FragmentItemView extends LinearLayout {
             ck.setClickable(false);
         } else {
             ck.setClickable(true);
+        }
+        if (isVisible) {
+            ck.setVisibility(VISIBLE);
+        } else {
+            ck.setVisibility(GONE);
         }
     }
 

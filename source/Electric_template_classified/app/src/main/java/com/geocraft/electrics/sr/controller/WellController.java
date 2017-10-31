@@ -208,9 +208,36 @@ public class WellController extends BaseController {
     }
 
     /**
+     * 更新制定fragment状态
+     *
+     * @param framgmentIndex fragment队列中索引
+     * @param isChecked      选中状态
+     */
+    public void updateFragmentStatus(int framgmentIndex, boolean isChecked) {
+        if (framgmentIndex <= 0 || framgmentIndex > mFragmentOptions.size() - 1) {
+            return;
+        }
+        FragmentOption fragmentOption = mFragmentOptions.get(framgmentIndex);
+        if (null == fragmentOption) {
+            return;
+        }
+        String fragmentNameKey = fragmentOption.getFramentNameKey();
+        fragmentOption.setChecked(isChecked);
+        for (FragmentOption option : mFragmentOptions) {
+            String parentNameKey = option.getParentNameKey();
+            if (null == parentNameKey || parentNameKey.isEmpty()) {
+                continue;
+            }
+            if (parentNameKey.equals(fragmentNameKey)) {
+                option.setChecked(isChecked);
+            }
+        }
+    }
+
+    /**
      * 判断是否还有未弹出界面
      */
-    public boolean isHasNextDatasetOption() {
+    public boolean isHasNextFragmentOption() {
         if (mFramgmentIndex == -2) {
             return true;
         }

@@ -12,6 +12,7 @@ public class FragmentOption {
     private String mDatasetName;
     private String mFramentNameKey;
     private boolean mIsChecked;
+    private String mParentNameKey = "";
 
     public FragmentOption(String framentNameKey, String framentName,
                           String datasetName, BusinessFragment fragment) {
@@ -59,5 +60,13 @@ public class FragmentOption {
 
     public void setChecked(boolean checked) {
         mIsChecked = checked;
+    }
+
+    public String getParentNameKey() {
+        return mParentNameKey;
+    }
+
+    public void setParentNameKey(String parentNameKey) {
+        mParentNameKey = parentNameKey;
     }
 }

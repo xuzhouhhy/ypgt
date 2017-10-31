@@ -167,6 +167,30 @@ public class DLFragments {
             getApplicationContext().getResources();
 
 
+    //二级 环网柜
+    public List<FragmentOption> getSecondLevelItems_HWG() {
+        List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
+        //fragmentOptions.add(getGY_DLXL_HWG());
+        fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
+        fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
+        fragmentOptions.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
+        fragmentOptions.add(getGY_HWG_FHKG());//环网柜（负荷开关）</string>
+        fragmentOptions.add(getGY_HWG_GLKG());//环网柜（隔离开关）</string>
+        fragmentOptions.add(getGY_HWG_DYHGQ());//环网柜（电压互感器）</string>
+        fragmentOptions.add(getGY_HWG_DLHGQ());//环网柜（电流互感器）</string>
+        fragmentOptions.add(getGY_HWG_BLQ());//环网柜（避雷器）</string>
+        fragmentOptions.add(getGY_HWG_GZZSQ());//环网柜（故障指示器）</string>
+        fragmentOptions.add(getGY_HWG_MX());//环网柜（母线）</string>
+        int count = fragmentOptions.size();
+        for (int i = 0; i < count; i++) {
+            if (i == 0) {
+                continue;
+            }
+            fragmentOptions.get(i).setParentNameKey(KEY_GY_DLXL_HWG);
+        }
+        return fragmentOptions;
+    }
+
     public List<FragmentOption> getDLFramentItems() {
         if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
             return mDLXLFragments;
@@ -180,17 +204,7 @@ public class DLFragments {
         mDLXLFragments.add(getGY_DLXL_GZZSQ());
 
         //环网柜
-        mDLXLFragments.add(getGY_DLXL_HWG());
-        mDLXLFragments.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
-        mDLXLFragments.add(getGY_HWG_JG());//环网柜（间隔）</string>
-        mDLXLFragments.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
-        mDLXLFragments.add(getGY_HWG_FHKG());//环网柜（负荷开关）</string>
-        mDLXLFragments.add(getGY_HWG_GLKG());//环网柜（隔离开关）</string>
-        mDLXLFragments.add(getGY_HWG_DYHGQ());//环网柜（电压互感器）</string>
-        mDLXLFragments.add(getGY_HWG_DLHGQ());//环网柜（电流互感器）</string>
-        mDLXLFragments.add(getGY_HWG_BLQ());//环网柜（避雷器）</string>
-        mDLXLFragments.add(getGY_HWG_GZZSQ());//环网柜（故障指示器）</string>
-        mDLXLFragments.add(getGY_HWG_MX());//环网柜（母线）</string>
+        mDLXLFragments.addAll(getSecondLevelItems_HWG());
 
         //分支箱
         mDLXLFragments.add(getGY_DLXL_FZX());//

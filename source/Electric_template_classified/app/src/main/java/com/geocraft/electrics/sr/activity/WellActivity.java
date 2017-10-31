@@ -108,6 +108,7 @@ public class WellActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
     public void onDataSynEvent(CheckFragmentEvent event) {
+        mController.updateFragmentStatus(event.getFragmentIndex(), event.isChecked());
         updateNextBtnStatus();
     }
 
@@ -130,7 +131,7 @@ public class WellActivity extends BaseActivity {
 
     public void updateNextBtnStatus() {
         String msg;
-        if (!mController.isHasNextDatasetOption()) {
+        if (!mController.isHasNextFragmentOption()) {
             msg = getResources().getString(R.string.btn_confrim);
             btn_next.setTag(false);//是否可继续
         } else {
