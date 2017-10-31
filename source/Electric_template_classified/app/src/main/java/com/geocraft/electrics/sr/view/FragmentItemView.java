@@ -6,7 +6,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.sr.BasicFragmentFactory;
+import com.geocraft.electrics.sr.CommonFragment;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -32,7 +32,7 @@ public class FragmentItemView extends LinearLayout {
         ViewHodler viewHodler = new ViewHodler();
         viewHodler.setPosition(position);
         ck.setTag(viewHodler);
-        if (BasicFragmentFactory.isBaseFragment(fragmentKey)) {
+        if (CommonFragment.isBaseFragment(fragmentKey)) {
             ck.setClickable(false);
         } else {
             ck.setClickable(true);

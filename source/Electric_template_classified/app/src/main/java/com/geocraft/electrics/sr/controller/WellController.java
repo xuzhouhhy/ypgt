@@ -14,7 +14,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.sr.BasicFragmentFactory;
+import com.geocraft.electrics.sr.BasicFragmentProxy;
 import com.geocraft.electrics.sr.DatasetOption;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.WellDatasets;
@@ -51,7 +51,7 @@ public class WellController extends BaseController {
     DbManager mDbManager;
 
     @Bean
-    BasicFragmentFactory mBasicFragmentFactory;
+    BasicFragmentProxy mBasicFragmentProxy;
     @Bean
     WellDatasets mWellDatasets;
 
@@ -82,8 +82,8 @@ public class WellController extends BaseController {
 
     private void refreshCurDatasetAndFragments() {
         initCurrentDataSet();
-        mBasicFragmentFactory.initFragments(mWellType, mCurrentDataSet);
-        getCurFragmentDatasetOptions();
+        mFragmentOptions = mBasicFragmentProxy.
+                refreshDatasetOptions(mWellType, mCurrentDataSet);
     }
 
     private void initDatasets() throws CloneNotSupportedException {
@@ -133,12 +133,7 @@ public class WellController extends BaseController {
      * 获取当前类型可选采集项
      */
     public List<FragmentOption> getCurFragmentDatasetOptions() {
-        if (mWellType == WellType.JK) {
-            mFragmentOptions = mBasicFragmentFactory.getJKFramentItems();
-        } else if (mWellType == WellType.DL) {
-            mFragmentOptions = mBasicFragmentFactory.getDLFramentItems();
-        }
-        return mFragmentOptions;
+        return mBasicFragmentProxy.getFragmentDatasetOptions(mWellType);
     }
 
     //是否新建
