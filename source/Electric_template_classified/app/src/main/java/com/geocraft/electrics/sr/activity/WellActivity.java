@@ -94,13 +94,15 @@ public class WellActivity extends BaseActivity {
         isGoNext = false;
         saveFragmentData();
         int curFragmentIndex = mController.getFramgmentIndex();
-        if (curFragmentIndex == 0) {
-            addMainFragment();
-        } else if (curFragmentIndex == -1) {
+        if (curFragmentIndex == -1) {
             addPreFragment();
         } else {
             FragmentOption fragmentOption = mController.getPreCheckedDataFragment();
-            changeContentView(fragmentOption);
+            if (curFragmentIndex == 0 || null == fragmentOption) {
+                addMainFragment();
+            } else {
+                changeContentView(fragmentOption);
+            }
         }
     }
 
