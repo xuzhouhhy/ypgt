@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayoutRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutRoot">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
+
             <TextView
                 style="@style/fragment_title"
                 android:layout_width="wrap_content"
@@ -23,47 +23,49 @@
                 android:text="@string/GY_KBS_TITLE_DLHGQ"/>
         </LinearLayout>
 
-    <!-- 电流互感器型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_KBSTZXX_F_DLHGQXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQXH"
-        android:tag="@string/GY_KBSTZXX_F_DLHGQXH"/>
+        <!-- 电流互感器型号 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_KBSTZXX_F_DLHGQXH"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+            android:id="@+id/F_DLHGQXH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/GY_KBSTZXX_F_DLHGQXH"/>
 
 
+        <!-- 电流互感器厂家 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_KBSTZXX_F_DLHGQCJ"
+            />
 
-    <!-- 电流互感器厂家 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_KBSTZXX_F_DLHGQCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQCJ"
-        android:tag="@string/GY_KBSTZXX_F_DLHGQCJ"/>
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_DLHGQCJ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/GY_KBSTZXX_F_DLHGQCJ"/>
 
 
-    <!-- 变比 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_KBSTZXX_F_DLHGQBB"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQBB"
-        android:tag="@string/GY_KBSTZXX_F_DLHGQBB"/>
+        <!-- 变比 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_KBSTZXX_F_DLHGQBB"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_DLHGQBB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/GY_KBSTZXX_F_DLHGQBB"/>
 
     </LinearLayout>
 </ScrollView>

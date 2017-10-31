@@ -170,7 +170,6 @@ public class DLFragments {
     //二级 环网柜
     public List<FragmentOption> getSecondLevelItems_HWG() {
         List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
-        //fragmentOptions.add(getGY_DLXL_HWG());
         fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
         fragmentOptions.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
@@ -191,54 +190,77 @@ public class DLFragments {
         return fragmentOptions;
     }
 
+    //二级 分支箱
+    public List<FragmentOption> getSecondLevelItems_FZX() {
+        List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
+        fragmentOptions.add(getGY_DLXL_FZX());//
+        fragmentOptions.add(getGY_FZX_FZX());//分支箱（基本信息）</string>
+        fragmentOptions.add(getGY_FZX_GLKG());//分支箱（隔离开关）</string>
+        fragmentOptions.add(getGY_FZX_FHKG());//分支箱（负荷开关）</string>
+        fragmentOptions.add(getGY_FZX_DLHGQ());//分支箱（电流互感器）</string>
+        fragmentOptions.add(getGY_FZX_BLQ());//分支箱（避雷器）</string>
+        fragmentOptions.add(getGY_FZX_GZZSQ());//分支箱（故障指示器）</string>
+        fragmentOptions.add(getGY_FZX_MX());//分支箱（母线）</string>
+        fragmentOptions.add(getGY_FZX_ZPSJ());//分支箱（照片）</string>
+        int count = fragmentOptions.size();
+        for (int i = 0; i < count; i++) {
+            if (i == 0) {
+                continue;
+            }
+            fragmentOptions.get(i).setParentNameKey(KEY_GY_DLXL_FZX);
+        }
+        return fragmentOptions;
+    }
+
+    //二级 箱式变电站
+    public List<FragmentOption> getSecondLevelItems_XSBDZ() {
+        List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
+        fragmentOptions.add(getGY_DLXL_XSBDZ());//
+        fragmentOptions.add(getGY_XSBDZ_XSBDZ());//箱式变电站（基本信息）</string>
+        fragmentOptions.add(getGY_XSBDZ_FHKG());//箱式变电站（负荷开关）</string>
+        fragmentOptions.add(getGY_XSBDZ_PDBYQ());//箱式变电站（配电变压器）</string>
+        fragmentOptions.add(getGY_XSBDZ_DW());//箱式变电站（档位）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYTP());//箱式变电站（低压铜牌）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYZKK());//箱式变电站（低压总空开）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYKK1());//箱式变电站（低压空开1）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYKK2());//箱式变电站（低压空开2）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYKK3());//箱式变电站（低压空开3）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYZKK4());//箱式变电站（低压空开4）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYZKK5());//箱式变电站（低压空开5）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYZKK6());//箱式变电站（低压空开6）</string>
+        fragmentOptions.add(getGY_XSBDZ_DYWGBCZZ());//箱式变电站（低压无功补偿装置）</string>
+        fragmentOptions.add(getGY_XSBDZ_ZPSJ());//箱式变电站（照片信息）</string>
+        int count = fragmentOptions.size();
+        for (int i = 0; i < count; i++) {
+            if (i == 0) {
+                continue;
+            }
+            fragmentOptions.get(i).setParentNameKey(KEY_GY_DLXL_XSBDZ);
+        }
+        return fragmentOptions;
+    }
+
+
     public List<FragmentOption> getDLFramentItems() {
         if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
             return mDLXLFragments;
         }
-        //mDLXLFragments.add(getGY_DLXL_Base());
+
         mDLXLFragments.add(getGY_DLXL_DJX());
         mDLXLFragments.add(getGY_DLXL_DLJ());
         mDLXLFragments.add(getGY_DLXL_DLZJT());
-
         mDLXLFragments.add(getGY_DLXL_GXJBXX());
         mDLXLFragments.add(getGY_DLXL_GZZSQ());
-
-        //环网柜
-        mDLXLFragments.addAll(getSecondLevelItems_HWG());
-
-        //分支箱
-        mDLXLFragments.add(getGY_DLXL_FZX());//
-        mDLXLFragments.add(getGY_FZX_FZX());//分支箱（基本信息）</string>
-        mDLXLFragments.add(getGY_FZX_GLKG());//分支箱（隔离开关）</string>
-        mDLXLFragments.add(getGY_FZX_FHKG());//分支箱（负荷开关）</string>
-        mDLXLFragments.add(getGY_FZX_DLHGQ());//分支箱（电流互感器）</string>
-        mDLXLFragments.add(getGY_FZX_BLQ());//分支箱（避雷器）</string>
-        mDLXLFragments.add(getGY_FZX_GZZSQ());//分支箱（故障指示器）</string>
-        mDLXLFragments.add(getGY_FZX_MX());//分支箱（母线）</string>
-        mDLXLFragments.add(getGY_FZX_ZPSJ());//分支箱（照片）</string>
-
-
         mDLXLFragments.add(getGY_DLXL_KYQK());
         mDLXLFragments.add(getGY_DLXL_SKQK());
         mDLXLFragments.add(getGY_DLXL_TSPDBYQ());
 
+        //环网柜
+        mDLXLFragments.addAll(getSecondLevelItems_HWG());
+        //分支箱
+        mDLXLFragments.addAll(getSecondLevelItems_FZX());
         //箱式变电站
-        mDLXLFragments.add(getGY_DLXL_XSBDZ());//
-        mDLXLFragments.add(getGY_XSBDZ_XSBDZ());//箱式变电站（基本信息）</string>
-        mDLXLFragments.add(getGY_XSBDZ_FHKG());//箱式变电站（负荷开关）</string>
-        mDLXLFragments.add(getGY_XSBDZ_PDBYQ());//箱式变电站（配电变压器）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DW());//箱式变电站（档位）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYTP());//箱式变电站（低压铜牌）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYZKK());//箱式变电站（低压总空开）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYKK1());//箱式变电站（低压空开1）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYKK2());//箱式变电站（低压空开2）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYKK3());//箱式变电站（低压空开3）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYZKK4());//箱式变电站（低压空开4）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYZKK5());//箱式变电站（低压空开5）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYZKK6());//箱式变电站（低压空开6）</string>
-        mDLXLFragments.add(getGY_XSBDZ_DYWGBCZZ());//箱式变电站（低压无功补偿装置）</string>
-        mDLXLFragments.add(getGY_XSBDZ_ZPSJ());//箱式变电站（照片信息）</string>
-
+        mDLXLFragments.addAll(getSecondLevelItems_XSBDZ());
         for (int i = 0; i < mDLXLFragments.size(); i++) {
             FragmentOption option = mDLXLFragments.get(i);
             option.setDatasetName(Enum.GY_DLXLTZXX);
