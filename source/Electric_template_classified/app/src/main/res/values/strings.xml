@@ -1378,4 +1378,7 @@
     <string name="GY_DLXL_SKQK">三跨情况</string>
     <string name="GY_DLXL_TSPDBYQ">台式配电变压器</string>
     <string name="GY_DLXL_XSBDZ">箱式变电站</string>
+    <string name="update_template_file">正在更新数据</string>
+    <string name="update_template_file_fail">更新文件失败</string>
+    <string name="update_template_file_success">更新文件成功</string>
 </resources>

@@ -18,6 +18,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
+import com.geocraft.electrics.sr.task.UpdateTemplateAsyncTask;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     ArrayAdapter<String> dataAdapter;
     Spinner spinner;
     Button button;
-    private TaskManager mTaskManager;
     private View mRootView;
     private String mValue;
     private ArrayList<String> mDatalist = new ArrayList<>();
@@ -76,7 +76,6 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
 
     private void init() {
         Context context = getContext();
-        mTaskManager = TaskManager_.getInstance_(context);
         LayoutInflater mInflater = LayoutInflater.from(context);
         mRootView = mInflater.inflate(R.layout.view_business_concat_pinner, this, false);
         addView(mRootView);
@@ -117,7 +116,9 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     }
 
     private void onAddFieldMenulistToTemplate(String text) {
-        mTaskManager.writeMenuList(mDataSet,mFieldInfo,text);
+        UpdateTemplateAsyncTask task = new UpdateTemplateAsyncTask(getContext(),
+                mDataSet, mFieldInfo);
+        task.execute(text);
     }
 
     @Override
