@@ -605,7 +605,7 @@
     <string name="tower_hwg">环网柜</string>
     <string name="well_type">杆桩类型</string>
     <string name="well_name_empty">井号名称不能为空!</string>
-    <string name="well_jk_base">杆塔</string>
+    <string name="well_jk_base">架空电线</string>
     <string name="btn_confrim">确认</string>
     <string name="F_ColletObject">采集对象</string>
     <string name="button_title_take_photo">拍照</string>
@@ -1291,6 +1291,8 @@
     <string name="GY_HWG_TITLE_BLQ">环网柜（避雷器）</string>
     <string name="GY_HWG_TITLE_GZZSQ">环网柜（故障指示器）</string>
     <string name="GY_HWG_TITLE_MX">环网柜（母线）</string>
+    <string name="GY_HWG_TITLE_OTHER">环网柜（其他）</string>
+    <string name="GY_HWG_TITLE_PHOTO">环网柜（照片）</string>
 
 
     <string name="GY_KBS_TITLE_GYG">开闭所（高压柜）</string>
@@ -1311,6 +1313,7 @@
     <string name="GY_FZX_TITLE_BLQ">分支箱（避雷器）</string>
     <string name="GY_FZX_TITLE_GZZSQ">分支箱（故障指示器）</string>
     <string name="GY_FZX_TITLE_MX">分支箱（母线）</string>
+    <string name="GY_FZX_TITLE_ZPSJ">分支箱（照片）</string>
 
 
     <string name="GY_DLFZX_TITLE_JBXX">电缆分接箱（基本信息）</string>
@@ -1332,6 +1335,8 @@
     <string name="GY_XSBDZ_TITLE_DYKK5">箱式变电站（低压空开5）</string>
     <string name="GY_XSBDZ_TITLE_DYKK6">箱式变电站（低压空开6）</string>
     <string name="GY_XSBDZ_TITLE_DYWGBCZZ">箱式变电站（低压无功补偿装置）</string>
+    <string name="GY_XSBDZ_TITLE_ZPSJ">箱式变电站（照片信息）</string>
+
 
 
     <string name="GY_ZSBYQ_TITLE_JBXX">柱上变压器（基本信息）</string>
