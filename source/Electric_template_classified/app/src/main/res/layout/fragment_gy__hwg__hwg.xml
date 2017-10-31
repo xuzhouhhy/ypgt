@@ -166,11 +166,26 @@
         android:layout_height="wrap_content"
         android:text="@string/GY_HYGTZXX_F_JCXJGS"
         />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_JCXJGS"
-        android:tag="@string/GY_HYGTZXX_F_JCXJGS"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/red">
+
+            <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/F_JCXJGS"
+                android:tag="@string/GY_HYGTZXX_F_JCXJGS"
+                android:layout_weight="5"/>
+
+            <Button
+                android:id="@+id/btnGyHwgInterval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/gaoya_huanwanggui_interval_detail"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         <!--DTU 型号 -->
         <TextView
