@@ -92,18 +92,12 @@ public class Well_PreFragment extends WellBaseInfoFragment {
             if (fieldInfo == null) {
                 continue;
             }
-            if (mIsNew) {
-                //类型 编辑状态不需要改变
-                if (Enum.GY_JKXLTZXX_FIELD_GZlX.equalsIgnoreCase(fieldInfo.Name)) {
-                    fieldInfo.Value = String.valueOf(getWellType(rg_tower_type
-                            .getCheckedRadioButtonId()).ordinal());
-                }
+            if (Enum.GY_JKXLTZXX_FIELD_GZlX.equalsIgnoreCase(fieldInfo.Name)) {
+                fieldInfo.Value = String.valueOf(getWellType(rg_tower_type
+                        .getCheckedRadioButtonId()).ordinal());
             }
-            if (mIsNew) {
-                //线路id 编辑状态不需要改变
-                if (Enum.GY_JKXLTZXX_FIELD_LINEID.equalsIgnoreCase(fieldInfo.Name)) {
-                    fieldInfo.Value = String.valueOf(mWellController.getLineId());
-                }
+            if (Enum.GY_JKXLTZXX_FIELD_LINEID.equalsIgnoreCase(fieldInfo.Name)) {
+                fieldInfo.Value = String.valueOf(mWellController.getLineId());
             }
         }
     }
