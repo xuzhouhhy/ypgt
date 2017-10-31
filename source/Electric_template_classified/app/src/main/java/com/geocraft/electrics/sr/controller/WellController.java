@@ -126,6 +126,8 @@ public class WellController extends BaseController {
             mCurrentDataSet = getCurrentDataSet(Enum.GY_JKXLTZXX);
         } else if (mWellType == WellType.DL) {
             mCurrentDataSet = getCurrentDataSet(Enum.GY_DLXLTZXX);
+        } else if (mWellType == WellType.KBS) {
+            mCurrentDataSet = getCurrentDataSet(Enum.GY_KBSTZXX);
         }
     }
 
@@ -317,9 +319,10 @@ public class WellController extends BaseController {
         }
         if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
             mWellType = WellType.JK;
-        }
-        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
+        } else if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
             mWellType = WellType.DL;
+        } else if (value.equals(String.valueOf(WellType.KBS.ordinal()))) {
+            mWellType = WellType.KBS;
         }
     }
 

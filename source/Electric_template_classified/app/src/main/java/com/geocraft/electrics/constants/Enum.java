@@ -666,11 +666,12 @@ public class Enum {
     public static String GYCJ_LINE_F_GH = "F_GH";
     public static String GY_JKXLTZXX = "GY_JKXLTZXX";
     public static String GY_DLXLTZXX = "GY_DLXLTZXX";
+    public static String GY_KBSTZXX = "GY_KBSTZXX";
 
     /**
      * 杆桩井号表字段名称
      */
     public static String GY_JKXLTZXX_FIELD_GZlX = "F_gzlx";//杆桩类型
     public static String GY_JKXLTZXX_FIELD_COLLECTOBJECT = "F_ColletObject";//已选择类型
-    public static String GY_JKXLTZXX_FIELD_LINEID= "F_lineId";//线路id
+    public static String GY_JKXLTZXX_FIELD_LINEID = "F_lineId";//线路id
 }

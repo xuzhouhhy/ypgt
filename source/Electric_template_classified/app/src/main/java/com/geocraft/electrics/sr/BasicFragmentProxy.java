@@ -17,10 +17,13 @@ public class BasicFragmentProxy {
     JKFragments mJKFragments;
     @Bean
     DLFragments mDLFragments;
+    @Bean
+    KBSFragments mKBSFragments;
 
 
     /**
      * 初始化获取当前类型可选采集项
+     *
      * @param wellType
      * @param dataset
      * @return
@@ -35,6 +38,8 @@ public class BasicFragmentProxy {
             return mJKFragments.getJKFramentItems();
         } else if (wellType == WellType.DL) {
             return mDLFragments.getDLFramentItems();
+        } else if (wellType == WellType.KBS) {
+            return mKBSFragments.getKBSFramentItems();
         }
         return null;
     }
@@ -44,6 +49,8 @@ public class BasicFragmentProxy {
             mJKFragments.initJKFramentDtatas(dataset);
         } else if (wellType == WellType.DL) {
             mDLFragments.initDLFramentDtatas(dataset);
+        } else if (wellType == WellType.KBS) {
+            mKBSFragments.initKBSFramentDtatas(dataset);
         }
     }
 

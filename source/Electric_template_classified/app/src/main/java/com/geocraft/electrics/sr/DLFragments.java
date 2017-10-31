@@ -345,7 +345,6 @@ public class DLFragments {
     }
 
     //环网柜
-    //环网柜
 
     //    环网柜（基本信息）
     private FragmentOption getGY_HWG_HWG() {

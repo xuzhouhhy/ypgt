@@ -116,6 +116,8 @@ public class Well_PreFragment extends WellBaseInfoFragment {
             wellType = WellType.JK;
         } else if (checkedId == R.id.rb_dl) {
             wellType = WellType.DL;
+        } else if (checkedId == R.id.rb_kbs) {
+            wellType = WellType.KBS;
         }
         return wellType;
     }
@@ -127,9 +129,10 @@ public class Well_PreFragment extends WellBaseInfoFragment {
         }
         if (value.equals(String.valueOf(WellType.JK.ordinal()))) {
             rg_tower_type.check(R.id.rb_jk);
-        }
-        if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
+        } else if (value.equals(String.valueOf(WellType.DL.ordinal()))) {
             rg_tower_type.check(R.id.rb_dl);
+        } else if (value.equals(String.valueOf(WellType.KBS.ordinal()))) {
+            rg_tower_type.check(R.id.rb_kbs);
         }
     }
 

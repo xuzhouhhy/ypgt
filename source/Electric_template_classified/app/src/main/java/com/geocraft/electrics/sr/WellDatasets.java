@@ -17,8 +17,10 @@ public class WellDatasets {
     public static String getMainDatasetName(WellType wellType) {
         if (wellType == WellType.JK) {
             return Enum.GY_JKXLTZXX;
-        } else {
+        } else if (wellType == WellType.DL) {
             return Enum.GY_DLXLTZXX;
+        } else {
+            return Enum.GY_KBSTZXX;
         }
     }
 
@@ -32,8 +34,11 @@ public class WellDatasets {
         List<DatasetOption> datasetOptions = new ArrayList<DatasetOption>();
         DatasetOption jk = new DatasetOption(Enum.GY_JKXLTZXX, WellType.JK);
         DatasetOption dl = new DatasetOption(Enum.GY_DLXLTZXX, WellType.DL);
+        DatasetOption kbs = new DatasetOption(Enum.GY_KBSTZXX, WellType.KBS);
+
         datasetOptions.add(jk);
         datasetOptions.add(dl);
+        datasetOptions.add(kbs);
         return datasetOptions;
     }
 
