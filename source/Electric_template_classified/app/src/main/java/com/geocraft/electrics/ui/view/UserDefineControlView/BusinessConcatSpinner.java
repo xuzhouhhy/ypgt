@@ -16,8 +16,6 @@ import android.widget.Spinner;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
-import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.sr.task.UpdateTemplateAsyncTask;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
