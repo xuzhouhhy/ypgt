@@ -1,53 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayoutRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutRoot">
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"-->
-        <!--android:gravity="center_horizontal">-->
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/"/>-->
-        <!--</LinearLayout>-->
+        android:orientation="vertical">
 
-    <!-- 是否具备电操机构 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_KBSTZXX_F_SFJBDCJG"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_SFJBDCJG"
-        android:tag="@string/GY_KBSTZXX_F_SFJBDCJG"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_KBS_TITLE_other"/>
+        </LinearLayout>
+
+        <!-- 是否具备电操机构 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_KBSTZXX_F_SFJBDCJG"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_SFJBDCJG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/GY_KBSTZXX_F_SFJBDCJG"/>
 
 
+        <!--是否通光纤  -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_KBSTZXX_F_SFTGQ"
+            />
 
-
-    <!--是否通光纤  -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_KBSTZXX_F_SFTGQ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_SFTGQ"
-        android:tag="@string/GY_KBSTZXX_F_SFTGQ"/>
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_SFTGQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/GY_KBSTZXX_F_SFTGQ"/>
     </LinearLayout>
 </ScrollView>

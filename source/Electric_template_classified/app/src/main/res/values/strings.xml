@@ -1338,7 +1338,6 @@
     <string name="GY_XSBDZ_TITLE_ZPSJ">箱式变电站（照片信息）</string>
 
 
-
     <string name="GY_ZSBYQ_TITLE_JBXX">柱上变压器（基本信息）</string>
     <string name="GY_ZSBYQ_TITLE_GLKG">柱上变压器（隔离开关）</string>
     <string name="GY_ZSBYQ_TITLE_RDQ">柱上变压器（熔断器）</string>
@@ -1385,4 +1384,7 @@
     <string name="GY_DLXL_XSBDZ">箱式变电站</string>
     <string name="GY_well_base_info">杆桩/井信息</string>
     <string name="Well_type_kbs">开闭所</string>
+    <string name="GY_KBS_BLQ">开闭所（避雷器）</string>
+    <string name="GY_KBS_TITLE_other">开闭所（其他信息）</string>
+    <string name="GY_KBS_TITLE_photo">开闭所（照片信息）</string>
 </resources>
