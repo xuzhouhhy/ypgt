@@ -19,7 +19,7 @@ public class CommonFragment {
         String[] keyArry = checkedFragmentkeyValue.split(NAME_KEY_MARK);
         for (int i = 0; i < fragmentOptions.size(); i++) {
             FragmentOption option = fragmentOptions.get(i);
-            String fragmentNameKey = option.getFramentNameKey();
+            String fragmentNameKey = option.getNameKey();
             for (String key : keyArry) {
                 if (key.equals(fragmentNameKey)) {
                     option.setChecked(true);

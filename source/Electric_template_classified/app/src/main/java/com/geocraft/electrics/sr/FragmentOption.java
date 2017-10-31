@@ -10,13 +10,13 @@ public class FragmentOption {
     private BusinessFragment mFragment;
     private String mFramentName;
     private String mDatasetName;
-    private String mFramentNameKey;
+    private String mNameKey;
     private boolean mIsChecked;
     private String mParentNameKey = "";
 
     public FragmentOption(String framentNameKey, String framentName,
                           String datasetName, BusinessFragment fragment) {
-        mFramentNameKey = framentNameKey;
+        mNameKey = framentNameKey;
         mFramentName = framentName;
         mDatasetName = datasetName;
         mFragment = fragment;
@@ -46,12 +46,12 @@ public class FragmentOption {
         mDatasetName = datasetName;
     }
 
-    public String getFramentNameKey() {
-        return mFramentNameKey;
+    public String getNameKey() {
+        return mNameKey;
     }
 
-    public void setFramentNameKey(String framentNameKey) {
-        mFramentNameKey = framentNameKey;
+    public void setNameKey(String nameKey) {
+        mNameKey = nameKey;
     }
 
     public boolean isChecked() {

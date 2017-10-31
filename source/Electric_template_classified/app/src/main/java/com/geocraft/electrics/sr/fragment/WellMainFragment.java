@@ -89,7 +89,7 @@ public class WellMainFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         List<FragmentOption> fragmentOptions = mWellController.getCheckedFragments();
         for (int i = 0; i < fragmentOptions.size(); i++) {
-            sb.append(NAME_KEY_MARK).append(fragmentOptions.get(i).getFramentNameKey());
+            sb.append(NAME_KEY_MARK).append(fragmentOptions.get(i).getNameKey());
         }
         if (sb.toString().trim().length() > 0) {
             sb.replace(0, 1, "");

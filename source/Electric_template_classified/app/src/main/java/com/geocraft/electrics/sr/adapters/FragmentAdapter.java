@@ -40,7 +40,9 @@ public class FragmentAdapter extends BaseAdapter {
     private void updateFragmentStatus(CompoundButton buttonView, boolean isChecked) {
         FragmentItemView.ViewHodler viewHodler =
                 (FragmentItemView.ViewHodler) buttonView.getTag();
-        ElectricApplication.BUS.post(new CheckFragmentEvent(viewHodler.getPosition(), isChecked));
+        String fagrmentNameKey = mController.getCurVisibleFragmentOptions()
+                .get(viewHodler.getPosition()).getNameKey();
+        ElectricApplication.BUS.post(new CheckFragmentEvent(fagrmentNameKey, isChecked));
     }
 
     @Override
@@ -65,12 +67,7 @@ public class FragmentAdapter extends BaseAdapter {
         fragmentItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
         FragmentOption datasetOption = (FragmentOption) getItem(position);
         boolean isChecked = datasetOption.isChecked();
-//        boolean isVisible = false;
-//        String parentNamekey = datasetOption.getParentNameKey();
-//        if (null == parentNamekey || parentNamekey.isEmpty()) {
-//            isVisible = true;
-//        }
-        fragmentItemView.bind(position,  datasetOption.getFramentNameKey(),
+        fragmentItemView.bind(position, datasetOption.getNameKey(),
                 datasetOption.getFramentName(), isChecked, mOnCheckedChangeListener);
         return fragmentItemView;
     }

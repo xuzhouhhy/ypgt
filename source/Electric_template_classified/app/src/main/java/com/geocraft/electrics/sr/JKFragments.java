@@ -108,7 +108,7 @@ public class JKFragments {
         for (int i = 0; i < mJKXLFragments.size(); i++) {
             FragmentOption option = mJKXLFragments.get(i);
             option.setDatasetName(Enum.GY_JKXLTZXX);
-            if (CommonFragment.isBaseFragment(option.getFramentNameKey())) {
+            if (CommonFragment.isBaseFragment(option.getNameKey())) {
                 option.setChecked(true);
             }
         }

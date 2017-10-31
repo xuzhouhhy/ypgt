@@ -242,7 +242,7 @@ public class DLFragments {
         for (int i = 0; i < mDLXLFragments.size(); i++) {
             FragmentOption option = mDLXLFragments.get(i);
             option.setDatasetName(Enum.GY_DLXLTZXX);
-            if (CommonFragment.isBaseFragment(option.getFramentNameKey())) {
+            if (CommonFragment.isBaseFragment(option.getNameKey())) {
                 option.setChecked(true);
             }
         }

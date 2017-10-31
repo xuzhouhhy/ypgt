@@ -218,25 +218,19 @@ public class WellController extends BaseController {
     /**
      * 更新制定fragment状态
      *
-     * @param framgmentIndex fragment队列中索引
-     * @param isChecked      选中状态
+     * @param framgmentNameKey fragment队列中fragmentName
+     * @param isChecked        选中状态
      */
-    public void updateFragmentStatus(int framgmentIndex, boolean isChecked) {
-        if (framgmentIndex <= 0 || framgmentIndex > mFragmentOptions.size() - 1) {
-            return;
-        }
-        FragmentOption fragmentOption = mFragmentOptions.get(framgmentIndex);
-        if (null == fragmentOption) {
-            return;
-        }
-        String fragmentNameKey = fragmentOption.getFramentNameKey();
-        fragmentOption.setChecked(isChecked);
+    public void updateFragmentStatus(String framgmentNameKey, boolean isChecked) {
         for (FragmentOption option : mFragmentOptions) {
+            if (framgmentNameKey.equals(option.getNameKey())) {
+                option.setChecked(isChecked);
+            }
             String parentNameKey = option.getParentNameKey();
             if (null == parentNameKey || parentNameKey.isEmpty()) {
                 continue;
             }
-            if (parentNameKey.equals(fragmentNameKey)) {
+            if (parentNameKey.equals(framgmentNameKey)) {
                 option.setChecked(isChecked);
             }
         }

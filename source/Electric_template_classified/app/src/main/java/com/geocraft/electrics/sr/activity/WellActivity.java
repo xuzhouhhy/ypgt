@@ -108,7 +108,7 @@ public class WellActivity extends BaseActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
     public void onDataSynEvent(CheckFragmentEvent event) {
-        mController.updateFragmentStatus(event.getFragmentIndex(), event.isChecked());
+        mController.updateFragmentStatus(event.getFragmentNameKey(), event.isChecked());
         updateNextBtnStatus();
     }
 

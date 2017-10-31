@@ -4,19 +4,27 @@ package com.geocraft.electrics.event;
  * @author kingdon
  */
 public class CheckFragmentEvent {
-    private int mFragmentIndex;
+    private String mFragmentNameKey;
     private boolean mIsChecked;
 
-    public CheckFragmentEvent(int fragmentIndex, boolean isChecked) {
-        mFragmentIndex = fragmentIndex;
+    public CheckFragmentEvent(String fragmentNameKey, boolean isChecked) {
+        mFragmentNameKey = fragmentNameKey;
         mIsChecked = isChecked;
     }
 
-    public int getFragmentIndex() {
-        return mFragmentIndex;
+    public String getFragmentNameKey() {
+        return mFragmentNameKey;
+    }
+
+    public void setFragmentNameKey(String fragmentNameKey) {
+        mFragmentNameKey = fragmentNameKey;
     }
 
     public boolean isChecked() {
         return mIsChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        mIsChecked = checked;
     }
 }
