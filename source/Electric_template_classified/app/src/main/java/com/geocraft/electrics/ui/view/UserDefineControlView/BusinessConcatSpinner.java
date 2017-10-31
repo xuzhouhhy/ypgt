@@ -78,7 +78,7 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
         Context context = getContext();
         mTaskManager = TaskManager_.getInstance_(context);
         LayoutInflater mInflater = LayoutInflater.from(context);
-        mRootView = mInflater.inflate(R.layout.view_business_concat_pinner, null);
+        mRootView = mInflater.inflate(R.layout.view_business_concat_pinner, this, false);
         addView(mRootView);
         spinner = (Spinner) mRootView.findViewById(R.id.spinner);
         button = (Button) mRootView.findViewById(R.id.button);
