@@ -77,7 +77,7 @@
             android:text="@string/F_LINEZCSX"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
             android:id="@+id/F_LINEZCSX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:text="@string/F_LINETYRQ"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:id="@+id/F_LINETYRQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,6 +113,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:tag="@string/line_construction_unit"
+            />
+
+        <!--线路维护班底-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_LINE_whbz"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_whbd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_LINE_whbz"
             />
 
         <TextView
