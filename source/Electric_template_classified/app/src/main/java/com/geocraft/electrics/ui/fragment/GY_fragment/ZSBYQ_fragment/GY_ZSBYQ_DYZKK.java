@@ -3,7 +3,6 @@ package com.geocraft.electrics.ui.fragment.GY_fragment.ZSBYQ_fragment;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 
