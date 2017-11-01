@@ -21,18 +21,12 @@ public class GY_HWG_HWG extends WellBaseFragment {
     @ViewById
     LinearLayout linearLayoutRoot;
 
-    @ViewById
-    Button btnGyHwgInterval;
-
     private Dialog mDialog;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.btnGyHwgInterval:
-                    onGyHwgIntervalDetail();
-                    break;
                 case R.id.btnYes:
                     onSaveInterval();
                     break;
@@ -106,7 +100,7 @@ public class GY_HWG_HWG extends WellBaseFragment {
     @Override
     protected void init() {
         mLinearLayout = linearLayoutRoot;
-        btnGyHwgInterval.setOnClickListener(mOnClickListener);
+//        btnGyHwgInterval.setOnClickListener(mOnClickListener);
         super.init();
     }
 
