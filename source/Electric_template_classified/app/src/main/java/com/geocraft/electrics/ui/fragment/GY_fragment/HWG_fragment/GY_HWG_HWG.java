@@ -26,19 +26,6 @@ public class GY_HWG_HWG extends WellBaseFragment {
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.btnYes:
-                    onSaveInterval();
-                    break;
-                case R.id.btnNo:
-                    dialogDismiss();
-                    break;
-                case R.id.btnNext:
-                    onNextInterval();
-                    break;
-                default:
-                    break;
-            }
         }
     };
 
@@ -52,8 +39,6 @@ public class GY_HWG_HWG extends WellBaseFragment {
         Button button = (Button) dialogView.findViewById(R.id.btnYes);
         button.setOnClickListener(mOnClickListener);
         button = (Button) dialogView.findViewById(R.id.btnNo);
-        button.setOnClickListener(mOnClickListener);
-        button = (Button) dialogView.findViewById(R.id.btnNext);
         button.setOnClickListener(mOnClickListener);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(dialogView).setCancelable(true);

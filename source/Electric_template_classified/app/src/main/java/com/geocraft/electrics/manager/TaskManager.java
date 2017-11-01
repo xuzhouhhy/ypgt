@@ -367,26 +367,31 @@ public class TaskManager {
                                         if (null == dsetList.item(n).getAttributes()) {
                                             continue;
                                         }
-                                        dsetList.item(n).getAttributes().getNamedItem("Name").getNodeValue().equals(dataSet.Name);
-                                        NodeList fieldList = dsetList.item(i).getChildNodes();
-                                        for (int q = 0; q < fieldList.getLength(); q++) {
-                                            if (null == fieldList.item(q).getAttributes()) {
-                                                continue;
-                                            }
-                                            if (fieldList.item(q).getAttributes().getNamedItem("Name").getNodeValue().equals(fieldInfo.Name)) {
-                                                NodeList meunList = fieldList.item(q).getChildNodes();
-                                                for (int l = 0; l < meunList.getLength(); l++) {
-                                                    if (null == meunList.item(l).getAttributes()) {
-                                                        continue;
+                                        if (dsetList.item(n).getAttributes().getNamedItem("Name").getNodeValue().equals(dataSet.Name)) {
+                                            NodeList fieldList = dsetList.item(n).getChildNodes();
+                                            for (int q = 0; q < fieldList.getLength(); q++) {
+                                                if (null == fieldList.item(q).getAttributes()) {
+                                                    continue;
+                                                }
+                                                if (fieldList.item(q).getAttributes().getNamedItem("Name").getNodeValue().equals(fieldInfo.Name)) {
+                                                    NodeList meunList = fieldList.item(q).getChildNodes();
+                                                    int menuListLength = meunList.getLength();
+                                                    if (menuListLength <= 0) {
+                                                        return false;
                                                     }
-                                                    if (meunList.item(l).getNodeName().equals("MenuList")) {
-                                                        NodeList itemList = meunList.item(l).getChildNodes();
-                                                        for (int h = 0; h < itemList.getLength(); h++) {
-                                                            if (null != itemList.item(h).getAttributes()) {
-                                                                Node nodeCopy = itemList.item(h).cloneNode(true);
-                                                                nodeCopy.getAttributes().item(0).setNodeValue(text);
-                                                                meunList.item(h).appendChild(nodeCopy);
-                                                                return writeFile(file, dom);
+                                                    for (int l = 0; l < meunList.getLength(); l++) {
+                                                        if (null == meunList.item(l).getAttributes()) {
+                                                            continue;
+                                                        }
+                                                        if (meunList.item(l).getNodeName().equals("MenuList")) {
+                                                            NodeList itemList = meunList.item(l).getChildNodes();
+                                                            for (int h = 0; h < itemList.getLength(); h++) {
+                                                                if (null != itemList.item(h).getAttributes()) {
+                                                                    Node nodeCopy = itemList.item(h).cloneNode(true);
+                                                                    nodeCopy.getAttributes().item(0).setNodeValue(text);
+                                                                    meunList.item(h).appendChild(nodeCopy);
+                                                                    return writeFile(file, dom);
+                                                                }
                                                             }
                                                         }
                                                     }
