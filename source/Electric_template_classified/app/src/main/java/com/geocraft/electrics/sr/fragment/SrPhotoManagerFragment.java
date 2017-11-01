@@ -19,7 +19,6 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
-import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
 import com.geocraft.electrics.event.RefreshPhotoAdapterEventArgs;
 import com.geocraft.electrics.sr.UtilFile;
@@ -85,6 +84,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
                     return true;
                 }
             };
+    private boolean mIsCreateForDefine;
     private String photoPath;
 
     /**
@@ -119,8 +119,9 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
         ElectricApplication.BUS.register(this);
         mActivity = ((WellActivity) this.getActivity());
         mDataSet = mActivity.getController().getCurrentDataSet();
-        mIsNew = mActivity.getController().isCreateRecord();
-        mController.initParams(this.getContext(), mIsNew, mDataSet);
+        mIsCreateForDefine = mActivity.getController().isCreateRecord();
+        mIsNew = mIsCreateForDefine ? mActivity.isGoNext() : false;
+        mController.initParams(this.getContext(), mIsCreateForDefine, mDataSet);
         mController.initTaskPhotoList();
         mAdapter = new PhotoManagerAdapter();
         gridViewPhotoList.setAdapter(mAdapter);
@@ -271,11 +272,6 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ElectricApplication.BUS.unregister(this);
-    }
-
-    @Override
-    public void getValue(DataSet dataSet) {
-        mController.saveValue();
     }
 
     class PhotoManagerAdapter extends BaseAdapter {
