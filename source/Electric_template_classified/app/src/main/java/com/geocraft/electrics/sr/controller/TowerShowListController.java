@@ -22,12 +22,10 @@ import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.LineFactory;
-import com.geocraft.electrics.sr.activity.AddChildLineActivity;
 import com.geocraft.electrics.sr.activity.AddChildLineActivity_;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.geocraft.electrics.sr.activity.WellActivity_;
 import com.geocraft.electrics.sr.event.LineElementRefreshEvent;
-import com.geocraft.electrics.ui.activity.RecordActivity_;
 import com.geocraft.electrics.utils.Utils;
 import com.huace.log.logger.L;
 
