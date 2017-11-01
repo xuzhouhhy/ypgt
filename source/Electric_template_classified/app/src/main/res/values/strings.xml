@@ -1391,4 +1391,5 @@
     <string name="update_template_file">正在更新数据</string>
     <string name="update_template_file_fail">更新文件失败</string>
     <string name="update_template_file_success">更新文件成功</string>
+    <string name="well_jk_photo_title">照片采集</string>
 </resources>

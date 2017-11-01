@@ -6,6 +6,8 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_BGXJ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_BGXJ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.JTXL_fragment.GY_JTXL_BYQ;
@@ -75,6 +77,7 @@ public class JKFragments {
     private final static String KEY_GY_JTXL_SKQK = "GY_JTXL_SKQK";
     private final static String KEY_GY_JTXL_TGXLHS = "GY_JTXL_TGXLHS";
     private final static String KEY_GY_JTXL_XLBLQ = "GY_JTXL_XLBLQ";
+    private final static String KEY_GY_JTXL_PHOTO = "GY_JTXL_PHOTO";
 
 
     private List<FragmentOption> mJKXLFragments = new ArrayList<FragmentOption>();//架空线路
@@ -87,6 +90,7 @@ public class JKFragments {
             return mJKXLFragments;
         }
         //mJKXLFragments.add(generateGY_JTXL_Base());
+        mJKXLFragments.add(generateGY_JTXL_PHOTO());
         mJKXLFragments.add(generateGY_JTXL_BGXJ());
         mJKXLFragments.add(generateGY_JTXL_BYQ());
         mJKXLFragments.add(generateGY_JTXL_DLQ());
@@ -125,6 +129,13 @@ public class JKFragments {
 
 
     // =======================================jk fragment 生成============================
+
+    private FragmentOption generateGY_JTXL_PHOTO() {
+        SrPhotoManagerFragment fragment = new SrPhotoManagerFragment_();
+        String fragmentName = mResources.getString(R.string.well_jk_photo_title);
+        return new FragmentOption(KEY_GY_JTXL_PHOTO,
+                fragmentName, "", fragment);
+    }
 
     private FragmentOption generateGY_JTXL_Base() {
         GY_JTXL_Base fragment = new GY_JTXL_Base_();

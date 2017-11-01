@@ -17,21 +17,21 @@ import android.widget.GridView;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
-import com.geocraft.electrics.base.BaseFragment;
+import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
 import com.geocraft.electrics.event.RefreshPhotoAdapterEventArgs;
+import com.geocraft.electrics.sr.UtilFile;
+import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.event.CopyImportFileFinishedEvent;
 import com.geocraft.electrics.sr.event.OpenSystemImportePhotoEventArgs;
-import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.view.SrPhotoManagerItemView;
 import com.geocraft.electrics.sr.view.SrPhotoManagerItemView_;
-import com.geocraft.electrics.sr.UtilFile;
 import com.geocraft.electrics.ui.activity.RecordActivity;
 import com.huace.log.logger.L;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -48,7 +48,7 @@ import common.geocraft.untiltools.T;
  * Created by Administrator on 2016/6/7.
  */
 @EFragment(R.layout.fragment_photo_manager)
-public class SrPhotoManagerFragment extends BaseFragment {
+public class SrPhotoManagerFragment extends BusinessFragment {
 
     PhotoManagerAdapter mAdapter;
     @Bean
@@ -116,13 +116,13 @@ public class SrPhotoManagerFragment extends BaseFragment {
         }
     };
 
-    @AfterViews
-    void init() {
+    @Override
+    protected void init() {
         ElectricApplication.BUS.register(this);
         mController.initParams(
                 this.getContext(),
-                ((RecordActivity) this.getContext()).getController().isCreateRecord(),
-                ((RecordActivity) this.getContext()).getController().getCurrentDataSet());
+                ((WellActivity) this.getContext()).getController().isCreateRecord(),
+                ((WellActivity) this.getContext()).getController().getCurrentDataSet());
         mController.initTaskPhotoList();
         mAdapter = new PhotoManagerAdapter();
         gridViewPhotoList.setAdapter(mAdapter);
