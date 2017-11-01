@@ -401,6 +401,11 @@ public class WellController extends BaseController {
     }
 
     private void renamePhotoAndMove(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
+        String lineName = queryLineName();
+        if (null == lineName || lineName.isEmpty()) {
+            return;
+        }
+
         for (int i = 0; i < taskPhotoList.size(); i++) {
             SrPhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
             if (photoItemInfo == null) {
@@ -408,7 +413,7 @@ public class WellController extends BaseController {
             }
             if (photoItemInfo.photoPath.contains(Constants.TASK_CACHE_PATH)) {
                 File oldFile = new File(photoItemInfo.photoPath);
-                File newFile = new File(getNewPhotoPath(photoItemInfo));
+                File newFile = new File(getNewPhotoPath(photoItemInfo, lineName));
                 File cacheFile = new File(getTaskPath() + File.separator +
                         Constants.TASK_PHOTO_FOLDER + File.separator +
                         Constants.TASK_CACHE_PATH + File.separator + newFile.getName());
@@ -418,9 +423,9 @@ public class WellController extends BaseController {
                 } catch (IOException e) {
                     L.printException(e);
                 }
-            } else {
+            } else if (photoItemInfo.photoPath.contains(Constants.PHOTO_SUFFIX)) {
                 File oldFile = new File(photoItemInfo.photoPath);
-                File newFile = new File(getNewPhotoPath(photoItemInfo));
+                File newFile = new File(getNewPhotoPath(photoItemInfo, lineName));
                 if (!oldFile.getPath().equals(newFile.getPath())) {
                     try {
                         FileUtils.copyFile(oldFile, newFile);
@@ -432,11 +437,21 @@ public class WellController extends BaseController {
         }
     }
 
+    private String queryLineName() {
+        if (mLineId > -1) {
+            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName("gycj", "line");
+            dataSet.PrimaryKey = mLineId;
+            DataSet ds = mDbManager.queryByPrimaryKey(dataSet, true);
+            return ds.GetFieldValueByName("F_lineName");
+        }
+        return null;
+    }
+
     private String getTaskPath() {
         return ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
     }
 
-    private String getNewPhotoPath(SrPhotoManagerController.PhotoItemInfo photoItemInfo) {
+    private String getNewPhotoPath(SrPhotoManagerController.PhotoItemInfo photoItemInfo, String lineName) {
         PhotoRules photoRules = getPhotoRules(photoItemInfo.mPhotoType);
         if (photoRules == null) {
             return "";
@@ -456,7 +471,7 @@ public class WellController extends BaseController {
             photoName = photoPrefix + photoRules.Type + Constants.PHOTO_SUFFIX;
         }
         String taskPath = getTaskPath();
-        String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER;
+        String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
         photoPath = Utils.getPhotoDir(photoPath, photoRules, mCurrentDataSet);
         return photoPath + photoName;
     }

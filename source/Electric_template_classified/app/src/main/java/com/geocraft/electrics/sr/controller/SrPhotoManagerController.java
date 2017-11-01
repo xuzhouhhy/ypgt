@@ -14,6 +14,7 @@ import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.db.DbManager_;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.entity.TaskInfo;
@@ -147,7 +148,8 @@ public class SrPhotoManagerController extends BaseController {
             photoName = photoPrefix + photoItemInfoTemp.mPhotoType + Constants.PHOTO_SUFFIX;
         }
         String taskPath = ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
-        String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER;
+        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName("F_lineId")));
+        String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
         photoPath = Utils.getPhotoDir(photoPath, photoRulesTemp, mDataSet);
         String photoAbsolutePath = photoPath + photoName;
         if (FileUtils.existFile(photoAbsolutePath)) {
@@ -162,6 +164,16 @@ public class SrPhotoManagerController extends BaseController {
             photoItemInfoTemp.noPhoto = true;
         }
         return photoItemInfoTemp;
+    }
+
+    private String queryLineName(int lineId) {
+        if (lineId > -1) {
+            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName("gycj", "line");
+            dataSet.PrimaryKey = lineId;
+            DataSet ds = DbManager_.getInstance_(mContext).queryByPrimaryKey(dataSet, true);
+            return ds.GetFieldValueByName("F_lineName");
+        }
+        return null;
     }
 
     private void openTakePhotoActivity(int position) {
