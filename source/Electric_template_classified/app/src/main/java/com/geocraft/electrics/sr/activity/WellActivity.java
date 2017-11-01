@@ -255,5 +255,14 @@ public class WellActivity extends BaseActivity {
         return isGoNext;
     }
 
+    private void getPhotoFragment(FragmentOption fragmentOption) {
+        if (null == fragmentOption) {
+            return;
+        }
+        BusinessFragment businessFragment = fragmentOption.getFragment();
+        if (businessFragment instanceof SrPhotoManagerFragment) {
+            mPhotoFragment = (SrPhotoManagerFragment) businessFragment;
+        }
+    }
 
 }

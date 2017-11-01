@@ -58,7 +58,17 @@ public class DeviceShowListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DeviceShowItemView deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        DeviceShowItemView deviceShowItemView;
+        try{
+            if (convertView == null){
+                deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+            } else{
+                deviceShowItemView = (DeviceShowItemView)convertView;
+            }
+        }catch (Exception ex){
+            deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        }
+
         if (position % 2 != 0) {
             deviceShowItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
         } else {
