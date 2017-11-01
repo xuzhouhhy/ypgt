@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:text="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"
         />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGGLKGSSDZ"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="@string/GY_HYGTZXX_F_HWGGLKGXH"
         />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGGLKGXH"
@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         android:text="@string/GY_HYGTZXX_F_HWGGLKGGLKGCJ"
         />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGGLKGGLKGCJ"

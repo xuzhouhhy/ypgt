@@ -31,7 +31,7 @@
             android:text="@string/GY_KBSTZXX_F_DDXSQXH"
             />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:id="@+id/F_DDXSQXH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
