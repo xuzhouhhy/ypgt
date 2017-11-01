@@ -1387,4 +1387,5 @@
     <string name="GY_KBS_BLQ">开闭所（避雷器）</string>
     <string name="GY_KBS_TITLE_other">开闭所（其他信息）</string>
     <string name="GY_KBS_TITLE_photo">开闭所（照片信息）</string>
+    <string name="GY_JKXI_TITLE_YGLZ">架空线路（一杆六照）</string>
 </resources>
