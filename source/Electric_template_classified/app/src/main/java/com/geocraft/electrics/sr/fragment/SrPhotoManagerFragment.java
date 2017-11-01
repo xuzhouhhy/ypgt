@@ -17,7 +17,6 @@ import android.widget.GridView;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
-import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
@@ -47,14 +46,13 @@ import common.geocraft.untiltools.T;
  * Created by Administrator on 2016/6/7.
  */
 @EFragment(R.layout.fragment_photo_manager)
-public class SrPhotoManagerFragment extends BusinessFragment {
+public class SrPhotoManagerFragment extends WellBaseFragment {
 
     PhotoManagerAdapter mAdapter;
     @Bean
     SrPhotoManagerController mController;
     @ViewById
     GridView gridViewPhotoList;
-
     PopupMenu.OnMenuItemClickListener mOnMenuItemClickListener =
             new PopupMenu.OnMenuItemClickListener() {
                 @Override
@@ -86,6 +84,7 @@ public class SrPhotoManagerFragment extends BusinessFragment {
                     return true;
                 }
             };
+    private boolean mIsCreateForDefine;
     private String photoPath;
 
     /**
@@ -118,10 +117,11 @@ public class SrPhotoManagerFragment extends BusinessFragment {
     @Override
     protected void init() {
         ElectricApplication.BUS.register(this);
-        mController.initParams(
-                this.getContext(),
-                ((WellActivity) this.getContext()).getController().isCreateRecord(),
-                ((WellActivity) this.getContext()).getController().getCurrentDataSet());
+        mActivity = ((WellActivity) this.getActivity());
+        mDataSet = mActivity.getController().getCurrentDataSet();
+        mIsCreateForDefine = mActivity.getController().isCreateRecord();
+        mIsNew = mIsCreateForDefine ? mActivity.isGoNext() : false;
+        mController.initParams(this.getContext(), mIsCreateForDefine, mDataSet);
         mController.initTaskPhotoList();
         mAdapter = new PhotoManagerAdapter();
         gridViewPhotoList.setAdapter(mAdapter);

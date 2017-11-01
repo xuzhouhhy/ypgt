@@ -88,7 +88,6 @@ public class WellActivity extends BaseActivity {
                 fragmentOption = mController.getNextCheckedDataFragment();
             }
             changeContentView(fragmentOption);
-            getPhotoFragment(fragmentOption);
         }
     }
 
@@ -180,6 +179,7 @@ public class WellActivity extends BaseActivity {
     }
 
     private boolean saveFragmentData() {
+
         if (mController.getFramgmentIndex() == -2) {
             return excuteSaveAction(mController.getCurrentDataSet(), mPreFragment);
         } else if (mController.getFramgmentIndex() == -1) {
@@ -205,6 +205,9 @@ public class WellActivity extends BaseActivity {
     private boolean excuteSaveAction(DataSet dataSet, BusinessFragment fragment) {
         if (!fragment.logicCheck()) {
             return false;
+        }
+        if (fragment instanceof SrPhotoManagerFragment) {
+            mPhotoFragment = (SrPhotoManagerFragment) fragment;
         }
         fragment.getValue(dataSet);
         return true;
@@ -252,11 +255,5 @@ public class WellActivity extends BaseActivity {
         return isGoNext;
     }
 
-    private void getPhotoFragment(FragmentOption fragmentOption) {
-        BusinessFragment businessFragment = fragmentOption.getFragment();
-        if (businessFragment instanceof SrPhotoManagerFragment) {
-            mPhotoFragment = (SrPhotoManagerFragment) businessFragment;
-        }
-    }
 
 }
