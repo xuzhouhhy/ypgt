@@ -15,7 +15,7 @@ public class Constants {
 		return SDCardManager.GetSDCardPath() + "/all/";
 	}
 
-	public static String apk1 = "YPGT.apk";
+	public static String apk1 = "YJCJ.apk";
 
 	public static String apk2 = "RouteInspection.apk";
 

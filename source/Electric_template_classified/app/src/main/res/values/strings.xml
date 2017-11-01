@@ -1393,4 +1393,44 @@
     <string name="update_template_file_success">更新文件成功</string>
     <string name="GY_JKXI_TITLE_YGLZ">架空线路（一杆六照）</string>
     <string name="GY_HWG_TITLE_SPACER">环网柜(间隔信息)</string>
+
+    <string name="F_LINENUMBER">线路编号</string>
+    <string name="F_LINESTART">起点</string>
+    <string name="F_LINEEND">终点</string>
+    <string name="F_LINEZCSX">资产属性</string>
+    <string name="F_LINETYRQ">投运日期</string>
+
+    <!-- 电缆线路 -->
+    <string name="GY_DLXLTZXX_F_JZID">基桩号</string>
+    <string name="GY_DLXLTZXX_F_JZTYPE">基桩形式</string>
+    <string name="GY_DLXLTZXX_F_JZJL">基桩距离</string>
+    <string name="GY_DLXLTZXX_F_JZDXTYPE">导线:线材类别</string>
+    <string name="GY_DLXLTZXX_F_JZDXGGXH">导线:规格型号</string>
+    <string name="GY_DLXLTZXX_F_JZDXZLL">导线:载流量</string>
+    <string name="GY_DLXLTZXX_F_JZDXSCCJ">导线:生产厂家</string>
+    <string name="GY_DLXLTZXX_F_JZDXFSFS">导线:敷设方式</string>
+    <string name="GY_DLXLTZXX_F_JZDXTYRQ">导线:投运日期</string>
+    <string name="GY_DLXLTZXX_F_JZBLXGGXH">避雷线:规格型号</string>
+    <string name="GY_DLXLTZXX_F_JZBLXSCCJ">避雷线:生产厂家</string>
+    <string name="GY_DLXLTZXX_F_JZBLXTYRQ">避雷线:投运日期</string>
+    <string name="GY_DLXLTZXX_F_JZTXGQGGXH">通讯光纤:规格型号</string>
+    <string name="GY_DLXLTZXX_F_JZTXGQSCCJ">通讯光纤:生产厂家</string>
+    <string name="GY_DLXLTZXX_F_JZTXGQTYRQ">通讯光纤:投运日期</string>
+    <string name="GY_DLXLTZXX_F_JZZJDS">基桩:转角度数</string>
+    <string name="GY_DLXLTZXX_F_JZFZXXSFFZ">基桩:是否分支</string>
+    <string name="GY_DLXLTZXX_F_JZFZS_BW">基桩:分支数</string>
+    <string name="GY_DLXLTZXX_F_JZFZS_JD">基桩:面向大数测角度</string>
+    <string name="GY_DLXLTZXX_F_JZCOORD_BW">基桩:纬度</string>
+    <string name="GY_DLXLTZXX_F_JZCOORD_DJ">基桩:经度</string>
+    <string name="GY_DLXLTZXX_F_JZCOORD_HIGH">基桩:高程</string>
+    <string name="GY_DLXLTZXX_F_JZJCKYSFKY">交叉跨越:是否交叉跨越</string>
+    <string name="GY_DLXLTZXX_F_JZJCKYKYLX">交叉跨越:跨越类型</string>
+    <string name="GY_DLXLTZXX_F_JZJCKYKYWMC">交叉跨越:跨越物名称</string>
+    <string name="GY_DLXLTZXX_F_JZJCKYBKYWMC">交叉跨越:被跨越物名称</string>
+    <string name="GY_DLXLTZXX_F_JZJCKYJCJ">交叉跨越:交叉角</string>
+    <string name="GY_DLXLTZXX_F_JZDLXXWZ">地理信息:位置</string>
+    <string name="GY_DLXLTZXX_F_JZDLXXDX">地理信息:地形</string>
+    <string name="GY_DLXLTZXX_F_JZDLXXDZ">地理信息:地质</string>
+    <string name="GY_DLXLTZXX_F_JZDLXXHJ">地理信息:环境</string>
+    <string name="GY_DLXLTZXX_F_JZQXQK">缺陷情况</string>
 </resources>
