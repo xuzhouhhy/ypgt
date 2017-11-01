@@ -439,10 +439,10 @@ public class WellController extends BaseController {
 
     private String queryLineName() {
         if (mLineId > -1) {
-            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName("gycj", "line");
+            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ, Enum.DATA_SET_NAME_LINE);
             dataSet.PrimaryKey = mLineId;
             DataSet ds = mDbManager.queryByPrimaryKey(dataSet, true);
-            return ds.GetFieldValueByName("F_lineName");
+            return ds.GetFieldValueByName(Enum.LINE_FIELD_NAME);
         }
         return null;
     }
@@ -457,7 +457,7 @@ public class WellController extends BaseController {
             return "";
         }
         String[] photoRuleArray = photoRules.Rules.split(",");
-        String photoPrefix = "";
+        String photoPrefix = lineName + "_";
         for (String aPhotoRuleArray : photoRuleArray) {
             photoPrefix += mCurrentDataSet.GetFieldValueByName(aPhotoRuleArray) + "_";
         }
@@ -472,7 +472,6 @@ public class WellController extends BaseController {
         }
         String taskPath = getTaskPath();
         String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
-        photoPath = Utils.getPhotoDir(photoPath, photoRules, mCurrentDataSet);
         return photoPath + photoName;
     }
 

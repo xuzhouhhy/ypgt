@@ -118,7 +118,7 @@ public class SrPhotoManagerFragment extends BusinessFragment {
     @Override
     protected void init() {
         ElectricApplication.BUS.register(this);
-        mController.initParams(
+        mController. initParams(
                 this.getContext(),
                 ((WellActivity) this.getContext()).getController().isCreateRecord(),
                 ((WellActivity) this.getContext()).getController().getCurrentDataSet());

@@ -22,9 +22,10 @@ import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.LineFactory;
-import com.geocraft.electrics.sr.activity.WellActivity_;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
+import com.geocraft.electrics.sr.activity.WellActivity_;
 import com.geocraft.electrics.sr.event.LineElementRefreshEvent;
+import com.geocraft.electrics.ui.activity.RecordActivity_;
 import com.geocraft.electrics.utils.Utils;
 import com.huace.log.logger.L;
 
@@ -292,6 +293,21 @@ public class TowerShowListController extends BaseController {
     public void refreshList(List<DataSet> search) {
         clearDataSetList();
         mDataSets.addAll(search);
+    }
+
+    /**
+     * 根据基桩新建子线路
+     */
+    public void onAddLineByWell(Context context, int position) {
+        DataSet dataSet = mDataSets.get(position);
+        int wellId = dataSet.PrimaryKey;
+        String type = dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX);
+        Intent intent = new Intent(context, RecordActivity_.class);
+        intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
+        intent.putExtra(Constants.INTENT_DATA_WELL_ID, wellId);
+        intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, type);
+//        ((TowerShowListActivity) context).startActivityForResult(
+//                intent, ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY);
     }
 
     public static class CollectType {

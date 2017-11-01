@@ -13,10 +13,11 @@ import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
-import com.geocraft.electrics.sr.event.LineElementRefreshEvent;
-import com.geocraft.electrics.sr.controller.TowerShowListController;
 import com.geocraft.electrics.sr.adapters.TowerShowListAdapter;
+import com.geocraft.electrics.sr.controller.TowerShowListController;
+import com.geocraft.electrics.sr.event.LineElementRefreshEvent;
 import com.geocraft.electrics.sr.task.InitTowerListAsyncTask;
+import com.geocraft.electrics.ui.absinterface.IButtonClickCallBack;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuCreator;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuItem;
@@ -41,7 +42,7 @@ import common.geocraft.untiltools.T;
 @OptionsMenu(R.menu.menu_task_manager)
 @EActivity(R.layout.activity_device_show_list)
 public class TowerShowListActivity extends BaseActivity implements
-        AdapterView.OnItemClickListener {
+        AdapterView.OnItemClickListener, IButtonClickCallBack {
 
     @ViewById
     protected SwipeMenuListView listViewCommon;
@@ -192,6 +193,11 @@ public class TowerShowListActivity extends BaseActivity implements
     @Click
     void ivDeleteText() {
         etSearch.setText("");
+    }
+
+    @Override
+    public void openActivity(int position) {
+        mController.onAddLineByWell(this,position);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)

@@ -14,6 +14,7 @@ import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager_;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.PhotoRules;
@@ -127,7 +128,7 @@ public class SrPhotoManagerController extends BaseController {
     }
 
     //通过搜索文件名获取照片
-    private PhotoItemInfo getPhotoItemInfoBySearchFile(PhotoRules photoRulesTemp) {
+    private  PhotoItemInfo getPhotoItemInfoBySearchFile(PhotoRules photoRulesTemp) {
         PhotoItemInfo photoItemInfoTemp = new PhotoItemInfo();
         if (mDataSet == null) {
             return null;
@@ -148,7 +149,7 @@ public class SrPhotoManagerController extends BaseController {
             photoName = photoPrefix + photoItemInfoTemp.mPhotoType + Constants.PHOTO_SUFFIX;
         }
         String taskPath = ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
-        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName("F_lineId")));
+        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_LINEID)));
         String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
         photoPath = Utils.getPhotoDir(photoPath, photoRulesTemp, mDataSet);
         String photoAbsolutePath = photoPath + photoName;
@@ -168,10 +169,10 @@ public class SrPhotoManagerController extends BaseController {
 
     private String queryLineName(int lineId) {
         if (lineId > -1) {
-            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName("gycj", "line");
+            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ, Enum.DATA_SET_NAME_LINE);
             dataSet.PrimaryKey = lineId;
             DataSet ds = DbManager_.getInstance_(mContext).queryByPrimaryKey(dataSet, true);
-            return ds.GetFieldValueByName("F_lineName");
+            return ds.GetFieldValueByName(Enum.LINE_FIELD_NAME);
         }
         return null;
     }

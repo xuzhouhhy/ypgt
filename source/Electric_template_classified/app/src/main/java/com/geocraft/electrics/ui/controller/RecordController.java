@@ -6,10 +6,12 @@ import android.content.Context;
 import android.view.View;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
@@ -17,6 +19,7 @@ import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.factory.BusinessFragmentFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
+import com.geocraft.electrics.sr.event.RenameEvent;
 import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
 import com.geocraft.electrics.ui.activity.RecordActivity;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
@@ -29,7 +32,6 @@ import org.androidannotations.annotations.EBean;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +58,11 @@ public class RecordController extends BaseController {
     private boolean mIsCreateRecord;
     private DataSet mCurrentDataSet;
     private boolean mIsEditParent;
+
+    /**
+     * 旧线路名
+     */
+    private String mOldLineName;
 
     //是否新建
     public boolean isCreateRecord() {
@@ -180,6 +187,7 @@ public class RecordController extends BaseController {
             } else {
                 mCurrentDataSet = (DataSet) temp.clone();
             }
+            mOldLineName = mCurrentDataSet.GetFieldValueByName(Enum.LINE_FIELD_NAME);
         }
         //TODO : clear current photo cache
         //clearPhotoCache();
@@ -220,7 +228,7 @@ public class RecordController extends BaseController {
         return true;
     }
 
-    public boolean saveRecord(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    public boolean saveRecord() {
         if (mCurrentDataSet == null) {
             return false;
         }
@@ -228,14 +236,14 @@ public class RecordController extends BaseController {
             int key = mDbManager.insert(mCurrentDataSet);
             if (key >= 0) {
                 mCurrentDataSet.PrimaryKey = key;
-                renamePhotoAndMove(taskPhotoList);
+                renamePhotoAndMove(mOldLineName, mCurrentDataSet.GetFieldNameByName(Enum.LINE_FIELD_NAME));
                 return true;
             } else {
                 return false;
             }
         } else {
             if (mDbManager.update(mCurrentDataSet)) {
-                renamePhotoAndMove(taskPhotoList);
+                renamePhotoAndMove(mOldLineName, mCurrentDataSet.GetFieldValueByName(Enum.LINE_FIELD_NAME));
                 return true;
             } else {
                 return false;
@@ -243,34 +251,38 @@ public class RecordController extends BaseController {
         }
     }
 
-    private void renamePhotoAndMove(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
-        for (int i = 0; i < taskPhotoList.size(); i++) {
-            SrPhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
-            if (photoItemInfo == null) {
-                continue;
-            }
-            if (photoItemInfo.photoPath.contains(Constants.TASK_CACHE_PATH)) {
-                File oldFile = new File(photoItemInfo.photoPath);
-                File newFile = new File(getNewPhotoPath(photoItemInfo));
-                File cacheFile = new File(getTaskPath() + File.separator + Constants.TASK_PHOTO_FOLDER + File.separator + Constants.TASK_CACHE_PATH + File.separator + newFile.getName());
-                try {
-                    FileUtils.copyFile(oldFile, newFile);
-                    FileUtils.copyFile(oldFile, cacheFile);
-                } catch (IOException e) {
-                    L.printException(e);
+    private void renamePhotoAndMove(String oldName, String newName) {
+        if (oldName == null || oldName.isEmpty() || newName == null || newName.isEmpty()) {
+            return;
+        }
+        if (oldName.equals(newName)) {
+            return;
+        }
+        boolean result = true;
+        String photoFolder = getTaskPath() + File.separator + Constants.TASK_PHOTO_FOLDER;
+        File folder = new File(photoFolder);
+        File[] folders = folder.listFiles();
+        for (File file : folders) {
+            String folderName = file.getName();
+            if (folderName.equals(oldName)) {
+                boolean isSuccess;
+                String newFolderPath = file.getPath().replaceAll(oldName, newName);
+                File newFolder = new File(newFolderPath);
+                isSuccess = file.renameTo(newFolder);
+                if (!isSuccess) {
+                    result = false;
                 }
-            } else {
-                File oldFile = new File(photoItemInfo.photoPath);
-                File newFile = new File(getNewPhotoPath(photoItemInfo));
-                if (!oldFile.getPath().equals(newFile.getPath())) {
-                    try {
-                        FileUtils.copyFile(oldFile, newFile);
-                    } catch (IOException e) {
-                        L.printException(e);
+                File[] photoFiles = newFolder.listFiles();
+                for (File photoFile : photoFiles) {
+                    File newFile = new File(newFolderPath + File.separator + photoFile.getName().replaceFirst(oldName, newName));
+                    isSuccess = photoFile.renameTo(newFile);
+                    if (!isSuccess) {
+                        result = false;
                     }
                 }
             }
         }
+        ElectricApplication.BUS.post(new RenameEvent(result));
     }
 
     private String getTaskPath() {

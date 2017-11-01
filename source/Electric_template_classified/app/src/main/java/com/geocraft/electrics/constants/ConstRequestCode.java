@@ -12,5 +12,9 @@ public class ConstRequestCode {
 	public static final int REQUEST_CODE_EDIT_PARENT_DATA_SET = 4;
 	public final static int REQUEST_CODE_FINISH_RECORD_ACTIVITY = 5;
 	public final static int REQUEST_CODE_IMPORT_PHOTO = 6;
+	/**
+	 * 通过基桩添加支线路
+	 */
+	public final static int REQUEST_CODE_OPEN_ADD_CHILD_LINE = 7;
 
 }
