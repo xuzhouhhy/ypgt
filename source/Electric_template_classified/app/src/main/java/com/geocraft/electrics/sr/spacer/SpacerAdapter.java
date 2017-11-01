@@ -1,39 +1,52 @@
-package com.geocraft.electrics.sr.adapters;
+package com.geocraft.electrics.sr.spacer;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.sr.controller.TowerShowListController;
-import com.geocraft.electrics.ui.view.DeviceShowItemView;
-import com.geocraft.electrics.ui.view.DeviceShowItemView_;
 import com.huace.log.logger.L;
 
 
 /**
- * 基桩号
+ * 间隔适配器
  */
-public class TowerShowListAdapter extends BaseAdapter {
-    private TowerShowListController mController;
+public class SpacerAdapter extends BaseAdapter {
+    private SpacerController mController;
     private Context mContext;
 
-    public TowerShowListAdapter(Context context, TowerShowListController controller) {
+    private CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener =
+            new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (null == buttonView.getTag()) {
+                        return;
+                    }
+                    updateFragmentStatus(buttonView, isChecked);
+                }
+            };
+
+    public SpacerAdapter(Context context, SpacerController controller) {
         mContext = context;
         mController = controller;
     }
 
+    private void updateFragmentStatus(CompoundButton buttonView, boolean isChecked) {
+        // TODO: 2017/11/1
+    }
+
     @Override
     public int getCount() {
-        return mController.getItems().size();
+        return mController.getDataSets().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mController.getItems().get(position);
+        return mController.getDataSets().get(position);
     }
 
     @Override
@@ -43,13 +56,13 @@ public class TowerShowListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DeviceShowItemView deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        SpacerItemView itemView = SpacerItemView_.build(parent.getContext());
         if (position % 2 != 0) {
-            deviceShowItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
+            itemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
         } else {
-            deviceShowItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
+            itemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
         }
-        DataSet temp = mController.getItems().get(position);
+        DataSet temp = mController.getDataSets().get(position);
         String status = temp.GetFieldValueByAlias(Constants.DATA_SET_STATE_ALIAS);
 
         String firstField = temp.GetFieldNameByName(temp.First) + ":";
@@ -59,11 +72,11 @@ public class TowerShowListAdapter extends BaseAdapter {
         String thirdField = temp.GetFieldNameByName(temp.Third) + ":";
         String third = temp.GetFieldValueByName(temp.Third);
 
-        deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
+        itemView.bind((position + 1) + "", firstField, first, secondField, second,
                 thirdField, third, temp.isShowInDeviceList());
-        deviceShowItemView.setNumberColor(getStatus(status));
-        deviceShowItemView.setSelected(true);
-        return deviceShowItemView;
+        itemView.setNumberColor(getStatus(status));
+        itemView.setSelected(true);
+        return itemView;
     }
 
     public int getStatus(String status) {

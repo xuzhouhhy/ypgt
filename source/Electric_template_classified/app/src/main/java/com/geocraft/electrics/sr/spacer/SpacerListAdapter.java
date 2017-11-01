@@ -1,4 +1,4 @@
-package com.geocraft.electrics.sr.adapters;
+package com.geocraft.electrics.sr.spacer;
 
 import android.content.Context;
 import android.view.View;
@@ -15,13 +15,13 @@ import com.huace.log.logger.L;
 
 
 /**
- * 基桩号
  */
-public class TowerShowListAdapter extends BaseAdapter {
+public class SpacerListAdapter extends BaseAdapter {
     private TowerShowListController mController;
+    private String mFistrValue;
     private Context mContext;
 
-    public TowerShowListAdapter(Context context, TowerShowListController controller) {
+    public SpacerListAdapter(Context context, TowerShowListController controller) {
         mContext = context;
         mController = controller;
     }
@@ -43,7 +43,12 @@ public class TowerShowListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DeviceShowItemView deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        DeviceShowItemView deviceShowItemView;
+        if (convertView == null) {
+            deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        } else {
+            deviceShowItemView = (DeviceShowItemView) convertView;
+        }
         if (position % 2 != 0) {
             deviceShowItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
         } else {
@@ -59,6 +64,7 @@ public class TowerShowListAdapter extends BaseAdapter {
         String thirdField = temp.GetFieldNameByName(temp.Third) + ":";
         String third = temp.GetFieldValueByName(temp.Third);
 
+        mFistrValue = first;
         deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
                 thirdField, third, temp.isShowInDeviceList());
         deviceShowItemView.setNumberColor(getStatus(status));

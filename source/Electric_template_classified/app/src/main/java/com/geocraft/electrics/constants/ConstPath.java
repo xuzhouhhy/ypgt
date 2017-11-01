@@ -8,11 +8,11 @@ import common.geocraft.untiltools.SDCardManager;
  */
 public class ConstPath {
 	public static String getAssetsZipFileName() {
-		return "YPGT.zip";
+		return "YJCJ.zip";
 	}
 
 	public static String getAppDataFolder() {
-		return SDCardManager.GetSDCardPath() + "YPGT/";
+		return SDCardManager.GetSDCardPath() + "YJCJ/";
 	}
 
 	public static String getTaskRootFolder() {
@@ -39,7 +39,7 @@ public class ConstPath {
 	}
 
 	public static String getLogFileName() {
-		return "YPGT.txt";
+		return "YJCJ.txt";
 	}
 
 	public static String getLogFilePathName() {

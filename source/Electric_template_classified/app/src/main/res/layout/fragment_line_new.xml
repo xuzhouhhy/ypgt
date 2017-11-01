@@ -24,6 +24,83 @@
             android:tag="@string/line_name"
             />
 
+        <!--线路编号-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_LINENUMBER"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_LINENUMBER"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_LINENUMBER"
+            />
+
+        <!--起点-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_LINESTART"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_LINESTART"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_LINESTART"
+            />
+
+        <!--终点-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_LINEEND"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_LINEEND"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_LINEEND"
+            />
+
+        <!--资产属性-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_LINEZCSX"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_LINEZCSX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_LINEZCSX"
+            />
+
+        <!--投运日期-->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_LINETYRQ"
+            />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_LINETYRQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/F_LINETYRQ"
+            />
+
+
+
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
