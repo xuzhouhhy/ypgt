@@ -1385,7 +1385,11 @@
     <string name="GY_well_base_info">杆桩/井信息</string>
     <string name="Well_type_kbs">开闭所</string>
     <string name="GY_KBS_BLQ">开闭所（避雷器）</string>
+    <string name="gaoya_huanwanggui_interval_detail">详情</string>
     <string name="GY_KBS_TITLE_other">开闭所（其他信息）</string>
     <string name="GY_KBS_TITLE_photo">开闭所（照片信息）</string>
+    <string name="update_template_file">正在更新数据</string>
+    <string name="update_template_file_fail">更新文件失败</string>
+    <string name="update_template_file_success">更新文件成功</string>
     <string name="GY_JKXI_TITLE_YGLZ">架空线路（一杆六照）</string>
 </resources>

@@ -18,6 +18,7 @@ import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessAddress;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessAdministrator;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessCombinationMenu;
+import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessIDEditText;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessManager;
@@ -205,6 +206,18 @@ public class BusinessFragment extends BaseFragment {
                             } else {
                                 ((EditTextDatetimeExpand) view).setControlValue(fieldInfo,
                                         fieldInfo.Value);
+                            }
+                            break;
+                        }
+                        case PropertyDictionay.OperateCode.type_concat: {
+                            if (isNew) {
+                                ((BusinessConcatSpinner) view).setControlValue(fieldInfo,
+                                        fieldInfo.Default);
+                                ((BusinessConcatSpinner) view).setData(dataSet, fieldInfo);
+                            } else {
+                                ((BusinessConcatSpinner) view).setControlValue(fieldInfo,
+                                        fieldInfo.Value);
+                                ((BusinessConcatSpinner) view).setData(dataSet, fieldInfo);
                             }
                             break;
                         }

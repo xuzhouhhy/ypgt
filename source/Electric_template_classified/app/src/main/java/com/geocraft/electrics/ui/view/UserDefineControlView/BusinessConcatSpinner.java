@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +17,8 @@ import android.widget.Spinner;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
-import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.manager.TaskManager_;
+import com.geocraft.electrics.entity.PropertyDictionay;
+import com.geocraft.electrics.sr.task.UpdateTemplateAsyncTask;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     ArrayAdapter<String> dataAdapter;
     Spinner spinner;
     Button button;
-    private TaskManager mTaskManager;
     private View mRootView;
     private String mValue;
     private ArrayList<String> mDatalist = new ArrayList<>();
@@ -76,9 +76,8 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
 
     private void init() {
         Context context = getContext();
-        mTaskManager = TaskManager_.getInstance_(context);
         LayoutInflater mInflater = LayoutInflater.from(context);
-        mRootView = mInflater.inflate(R.layout.view_business_concat_pinner, null);
+        mRootView = mInflater.inflate(R.layout.view_business_concat_pinner, this, false);
         addView(mRootView);
         spinner = (Spinner) mRootView.findViewById(R.id.spinner);
         button = (Button) mRootView.findViewById(R.id.button);
@@ -110,14 +109,19 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
             return;
         }
         String text = mEditText.getText().toString();
+        int count = mDatalist.size();
+        mDatalist.remove(count - 1);
         mDatalist.add(text);
+        mDatalist.add("");
         dataAdapter.notifyDataSetChanged();
         onAddFieldMenulistToTemplate(text);
         dialogDismiss();
     }
 
     private void onAddFieldMenulistToTemplate(String text) {
-        mTaskManager.writeMenuList(mDataSet,mFieldInfo,text);
+        UpdateTemplateAsyncTask task = new UpdateTemplateAsyncTask(getContext(),
+                mDataSet, mFieldInfo);
+        task.execute(text);
     }
 
     @Override
@@ -138,8 +142,22 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     @Override
     public void setControlValue(FieldInfo fieldInfo, String text) {
         mDatalist = fieldInfo.Dictionay.menuList;
-        dataAdapter = new
-                ArrayAdapter<String>(this.getContext(), R.layout.simple_spinner_item, mDatalist);
+        mDatalist.add("");
+        dataAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.simple_spinner_item, mDatalist) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                if (position == mDatalist.size() - 1) {
+                    view.setVisibility(INVISIBLE);
+                }
+                return view;
+            }
+
+            @Override
+            public int getCount() {
+                return super.getCount() - 1;
+            }
+        };
         dataAdapter.setDropDownViewResource(R.layout.item_single_choice);
         spinner.setAdapter(dataAdapter);
         setControlValue(text);
@@ -152,6 +170,6 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
 
     @Override
     public int geteControlType() {
-        return 0;
+        return PropertyDictionay.OperateCode.type_concat;
     }
 }
