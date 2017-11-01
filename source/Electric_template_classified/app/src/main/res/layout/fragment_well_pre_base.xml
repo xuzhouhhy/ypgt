@@ -57,184 +57,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:gravity="center_horizontal">-->
-
-                <!--<TextView-->
-                    <!--style="@style/fragment_title"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/GY_well_base_info"/>-->
-            <!--</LinearLayout>-->
-
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_GH"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
-                <!--android:id="@+id/F_GH"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_GH"/>-->
-
-            <!--&lt;!&ndash;杆塔型号&ndash;&gt;-->
-            <!--&lt;!&ndash;<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_GTXH"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
-                <!--android:id="@+id/F_GTXH"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_GTXH"/>&ndash;&gt;-->
-
-            <!--&lt;!&ndash;杆塔材质&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_GTCZ"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
-                <!--android:id="@+id/F_GTCZ"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_GTCZ"/>-->
-
-            <!--&lt;!&ndash;砼杆埋深（m）&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_GTSM"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
-                <!--android:id="@+id/F_GTSM"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_GTSM"/>-->
-
-            <!--&lt;!&ndash;是否耐张杆塔&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_SFNZGT"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner-->
-                <!--android:id="@+id/F_SFNZGT"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_SFNZGT"/>-->
-
-            <!--&lt;!&ndash;转角度数&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_ZJDS"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
-                <!--android:id="@+id/F_ZJDS"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_ZJDS"/>-->
-
-            <!--&lt;!&ndash;初投运日期&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_CTRQ"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand-->
-                <!--android:id="@+id/F_CTRQ"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_CTRQ"/>-->
-
-            <!--&lt;!&ndash;最近一次技改大修日期&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_ZHJGDXRQ"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand-->
-                <!--android:id="@+id/F_ZHJGDXRQ"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_ZHJGDXRQ"/>-->
-
-            <!--&lt;!&ndash;施工单位&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_SGDW"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
-                <!--android:id="@+id/F_SGDW"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_SGDW"/>-->
-
-            <!--&lt;!&ndash;地形地貌&ndash;&gt;-->
-            <!--<TextView-->
-                <!--style="@style/SimpleLabel"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/GY_JKXLTZXX_F_DXDM"-->
-                <!--/>-->
-
-            <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
-                <!--android:id="@+id/F_DXDM"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:tag="@string/GY_JKXLTZXX_F_DXDM"/>-->
-
             <TextView
                 style="@style/SimpleLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZID"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/F_JZID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:tag="@string/GY_DLXLTZXX_F_JZID"/>
-
-
-            <!-- 基桩形式 -->
-            <TextView
-                style="@style/SimpleLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/GY_DLXLTZXX_F_JZTYPE"
-                />
-            <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/F_JZTYPE"
-                android:tag="@string/GY_DLXLTZXX_F_JZTYPE"/>
-
 
             <!-- 基桩距离 -->
             <TextView
@@ -243,10 +77,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZJL"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZJL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZJL"
                 android:tag="@string/GY_DLXLTZXX_F_JZJL"/>
 
 
@@ -257,10 +92,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZZJDS"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZZJDS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZZJDS"
                 android:tag="@string/GY_DLXLTZXX_F_JZZJDS"/>
 
 
@@ -271,10 +107,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDXTYPE"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDXTYPE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDXTYPE"
                 android:tag="@string/GY_DLXLTZXX_F_JZDXTYPE"/>
 
 
@@ -285,10 +122,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDXGGXH"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDXGGXH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDXGGXH"
                 android:tag="@string/GY_DLXLTZXX_F_JZDXGGXH"/>
 
 
@@ -299,10 +137,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDXZLL"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZDXZLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDXZLL"
                 android:tag="@string/GY_DLXLTZXX_F_JZDXZLL"/>
 
 
@@ -313,10 +152,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDXSCCJ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDXSCCJ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDXSCCJ"
                 android:tag="@string/GY_DLXLTZXX_F_JZDXSCCJ"/>
 
 
@@ -327,10 +167,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDXFSFS"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDXFSFS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDXFSFS"
                 android:tag="@string/GY_DLXLTZXX_F_JZDXFSFS"/>
 
 
@@ -341,10 +182,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDXTYRQ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+                android:id="@+id/F_JZDXTYRQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDXTYRQ"
                 android:tag="@string/GY_DLXLTZXX_F_JZDXTYRQ"/>
 
             <!-- 避雷线:规格型号 -->
@@ -354,10 +196,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZBLXGGXH"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZBLXGGXH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZBLXGGXH"
                 android:tag="@string/GY_DLXLTZXX_F_JZBLXGGXH"/>
 
 
@@ -368,10 +211,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZBLXSCCJ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZBLXSCCJ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZBLXSCCJ"
                 android:tag="@string/GY_DLXLTZXX_F_JZBLXSCCJ"/>
 
 
@@ -382,10 +226,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZBLXTYRQ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+                android:id="@+id/F_JZBLXTYRQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZBLXTYRQ"
                 android:tag="@string/GY_DLXLTZXX_F_JZBLXTYRQ"/>
 
             <!-- 通讯光纤:规格型号 -->
@@ -395,10 +240,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZTXGQGGXH"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZTXGQGGXH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZTXGQGGXH"
                 android:tag="@string/GY_DLXLTZXX_F_JZTXGQGGXH"/>
 
 
@@ -409,12 +255,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZTXGQSCCJ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZTXGQSCCJ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZTXGQSCCJ"
                 android:tag="@string/GY_DLXLTZXX_F_JZTXGQSCCJ"/>
-
 
 
             <!-- 通讯光纤:投运日期 -->
@@ -424,10 +270,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZTXGQTYRQ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+                android:id="@+id/F_JZTXGQTYRQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZTXGQTYRQ"
                 android:tag="@string/GY_DLXLTZXX_F_JZTXGQTYRQ"/>
 
             <!-- 基桩:是否分支 -->
@@ -437,10 +284,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZFZXXSFFZ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZFZXXSFFZ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZFZXXSFFZ"
                 android:tag="@string/GY_DLXLTZXX_F_JZFZXXSFFZ"/>
 
             <!--基桩:分支数-->
@@ -450,10 +298,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZFZS_BW"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZFZS_BW"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZFZS_BW"
                 android:tag="@string/GY_DLXLTZXX_F_JZFZS_BW"/>
 
             <TextView
@@ -462,10 +311,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZFZS_JD"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZFZS_JD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZFZS_JD"
                 android:tag="@string/GY_DLXLTZXX_F_JZFZS_JD"/>
 
             <!-- 地理信息:位置 -->
@@ -475,10 +325,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDLXXWZ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZDLXXWZ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDLXXWZ"
                 android:tag="@string/GY_DLXLTZXX_F_JZDLXXWZ"/>
 
             <!-- 地理信息:地形 -->
@@ -488,10 +339,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDLXXDX"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDLXXDX"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDLXXDX"
                 android:tag="@string/GY_DLXLTZXX_F_JZDLXXDX"/>
 
 
@@ -502,10 +354,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDLXXDZ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDLXXDZ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDLXXDZ"
                 android:tag="@string/GY_DLXLTZXX_F_JZDLXXDZ"/>
 
 
@@ -516,10 +369,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZDLXXHJ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZDLXXHJ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZDLXXHJ"
                 android:tag="@string/GY_DLXLTZXX_F_JZDLXXHJ"/>
 
             <!-- 交叉跨越:是否交叉跨越 -->
@@ -529,10 +383,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZJCKYSFKY"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZJCKYSFKY"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZJCKYSFKY"
                 android:tag="@string/GY_DLXLTZXX_F_JZJCKYSFKY"/>
 
 
@@ -543,10 +398,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZJCKYKYLX"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZJCKYKYLX"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZJCKYKYLX"
                 android:tag="@string/GY_DLXLTZXX_F_JZJCKYKYLX"/>
 
 
@@ -557,10 +413,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZJCKYKYWMC"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZJCKYKYWMC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZJCKYKYWMC"
                 android:tag="@string/GY_DLXLTZXX_F_JZJCKYKYWMC"/>
 
 
@@ -571,10 +428,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZJCKYBKYWMC"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessSpinner
+                android:id="@+id/F_JZJCKYBKYWMC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZJCKYBKYWMC"
                 android:tag="@string/GY_DLXLTZXX_F_JZJCKYBKYWMC"/>
 
 
@@ -585,10 +443,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GY_DLXLTZXX_F_JZJCKYJCJ"
                 />
+
             <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+                android:id="@+id/F_JZJCKYJCJ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/F_JZJCKYJCJ"
                 android:tag="@string/GY_DLXLTZXX_F_JZJCKYJCJ"/>
 
         </LinearLayout>

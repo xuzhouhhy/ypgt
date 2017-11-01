@@ -15,8 +15,7 @@ import com.huace.log.logger.L;
 
 
 /**
- * 作者  zhouqin
- * 时间 2016/6/6.
+ * 基桩号
  */
 public class TowerShowListAdapter extends BaseAdapter {
     private TowerShowListController mController;
@@ -44,7 +43,7 @@ public class TowerShowListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DeviceShowItemView  deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        DeviceShowItemView deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
         if (position % 2 != 0) {
             deviceShowItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
         } else {
