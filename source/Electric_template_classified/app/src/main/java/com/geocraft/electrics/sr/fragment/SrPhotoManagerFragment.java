@@ -29,7 +29,6 @@ import com.geocraft.electrics.sr.event.CopyImportFileFinishedEvent;
 import com.geocraft.electrics.sr.event.OpenSystemImportePhotoEventArgs;
 import com.geocraft.electrics.sr.view.SrPhotoManagerItemView;
 import com.geocraft.electrics.sr.view.SrPhotoManagerItemView_;
-import com.geocraft.electrics.ui.activity.RecordActivity;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;

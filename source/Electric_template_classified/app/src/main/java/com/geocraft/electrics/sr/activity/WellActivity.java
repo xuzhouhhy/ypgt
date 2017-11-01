@@ -16,14 +16,15 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.WellDatasets;
+import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.controller.WellController;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 import com.geocraft.electrics.sr.fragment.Well_PreFragment;
 import com.geocraft.electrics.sr.fragment.Well_PreFragment_;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
 import com.geocraft.electrics.sr.task.WellCommitAsyncTask;
-import com.geocraft.electrics.ui.controller.PhotoManagerController;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -55,6 +56,7 @@ public class WellActivity extends BaseActivity {
     private WellMainFragment mMainFragment;
     private Well_PreFragment mPreFragment;
     private boolean isGoNext;
+    private SrPhotoManagerFragment mPhotoFragment;
 
     @AfterViews
     void init() {
@@ -86,6 +88,7 @@ public class WellActivity extends BaseActivity {
                 fragmentOption = mController.getNextCheckedDataFragment();
             }
             changeContentView(fragmentOption);
+            getPhotoFragment(fragmentOption);
         }
     }
 
@@ -207,11 +210,11 @@ public class WellActivity extends BaseActivity {
         return true;
     }
 
-    public List<PhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
-        List<PhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
-//        if (mPhotoFragment != null) {
-//            photoItemInfoList = mPhotoFragment.getTaskPhotoList();
-//        }
+    public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
+        List<SrPhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
+        if (mPhotoFragment != null) {
+            photoItemInfoList = mPhotoFragment.getTaskPhotoList();
+        }
         return photoItemInfoList;
     }
 
@@ -248,4 +251,12 @@ public class WellActivity extends BaseActivity {
     public boolean isGoNext() {
         return isGoNext;
     }
+
+    private void getPhotoFragment(FragmentOption fragmentOption) {
+        BusinessFragment businessFragment = fragmentOption.getFragment();
+        if (businessFragment instanceof SrPhotoManagerFragment) {
+            mPhotoFragment = (SrPhotoManagerFragment) businessFragment;
+        }
+    }
+
 }

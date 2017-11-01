@@ -377,7 +377,7 @@ public class WellController extends BaseController {
         return true;
     }
 
-    public boolean saveRecord(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    public boolean saveRecord(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
         if (mCurrentDataSet == null) {
             return false;
         }
@@ -400,9 +400,9 @@ public class WellController extends BaseController {
         }
     }
 
-    private void renamePhotoAndMove(List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    private void renamePhotoAndMove(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
         for (int i = 0; i < taskPhotoList.size(); i++) {
-            PhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
+            SrPhotoManagerController.PhotoItemInfo photoItemInfo = taskPhotoList.get(i);
             if (photoItemInfo == null) {
                 continue;
             }
@@ -436,7 +436,7 @@ public class WellController extends BaseController {
         return ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
     }
 
-    private String getNewPhotoPath(PhotoManagerController.PhotoItemInfo photoItemInfo) {
+    private String getNewPhotoPath(SrPhotoManagerController.PhotoItemInfo photoItemInfo) {
         PhotoRules photoRules = getPhotoRules(photoItemInfo.mPhotoType);
         if (photoRules == null) {
             return "";
