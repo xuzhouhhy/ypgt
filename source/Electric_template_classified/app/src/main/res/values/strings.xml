@@ -1434,6 +1434,7 @@
     <string name="GY_DLXLTZXX_F_JZDLXXHJ">地理信息:环境</string>
     <string name="GY_DLXLTZXX_F_JZQXQK">缺陷情况</string>
     <string name="well_jk_photo_title">照片采集</string>
+    <string name="F_LINE_whbz">维护班组</string>
     <string name="rename_photo_success">重命名图片成功</string>
     <string name="rename_photo_fail">重命名图片失败</string>
 </resources>

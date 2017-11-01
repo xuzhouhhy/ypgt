@@ -17,7 +17,6 @@ import android.widget.GridView;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
-import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
@@ -47,14 +46,13 @@ import common.geocraft.untiltools.T;
  * Created by Administrator on 2016/6/7.
  */
 @EFragment(R.layout.fragment_photo_manager)
-public class SrPhotoManagerFragment extends BusinessFragment {
+public class SrPhotoManagerFragment extends WellBaseFragment {
 
     PhotoManagerAdapter mAdapter;
     @Bean
     SrPhotoManagerController mController;
     @ViewById
     GridView gridViewPhotoList;
-
     PopupMenu.OnMenuItemClickListener mOnMenuItemClickListener =
             new PopupMenu.OnMenuItemClickListener() {
                 @Override
@@ -86,6 +84,7 @@ public class SrPhotoManagerFragment extends BusinessFragment {
                     return true;
                 }
             };
+    private boolean mIsCreateForDefine;
     private String photoPath;
 
     /**
