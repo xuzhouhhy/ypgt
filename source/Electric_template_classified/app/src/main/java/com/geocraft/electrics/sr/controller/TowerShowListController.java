@@ -22,6 +22,8 @@ import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.LineFactory;
+import com.geocraft.electrics.sr.activity.AddChildLineActivity;
+import com.geocraft.electrics.sr.activity.AddChildLineActivity_;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.geocraft.electrics.sr.activity.WellActivity_;
 import com.geocraft.electrics.sr.event.LineElementRefreshEvent;
@@ -302,12 +304,12 @@ public class TowerShowListController extends BaseController {
         DataSet dataSet = mDataSets.get(position);
         int wellId = dataSet.PrimaryKey;
         String type = dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX);
-        Intent intent = new Intent(context, RecordActivity_.class);
+        Intent intent = new Intent(context, AddChildLineActivity_.class);
         intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
         intent.putExtra(Constants.INTENT_DATA_WELL_ID, wellId);
         intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, type);
-//        ((TowerShowListActivity) context).startActivityForResult(
-//                intent, ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY);
+        ((TowerShowListActivity) context).startActivityForResult(
+                intent, ConstRequestCode.REQUEST_CODE_OPEN_ADD_CHILD_LINE);
     }
 
     public static class CollectType {

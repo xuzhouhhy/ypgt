@@ -75,7 +75,7 @@ public class TowerShowListAdapter extends BaseAdapter {
                 thirdField, third, temp.isShowInDeviceList());
         deviceShowItemView.setNumberColor(getStatus(status));
         deviceShowItemView.setSelected(true);
-        deviceShowItemView.setOnClickListener(mOnClickEffectiveListener, temp.PrimaryKey);
+        deviceShowItemView.setOnClickListener(mOnClickEffectiveListener, position);
         return deviceShowItemView;
     }
 

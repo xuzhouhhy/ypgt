@@ -197,7 +197,7 @@ public class TowerShowListActivity extends BaseActivity implements
 
     @Override
     public void openActivity(int position) {
-        mController.onAddLineByWell(this,position);
+        mController.onAddLineByWell(this, position);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
