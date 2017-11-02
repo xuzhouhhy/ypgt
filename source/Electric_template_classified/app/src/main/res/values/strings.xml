@@ -1535,4 +1535,7 @@
     <string name="GY_JKXI_F_LXZZ">拉线装置</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_select">选择间隔</string>
+    <string name="cancel_select_interval">取消选择间隔</string>
+    <string name="title_start_interval_name">起始间隔名称</string>
 </resources>

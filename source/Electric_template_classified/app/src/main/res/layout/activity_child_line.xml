@@ -7,142 +7,156 @@
         android:id="@+id/linearLayoutRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/line_name"
-            />
+            android:text="@string/line_name" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/line_name"
-            />
+            android:tag="@string/line_name" />
 
         <!--线路编号-->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/F_LINENUMBER"
-            />
+            android:text="@string/F_LINENUMBER" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/F_LINENUMBER"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/F_LINENUMBER"
-            />
+            android:tag="@string/F_LINENUMBER" />
 
         <!--起点-->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/F_LINESTART"
-            />
+            android:text="@string/F_LINESTART" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/F_LINESTART"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/F_LINESTART"
-            />
+            android:tag="@string/F_LINESTART" />
 
         <!--终点-->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/F_LINEEND"
-            />
+            android:text="@string/F_LINEEND" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/F_LINEEND"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/F_LINEEND"
-            />
+            android:tag="@string/F_LINEEND" />
 
         <!--资产属性-->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/F_LINEZCSX"
-            />
+            android:text="@string/F_LINEZCSX" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:id="@+id/F_LINEZCSX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/F_LINEZCSX"
-            />
+            android:tag="@string/F_LINEZCSX" />
 
         <!--投运日期-->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/F_LINETYRQ"
-            />
+            android:text="@string/F_LINETYRQ" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:id="@+id/F_LINETYRQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/F_LINETYRQ"
-            />
-
+            android:tag="@string/F_LINETYRQ" />
 
 
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/line_construction_unit"
-            />
+            android:text="@string/line_construction_unit" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/edt_consturction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/line_construction_unit"
-            />
+            android:tag="@string/line_construction_unit" />
 
         <!--线路维护班底-->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/F_LINE_whbz"
-            />
+            android:text="@string/F_LINE_whbz" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/F_whbd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/F_LINE_whbz"
-            />
+            android:tag="@string/F_LINE_whbz" />
 
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/line_device_ower"
-            />
+            android:text="@string/line_device_ower" />
 
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/edtDeviceOwer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/line_device_ower"
-            />
+            android:tag="@string/line_device_ower" />
+
+        <LinearLayout
+            android:id="@+id/intervalLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="2"
+                android:text="@string/title_start_interval_name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvInterval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="2"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnChooseInterval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/title_select" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

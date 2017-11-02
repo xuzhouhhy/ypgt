@@ -211,6 +211,17 @@ public class DeviceShowListActivity extends BaseActivity implements
                 }
                 break;
             }
+            case ConstRequestCode.REQUEST_CODE_OPEN_TOWER_SHOW_LIST: {
+                if (resultCode != RESULT_OK) {
+                    return;
+                }
+                if (data.getBooleanExtra(Constants.INTENT_DATA_IS_REFRESH_DATA_SET_LIST, true)) {
+                    InitDeviceListAsyncTask initDeviceListAsyncTask = new InitDeviceListAsyncTask(this,
+                            mController);
+                    initDeviceListAsyncTask.execute(mController);
+                }
+                break;
+            }
             default:
                 break;
         }
@@ -256,7 +267,7 @@ public class DeviceShowListActivity extends BaseActivity implements
     public void openTowerShowListActivity(String nameValue) {
         Intent intent = new Intent(this, TowerShowListActivity_.class);
         intent.putExtra(Constants.INTENT_DATA_LINE_NAMES, nameValue);
-        this.startActivity(intent);
+        startActivityForResult(intent, ConstRequestCode.REQUEST_CODE_OPEN_TOWER_SHOW_LIST);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)

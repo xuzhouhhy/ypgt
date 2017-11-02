@@ -303,7 +303,7 @@ public class TowerShowListController extends BaseController {
         int wellId = dataSet.PrimaryKey;
         String type = dataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_GZlX);
         Intent intent = new Intent(context, AddChildLineActivity_.class);
-        intent.putExtra(Constants.INTENT_DATA_LINE_ID, mLineId);
+        intent.putExtra(Constants.INTENT_DATA_LINE_ID, Integer.valueOf(mLineId));
         intent.putExtra(Constants.INTENT_DATA_WELL_ID, wellId);
         intent.putExtra(Constants.INTENT_DATA_WELL_TYPE, type);
         ((TowerShowListActivity) context).startActivityForResult(

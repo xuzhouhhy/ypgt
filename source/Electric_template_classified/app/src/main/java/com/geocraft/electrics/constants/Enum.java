@@ -667,6 +667,7 @@ public class Enum {
     public static String GY_JKXLTZXX = "GY_JKXLTZXX";
     public static String GY_DLXLTZXX = "GY_DLXLTZXX";
     public static String GY_KBSTZXX = "GY_KBSTZXX";
+    public static String spacer = "spacer";
 
     /**
      * 杆桩井号表字段名称
@@ -678,4 +679,32 @@ public class Enum {
      * 线路名id
      */
     public static String LINE_FIELD_NAME = "F_lineName";
+    /**
+     * 电缆井类型的字符串
+     */
+    public static String DLJ_TYPE = "1";
+    /**
+     * 间隔点字段名
+     */
+    public static String DLJ_JGD = "F_SpacerIds";
+    /**
+     * 间隔表-间隔名称的字段名
+     */
+    public static String JGNB_JGM = "F_spacerName";
+    /**
+     * 线路表-父线路 字段名
+     */
+    public static String LINE_PARENT_ID = "F_parentId";
+    /**
+     * 线路表-支线起点 字段名
+     */
+    public static String LINE_WELL_ID = "F_wllId";
+    /**
+     * 线路表-间隔点 字段名
+     */
+    public static String LINE_SPACER_ID = "F_SpacerId";
+    /**
+     * 线路表-基桩形式 字段名
+     */
+    public static String LINE_JZTYPE = "F_JZTYPE";
 }

@@ -185,6 +185,13 @@ public class TowerShowListActivity extends BaseActivity implements
                 }
                 break;
             }
+            case ConstRequestCode.REQUEST_CODE_OPEN_ADD_CHILD_LINE: {
+                if (resultCode == RESULT_OK && null != data) {
+                    setResult(RESULT_OK, data);
+                    finish();
+                }
+                break;
+            }
             default:
                 break;
         }
