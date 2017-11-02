@@ -1,6 +1,7 @@
 package com.geocraft.electrics.sr;
 
 import com.geocraft.electrics.constants.Enum;
+import com.geocraft.electrics.entity.DataSet;
 
 import org.androidannotations.annotations.EBean;
 
@@ -24,10 +25,19 @@ public class WellDatasets {
         }
     }
 
+    public static boolean isWellDataset(DataSet dataset) {
+        for (WellType wellType : WellType.values()) {
+            if (wellType.getDatasetName().equals(dataset.Name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * 获取井号表(前期业务考虑)
      */
-    public List<DatasetOption> getWellDataSets() { // TODO: 2017/10/29 待优化
+    public List<DatasetOption> getWellDataSets() {
         if (mDatasetOptions != null && mDatasetOptions.size() > 0) {
             return mDatasetOptions;
         }

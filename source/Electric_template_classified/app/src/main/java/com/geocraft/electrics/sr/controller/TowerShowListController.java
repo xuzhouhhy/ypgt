@@ -21,7 +21,7 @@ import com.geocraft.electrics.entity.DataSource;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.sr.LineFactory;
+import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.activity.AddChildLineActivity_;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.geocraft.electrics.sr.activity.WellActivity_;
@@ -89,7 +89,7 @@ public class TowerShowListController extends BaseController {
         }
         mDataSets.clear();
         for (DataSet dataset : dataSetGroup.DataSets) {
-            if (!LineFactory.oneOfLineDataset(dataset)) {
+            if (!WellDatasets.isWellDataset(dataset)) {
                 continue;
             }
             List<DataSet> dataSets = mDbManager.queryByCondition(dataset,
@@ -135,7 +135,7 @@ public class TowerShowListController extends BaseController {
                     mDataSets.clear();
                 }
                 for (DataSet dataset : dataSetGroup.DataSets) {
-                    if (!LineFactory.oneOfLineDataset(dataset)) {
+                    if (!WellDatasets.isWellDataset(dataset)) {
                         continue;
                     }
                     List<DataSet> dataSets = mDbManager.queryByKeywordAndPrimaryKey(dataset,
