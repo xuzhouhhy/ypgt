@@ -7,6 +7,8 @@ import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 import com.geocraft.electrics.sr.fragment.Well_PreFragment;
 import com.geocraft.electrics.sr.fragment.Well_PreFragment_;
+import com.geocraft.electrics.ui.fragment.Coordfragment;
+import com.geocraft.electrics.ui.fragment.Coordfragment_;
 
 import org.androidannotations.annotations.EBean;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class PreFragmentFactory {
     private final static String KEY_WELL_MAIN = "WELL_MAIN";
     private final static String KEY_WELL_PRE = "WELL_PRE";
+    private final static String KEY_WELL_COORDINATE = "WELL_COORDINATE";
     private int mFramgmentIndex;
     private List<FragmentOption> mFragmentOptions = new ArrayList<FragmentOption>();
     private Resources mResources = ElectricApplication_.getInstance().
@@ -29,9 +32,14 @@ public class PreFragmentFactory {
         if (null != mFragmentOptions && mFragmentOptions.size() > 0) {
             return mFragmentOptions;
         }
-        mFragmentOptions.add(generate_WELL_PRE());
+        initCommonFramentItems();
         mFragmentOptions.add(generate_WELL_MAIN());
         return mFragmentOptions;
+    }
+
+    private void initCommonFramentItems() {
+        mFragmentOptions.add(generate_WELL_PRE());
+        mFragmentOptions.add(generate_WELL_Coordinate());
     }
 
     private FragmentOption generate_WELL_PRE() {
@@ -40,12 +48,19 @@ public class PreFragmentFactory {
         return new FragmentOption(KEY_WELL_PRE, fragmentName, "", fragment);
     }
 
+    private FragmentOption generate_WELL_Coordinate() {
+        Coordfragment fragment = new Coordfragment_();
+        String fragmentName = "";
+        return new FragmentOption(KEY_WELL_COORDINATE, fragmentName, "", fragment);
+    }
+
     private FragmentOption generate_WELL_MAIN() {
         WellMainFragment fragment = new WellMainFragment_();
         String fragmentName = "";
         return new FragmentOption(KEY_WELL_MAIN, fragmentName, "", fragment);
     }
 
+    //---------------------------------------------------------------------------------------------
     public FragmentOption getFirsFragment() {
         int index = 0;
         FragmentOption fragmentOption = getFragmentOption(index);
