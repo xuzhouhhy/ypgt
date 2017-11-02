@@ -101,7 +101,7 @@ public class SpacerController extends BaseController {
         //jk dataset
         DataSet dlDs = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ,
                 Enum.GY_DLXLTZXX);
-        dlDs.PrimaryKey = mWellId;
+        dlDs.PrimaryKey = 1;
         //当前查看和编辑的基桩
         DataSet dataSet = mDbManager.queryByPrimaryKey(dlDs, true);
         //获取查询到基桩的间隔点
@@ -163,5 +163,14 @@ public class SpacerController extends BaseController {
 
     public void setWellType(WellType mWellType) {
         this.mWellType = mWellType;
+    }
+
+    /**
+     * 生成间隔dataset
+     *
+     * @return dataset
+     */
+    public DataSet getSpacerDataset() {
+        return mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ, Enum.spacer);
     }
 }

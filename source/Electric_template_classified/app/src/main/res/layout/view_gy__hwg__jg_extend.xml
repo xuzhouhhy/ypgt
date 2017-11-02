@@ -22,6 +22,19 @@
                 android:text="@string/GY_HWG_TITLE_JG" />
         </LinearLayout>
 
+        <!--间隔名称 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_JGMC" />
+
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:id="@+id/F_spacerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="@string/GY_HYGTZXX_F_JGMC" />
+
         <!--间隔单元名称 -->
         <TextView
             style="@style/SimpleLabel"
