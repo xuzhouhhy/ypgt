@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayoutRoot"
@@ -50,22 +50,24 @@
             android:text="@string/locknumber"/>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             >
+
             <Button
                 android:id="@+id/btnCoordUpdate"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:enabled="true"
                 android:text="@string/coord_update"/>
+
             <Button
                 android:id="@+id/btnAltitudeUpdate"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:enabled="true"
                 android:text="@string/altitude_update"/>
         </LinearLayout>

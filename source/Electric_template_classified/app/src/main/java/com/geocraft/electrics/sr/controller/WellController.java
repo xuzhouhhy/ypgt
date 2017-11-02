@@ -17,6 +17,7 @@ import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.BasicFragmentProxy;
 import com.geocraft.electrics.sr.DatasetOption;
 import com.geocraft.electrics.sr.FragmentOption;
+import com.geocraft.electrics.sr.PreFragmentFactory;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
@@ -54,6 +55,8 @@ public class WellController extends BaseController {
     BasicFragmentProxy mBasicFragmentProxy;
     @Bean
     WellDatasets mWellDatasets;
+    @Bean
+    PreFragmentFactory mPreFragmentFactory;
 
     private WellType mWellType = WellType.JK;
     private String mFirstType;
@@ -65,7 +68,7 @@ public class WellController extends BaseController {
     private DataSet mCurrentDataSet;
     private int mLineId = -1;
     private int mWellId = -1;
-    private int mFramgmentIndex = -2;//前两个不在可选项fragment栈列表中维护
+    private int mFramgmentIndex = -1;//前不在可选项fragment栈列表中维护
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
@@ -77,6 +80,7 @@ public class WellController extends BaseController {
 
     public void initDatas() throws CloneNotSupportedException {
         initDatasets();
+        mPreFragmentFactory.initPreFramentItems();
         initCurDatasetAndFragments();
     }
 
@@ -131,6 +135,33 @@ public class WellController extends BaseController {
         }
     }
 
+    public FragmentOption getNextFragment() {
+        FragmentOption fragmentOption = mPreFragmentFactory.getNextCheckedFragment();
+        if (fragmentOption != null) {
+            return fragmentOption;
+        }
+        if (mFramgmentIndex < 0) {
+            fragmentOption = getFirstDataOption();
+        } else {
+            fragmentOption = getNextCheckedDataFragment();
+        }
+        if (fragmentOption != null) {
+            mPreFragmentFactory.setNextFramgmentIndexOfNext();
+        }
+        return fragmentOption;
+    }
+
+    public FragmentOption getBack() {
+        FragmentOption fragmentOption = getPreCheckedFragmentOption();
+        if (null == fragmentOption) {
+            fragmentOption = mPreFragmentFactory.getPreCheckedFragment();
+        }
+        if (fragmentOption != null) {
+            mFramgmentIndex = -1;
+        }
+        return fragmentOption;
+    }
+
     /**
      * 获取当前类型可选采集项
      */
@@ -151,13 +182,6 @@ public class WellController extends BaseController {
         return mIsCreateRecord;
     }
 
-    /**
-     * 获取选中的fragment项大小
-     */
-    public int getCheckedFragmentSize() {
-        return getCheckedFragments().size();
-    }
-
     public List<FragmentOption> getCheckedFragments() {
         List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
         for (int i = 0; i < mFragmentOptions.size(); i++) {
@@ -169,13 +193,12 @@ public class WellController extends BaseController {
         return fragmentOptions;
     }
 
-    public FragmentOption getFirstDataFragment() {
+    private FragmentOption getFirstDataOption() {
         int index = 0;
         if (mFragmentOptions.size() == 0) {
             return null;
         }
-        FragmentOption fragmentOption
-                = mFragmentOptions.get(index);
+        FragmentOption fragmentOption = mFragmentOptions.get(index);
         if (fragmentOption.isChecked()) {
             mFramgmentIndex++;
             return fragmentOption;
@@ -188,25 +211,23 @@ public class WellController extends BaseController {
         return null;
     }
 
-    public FragmentOption getNextCheckedDataFragment() {
+    private FragmentOption getNextCheckedDataFragment() {
         if (mFramgmentIndex < 0 || mFramgmentIndex >= mFragmentOptions.size() - 1) {
             return null;
         }
-        FragmentOption fragmentOption =
-                getFragmentDatasetOption(mFramgmentIndex);
+        FragmentOption fragmentOption = getFragmentDatasetOption(mFramgmentIndex);
         if (fragmentOption != null) {
             return fragmentOption;
         }
         return null;
     }
 
-    public FragmentOption getPreCheckedDataFragment() {
+    private FragmentOption getPreCheckedFragmentOption() {
         if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentOptions.size() - 1) {
             return null;
         }
         for (int i = mFramgmentIndex; i >= 0; i--) {
-            FragmentOption fragmentOption
-                    = mFragmentOptions.get(i);
+            FragmentOption fragmentOption = mFragmentOptions.get(i);
             if (i < mFramgmentIndex) {
                 if (fragmentOption.isChecked()) {
                     mFramgmentIndex = i;
@@ -238,22 +259,37 @@ public class WellController extends BaseController {
         }
     }
 
-    /**
-     * 判断是否还有未弹出界面
-     */
-    public boolean isHasNextFragmentOption() {
-        if (mFramgmentIndex == -2) {
+    public boolean isHasNextFragment() {
+        if (mPreFragmentFactory.isHasNextFragmentOption()) {
             return true;
         }
-        if (mFramgmentIndex < 0) {
-            if (getCheckedFragmentSize() > 0) {
+        if (isHasNextFragmentOption()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isHasPreFragment() {
+        if (mPreFragmentFactory.getFramgmentIndex() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isHasNextFragmentOption() {
+        int index = 0;
+        if (mFragmentOptions.size() == 0) {
+            return false;
+        }
+        FragmentOption fragmentOption;
+        if (mFramgmentIndex < index) {
+            fragmentOption = mFragmentOptions.get(index);
+            if (fragmentOption.isChecked()) {
                 return true;
-            } else {
-                return false;
             }
         }
-        for (int i = mFramgmentIndex; i < mFragmentOptions.size(); i++) {
-            FragmentOption fragmentOption = mFragmentOptions.get(i);
+        for (int i = index; i < mFragmentOptions.size(); i++) {
+            fragmentOption = mFragmentOptions.get(i);
             if (i > mFramgmentIndex) {
                 if (fragmentOption.isChecked()) {
                     return true;
@@ -263,11 +299,10 @@ public class WellController extends BaseController {
         return false;
     }
 
-    private FragmentOption getFragmentDatasetOption(
-            int framgmentIndex) {
+
+    private FragmentOption getFragmentDatasetOption(int framgmentIndex) {
         for (int i = framgmentIndex; i < mFragmentOptions.size(); i++) {
-            FragmentOption fragmentOption
-                    = mFragmentOptions.get(i);
+            FragmentOption fragmentOption = mFragmentOptions.get(i);
             if (i > framgmentIndex) {
                 if (fragmentOption.isChecked()) {
                     mFramgmentIndex = i;
@@ -332,15 +367,6 @@ public class WellController extends BaseController {
                     .getStringExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
         }
     }
-
-    public int getFramgmentIndex() {
-        return mFramgmentIndex;
-    }
-
-    public void setFramgmentIndex(int framgmentIndex) {
-        mFramgmentIndex = framgmentIndex;
-    }
-
 
     public boolean checkDataValidity(Context context,
                                      List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
@@ -518,6 +544,10 @@ public class WellController extends BaseController {
         return mWellType;
     }
 
+    public PreFragmentFactory getPreFragmentFactory() {
+        return mPreFragmentFactory;
+    }
+
     private class ExtensionFilter implements FilenameFilter {
         String ext;
 
@@ -529,6 +559,5 @@ public class WellController extends BaseController {
             return name.contains(ext);
         }
     }
-
 
 }

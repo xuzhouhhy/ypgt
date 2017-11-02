@@ -1,7 +1,6 @@
 package com.geocraft.electrics.sr.fragment;
 
 
-import android.support.v4.app.Fragment;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 
@@ -20,7 +19,6 @@ import com.geocraft.electrics.sr.adapters.FragmentAdapter;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.huace.log.logger.L;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -32,7 +30,7 @@ import java.util.List;
  * @author kingdon
  */
 @EFragment(R.layout.fragment_well_main)
-public class WellMainFragment extends Fragment {
+public class WellMainFragment extends WellBaseFragment {
     private final static String NAME_KEY_MARK = "&";
     protected DataSet mDataSet;
     protected Boolean mIsNew;
@@ -46,7 +44,7 @@ public class WellMainFragment extends Fragment {
     GridView grd_ck_fragment;
     private WellController mWellController;
 
-    @AfterViews
+    @Override
     protected void init() {
         mWellController = ((WellActivity) this.getActivity()).getController();
         mIsNew = mWellController.isCreateRecord();
