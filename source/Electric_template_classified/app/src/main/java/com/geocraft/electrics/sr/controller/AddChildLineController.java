@@ -73,6 +73,10 @@ public class AddChildLineController {
         if (mLineId < 0 || mWellId < 0 || null == mWellType || mWellType.isEmpty()) {
             return nameId;
         }
+        //只有电缆线路型基桩才可以查询间隔
+        if (!mWellType.equals("2")) {
+            return nameId;
+        }
         //电缆表
         DataSet dlDs = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ,
                 Enum.GY_DLXLTZXX);

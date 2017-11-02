@@ -56,7 +56,16 @@ public class SpacerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SpacerItemView itemView = SpacerItemView_.build(parent.getContext());
+        SpacerItemView itemView;
+        try {
+            if (null != convertView) {
+                itemView = (SpacerItemView_) convertView;
+            } else {
+                itemView = SpacerItemView_.build(parent.getContext());
+            }
+        } catch (ClassCastException e) {
+            itemView = SpacerItemView_.build(parent.getContext());
+        }
         if (position % 2 != 0) {
             itemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
         } else {

@@ -11,7 +11,6 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.geocraft.electrics.sr.controller.TowerShowListController;
 import com.geocraft.electrics.ui.absinterface.OnClickEffectiveListener;
-import com.geocraft.electrics.ui.activity.DeviceShowListActivity;
 import com.geocraft.electrics.ui.view.DeviceShowItemView;
 import com.geocraft.electrics.ui.view.DeviceShowItemView_;
 import com.huace.log.logger.L;
@@ -55,7 +54,16 @@ public class TowerShowListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DeviceShowItemView deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        DeviceShowItemView deviceShowItemView;
+        try {
+            if (null != convertView) {
+                deviceShowItemView = (DeviceShowItemView_) convertView;
+            } else {
+                deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+            }
+        } catch (ClassCastException e) {
+            deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
+        }
         if (position % 2 != 0) {
             deviceShowItemView.setBackgroundResource(R.drawable.selector_iv_bg_odd);
         } else {
