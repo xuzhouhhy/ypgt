@@ -2,6 +2,7 @@ package com.geocraft.electrics.sr;
 
 import android.content.res.Resources;
 
+import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
@@ -50,6 +51,9 @@ public class PreFragmentFactory {
 
     private FragmentOption generate_WELL_Coordinate() {
         Coordfragment fragment = new Coordfragment_();
+        fragment.setTags(mResources.getString(R.string.GY_DLXLTZXX_F_JZCOORD_BW),
+                mResources.getString(R.string.GY_DLXLTZXX_F_JZCOORD_DJ),
+                mResources.getString(R.string.GY_DLXLTZXX_F_JZCOORD_HIGH));
         String fragmentName = "";
         return new FragmentOption(KEY_WELL_COORDINATE, fragmentName, "", fragment);
     }
