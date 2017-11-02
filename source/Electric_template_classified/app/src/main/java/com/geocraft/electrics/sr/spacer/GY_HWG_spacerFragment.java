@@ -167,7 +167,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // TODO: 2017/11/1 弹出对话框
+
     }
 
     public void refreshListView(int position) {
@@ -247,5 +247,13 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     @Override
     public void getValue(DataSet dataSet) {
         super.getValue(dataSet);
+    }
+
+    /**
+     * 获取当前内存中的间隔dataset
+     * @return dataset
+     */
+    public List<DataSet> getSpacerDatasetList() {
+        return mController.getDataSets();
     }
 }
