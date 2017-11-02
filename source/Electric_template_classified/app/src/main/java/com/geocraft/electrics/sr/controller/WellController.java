@@ -548,6 +548,10 @@ public class WellController extends BaseController {
         return mPreFragmentFactory;
     }
 
+    public int getWellId() {
+        return mWellId;
+    }
+
     private class ExtensionFilter implements FilenameFilter {
         String ext;
 

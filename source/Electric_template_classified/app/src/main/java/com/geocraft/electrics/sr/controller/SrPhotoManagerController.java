@@ -128,14 +128,15 @@ public class SrPhotoManagerController extends BaseController {
     }
 
     //通过搜索文件名获取照片
-    private  PhotoItemInfo getPhotoItemInfoBySearchFile(PhotoRules photoRulesTemp) {
+    private PhotoItemInfo getPhotoItemInfoBySearchFile(PhotoRules photoRulesTemp) {
         PhotoItemInfo photoItemInfoTemp = new PhotoItemInfo();
         if (mDataSet == null) {
             return null;
         }
         photoItemInfoTemp.mPhotoType = photoRulesTemp.Type;
         String[] photoRuleArray = photoRulesTemp.Rules.split(",");
-        String photoPrefix = "";
+        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_LINEID)));
+        String photoPrefix = lineName + "_";
         for (int i = 0; i < photoRuleArray.length; i++) {
             photoPrefix += mDataSet.GetFieldValueByName(photoRuleArray[i]) + "_";
         }
@@ -149,9 +150,7 @@ public class SrPhotoManagerController extends BaseController {
             photoName = photoPrefix + photoItemInfoTemp.mPhotoType + Constants.PHOTO_SUFFIX;
         }
         String taskPath = ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
-        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_LINEID)));
         String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
-        photoPath = Utils.getPhotoDir(photoPath, photoRulesTemp, mDataSet);
         String photoAbsolutePath = photoPath + photoName;
         if (FileUtils.existFile(photoAbsolutePath)) {
             photoItemInfoTemp.photoPath = photoAbsolutePath;

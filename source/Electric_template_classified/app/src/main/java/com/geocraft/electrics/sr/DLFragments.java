@@ -7,6 +7,8 @@ import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.spacer.GY_HWG_spacerFragment;
+import com.geocraft.electrics.sr.spacer.GY_HWG_spacerFragment_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_Base;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_Base_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DJX;
@@ -165,6 +167,7 @@ public class DLFragments {
     private final static String KEY_GY_XSBDZ_DYKK6 = "XSBDZ_DYKK6";//">箱式变电站（低压空开6）</string>
     private final static String KEY_GY_XSBDZ_DYWGBCZZ = "GY_XSBDZ_DYWGBCZZ";//">箱式变电站（低压无功补偿装置）</string>
     private final static String KEY_GY_XSBDZ_ZPSJ = "KEY_GY_XSBDZ_ZPSJ";//PHOTO
+    private final static String KEY_GY_HWG_HWG_JG_XQ = "KEY_GY_HWG_HWG_XQ";//环网柜间隔详情
 
     //电缆分接箱
     private final static String KEY_GY_DLFJX_BLQ = "GY_DLFJX_BLQ";
@@ -182,6 +185,7 @@ public class DLFragments {
     //二级 环网柜
     public List<FragmentOption> getSecondLevelItems_HWG() {
         List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
+        fragmentOptions.add(getGY_HWG_HWG_SACER());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_PHOTO());//环网柜(照片)
         fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
@@ -201,6 +205,13 @@ public class DLFragments {
             fragmentOptions.get(i).setParentNameKey(KEY_GY_HWG_HWG);
         }
         return fragmentOptions;
+    }
+
+    private FragmentOption getGY_HWG_HWG_SACER() {
+        GY_HWG_spacerFragment fragment = new GY_HWG_spacerFragment_();
+        String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_JG);
+        return new FragmentOption(KEY_GY_HWG_HWG_JG_XQ,
+                fragmentName, "", fragment);
     }
 
     //二级 分支箱

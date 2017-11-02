@@ -9,10 +9,9 @@ import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.entity.DataSetGroup;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.sr.LineFactory;
+import com.geocraft.electrics.sr.WellType;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.huace.log.logger.L;
 
@@ -24,6 +23,8 @@ import java.util.List;
 
 import common.geocraft.untiltools.T;
 
+import static com.geocraft.electrics.sr.WellType.DL;
+
 /**
  * 间隔适配器
  */
@@ -33,6 +34,13 @@ public class SpacerController extends BaseController {
     TaskManager mTaskManager;
     @Bean
     DbManager mDbManager;
+
+    private int mLineId;
+
+    private int mWellId;
+
+    private WellType mWellType = DL;
+
     private List<DataSet> mDataSets = new ArrayList<>();
     private List<Integer> mIds = new ArrayList<Integer>();
 
@@ -68,19 +76,92 @@ public class SpacerController extends BaseController {
                 }).show();
     }
 
-
+    /**
+     * 从数据库查询间隔dataset
+     */
     public void initDataFromDB() {
-//        if (null == dataSetGroup) {
-//            return;
-//        }
-//        mDataSets.clear();
-//        for (DataSet dataset : dataSetGroup.DataSets) {
-//            if (!LineFactory.oneOfLineDataset(dataset)) {
-//                continue;
-//            }
-//            List<DataSet> dataSets = mDbManager.queryByCondition(dataset,
-//                    Enum.GY_JKXLTZXX_FIELD_LINEID, mLineId, true);
-//            mDataSets.addAll(dataSets);
-//        }
+        if (mLineId < 0 || mWellId < 0) {
+            return;
+        }
+        mDataSets.clear();
+        switch (mWellType) {
+            case JK:
+                queryJkWells();
+                break;
+            case DL:
+                queryDlWells();
+                break;
+            case KBS:
+            default:
+                break;
+        }
+    }
+
+    private void queryDlWells() {
+        //jk dataset
+        DataSet dlDs = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ,
+                Enum.GY_DLXLTZXX);
+        dlDs.PrimaryKey = mWellId;
+        //当前查看和编辑的基桩
+        DataSet dataSet = mDbManager.queryByPrimaryKey(dlDs, true);
+        //获取查询到基桩的间隔点
+        String intervalId = dataSet.GetFieldValueByName(Enum.DLJ_JGD);
+        querySpacerDatasets(intervalId);
+    }
+
+    private void queryJkWells() {
+        //jk dataset
+        DataSet jkDs = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ,
+                Enum.GY_JKXLTZXX);
+        jkDs.PrimaryKey = mWellId;
+        //当前查看和编辑的基桩
+        DataSet dataSet = mDbManager.queryByPrimaryKey(jkDs, true);
+        //获取查询到基桩的间隔点
+        String intervalId = dataSet.GetFieldValueByName(Enum.DLJ_JGD);
+        querySpacerDatasets(intervalId);
+    }
+
+    private void querySpacerDatasets(String intervalId) {
+        String[] ids = intervalId.split("&");
+        if (0 == ids.length) {
+            return;
+        }
+        //间隔表
+        DataSet jgDs = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ,
+                Enum.spacer);
+        for (String id : ids) {
+            try {
+                jgDs.PrimaryKey = Integer.valueOf(id);
+            } catch (NumberFormatException e) {
+                L.e(e, "F_SpacerIds field of GY_DLXLTZXX table has wrong format");
+                continue;
+            }
+            DataSet intervalDs = mDbManager.queryByPrimaryKey(jgDs, true);
+            mDataSets.add(intervalDs);
+        }
+    }
+
+    public int getmLineId() {
+        return mLineId;
+    }
+
+    public void setLineId(int mLineId) {
+        this.mLineId = mLineId;
+    }
+
+    public int getmWellId() {
+        return mWellId;
+    }
+
+    public void setWellId(int mWellId) {
+        this.mWellId = mWellId;
+    }
+
+    public WellType getmWellType() {
+        return mWellType;
+    }
+
+    public void setWellType(WellType mWellType) {
+        this.mWellType = mWellType;
     }
 }

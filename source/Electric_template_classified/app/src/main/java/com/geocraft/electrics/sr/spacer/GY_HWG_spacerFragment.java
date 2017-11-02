@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuCreator;
@@ -83,7 +84,11 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         mActivity = ((WellActivity) this.getActivity());
         mIsNew = mActivity.getController().isCreateRecord();
         mDataSet = mActivity.getController().getCurrentDataSet();
+        WellController controller = mActivity.getController();
 
+        mController.setLineId(controller.getLineId());
+        mController.setWellId(controller.getWellId());
+        mController.setWellType(controller.getWellType());
 
         listViewCommon.setOnItemClickListener(this);
         listViewCommon.setMenuCreator(menuCreator);
