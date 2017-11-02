@@ -8,6 +8,7 @@ import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.sr.controller.AddChildLineController;
+import com.geocraft.electrics.sr.task.ChildLineCommitAsyncTask;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessAddress;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessAdministrator;
@@ -55,7 +56,7 @@ public class AddChildLineActivity extends BaseActivity {
     @ViewById
     BusinessConcatSpinner F_LINEZCSX;
     @ViewById
-    BusinessEditText F_LINETYRQ;
+    EditTextDatetimeExpand F_LINETYRQ;
     @ViewById
     BusinessEditText edt_consturction;
     @ViewById
@@ -64,14 +65,19 @@ public class AddChildLineActivity extends BaseActivity {
     BusinessEditText edtDeviceOwer;
 
     @AfterViews
-    void init(){
+    void init() {
         mController.initData();
+        mController.initView(F_LINEZCSX);
     }
 
     @OptionsItem
     void actionTaskCommit() {
-//        getValue();
-//        boolean isContinueCheck = mController.checkDataValidity(this);
+        getValue();
+        boolean isContinueCheck = mController.checkDataValidity(this);
+        if (isContinueCheck) {
+            ChildLineCommitAsyncTask task = new ChildLineCommitAsyncTask(this, mController);
+            task.execute(mController);
+        }
     }
 
     private void getValue() {
@@ -135,6 +141,10 @@ public class AddChildLineActivity extends BaseActivity {
                             }
                             case PropertyDictionay.OperateCode.Type_dateTime: {
                                 fieldInfo.Value = ((EditTextDatetimeExpand) view).getControlValue();
+                                break;
+                            }
+                            case PropertyDictionay.OperateCode.type_concat: {
+                                fieldInfo.Value = ((BusinessConcatSpinner) view).getControlValue();
                                 break;
                             }
                             default:

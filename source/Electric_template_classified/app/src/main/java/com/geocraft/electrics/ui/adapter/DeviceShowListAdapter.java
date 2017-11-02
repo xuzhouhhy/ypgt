@@ -59,13 +59,13 @@ public class DeviceShowListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         DeviceShowItemView deviceShowItemView;
-        try{
-            if (convertView == null){
+        try {
+            if (convertView == null) {
                 deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
-            } else{
-                deviceShowItemView = (DeviceShowItemView)convertView;
+            } else {
+                deviceShowItemView = (DeviceShowItemView) convertView;
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             deviceShowItemView = DeviceShowItemView_.build(parent.getContext());
         }
 

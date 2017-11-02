@@ -110,7 +110,9 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
         }
         String text = mEditText.getText().toString();
         int count = mDatalist.size();
-        mDatalist.remove(count - 1);
+        if (count >= 0) {
+            mDatalist.remove(count - 1);
+        }
         mDatalist.add(text);
         mDatalist.add("");
         dataAdapter.notifyDataSetChanged();

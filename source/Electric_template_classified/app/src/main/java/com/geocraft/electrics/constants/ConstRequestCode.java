@@ -16,5 +16,9 @@ public class ConstRequestCode {
 	 * 通过基桩添加支线路
 	 */
 	public final static int REQUEST_CODE_OPEN_ADD_CHILD_LINE = 7;
+	/**
+	 * 查看线路基桩元素
+	 */
+	public final static int REQUEST_CODE_OPEN_TOWER_SHOW_LIST = 8;
 
 }
