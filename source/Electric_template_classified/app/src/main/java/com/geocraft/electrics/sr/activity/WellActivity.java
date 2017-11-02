@@ -15,14 +15,9 @@ import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.FragmentOption;
-import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
-import com.geocraft.electrics.sr.fragment.WellMainFragment;
-import com.geocraft.electrics.sr.fragment.WellMainFragment_;
-import com.geocraft.electrics.sr.fragment.Well_PreFragment;
-import com.geocraft.electrics.sr.fragment.Well_PreFragment_;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
 import com.geocraft.electrics.sr.task.WellCommitAsyncTask;
 
@@ -53,8 +48,6 @@ public class WellActivity extends BaseActivity {
     Button btn_next;
 
     private FragmentOption mFragmentOption;
-    private WellMainFragment mMainFragment;
-    private Well_PreFragment mPreFragment;
     private boolean isGoNext;
     private SrPhotoManagerFragment mPhotoFragment;
 
@@ -78,45 +71,23 @@ public class WellActivity extends BaseActivity {
         if (!(boolean) btn_next.getTag()) {
             excuteCommitTask();
         }
-        if (mController.getFramgmentIndex() == -2) {
-            addMainFragment();
-        } else {
-            FragmentOption fragmentOption;
-            if (mController.getFramgmentIndex() == -1) {
-                fragmentOption = mController.getFirstDataFragment();
-            } else {
-                fragmentOption = mController.getNextCheckedDataFragment();
-            }
-            changeContentView(fragmentOption);
-        }
+        FragmentOption fragmentOption = mController.getNextFragment();
+        changeContentView(fragmentOption);
     }
 
     @Click
     void btn_back() {
         isGoNext = false;
         saveFragmentData();
-        int curFragmentIndex = mController.getFramgmentIndex();
-        if (curFragmentIndex == -1) {
-            addPreFragment();
-        } else {
-            FragmentOption fragmentOption = mController.getPreCheckedDataFragment();
-            if (curFragmentIndex == 0 || null == fragmentOption) {
-                addMainFragment();
-            } else {
-                changeContentView(fragmentOption);
-            }
-        }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
-    public void onDataSynEvent(CheckFragmentEvent event) {
-        mController.updateFragmentStatus(event.getFragmentNameKey(), event.isChecked());
-        updateNextBtnStatus();
+        FragmentOption fragmentOption = mController.getBack();
+        changeContentView(fragmentOption);
     }
 
     public void initView() {
         this.setTitle(mController.getTitle());
-        addPreFragment();
+        FragmentOption fragmentOption = mController.getPreFragmentFactory().getFirsFragment();
+        changeContentView(fragmentOption);
+        updateViewClickable(btn_back, false);
     }
 
     private boolean changeContentView(FragmentOption fragmentOption) {
@@ -124,16 +95,15 @@ public class WellActivity extends BaseActivity {
             return false;
         }
         mFragmentOption = fragmentOption;
-        updateFragment(mFragmentOption.getFragment(),
-                mFragmentOption.getDatasetName());
-        updateViewClickable(btn_back, true);
+        updateFragment(mFragmentOption.getFragment(), mFragmentOption.getDatasetName());
+        updateBackBtnStatus();
         updateNextBtnStatus();
         return true;
     }
 
     public void updateNextBtnStatus() {
         String msg;
-        if (!mController.isHasNextFragmentOption()) {
+        if (!mController.isHasNextFragment()) {
             msg = getResources().getString(R.string.btn_confrim);
             btn_next.setTag(false);//是否可继续
         } else {
@@ -143,66 +113,23 @@ public class WellActivity extends BaseActivity {
         btn_next.setText(msg);
     }
 
-    public void addPreFragment() {
-        mController.setFramgmentIndex(-2);
-        mController.setCurrentDataSet(WellDatasets.getMainDatasetName(
-                mController.getWellType()));
-        mPreFragment = new Well_PreFragment_();
-        updateFragment(mPreFragment, WellDatasets.getMainDatasetName(
-                mController.getWellType()));
-        updateNextBtnStatus();
-        updateViewClickable(btn_back, false);
-    }
-
-    public void addMainFragment() {
-        mController.setFramgmentIndex(-1);
-        mController.setCurrentDataSet(WellDatasets.getMainDatasetName(
-                mController.getWellType()));
-        mMainFragment = new WellMainFragment_();
-        updateFragment(mMainFragment, WellDatasets.getMainDatasetName(
-                mController.getWellType()));
-        updateViewClickable(btn_back, true);
-        updateNextBtnStatus();
-    }
-
-    private void updateFragment(Fragment fragment, String datasetName) {
-        mController.setCurrentDataSet(datasetName);
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.id_content, fragment);
-        transaction.commit();
-    }
-
-    private void updateViewClickable(View view, boolean isEnable) {
-        view.setEnabled(isEnable);
-        view.setClickable(isEnable);
+    public void updateBackBtnStatus() {
+        if (mController.isHasPreFragment()) {
+            updateViewClickable(btn_back, true);
+        } else {
+            updateViewClickable(btn_back, false);
+        }
     }
 
     private boolean saveFragmentData() {
-
-        if (mController.getFramgmentIndex() == -2) {
-            return excuteSaveAction(mController.getCurrentDataSet(), mPreFragment);
-        } else if (mController.getFramgmentIndex() == -1) {
-            mMainFragment.getValue(mController.getCurrentDataSet());
-        } else {
-            return getValueFromFragment();
-        }
-        return true;
+        return excuteSaveAction(mController.getCurrentDataSet());
     }
 
-    private boolean getValueFromFragment() {
-        if (null == mFragmentOption || !mFragmentOption.isChecked()) {
+    private boolean excuteSaveAction(DataSet dataSet) {
+        if (null == mFragmentOption) {
             return false;
         }
-        DataSet dataSet = mController.getCurrentDataSet(
-                mFragmentOption.getDatasetName());
-        if (null == dataSet) {
-            return false;
-        }
-        return excuteSaveAction(dataSet, mFragmentOption.getFragment());
-    }
-
-    private boolean excuteSaveAction(DataSet dataSet, BusinessFragment fragment) {
+        BusinessFragment fragment = mFragmentOption.getFragment();
         if (!fragment.logicCheck()) {
             return false;
         }
@@ -211,6 +138,24 @@ public class WellActivity extends BaseActivity {
         }
         fragment.getValue(dataSet);
         return true;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
+    public void onDataSynEvent(CheckFragmentEvent event) {
+        mController.updateFragmentStatus(event.getFragmentNameKey(), event.isChecked());
+        updateNextBtnStatus();
+    }
+
+    private void updateViewClickable(View view, boolean isEnable) {
+        view.setEnabled(isEnable);
+        view.setClickable(isEnable);
+    }
+
+    private void updateFragment(Fragment fragment, String datasetName) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.id_content, fragment);
+        transaction.commit();
     }
 
     public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
@@ -255,14 +200,5 @@ public class WellActivity extends BaseActivity {
         return isGoNext;
     }
 
-    private void getPhotoFragment(FragmentOption fragmentOption) {
-        if (null == fragmentOption) {
-            return;
-        }
-        BusinessFragment businessFragment = fragmentOption.getFragment();
-        if (businessFragment instanceof SrPhotoManagerFragment) {
-            mPhotoFragment = (SrPhotoManagerFragment) businessFragment;
-        }
-    }
 
 }
