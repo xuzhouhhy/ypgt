@@ -1539,4 +1539,5 @@
     <string name="cancel_select_interval">取消选择间隔</string>
     <string name="title_start_interval_name">起始间隔名称:</string>
     <string name="GY_DLFJXTZXX_F_PHOTO">电缆分接箱(照片信息)</string>
+    <string name="well_connection_titile">台账采集</string>
 </resources>

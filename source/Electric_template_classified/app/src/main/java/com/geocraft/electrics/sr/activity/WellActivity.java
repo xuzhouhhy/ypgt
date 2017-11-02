@@ -88,7 +88,8 @@ public class WellActivity extends BaseActivity {
     }
 
     public void initView() {
-        this.setTitle(mController.getTitle());
+       // this.setTitle(mController.getTitle());
+        this.setTitle(this.getResources().getString(R.string.well_connection_titile));
         FragmentOption fragmentOption = mController.getPreFragmentFactory().getFirsFragment();
         changeContentView(fragmentOption);
         updateViewClickable(btn_back, false);

@@ -531,9 +531,9 @@ public class WellController extends BaseController {
     }
 
     //获取Activity标题
-    public String getTitle() {
-        return mCurrentDataSet.Alias;
-    }
+//    public String getTitle() {
+//        return mCurrentDataSet.Alias;
+//    }
 
     public void switchWellType(WellType wellType) {
         mWellType = wellType;
