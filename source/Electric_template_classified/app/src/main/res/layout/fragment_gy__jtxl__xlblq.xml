@@ -24,30 +24,86 @@
                 android:text="@string/GY_JKXI_TITLE_XLBLZ"/>
         </LinearLayout>
 
-    <!---避雷器型号-->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_JKXLTZXX_F_BLQXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_BLQXH"
-        android:tag="@string/GY_JKXLTZXX_F_BLQXH"/>
+    <!--&lt;!&ndash;-避雷器型号&ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_JKXLTZXX_F_BLQXH"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_BLQXH"-->
+        <!--android:tag="@string/GY_JKXLTZXX_F_BLQXH"/>-->
 
-    <!---避雷器厂家-->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_JKXLTZXX_F_BLQCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_BLQCJ"
-        android:tag="@string/GY_JKXLTZXX_F_BLQCJ"/>
+    <!--&lt;!&ndash;-避雷器厂家&ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_JKXLTZXX_F_BLQCJ"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_BLQCJ"-->
+        <!--android:tag="@string/GY_JKXLTZXX_F_BLQCJ"/>-->
+
+        <!-- 线路避雷器：型号 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_XLBLQ_XH"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_XLBLQ_XH"
+            android:tag="@string/GY_JKXL_F_XLBLQ_XH"/>
+
+
+        <!-- 线路避雷器：数量 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_XLBLQ_SL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_XLBLQ_SL"
+            android:tag="@string/GY_JKXL_F_XLBLQ_SL"/>
+
+
+        <!-- 线路避雷器：生产厂家 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_XLBLQ_SCCJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_XLBLQ_SCCJ"
+            android:tag="@string/GY_JKXL_F_XLBLQ_SCCJ"/>
+
+
+
+        <!-- 线路避雷器：投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_XLBLQ_TYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_XLBLQ_TYSJ"
+            android:tag="@string/GY_JKXL_F_XLBLQ_TYSJ"/>
 </LinearLayout>
 </ScrollView>

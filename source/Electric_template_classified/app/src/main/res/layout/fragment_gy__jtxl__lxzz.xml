@@ -11,158 +11,141 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot"
         >
-        <!-- 断路器：型号 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <TextView
+                style="@style/fragment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GY_JKXI_TITLE_LX"/>
+        </LinearLayout>
+
+        <!-- 拉线装置：形式 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_XH"
+            android:text="@string/GY_JKXL_F_LXZZ_XS"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_XH"
-            android:tag="@string/GY_JKXL_F_DLQ_XH"/>
+            android:id="@+id/F_LXZZ_XS"
+            android:tag="@string/GY_JKXL_F_LXZZ_XS"/>
 
 
-        <!-- 断路器：额定电压 -->
+        <!-- 拉线装置：规格 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_EDDY"
+            android:text="@string/GY_JKXL_F_LXZZ_GG"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_EDDY"
-            android:tag="@string/GY_JKXL_F_DLQ_EDDY"/>
+            android:id="@+id/F_LXZZ_GG"
+            android:tag="@string/GY_JKXL_F_LXZZ_GG"/>
 
-
-        <!-- 断路器：额定电流 -->
+        <!-- 拉线装置：长度 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_EDDL"
+            android:text="@string/GY_JKXL_F_LXZZ_CD"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_EDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_EDDL"/>
+            android:id="@+id/F_LXZZ_CD"
+            android:tag="@string/GY_JKXL_F_LXZZ_CD"/>
 
 
-        <!-- 断路器：额定频率 -->
+        <!-- 拉线装置：数量 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_EDPL"
+            android:text="@string/GY_JKXL_F_LXZZ_SL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_EDPL"
-            android:tag="@string/GY_JKXL_F_DLQ_EDPL"/>
+            android:id="@+id/F_LXZZ_SL"
+            android:tag="@string/GY_JKXL_F_LXZZ_SL"/>
 
 
-        <!-- 断路器：灭弧介质 -->
+        <!-- 拉线装置：拉线棒规格 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_MHJZ"
+            android:text="@string/GY_JKXL_F_LXZZ_LXBGG"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_MHJZ"
-            android:tag="@string/GY_JKXL_F_DLQ_MHJZ"/>
+            android:id="@+id/F_LXZZ_LXBGG"
+            android:tag="@string/GY_JKXL_F_LXZZ_LXBGG"/>
 
 
-        <!-- 断路器：动稳定电流 -->
+        <!-- 拉线装置：拉线棒长度 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_DWDDL"
+            android:text="@string/GY_JKXL_F_LXZZ_LXBCD"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_DWDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_DWDDL"/>
+            android:id="@+id/F_LXZZ_LXBCD"
+            android:tag="@string/GY_JKXL_F_LXZZ_LXBCD"/>
 
 
-        <!-- 断路器：热稳定电流 -->
+        <!-- 拉线装置：拉盘规格 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_RWDDL"
+            android:text="@string/GY_JKXL_F_LXZZ_LPGG"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_RWDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_RWDDL"/>
+            android:id="@+id/F_LXZZ_LPGG"
+            android:tag="@string/GY_JKXL_F_LXZZ_LPGG"/>
 
 
-        <!-- 断路器：最大开断电流 -->
+        <!-- 拉线装置：拉线绝缘子 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_ZDKDDL"
+            android:text="@string/GY_JKXL_F_LXZZ_LXJYZ"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_ZDKDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_ZDKDDL"/>
+            android:id="@+id/F_LXZZ_LXJYZ"
+            android:tag="@string/GY_JKXL_F_LXZZ_LXJYZ"/>
 
 
-        <!-- 断路器：合分时间 -->
+        <!-- 拉线装置：拉盘埋深 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_HFSJ"
+            android:text="@string/GY_JKXL_F_LXZZ_LPMS"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_HFSJ"
-            android:tag="@string/GY_JKXL_F_DLQ_HFSJ"/>
-
-
-        <!-- 断路器：生产厂家 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_SCCJ"
-            />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_SCCJ"
-            android:tag="@string/GY_JKXL_F_DLQ_SCCJ"/>
-
-
-        <!-- 断路器：投运时间 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_TYSJ"
-            />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_TYSJ"
-            android:tag="@string/GY_JKXL_F_DLQ_TYSJ"/>
-
+            android:id="@+id/F_LXZZ_LPMS"
+            android:tag="@string/GY_JKXL_F_LXZZ_LPMS"/>
     </LinearLayout>
+
 </ScrollView>

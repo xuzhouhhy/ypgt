@@ -9,106 +9,104 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayoutRoot"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-            <TextView
-                style="@style/fragment_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/GY_JKXI_TITLE_GYTJG"/>
-        </LinearLayout>
-        <!-- 变压器：编号 -->
+        android:id="@+id/linearLayoutRoot">
+
+        <!-- 杆型类别 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_BYQ_BH"
+            android:text="@string/GY_JKXL_F_GTLB_GXLB"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_BYQ_BH"
-            android:tag="@string/GY_JKXL_F_BYQ_BH"/>
+            android:id="@+id/F_GTLB_GXLB"
+            android:tag="@string/GY_JKXL_F_GTLB_GXLB"/>
 
-
-
-        <!-- 变压器：名称 -->
+        <!-- 杆高 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_BYQ_MC"
+            android:text="@string/GY_JKXL_F_GTLB_GG"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_BYQ_MC"
-            android:tag="@string/GY_JKXL_F_BYQ_MC"/>
+            android:id="@+id/F_GTLB_GG"
+            android:tag="@string/GY_JKXL_F_GTLB_GG"/>
 
 
+        <!-- 呼称高 -->
 
-        <!-- 变压器：型号 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_BYQ_XH"
+            android:text="@string/GY_JKXL_F_GTLB_HCG"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GTLB_HCG"
+            android:tag="@string/GY_JKXL_F_GTLB_HCG"/>
+
+
+
+        <!-- 埋深 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_GTLB_MS"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GTLB_MS"
+            android:tag="@string/GY_JKXL_F_GTLB_MS"/>
+
+
+        <!-- 杆重 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_GTLB_GZ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GTLB_GZ"
+            android:tag="@string/GY_JKXL_F_GTLB_GZ"/>
+
+
+        <!-- 基础形式 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_GTLB_JCXS"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_BYQ_XH"
-            android:tag="@string/GY_JKXL_F_BYQ_XH"/>
+            android:id="@+id/F_GTLB_JCXS"
+            android:tag="@string/GY_JKXL_F_GTLB_JCXS"/>
 
 
-
-        <!-- 变压器：高压引线型号 -->
+        <!-- 投运时间 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_BYQ_GYYXXH"
+            android:text="@string/GY_JKXL_F_GTLB_TYSJ"
             />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_BYQ_GYYXXH"
-            android:tag="@string/GY_JKXL_F_BYQ_GYYXXH"/>
-
-
-
-        <!-- 变压器：高压引线长度 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_BYQ_GYYXCD"
-            />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/F_BYQ_GYYXCD"
-            android:tag="@string/GY_JKXL_F_BYQ_GYYXCD"/>
-
-
-
-        <!-- 变压器：资产属性 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_BYQ_ZCSX"
-            />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/F_BYQ_ZCSX"
-            android:tag="@string/GY_JKXL_F_BYQ_ZCSX"/>
+            android:id="@+id/F_GTLB_TYSJ"
+            android:tag="@string/GY_JKXL_F_GTLB_TYSJ"/>
     </LinearLayout>
-
 </ScrollView>

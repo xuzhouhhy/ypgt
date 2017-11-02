@@ -21,21 +21,23 @@
         <Button
             android:id="@+id/btn_back"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/components_height"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:text="@string/btn_back"
+            android:background="@drawable/selector_button_bg"
             android:textColor="#ffffffff"
             />
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/components_height"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:text="@string/btn_next"
+            android:background="@drawable/selector_button_bg"
             android:textColor="#ffffffff"/>
     </LinearLayout>
 

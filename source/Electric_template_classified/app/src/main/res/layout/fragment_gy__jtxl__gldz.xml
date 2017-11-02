@@ -11,158 +11,130 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayoutRoot"
         >
-        <!-- 断路器：型号 -->
+        <!-- 隔离道闸：型号 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_XH"
+            android:text="@string/GY_JKXL_F_GLDZ_XH"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_XH"
-            android:tag="@string/GY_JKXL_F_DLQ_XH"/>
+            android:id="@+id/F_GLDZ_XH"
+            android:tag="@string/GY_JKXL_F_GLDZ_XH"/>
 
 
-        <!-- 断路器：额定电压 -->
+        <!-- 隔离道闸：额定电压 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_EDDY"
+            android:text="@string/GY_JKXL_F_GLDZ_EDDY"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_EDDY"
-            android:tag="@string/GY_JKXL_F_DLQ_EDDY"/>
+            android:id="@+id/F_GLDZ_EDDY"
+            android:tag="@string/GY_JKXL_F_GLDZ_EDDY"/>
 
 
-        <!-- 断路器：额定电流 -->
+        <!-- 隔离道闸：额定电流 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_EDDL"
+            android:text="@string/GY_JKXL_F_GLDZ_EDDL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_EDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_EDDL"/>
+            android:id="@+id/F_GLDZ_EDDL"
+            android:tag="@string/GY_JKXL_F_GLDZ_EDDL"/>
 
 
-        <!-- 断路器：额定频率 -->
+        <!-- 隔离道闸：额定频率 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_EDPL"
+            android:text="@string/GY_JKXL_F_GLDZ_EDPL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_EDPL"
-            android:tag="@string/GY_JKXL_F_DLQ_EDPL"/>
+            android:id="@+id/F_GLDZ_EDPL"
+            android:tag="@string/GY_JKXL_F_GLDZ_EDPL"/>
 
 
-        <!-- 断路器：灭弧介质 -->
+        <!-- 隔离道闸：动稳定电流 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_MHJZ"
+            android:text="@string/GY_JKXL_F_GLDZ_DWDDL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_MHJZ"
-            android:tag="@string/GY_JKXL_F_DLQ_MHJZ"/>
+            android:id="@+id/F_GLDZ_DWDDL"
+            android:tag="@string/GY_JKXL_F_GLDZ_DWDDL"/>
 
 
-        <!-- 断路器：动稳定电流 -->
+        <!-- 隔离道闸：热稳定电流 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_DWDDL"
+            android:text="@string/GY_JKXL_F_GLDZ_RWDDL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_DWDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_DWDDL"/>
+            android:id="@+id/F_GLDZ_RWDDL"
+            android:tag="@string/GY_JKXL_F_GLDZ_RWDDL"/>
 
 
-        <!-- 断路器：热稳定电流 -->
+        <!-- 隔离道闸：额定短时耐受时间 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_RWDDL"
+            android:text="@string/GY_JKXL_F_GLDZ_ZDKDDL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_RWDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_RWDDL"/>
+            android:id="@+id/F_GLDZ_ZDKDDL"
+            android:tag="@string/GY_JKXL_F_GLDZ_ZDKDDL"/>
 
 
-        <!-- 断路器：最大开断电流 -->
+        <!-- 隔离道闸：生产厂家 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_ZDKDDL"
-            />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_ZDKDDL"
-            android:tag="@string/GY_JKXL_F_DLQ_ZDKDDL"/>
-
-
-        <!-- 断路器：合分时间 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_HFSJ"
-            />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_HFSJ"
-            android:tag="@string/GY_JKXL_F_DLQ_HFSJ"/>
-
-
-        <!-- 断路器：生产厂家 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_SCCJ"
+            android:text="@string/GY_JKXL_F_GLDZ_SCCJ"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_SCCJ"
-            android:tag="@string/GY_JKXL_F_DLQ_SCCJ"/>
+            android:id="@+id/F_GLDZ_SCCJ"
+            android:tag="@string/GY_JKXL_F_GLDZ_SCCJ"/>
 
 
-        <!-- 断路器：投运时间 -->
+        <!-- 隔离道闸：投运时间 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_DLQ_TYSJ"
+            android:text="@string/GY_JKXL_F_GLDZ_TYSJ"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_DLQ_TYSJ"
-            android:tag="@string/GY_JKXL_F_DLQ_TYSJ"/>
+            android:id="@+id/F_GLDZ_TYSJ"
+            android:tag="@string/GY_JKXL_F_GLDZ_TYSJ"/>
 
     </LinearLayout>
 </ScrollView>
