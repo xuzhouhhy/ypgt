@@ -36,7 +36,34 @@
         android:id="@+id/F_GZZSQXH"
         android:tag="@string/GY_JKXLTZXX_F_GZZSQXH"/>
 
+        <!-- 故障指示器：投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_GZZSQ_TYRQ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GZZSQ_TYRQ"
+            android:tag="@string/GY_JKXL_F_GZZSQ_TYRQ"/>
 
+
+
+        <!-- 故障指示器：数量 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_JKXL_F_GZZSQ_SL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GZZSQ_SL"
+            android:tag="@string/GY_JKXL_F_GZZSQ_SL"/>
+        
     <!---故障指示器厂家-->
     <TextView
         style="@style/SimpleLabel"

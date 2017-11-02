@@ -12,71 +12,62 @@
         android:id="@+id/linearLayoutRoot"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-            <TextView
-                style="@style/fragment_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/GY_JKXI_TITLE_HD"/>
-        </LinearLayout>
-
-        <!-- 横担：形式 -->
+        <!-- 线夹：形式 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_HD_XS"
+            android:text="@string/GY_JKXL_F_XJ_XS"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_HD_XS"
-            android:tag="@string/GY_JKXL_F_HD_XS"/>
+            android:id="@+id/F_XJ_XS"
+            android:tag="@string/GY_JKXL_F_XJ_XS"/>
 
 
-        <!-- 横担：规格 -->
+
+        <!-- 线夹：型号 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_HD_GG"
+            android:text="@string/GY_JKXL_F_XJ_XL"
             />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_HD_GG"
-            android:tag="@string/GY_JKXL_F_HD_GG"/>
+            android:id="@+id/F_XJ_XL"
+            android:tag="@string/GY_JKXL_F_XJ_XL"/>
 
 
-        <!-- 横担：数量 -->
+
+        <!-- 线夹：数量 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_HD_SL"
+            android:text="@string/GY_JKXL_F_XJ_SL"
             />
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_HD_SL"
-            android:tag="@string/GY_JKXL_F_HD_SL"/>
+            android:id="@+id/F_XJ_SL"
+            android:tag="@string/GY_JKXL_F_XJ_SL"/>
 
 
-        <!-- 横担：厂家信息 -->
+
+        <!-- 线夹：厂家信息 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_JKXL_F_HD_CJXX"
+            android:text="@string/GY_JKXL_F_XJ_CJXX"
             />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/F_HD_CJXX"
-            android:tag="@string/GY_JKXL_F_HD_CJXX"/>
-</LinearLayout>
+            android:id="@+id/F_XJ_CJXX"
+            android:tag="@string/GY_JKXL_F_XJ_CJXX"/>
+    </LinearLayout>
 </ScrollView>
