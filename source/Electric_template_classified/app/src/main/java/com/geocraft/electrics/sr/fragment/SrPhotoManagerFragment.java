@@ -19,6 +19,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
 import com.geocraft.electrics.event.RefreshPhotoAdapterEventArgs;
 import com.geocraft.electrics.sr.UtilFile;
@@ -117,7 +118,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     @Override
     protected void init() {
         ElectricApplication.BUS.register(this);
-        mController. initParams(
+        mController.initParams(
                 this.getContext(),
                 ((WellActivity) this.getContext()).getController().isCreateRecord(),
                 ((WellActivity) this.getContext()).getController().getCurrentDataSet());
@@ -127,6 +128,10 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
         gridViewPhotoList.setOnItemLongClickListener(mOnItemLongClickListener);
     }
 
+    @Override
+    public void getValue(DataSet dataSet) {
+        mController.saveData();
+    }
 
     @Subscribe
     public void onEventMainThread(RefreshPhotoAdapterEventArgs args) {
@@ -295,8 +300,10 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
             SrPhotoManagerItemView photoManagerItemView;
             if (convertView == null) {
                 photoManagerItemView = SrPhotoManagerItemView_.build(parent.getContext());
+                convertView = photoManagerItemView;
+                convertView.setTag(photoManagerItemView);
             } else {
-                photoManagerItemView = (SrPhotoManagerItemView) convertView;
+                photoManagerItemView = (SrPhotoManagerItemView) convertView.getTag();
             }
 
             photoManagerItemView.setBackgroundResource(R.drawable.selector_iv_bg_even);
