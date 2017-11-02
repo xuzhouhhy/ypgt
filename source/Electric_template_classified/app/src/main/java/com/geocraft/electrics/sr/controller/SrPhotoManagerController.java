@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
@@ -101,6 +102,15 @@ public class SrPhotoManagerController extends BaseController {
         return mTaskPhotoList;
     }
 
+    public void saveData() {
+        for (int i = 0; i < mDataSet.PhotoRules.size(); i++) {
+            PhotoRules photoRules = mDataSet.PhotoRules.get(i);
+            PhotoItemInfo photoItemInfoTemp = mTaskPhotoList.get(i);
+            photoRules.setPohotoPath(photoItemInfoTemp.photoPath);
+            photoRules.Type = photoItemInfoTemp.mPhotoType;
+        }
+    }
+
     public void initTaskPhotoList() {
         if (mDataSet == null) {
             return;
@@ -112,8 +122,13 @@ public class SrPhotoManagerController extends BaseController {
             if (photoRulesTemp == null) {
                 continue;
             }
+            boolean isCreate = false;
+            String photoAbsolutePath = photoRulesTemp.getPohotoPath();
+            if (null == photoAbsolutePath || photoAbsolutePath.isEmpty()) {
+                isCreate = true;
+            }
             photoItemInfoTemp.mPhotoType = photoRulesTemp.Type;
-            if (mIsNew) {
+            if (isCreate) {
                 photoItemInfoTemp.mPhotoImage =
                         Tools.getDrawableById(mContext, R.mipmap.ic_take_photo);
                 photoItemInfoTemp.photoPath = "";
@@ -133,10 +148,29 @@ public class SrPhotoManagerController extends BaseController {
         if (mDataSet == null) {
             return null;
         }
+        String photoAbsolutePath = photoRulesTemp.getPohotoPath();
+        if (null == photoAbsolutePath || photoAbsolutePath.isEmpty()) {
+            photoAbsolutePath = getPhotoPath(photoRulesTemp, photoItemInfoTemp);
+        }
         photoItemInfoTemp.mPhotoType = photoRulesTemp.Type;
+        if (FileUtils.existFile(photoAbsolutePath)) {
+            photoItemInfoTemp.photoPath = photoAbsolutePath;
+            photoItemInfoTemp.noPhoto = false;
+            Bitmap bitmap = ElectricBitmapUtils.getCorrectDirectionBitmap(photoAbsolutePath);
+            photoItemInfoTemp.mPhotoImage = new BitmapDrawable(bitmap);
+        } else {
+            photoItemInfoTemp.mPhotoImage =
+                    Tools.getDrawableById(mContext, R.mipmap.ic_take_photo);
+            photoItemInfoTemp.photoPath = "";
+            photoItemInfoTemp.noPhoto = true;
+        }
+        return photoItemInfoTemp;
+    }
+
+    @NonNull
+    private String getPhotoPath(PhotoRules photoRulesTemp, PhotoItemInfo photoItemInfoTemp) {
         String[] photoRuleArray = photoRulesTemp.Rules.split(",");
-        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_LINEID)));
-        String photoPrefix = lineName + "_";
+        String photoPrefix = "";
         for (int i = 0; i < photoRuleArray.length; i++) {
             photoPrefix += mDataSet.GetFieldValueByName(photoRuleArray[i]) + "_";
         }
@@ -150,20 +184,10 @@ public class SrPhotoManagerController extends BaseController {
             photoName = photoPrefix + photoItemInfoTemp.mPhotoType + Constants.PHOTO_SUFFIX;
         }
         String taskPath = ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
+        String lineName = queryLineName(Integer.valueOf(mDataSet.GetFieldValueByName(Enum.GY_JKXLTZXX_FIELD_LINEID)));
         String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
-        String photoAbsolutePath = photoPath + photoName;
-        if (FileUtils.existFile(photoAbsolutePath)) {
-            photoItemInfoTemp.photoPath = photoAbsolutePath;
-            photoItemInfoTemp.noPhoto = false;
-            Bitmap bitmap = ElectricBitmapUtils.getCorrectDirectionBitmap(photoAbsolutePath);
-            photoItemInfoTemp.mPhotoImage = new BitmapDrawable(bitmap);
-        } else {
-            photoItemInfoTemp.mPhotoImage =
-                    Tools.getDrawableById(mContext, R.mipmap.ic_take_photo);
-            photoItemInfoTemp.photoPath = "";
-            photoItemInfoTemp.noPhoto = true;
-        }
-        return photoItemInfoTemp;
+        photoPath = Utils.getPhotoDir(photoPath, photoRulesTemp, mDataSet);
+        return photoPath + photoName;
     }
 
     private String queryLineName(int lineId) {

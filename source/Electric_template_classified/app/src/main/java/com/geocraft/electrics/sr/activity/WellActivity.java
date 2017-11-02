@@ -30,7 +30,10 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 井号采集
@@ -49,7 +52,8 @@ public class WellActivity extends BaseActivity {
 
     private FragmentOption mFragmentOption;
     private boolean isGoNext;
-    private SrPhotoManagerFragment mPhotoFragment;
+    private Map<String, SrPhotoManagerFragment> mPhotoFragments =
+            new HashMap<String, SrPhotoManagerFragment>();
 
     @AfterViews
     void init() {
@@ -95,7 +99,7 @@ public class WellActivity extends BaseActivity {
             return false;
         }
         mFragmentOption = fragmentOption;
-        updateFragment(mFragmentOption.getFragment(), mFragmentOption.getDatasetName());
+        updateFragment(mFragmentOption.getFragment());
         updateBackBtnStatus();
         updateNextBtnStatus();
         return true;
@@ -134,7 +138,8 @@ public class WellActivity extends BaseActivity {
             return false;
         }
         if (fragment instanceof SrPhotoManagerFragment) {
-            mPhotoFragment = (SrPhotoManagerFragment) fragment;
+            mPhotoFragments.put(mFragmentOption.getNameKey(),
+                    (SrPhotoManagerFragment) fragment);
         }
         fragment.getValue(dataSet);
         return true;
@@ -151,7 +156,7 @@ public class WellActivity extends BaseActivity {
         view.setClickable(isEnable);
     }
 
-    private void updateFragment(Fragment fragment, String datasetName) {
+    private void updateFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.id_content, fragment);
@@ -160,8 +165,13 @@ public class WellActivity extends BaseActivity {
 
     public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
         List<SrPhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
-        if (mPhotoFragment != null) {
-            photoItemInfoList = mPhotoFragment.getTaskPhotoList();
+        Iterator iter = mPhotoFragments.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            SrPhotoManagerFragment photoFragment = (SrPhotoManagerFragment) entry.getValue();
+            if (photoFragment != null) {
+                photoItemInfoList.addAll(photoFragment.getTaskPhotoList());
+            }
         }
         return photoItemInfoList;
     }

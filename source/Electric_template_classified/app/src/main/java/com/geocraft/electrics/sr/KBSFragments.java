@@ -6,6 +6,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
 import com.geocraft.electrics.ui.fragment.GY_fragment.KBS_fragment.GY_KBS_BLQ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.KBS_fragment.GY_KBS_BLQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.KBS_fragment.GY_KBS_DDXSQ;
@@ -154,7 +155,8 @@ public class KBSFragments {
     }
 
     private FragmentOption generateGY_KBS_PHOTO() {
-        GY_KBS_PHOTO fragment = new GY_KBS_PHOTO_();
+        SrPhotoManagerFragment fragment = new
+                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
         String fragmentName = mResources.getString(R.string.GY_KBS_TITLE_photo);
         return new FragmentOption(KEY_GY_KBS_PHOTO, fragmentName, "", fragment);
     }

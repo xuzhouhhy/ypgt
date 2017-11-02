@@ -19,6 +19,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.OpenSystemTakePhotoEventArgs;
 import com.geocraft.electrics.event.RefreshPhotoAdapterEventArgs;
 import com.geocraft.electrics.sr.UtilFile;
@@ -84,7 +85,6 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
                     return true;
                 }
             };
-    private boolean mIsCreateForDefine;
     private String photoPath;
 
     /**
@@ -115,9 +115,16 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     };
 
     @Override
+    public void getValue(DataSet dataSet) {
+        mController.saveData();
+    }
+
+    @Override
     protected void init() {
-        ElectricApplication.BUS.register(this);
-        mController. initParams(
+        if (!ElectricApplication.BUS.isRegistered(this)) {
+            ElectricApplication.BUS.register(this);
+        }
+        mController.initParams(
                 this.getContext(),
                 ((WellActivity) this.getContext()).getController().isCreateRecord(),
                 ((WellActivity) this.getContext()).getController().getCurrentDataSet());
@@ -269,8 +276,10 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
 
     @Override
     public void onDestroyView() {
+        if(ElectricApplication.BUS.isRegistered(this)){
+            ElectricApplication.BUS.unregister(this);
+        }
         super.onDestroyView();
-        ElectricApplication.BUS.unregister(this);
     }
 
     class PhotoManagerAdapter extends BaseAdapter {
