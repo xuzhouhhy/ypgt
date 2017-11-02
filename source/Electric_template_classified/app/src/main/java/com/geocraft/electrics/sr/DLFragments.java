@@ -45,6 +45,14 @@ import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_GZZSQ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_GZZSQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_MX;
 import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_MX_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_BLQ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_BLQ_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_DLFJX;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_DLFJX_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_DLHGQ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_DLHGQ_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_GZZSQ;
+import com.geocraft.electrics.ui.fragment.GY_fragment.GY_DLFJX.GY_DLFJX_GZZSQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_BLQ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_BLQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_DLHGQ;
@@ -157,6 +165,15 @@ public class DLFragments {
     private final static String KEY_GY_XSBDZ_DYKK6 = "XSBDZ_DYKK6";//">箱式变电站（低压空开6）</string>
     private final static String KEY_GY_XSBDZ_DYWGBCZZ = "GY_XSBDZ_DYWGBCZZ";//">箱式变电站（低压无功补偿装置）</string>
     private final static String KEY_GY_XSBDZ_ZPSJ = "KEY_GY_XSBDZ_ZPSJ";//PHOTO
+
+    //电缆分接箱
+    private final static String KEY_GY_DLFJX_BLQ = "GY_DLFJX_BLQ";
+    private final static String KEY_GY_DLFJX_DLFJX = "GY_DLFJX_DLFJX";
+    private final static String KEY_GY_DLFJX_DLHGQ = "GY_DLFJX_DLHGQ";
+    private final static String KEY_GY_DLFJX_GZZSQ = "GY_DLFJX_GZZSQ";
+    private final static String KEY_GY_DLFJX_ZPSJ = "GY_DLFJX_ZPSJ";
+
+
     private List<FragmentOption> mDLXLFragments = new ArrayList<FragmentOption>();//电缆线路
     private Resources mResources = ElectricApplication_.getInstance().
             getApplicationContext().getResources();
@@ -236,6 +253,24 @@ public class DLFragments {
         return fragmentOptions;
     }
 
+    //二级 电缆分接箱
+    public List<FragmentOption> getSecondLevelItems_DLFJX() {
+        List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
+        fragmentOptions.add(getGY_DLFJX_DLFJX());//电缆分接箱（基本信息）
+        fragmentOptions.add(getGY_DLFJX_BLQ());//电缆分接箱（避雷器）
+        fragmentOptions.add(getGY_DLFJX_DLHGQ());//电缆分接箱（电流互感器）
+        fragmentOptions.add(getGY_DLFJX_GZZSQ());//电缆分接箱（故障指示器）
+        fragmentOptions.add(getGY_DLFJX_ZPSJ());//箱式变电站（档位）</string>
+        int count = fragmentOptions.size();
+        for (int i = 0; i < count; i++) {
+            if (i == 0) {
+                continue;
+            }
+            fragmentOptions.get(i).setParentNameKey(KEY_GY_DLFJX_DLFJX);
+        }
+        return fragmentOptions;
+    }
+
 
     public List<FragmentOption> getDLFramentItems() {
         if (null != mDLXLFragments && mDLXLFragments.size() > 0) {
@@ -257,6 +292,9 @@ public class DLFragments {
         mDLXLFragments.addAll(getSecondLevelItems_FZX());
         //箱式变电站
         mDLXLFragments.addAll(getSecondLevelItems_XSBDZ());
+        //电缆分接箱
+        mDLXLFragments.addAll(getSecondLevelItems_DLFJX());
+        //
         for (int i = 0; i < mDLXLFragments.size(); i++) {
             FragmentOption option = mDLXLFragments.get(i);
             option.setDatasetName(Enum.GY_DLXLTZXX);
@@ -638,5 +676,42 @@ public class DLFragments {
         return new FragmentOption(KEY_GY_XSBDZ_ZPSJ, fragmentName, "", fragment);
     }
 
+    //-----电缆分接箱
+
+    //电缆分接箱（基本信息）
+    private FragmentOption getGY_DLFJX_DLFJX() {
+        GY_DLFJX_DLFJX fragment = new GY_DLFJX_DLFJX_();
+        String fragmentName = mResources.getString(R.string.GY_DLFZX_TITLE_JBXX);
+        return new FragmentOption(KEY_GY_DLFJX_DLFJX, fragmentName, "", fragment);
+    }
+
+    //电缆分接箱（避雷器）
+    private FragmentOption getGY_DLFJX_BLQ() {
+        GY_DLFJX_BLQ fragment = new GY_DLFJX_BLQ_();
+        String fragmentName = mResources.getString(R.string.GY_DLFZX_TITLE_BLQ);
+        return new FragmentOption(KEY_GY_DLFJX_DLHGQ, fragmentName, "", fragment);
+    }
+
+    //电缆分接箱（电流互感器）
+    private FragmentOption getGY_DLFJX_DLHGQ() {
+        GY_DLFJX_DLHGQ fragment = new GY_DLFJX_DLHGQ_();
+        String fragmentName = mResources.getString(R.string.GY_DLFZX_TITLE_DLHGQ);
+        return new FragmentOption(KEY_GY_DLFJX_BLQ, fragmentName, "", fragment);
+    }
+
+    //电缆分接箱（故障指示器）
+    private FragmentOption getGY_DLFJX_GZZSQ() {
+        GY_DLFJX_GZZSQ fragment = new GY_DLFJX_GZZSQ_();
+        String fragmentName = mResources.getString(R.string.GY_DLFZX_TITLE_GZZSQ);
+        return new FragmentOption(KEY_GY_DLFJX_GZZSQ, fragmentName, "", fragment);
+    }
+
+    //电缆分接箱电缆分接箱(照片)
+    private FragmentOption getGY_DLFJX_ZPSJ() {
+        SrPhotoManagerFragment fragment = new
+                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
+        String fragmentName = mResources.getString(R.string.GY_DLFJXTZXX_F_PHOTO);
+        return new FragmentOption(KEY_GY_DLFJX_ZPSJ, fragmentName, "", fragment);
+    }
 
 }
