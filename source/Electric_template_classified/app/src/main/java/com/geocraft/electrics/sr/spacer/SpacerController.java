@@ -3,6 +3,7 @@ package com.geocraft.electrics.sr.spacer;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v4.app.Fragment;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BaseController;
@@ -49,7 +50,8 @@ public class SpacerController extends BaseController {
     }
 
     //获取到所有
-    public void showRemoveTargetRecordDialog(final Context context, final int position) {
+    public void showRemoveTargetRecordDialog(final Fragment fragment, final int position) {
+        final Context context = fragment.getActivity();
         new AlertDialog.Builder(context)
                 .setIcon(R.mipmap.ic_tip)
                 .setTitle(context.getString(R.string.remove_record))
@@ -65,6 +67,7 @@ public class SpacerController extends BaseController {
                                 mDataSets.remove(position);
                                 ((TowerShowListActivity) context).refreshListView(position);
                                 T.showShort(context, R.string.remove_record_succeed);
+                                ((GY_HWG_spacerFragment_) fragment).refreshListView(0);
                             } else {
                                 T.showShort(context, R.string.remove_record_failure);
                             }

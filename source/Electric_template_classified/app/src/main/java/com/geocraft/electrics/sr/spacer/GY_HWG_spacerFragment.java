@@ -70,7 +70,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
                 public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                     try {
                         mController.showRemoveTargetRecordDialog(
-                                GY_HWG_spacerFragment.this.getActivity(), position);
+                                GY_HWG_spacerFragment.this, position);
                     } catch (Exception e) {
                         L.printException(e);
                         T.showShort(GY_HWG_spacerFragment.this.getActivity(),
