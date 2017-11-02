@@ -19,6 +19,9 @@ public class UtilFile {
      */
     public static void copyFile(String srcFile, String dirDest)
             throws IOException {
+        if (null == srcFile || srcFile.isEmpty()) {
+            return;
+        }
         FileInputStream in = new FileInputStream(srcFile);
         FileOutputStream out = new FileOutputStream(dirDest);
         int len;

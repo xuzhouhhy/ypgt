@@ -43,7 +43,7 @@ public class RecordCommitAsyncTask extends AsyncTask<RecordController, Integer, 
     @Override
     protected Boolean doInBackground(RecordController... params) {
         try {
-            return mController.saveRecord(((RecordActivity) mContext).getPhotoInfoList());
+            return mController.saveRecord();
         } catch (Exception e) {
             L.printException(e);
             return false;
@@ -91,7 +91,7 @@ public class RecordCommitAsyncTask extends AsyncTask<RecordController, Integer, 
             ((RecordActivity) mContext).setResult(
                     ConstRequestCode.REQUEST_CODE_OPEN_RECORDACTIVITY, intent);
         /*	if(!mController.isShowContinueDialog(mContext)) {
-			}*/
+            }*/
             ((RecordActivity) mContext).finish();
         }
     }

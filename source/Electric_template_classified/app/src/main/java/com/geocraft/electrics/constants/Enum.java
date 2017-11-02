@@ -674,4 +674,8 @@ public class Enum {
     public static String GY_JKXLTZXX_FIELD_GZlX = "F_gzlx";//杆桩类型
     public static String GY_JKXLTZXX_FIELD_COLLECTOBJECT = "F_ColletObject";//已选择类型
     public static String GY_JKXLTZXX_FIELD_LINEID = "F_lineId";//线路id
+    /**
+     * 线路名id
+     */
+    public static String LINE_FIELD_NAME = "F_lineName";
 }

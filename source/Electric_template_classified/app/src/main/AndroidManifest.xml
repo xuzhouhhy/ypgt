@@ -133,6 +133,13 @@
             android:label="@string/app_search"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.geocraft.electrics.sr.activity.AddChildLineActivity_"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:configChanges="orientation|screenSize|locale|layoutDirection"
+            android:label="@string/app_search"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

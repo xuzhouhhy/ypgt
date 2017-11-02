@@ -117,11 +117,10 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     @Override
     protected void init() {
         ElectricApplication.BUS.register(this);
-        mActivity = ((WellActivity) this.getActivity());
-        mDataSet = mActivity.getController().getCurrentDataSet();
-        mIsCreateForDefine = mActivity.getController().isCreateRecord();
-        mIsNew = mIsCreateForDefine ? mActivity.isGoNext() : false;
-        mController.initParams(this.getContext(), mIsCreateForDefine, mDataSet);
+        mController. initParams(
+                this.getContext(),
+                ((WellActivity) this.getContext()).getController().isCreateRecord(),
+                ((WellActivity) this.getContext()).getController().getCurrentDataSet());
         mController.initTaskPhotoList();
         mAdapter = new PhotoManagerAdapter();
         gridViewPhotoList.setAdapter(mAdapter);

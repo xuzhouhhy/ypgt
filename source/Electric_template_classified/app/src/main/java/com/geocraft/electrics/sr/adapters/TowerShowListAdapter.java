@@ -8,7 +8,10 @@ import android.widget.BaseAdapter;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.geocraft.electrics.sr.controller.TowerShowListController;
+import com.geocraft.electrics.ui.absinterface.OnClickEffectiveListener;
+import com.geocraft.electrics.ui.activity.DeviceShowListActivity;
 import com.geocraft.electrics.ui.view.DeviceShowItemView;
 import com.geocraft.electrics.ui.view.DeviceShowItemView_;
 import com.huace.log.logger.L;
@@ -20,6 +23,15 @@ import com.huace.log.logger.L;
 public class TowerShowListAdapter extends BaseAdapter {
     private TowerShowListController mController;
     private Context mContext;
+
+    private OnClickEffectiveListener mOnClickEffectiveListener = new OnClickEffectiveListener() {
+        @Override
+        public void onEffectiveClick(View v) {
+            DeviceShowItemView.ViewHodler viewHodler =
+                    (DeviceShowItemView.ViewHodler) v.getTag();
+            ((TowerShowListActivity) mContext).openActivity(viewHodler.getPrimaryKey());
+        }
+    };
 
     public TowerShowListAdapter(Context context, TowerShowListController controller) {
         mContext = context;
@@ -63,6 +75,7 @@ public class TowerShowListAdapter extends BaseAdapter {
                 thirdField, third, temp.isShowInDeviceList());
         deviceShowItemView.setNumberColor(getStatus(status));
         deviceShowItemView.setSelected(true);
+        deviceShowItemView.setOnClickListener(mOnClickEffectiveListener, position);
         return deviceShowItemView;
     }
 
