@@ -6,6 +6,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_Base;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_Base_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DJX;
@@ -44,8 +45,6 @@ import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_GZZSQ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_GZZSQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_MX;
 import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_MX_;
-import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_ZPSJ;
-import com.geocraft.electrics.ui.fragment.GY_fragment.FZX_fragment.GY_FZX_ZPSJ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_BLQ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_BLQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_DLHGQ;
@@ -68,8 +67,6 @@ import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_MX;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_MX_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_OTHER;
 import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_OTHER_;
-import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_PHOTO;
-import com.geocraft.electrics.ui.fragment.GY_fragment.HWG_fragment.GY_HWG_PHOTO_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_DW;
 import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_DW_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_DYTP;
@@ -96,8 +93,6 @@ import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_PD
 import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_PDBYQ_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_XSBDZ;
 import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_XSBDZ_;
-import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_ZPSJ;
-import com.geocraft.electrics.ui.fragment.GY_fragment.XSBDZ_fragment.GY_XSBDZ_ZPSJ_;
 
 import org.androidannotations.annotations.EBean;
 
@@ -171,6 +166,7 @@ public class DLFragments {
     public List<FragmentOption> getSecondLevelItems_HWG() {
         List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
         fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
+        fragmentOptions.add(getGY_HWG_PHOTO());//环网柜(照片)
         fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
         fragmentOptions.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
         fragmentOptions.add(getGY_HWG_FHKG());//环网柜（负荷开关）</string>
@@ -456,12 +452,12 @@ public class DLFragments {
                 fragmentName, "", fragment);
     }
 
-    //照片</string>
+    //环网柜照片</string>
     private FragmentOption getGY_HWG_PHOTO() {
-        GY_HWG_PHOTO fragment = new GY_HWG_PHOTO_();
+        SrPhotoManagerFragment fragment = new
+                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_PHOTO);
-        return new FragmentOption(KEY_GY_HWG_PHOTO,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_PHOTO, fragmentName, "", fragment);
     }
 
     //分支箱
@@ -523,10 +519,10 @@ public class DLFragments {
 
     //照片
     private FragmentOption getGY_FZX_ZPSJ() {
-        GY_FZX_ZPSJ fragment = new GY_FZX_ZPSJ_();
+        SrPhotoManagerFragment fragment = new
+                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_ZPSJ);
-        return new FragmentOption(KEY_GY_FZX_ZPSJ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_ZPSJ, fragmentName, "", fragment);
     }
 
     //箱式变电站站
@@ -636,10 +632,10 @@ public class DLFragments {
 
     //">照片
     private FragmentOption getGY_XSBDZ_ZPSJ() {
-        GY_XSBDZ_ZPSJ fragment = new GY_XSBDZ_ZPSJ_();
+        SrPhotoManagerFragment fragment = new
+                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_ZPSJ);
-        return new FragmentOption(KEY_GY_XSBDZ_ZPSJ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_ZPSJ, fragmentName, "", fragment);
     }
 
 

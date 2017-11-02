@@ -90,18 +90,18 @@ public class JKFragments {
     private final static String KEY_GY_JTXL_TGXLHS = "GY_JTXL_TGXLHS";
     private final static String KEY_GY_JTXL_XLBLQ = "GY_JTXL_XLBLQ";
     private final static String KEY_GY_JTXL_PHOTO = "GY_JTXL_PHOTO";
-    private final static String KEY_GY_JTXL_F_GTLB= "GY_DLXLTZXX_F_GTLB";//杆塔类别</string>
-    private final static String KEY_GY_JTXL_F_DP= "GY_DLXLTZXX_F_DP";//底（卡）盘</string>
-    private final static String KEY_GY_JTXL_F_JYZ= "GY_DLXLTZXX_F_JYZ";//绝缘子</string>
-    private final static String KEY_GY_JTXL_F_HD= "GY_DLXLTZXX_F_HD";//横担</string>
-    private final static String KEY_GY_JTXL_F_BG= "GY_DLXLTZXX_F_BG";//抱箍</string>
-    private final static String KEY_GY_JTXL_F_DLQ= "GY_DLXLTZXX_F_DLQ";//断路器</string>
-    private final static String KEY_GY_JTXL_F_GLDZ= "GY_DLXLTZXX_F_GLDZ";//隔离道闸</string>
-    private final static String KEY_GY_JTXL_F_XLBLQ= "GY_DLXLTZXX_F_XLBLQ";//线路避雷器</string>
-    private final static String KEY_GY_JTXL_F_GZZSQ= "GY_DLXLTZXX_F_GZZSQ";//故障指示器</string>
-    private final static String KEY_GY_JTXL_F_XJ= "GY_DLXLTZXX_F_XJ";//线夹</string>
-    private final static String KEY_GY_JTXL_F_BYQ= "GY_DLXLTZXX_F_BYQ";//变压器</string>
-    private final static String KEY_GY_JTXL_F_LXZZ= "GY_DLXLTZXX_F_LXZZ";//拉线装置</string>
+    private final static String KEY_GY_JTXL_F_GTLB = "GY_DLXLTZXX_F_GTLB";//杆塔类别</string>
+    private final static String KEY_GY_JTXL_F_DP = "GY_DLXLTZXX_F_DP";//底（卡）盘</string>
+    private final static String KEY_GY_JTXL_F_JYZ = "GY_DLXLTZXX_F_JYZ";//绝缘子</string>
+    private final static String KEY_GY_JTXL_F_HD = "GY_DLXLTZXX_F_HD";//横担</string>
+    private final static String KEY_GY_JTXL_F_BG = "GY_DLXLTZXX_F_BG";//抱箍</string>
+    private final static String KEY_GY_JTXL_F_DLQ = "GY_DLXLTZXX_F_DLQ";//断路器</string>
+    private final static String KEY_GY_JTXL_F_GLDZ = "GY_DLXLTZXX_F_GLDZ";//隔离道闸</string>
+    private final static String KEY_GY_JTXL_F_XLBLQ = "GY_DLXLTZXX_F_XLBLQ";//线路避雷器</string>
+    private final static String KEY_GY_JTXL_F_GZZSQ = "GY_DLXLTZXX_F_GZZSQ";//故障指示器</string>
+    private final static String KEY_GY_JTXL_F_XJ = "GY_DLXLTZXX_F_XJ";//线夹</string>
+    private final static String KEY_GY_JTXL_F_BYQ = "GY_DLXLTZXX_F_BYQ";//变压器</string>
+    private final static String KEY_GY_JTXL_F_LXZZ = "GY_DLXLTZXX_F_LXZZ";//拉线装置</string>
 
 
     private List<FragmentOption> mJKXLFragments = new ArrayList<FragmentOption>();//架空线路
@@ -135,17 +135,18 @@ public class JKFragments {
         mJKXLFragments.add(generateGY_JKXI_F_XLBLQ());
 
         //故障指示器</string>
-       mJKXLFragments.add(generateGY_JKXI_F_GZZSQ());
+        mJKXLFragments.add(generateGY_JKXI_F_GZZSQ());
 
         //线夹</string>
-       mJKXLFragments.add(generateGY_JKXI_F_XJ());
+        mJKXLFragments.add(generateGY_JKXI_F_XJ());
 
         //变压器</string>
         mJKXLFragments.add(generateGY_JKXI_F_BYQ());
 
         //拉线装置</string>
         mJKXLFragments.add(generateGY_JKXI_F_LXZZ());
-
+        //一杆六照
+        mJKXLFragments.add(generateGY_JTXL_PHOTO());
 
 
 //        //mJKXLFragments.add(generateGY_JTXL_Base());
