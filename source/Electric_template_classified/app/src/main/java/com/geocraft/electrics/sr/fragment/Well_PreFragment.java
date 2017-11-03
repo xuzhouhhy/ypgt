@@ -30,6 +30,7 @@ import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import common.geocraft.untiltools.T;
@@ -117,6 +118,15 @@ public class Well_PreFragment extends WellBaseInfoFragment {
             return false;
         }
         return true;
+    }
+
+    private String formatInput(String name, int step, String format) {
+        if (null == name || name.isEmpty()) {
+            name = getDefaultWellName(mWellController.getWellType());
+        }
+        int cnt = Integer.valueOf(name);
+        String formatValue = new DecimalFormat(format).format(cnt);
+        return formatValue;
     }
 
     private void initDefineViewData() {
