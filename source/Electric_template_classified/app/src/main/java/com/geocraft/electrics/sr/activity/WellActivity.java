@@ -79,7 +79,7 @@ public class WellActivity extends BaseActivity {
     void btn_back() {
         isGoNext = false;
         saveFragmentData();
-        FragmentOption fragmentOption = mController.getBack();
+        FragmentOption fragmentOption = mController.getPreFragment();
         changeContentView(fragmentOption);
     }
 

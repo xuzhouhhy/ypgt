@@ -288,6 +288,15 @@ public class JKFragments {
 
     private FragmentOption generateGY_JTXL_PHOTO() {
         SrPhotoManagerFragment fragment = new SrPhotoManagerFragment_();
+        List<String> tags = new ArrayList<String>();
+        tags.add("杆塔全貌照片");
+        tags.add("杆号照片");
+        tags.add("杆头照片");
+        tags.add("杆根照片");
+        tags.add("拉线基础照片");
+        tags.add("大号侧通道照片");
+        tags.add("小号侧通道照片");
+        fragment.setTags(tags);
         String fragmentName = mResources.getString(R.string.well_jk_photo_title);
         return new FragmentOption(KEY_GY_JTXL_PHOTO,
                 fragmentName, "", fragment);

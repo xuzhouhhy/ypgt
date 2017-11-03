@@ -154,8 +154,11 @@ public class WellController extends BaseController {
         return fragmentOption;
     }
 
-    public FragmentOption getBack() {
-        FragmentOption fragmentOption = getPreCheckedFragmentOption();
+    public FragmentOption getPreFragment() {
+        FragmentOption fragmentOption = getPreCheckedFragment();
+        if (fragmentOption != null) {
+            return fragmentOption;
+        }
         if (null == fragmentOption) {
             fragmentOption = mPreFragmentFactory.getPreCheckedFragment();
         }
@@ -225,7 +228,7 @@ public class WellController extends BaseController {
         return null;
     }
 
-    private FragmentOption getPreCheckedFragmentOption() {
+    private FragmentOption getPreCheckedFragment() {
         if (mFramgmentIndex <= 0 || mFramgmentIndex > mFragmentOptions.size() - 1) {
             return null;
         }

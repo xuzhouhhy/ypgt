@@ -189,10 +189,10 @@ public class DLFragments {
     //二级 环网柜
     public List<FragmentOption> getSecondLevelItems_HWG() {
         List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
-        fragmentOptions.add(getGY_HWG_HWG_SACER());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
+        fragmentOptions.add(getGY_HWG_HWG_SACER());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_PHOTO());//环网柜(照片)
-      //  fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
+        //  fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
         fragmentOptions.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
         fragmentOptions.add(getGY_HWG_GLKG());//环网柜（隔离开关）</string>
         fragmentOptions.add(getGY_HWG_FHKG());//环网柜（负荷开关）</string>
@@ -209,13 +209,6 @@ public class DLFragments {
             fragmentOptions.get(i).setParentNameKey(KEY_GY_HWG_HWG);
         }
         return fragmentOptions;
-    }
-
-    private FragmentOption getGY_HWG_HWG_SACER() {
-        GY_HWG_spacerFragment fragment = new GY_HWG_spacerFragment_();
-        String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_JG);
-        return new FragmentOption(KEY_GY_HWG_HWG_JG_XQ,
-                fragmentName, "", fragment);
     }
 
     //二级 分支箱
@@ -422,94 +415,94 @@ public class DLFragments {
     private FragmentOption getGY_HWG_HWG() {
         GY_HWG_HWG fragment = new GY_HWG_HWG_();
         String fragmentName = mResources.getString(R.string.GY_HWG_HWG);
-        return new FragmentOption(KEY_GY_HWG_HWG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_HWG, fragmentName, "", fragment);
+    }
+
+    private FragmentOption getGY_HWG_HWG_SACER() {
+        GY_HWG_spacerFragment fragment = new GY_HWG_spacerFragment_();
+        String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_JG);
+        return new FragmentOption(KEY_GY_HWG_HWG_JG_XQ, fragmentName, "", fragment);
     }
 
     //   环网柜（间隔）
     private FragmentOption getGY_HWG_JG() {
         GY_HWG_JG fragment = new GY_HWG_JG_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_JG);
-        return new FragmentOption(KEY_GY_HWG_JG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_JG, fragmentName, "", fragment);
     }
 
     //环网柜（断路器）
     private FragmentOption getGY_HWG_DLQ() {
         GY_HWG_DLQ fragment = new GY_HWG_DLQ_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_DLQ);
-        return new FragmentOption(KEY_GY_HWG_DLQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_DLQ, fragmentName, "", fragment);
     }
 
     //">环网柜（负荷开关）</string>
     private FragmentOption getGY_HWG_FHKG() {
         GY_HWG_FHKG fragment = new GY_HWG_FHKG_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_FHKG);
-        return new FragmentOption(KEY_GY_HWG_FHKG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_FHKG, fragmentName, "", fragment);
     }
 
     //环网柜（隔离开关）</string>
     private FragmentOption getGY_HWG_GLKG() {
         GY_HWG_GLKG fragment = new GY_HWG_GLKG_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_GLKG);
-        return new FragmentOption(KEY_GY_HWG_GLKG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_GLKG, fragmentName, "", fragment);
     }
 
     //环网柜（电压互感器）</string>
     private FragmentOption getGY_HWG_DYHGQ() {
         GY_HWG_DYHGQ fragment = new GY_HWG_DYHGQ_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_DYHGQ);
-        return new FragmentOption(KEY_GY_HWG_DYHGQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_DYHGQ, fragmentName, "", fragment);
     }
 
     //环网柜（电流互感器）</string>
     private FragmentOption getGY_HWG_DLHGQ() {
         GY_HWG_DLHGQ fragment = new GY_HWG_DLHGQ_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_DLHGQ);
-        return new FragmentOption(KEY_GY_HWG_DLHGQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_DLHGQ, fragmentName, "", fragment);
     }
 
     //环网柜（避雷器）</string>
     private FragmentOption getGY_HWG_BLQ() {
         GY_HWG_BLQ fragment = new GY_HWG_BLQ_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_BLQ);
-        return new FragmentOption(KEY_GY_HWG_BLQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_BLQ, fragmentName, "", fragment);
     }
 
     //环网柜（故障指示器）</string>
     private FragmentOption getGY_HWG_GZZSQ() {
         GY_HWG_GZZSQ fragment = new GY_HWG_GZZSQ_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_GZZSQ);
-        return new FragmentOption(KEY_GY_HWG_GZZSQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_GZZSQ, fragmentName, "", fragment);
     }
 
     //环网柜（母线）</string>
     private FragmentOption getGY_HWG_MX() {
         GY_HWG_MX fragment = new GY_HWG_MX_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_MX);
-        return new FragmentOption(KEY_GY_HWG_MX,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_MX, fragmentName, "", fragment);
     }
 
     //其他</string>
     private FragmentOption getGY_HWG_OTHER() {
         GY_HWG_OTHER fragment = new GY_HWG_OTHER_();
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_OTHER);
-        return new FragmentOption(KEY_GY_HWG_OTHER,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_HWG_OTHER, fragmentName, "", fragment);
     }
 
     //环网柜照片</string>
     private FragmentOption getGY_HWG_PHOTO() {
-        SrPhotoManagerFragment fragment = new
-                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
+        SrPhotoManagerFragment fragment = new com.geocraft.electrics.sr.fragment.
+                SrPhotoManagerFragment_();
+        List<String> tags = new ArrayList<String>();
+        tags.add("环网柜:全貌照片");
+        tags.add("环网柜:标识牌照片");
+        tags.add("环网柜:铭牌照片");
+        fragment.setTags(tags);
         String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_PHOTO);
         return new FragmentOption(KEY_GY_HWG_PHOTO, fragmentName, "", fragment);
     }
@@ -527,54 +520,54 @@ public class DLFragments {
     private FragmentOption getGY_FZX_GLKG() {
         GY_FZX_GLKG fragment = new GY_FZX_GLKG_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_GLKG);
-        return new FragmentOption(KEY_GY_FZX_GLKG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_GLKG, fragmentName, "", fragment);
     }
 
     //">分支箱（负荷开关）</string>
     private FragmentOption getGY_FZX_FHKG() {
         GY_FZX_FHKG fragment = new GY_FZX_FHKG_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_FHKG);
-        return new FragmentOption(KEY_GY_FZX_FHKG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_FHKG, fragmentName, "", fragment);
     }
 
     //">分支箱（电流互感器）</string>
     private FragmentOption getGY_FZX_DLHGQ() {
         GY_FZX_DLHGQ fragment = new GY_FZX_DLHGQ_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_DLHGQ);
-        return new FragmentOption(KEY_GY_FZX_DLHGQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_DLHGQ, fragmentName, "", fragment);
     }
 
     //">分支箱（避雷器）</string>
     private FragmentOption getGY_FZX_BLQ() {
         GY_FZX_BLQ fragment = new GY_FZX_BLQ_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_BLQ);
-        return new FragmentOption(KEY_GY_FZX_BLQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_BLQ, fragmentName, "", fragment);
     }
 
     //">分支箱（故障指示器）</string>
     private FragmentOption getGY_FZX_GZZSQ() {
         GY_FZX_GZZSQ fragment = new GY_FZX_GZZSQ_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_GZZSQ);
-        return new FragmentOption(KEY_GY_FZX_GZZSQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_GZZSQ, fragmentName, "", fragment);
     }
 
     //">分支箱（母线）</string>
     private FragmentOption getGY_FZX_MX() {
         GY_FZX_MX fragment = new GY_FZX_MX_();
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_MX);
-        return new FragmentOption(KEY_GY_FZX_MX,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_FZX_MX, fragmentName, "", fragment);
     }
 
-    //照片
+    //分支箱照片
     private FragmentOption getGY_FZX_ZPSJ() {
-        SrPhotoManagerFragment fragment = new
-                com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
+        SrPhotoManagerFragment fragment = new com.geocraft.electrics.sr.fragment.
+                SrPhotoManagerFragment_();
+        List<String> tags = new ArrayList<String>();
+        tags.add("分支箱:分支箱全貌照片");
+        tags.add("分支箱:标识牌照片");
+        tags.add("分支箱:铭牌照片");
+        tags.add("分支箱:柜门照片");
+        fragment.setTags(tags);
         String fragmentName = mResources.getString(R.string.GY_FZX_TITLE_ZPSJ);
         return new FragmentOption(KEY_GY_FZX_ZPSJ, fragmentName, "", fragment);
     }
@@ -584,64 +577,56 @@ public class DLFragments {
     private FragmentOption getGY_XSBDZ_XSBDZ() {
         GY_XSBDZ_XSBDZ fragment = new GY_XSBDZ_XSBDZ_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_JBXX);
-        return new FragmentOption(KEY_GY_XSBDZ_XSBDZ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_XSBDZ, fragmentName, "", fragment);
     }
 
     //">箱式变电站（负荷开关）</string>
     private FragmentOption getGY_XSBDZ_FHKG() {
         GY_XSBDZ_FHKG fragment = new GY_XSBDZ_FHKG_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_FHKG);
-        return new FragmentOption(KEY_GY_XSBDZ_FHKG,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_FHKG, fragmentName, "", fragment);
     }
 
     //">箱式变电站（配电变压器）</string>
     private FragmentOption getGY_XSBDZ_PDBYQ() {
         GY_XSBDZ_PDBYQ fragment = new GY_XSBDZ_PDBYQ_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_PDBYQ);
-        return new FragmentOption(KEY_GY_XSBDZ_PDBYQ,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_PDBYQ, fragmentName, "", fragment);
     }
 
     //">箱式变电站（档位）</string>
     private FragmentOption getGY_XSBDZ_DW() {
         GY_XSBDZ_DW fragment = new GY_XSBDZ_DW_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_DW);
-        return new FragmentOption(KEY_GY_XSBDZ_DW,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_DW, fragmentName, "", fragment);
     }
 
     //">箱式变电站（低压铜牌）</string>
     private FragmentOption getGY_XSBDZ_DYTP() {
         GY_XSBDZ_DYTP fragment = new GY_XSBDZ_DYTP_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_DYTP);
-        return new FragmentOption(KEY_GY_XSBDZ_DYTP,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_DYTP, fragmentName, "", fragment);
     }
 
     //">箱式变电站（低压总空开）</string>
     private FragmentOption getGY_XSBDZ_DYZKK() {
         GY_XSBDZ_DYZKK fragment = new GY_XSBDZ_DYZKK_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_DYZKK);
-        return new FragmentOption(KEY_GY_XSBDZ_DYZKK,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_DYZKK, fragmentName, "", fragment);
     }
 
     //">箱式变电站（低压空开1）</string>
     private FragmentOption getGY_XSBDZ_DYKK1() {
         GY_XSBDZ_DYZKK1 fragment = new GY_XSBDZ_DYZKK1_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_DYKK1);
-        return new FragmentOption(KEY_GY_XSBDZ_DYKK1,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_DYKK1, fragmentName, "", fragment);
     }
 
     //">箱式变电站（低压空开2）</string>
     private FragmentOption getGY_XSBDZ_DYKK2() {
         GY_XSBDZ_DYZKK2 fragment = new GY_XSBDZ_DYZKK2_();
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_DYKK2);
-        return new FragmentOption(KEY_GY_XSBDZ_DYKK2,
-                fragmentName, "", fragment);
+        return new FragmentOption(KEY_GY_XSBDZ_DYKK2, fragmentName, "", fragment);
     }
 
     //">箱式变电站（低压空开3）</string>
@@ -688,6 +673,19 @@ public class DLFragments {
     private FragmentOption getGY_XSBDZ_ZPSJ() {
         SrPhotoManagerFragment fragment = new
                 com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
+        List<String> tags = new ArrayList<String>();
+        tags.add("箱式变电站:全貌照片");
+        tags.add("箱式变电站:箱变铭牌照片");
+        tags.add("箱式变电站:低压总空开照片");
+        tags.add("箱式变电站:低压空气开关照片1");
+        tags.add("箱式变电站:低压空气开关照片2");
+        tags.add("箱式变电站:低压空气开关照片3");
+        tags.add("箱式变电站:低压空气开关照片4");
+        tags.add("箱式变电站:低压空气开关照片5");
+        tags.add("箱式变电站:低压空气开关照片6");
+        tags.add("箱式变电站:低压空气开关照片7");
+        tags.add("箱式变电站:低压无功补偿装置铭牌照片");
+        fragment.setTags(tags);
         String fragmentName = mResources.getString(R.string.GY_XSBDZ_TITLE_ZPSJ);
         return new FragmentOption(KEY_GY_XSBDZ_ZPSJ, fragmentName, "", fragment);
     }
@@ -726,6 +724,11 @@ public class DLFragments {
     private FragmentOption getGY_DLFJX_ZPSJ() {
         SrPhotoManagerFragment fragment = new
                 com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
+        List<String> tags = new ArrayList<String>();
+        tags.add("电缆分接箱:电缆分接箱全貌照片");
+        tags.add("电缆分接箱:标识牌照片");
+        tags.add("电缆分接箱:铭牌照片");
+        fragment.setTags(tags);
         String fragmentName = mResources.getString(R.string.GY_DLFJXTZXX_F_PHOTO);
         return new FragmentOption(KEY_GY_DLFJX_ZPSJ, fragmentName, "", fragment);
     }
