@@ -3,6 +3,7 @@ package com.geocraft.electrics.utils;
 
 import com.huace.log.logger.L;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -109,6 +110,29 @@ public class NameFormatter {
         }
         cnt = cnt + step;
         return prefix + cnt;
+    }
+
+    /**
+     * 根据已有点名获取下一个带数字后缀的点名（格式化）
+     *
+     * @param format DecimalFormat 格式化符
+     */
+    public static String getNextNameWithDigitSuffixFormat(List<String> existNames,
+                                                          String prefix, int step, String format) {
+        int cnt = 0;
+        for (String name : existNames) {
+            if (!name.startsWith(prefix)) {
+                continue;
+            }
+            String str = name.substring(prefix.length());
+            int suffix = StringUtils.string2int(str);
+            if (suffix > cnt) {
+                cnt = suffix;
+            }
+        }
+        cnt = cnt + step;
+        String formatValue = new DecimalFormat(format).format(cnt);
+        return prefix + formatValue;
     }
 
     /**

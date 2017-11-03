@@ -30,6 +30,7 @@ import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import common.geocraft.untiltools.T;
@@ -39,6 +40,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     private final String WELL_NAME_PRIX = "#";
     private final String WELL_FISTR_NAME = "#001";
     private final String WELL_KBS_NAME = "#000";
+    private final String WELL_NAME_FORMAT = "000";
     protected TaskManager taskManager = TaskManager_.getInstance_(
             ElectricApplication_.getInstance().getApplicationContext());
     protected DbManager dbManager = DbManager_.getInstance_(
@@ -105,15 +107,26 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     private boolean isDataValid() {
         String curWellName = F_JZID.getText().toString();
         int value = 0;
-        if (mIsNew) {
-            value = curWellName.compareTo(getNextWellName(mWellController.getLineId(),
-                    mWellController.getWellType()));
+        if (mIsCreateForDefine) {
+            String nextName = getNextWellName(mWellController.getLineId(),
+                    mWellController.getWellType());
+            nextName = nextName.substring(WELL_NAME_PRIX.length());
+            value = curWellName.compareTo(nextName);
         }
         if (value < 0) {
             T.showShort(mActivity, R.string.well_name_is_too_samll);
             return false;
         }
         return true;
+    }
+
+    private String formatInput(String name) {
+        if (null == name || name.isEmpty()) {
+            name = getDefaultWellName(mWellController.getWellType());
+        }
+        int cnt = Integer.valueOf(name);
+        String formatValue = new DecimalFormat(WELL_NAME_FORMAT).format(cnt);
+        return formatValue;
     }
 
     private void initDefineViewData() {
@@ -160,7 +173,8 @@ public class Well_PreFragment extends WellBaseInfoFragment {
         if (wellNames.size() == 0) {
             return getDefaultWellName(wellType);
         }
-        return NameFormatter.getNextNameWithDigitSuffix(wellNames, WELL_NAME_PRIX);
+        return NameFormatter.getNextNameWithDigitSuffixFormat(wellNames,
+                WELL_NAME_PRIX, 1, WELL_NAME_FORMAT);
     }
 
     private String initWellName(String wellName) {
