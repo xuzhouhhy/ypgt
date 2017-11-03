@@ -421,7 +421,7 @@ public class DLFragments {
     //    环网柜（基本信息）
     private FragmentOption getGY_HWG_HWG() {
         GY_HWG_HWG fragment = new GY_HWG_HWG_();
-        String fragmentName = mResources.getString(R.string.GY_HWG_TITLE_JBXX);
+        String fragmentName = mResources.getString(R.string.GY_HWG_HWG);
         return new FragmentOption(KEY_GY_HWG_HWG,
                 fragmentName, "", fragment);
     }
@@ -697,7 +697,7 @@ public class DLFragments {
     //电缆分接箱（基本信息）
     private FragmentOption getGY_DLFJX_DLFJX() {
         GY_DLFJX_DLFJX fragment = new GY_DLFJX_DLFJX_();
-        String fragmentName = mResources.getString(R.string.GY_DLFZX_TITLE_JBXX);
+        String fragmentName = mResources.getString(R.string.GY_DLFZX);
         return new FragmentOption(KEY_GY_DLFJX_DLFJX, fragmentName, "", fragment);
     }
 

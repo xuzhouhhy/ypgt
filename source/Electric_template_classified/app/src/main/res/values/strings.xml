@@ -1627,4 +1627,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="GY_DLXL_GJXX">工井信息</string>
+    <string name="GY_HWG_HWG">环网柜</string>
+    <string name="GY_DLFZX">电缆分接箱</string>
 </resources>
