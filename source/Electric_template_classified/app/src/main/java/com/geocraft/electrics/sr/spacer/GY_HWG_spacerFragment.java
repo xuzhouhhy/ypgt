@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.sr.activity.WellActivity;
@@ -28,6 +29,8 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +51,14 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     SpacerController mController;
     private WellActivity mActivity;
     private DataSet mCurrentDataSet;
+    /**
+     * dialog显示的间隔是新建还是编辑
+     */
+    private boolean mIsNewSpacer;
+    /**
+     * 当前编辑间隔的位置
+     */
+    private int mSpacerPosition;
     private SwipeMenuCreator menuCreator = new SwipeMenuCreator() {
         @Override
         public void create(SwipeMenu menu) {
@@ -86,7 +97,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btnYes:
-                    onSaveSpacer();
+                    onSaveAndUpdateSpacer();
                     break;
                 case R.id.btnNo:
                     dialogDismiss();
@@ -97,14 +108,133 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         }
     };
 
-    private void onSaveSpacer() {
-        DataSet dataSet = mController.getSpacerDataset();
+    @Override
+    public void init() {
+        ElectricApplication.BUS.register(this);
+        mActivity = ((WellActivity) this.getActivity());
+        mIsNew = mActivity.getController().isCreateRecord();
+        mDataSet = mActivity.getController().getCurrentDataSet();
+        WellController controller = mActivity.getController();
+        mCurrentDataSet = mController.getSpacerDataset();
+
+        mController.setLineId(controller.getLineId());
+        mController.setWellId(controller.getWellId());
+        mController.setWellType(controller.getWellType());
+
+        listViewCommon.setOnItemClickListener(this);
+        listViewCommon.setMenuCreator(menuCreator);
+        listViewCommon.setOnMenuItemClickListener(mOnMenuItemClickListener);
+        mAdapter = new SpacerAdapter(mActivity, mController);
+        listViewCommon.setAdapter(mAdapter);
+        SpacerAsyncTask task = new SpacerAsyncTask(mActivity,
+                mController);
+        task.execute(mController);
+    }
+
+    public SpacerAdapter getAdapter() {
+        return mAdapter;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        DataSet dataSet = mController.getDataSets().get(position);
+        onGyHwgIntervalDetail(dataSet);
+        mSpacerPosition = position;
+    }
+
+    public void refreshListView(int position) {
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+            int listCount = mController.getDataSets().size();
+            if (position <= 0) {
+                return;
+            }
+            if (position < listCount) {
+                listViewCommon.setSelection(position);
+            } else {
+                listViewCommon.setSelection(listCount - 1);
+            }
+        }
+    }
+
+    /**
+     * 点击环网柜间隔详情按钮
+     */
+    private void onGyHwgIntervalDetail(DataSet dataSet) {
+        mIsNewSpacer = (dataSet == null);
+        Context context = getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View dialogView = inflater.inflate(R.layout.view_gy__hwg__jg_extend, null);
+        Button button = (Button) dialogView.findViewById(R.id.btnYes);
+        button.setOnClickListener(mOnClickListener);
+        button = (Button) dialogView.findViewById(R.id.btnNo);
+        button.setOnClickListener(mOnClickListener);
+        BusinessConcatSpinner spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGDYLX);
+        initSpinnerView(spinner);
+        spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGSBZT);
+        initSpinnerView(spinner);
+        mLinearLayout = (LinearLayout) dialogView.findViewById(R.id.linearLayoutRoot);
+        if (null != dataSet) {
+            super.initData(false, dataSet);
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(dialogView).setCancelable(true);
+        mDialog = builder.create();
+        mDialog.setCancelable(false);
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.show();
+    }
+
+
+    @Click
+    void btnAddSpacer() {
+        onGyHwgIntervalDetail(null);
+    }
+
+    private void dialogDismiss() {
+        if (mDialog != null) {
+            mDialog.dismiss();
+        }
+    }
+
+    /**
+     * 给spinner初始化数据
+     *
+     * @param spinner spinner控件
+     */
+    public void initSpinnerView(BusinessConcatSpinner spinner) {
+        List<FieldInfo> fieldInfoList = mCurrentDataSet.FieldInfos;
+        for (int i = 0; i < fieldInfoList.size(); i++) {
+            FieldInfo fieldInfo = fieldInfoList.get(i);
+            if (fieldInfo == null) {
+                continue;
+            }
+            String tag = spinner.getTag().toString();
+            if (null == tag || tag.isEmpty()) {
+                return;
+            }
+            if (tag.equalsIgnoreCase(fieldInfo.Alias)) {
+                spinner.setControlValue(fieldInfo, fieldInfo.Default);
+                spinner.setData(mCurrentDataSet, fieldInfo);
+            }
+        }
+    }
+
+    private void onSaveAndUpdateSpacer() {
+        DataSet dataSet;
+        if (mIsNewSpacer) {
+            dataSet = mController.getSpacerDataset();
+        } else {
+            dataSet = mController.getDataSets().get(mSpacerPosition);
+        }
         getValue(dataSet);
         boolean isContinueCheck = checkDataValidity(getContext(), dataSet);
         if (!isContinueCheck) {
             return;
         }
-        mController.getDataSets().add(dataSet);
+        if (mIsNewSpacer) {
+            mController.getDataSets().add(dataSet);
+        }
         refreshListView(0);
         dialogDismiss();
     }
@@ -138,112 +268,6 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         return true;
     }
 
-
-    @Override
-    public void init() {
-        mActivity = ((WellActivity) this.getActivity());
-        mIsNew = mActivity.getController().isCreateRecord();
-        mDataSet = mActivity.getController().getCurrentDataSet();
-        WellController controller = mActivity.getController();
-        mCurrentDataSet = mController.getSpacerDataset();
-
-        mController.setLineId(controller.getLineId());
-        mController.setWellId(controller.getWellId());
-        mController.setWellType(controller.getWellType());
-
-        listViewCommon.setOnItemClickListener(this);
-        listViewCommon.setMenuCreator(menuCreator);
-        listViewCommon.setOnMenuItemClickListener(mOnMenuItemClickListener);
-        mAdapter = new SpacerAdapter(mActivity, mController);
-        listViewCommon.setAdapter(mAdapter);
-        SpacerAsyncTask task = new SpacerAsyncTask(mActivity,
-                mController);
-        task.execute(mController);
-    }
-
-    public SpacerAdapter getAdapter() {
-        return mAdapter;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    public void refreshListView(int position) {
-        if (mAdapter != null) {
-            mAdapter.notifyDataSetChanged();
-            int listCount = mController.getDataSets().size();
-            if (position <= 0) {
-                return;
-            }
-            if (position < listCount) {
-                listViewCommon.setSelection(position);
-            } else {
-                listViewCommon.setSelection(listCount - 1);
-            }
-        }
-    }
-
-    /**
-     * 点击环网柜间隔详情按钮
-     */
-    private void onGyHwgIntervalDetail() {
-        Context context = getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View dialogView = inflater.inflate(R.layout.view_gy__hwg__jg_extend, null);
-        Button button = (Button) dialogView.findViewById(R.id.btnYes);
-        button.setOnClickListener(mOnClickListener);
-        button = (Button) dialogView.findViewById(R.id.btnNo);
-        button.setOnClickListener(mOnClickListener);
-        BusinessConcatSpinner spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGDYLX);
-        initSpinnerView(spinner);
-        spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGSBZT);
-        initSpinnerView(spinner);
-        mLinearLayout = (LinearLayout) dialogView.findViewById(R.id.linearLayoutRoot);
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setView(dialogView).setCancelable(true);
-        mDialog = builder.create();
-        mDialog.setCancelable(false);
-        mDialog.setCanceledOnTouchOutside(false);
-        mDialog.show();
-    }
-
-
-    @Click
-    void btnAddSpacer() {
-        onGyHwgIntervalDetail();
-    }
-
-    private void dialogDismiss() {
-        if (mDialog != null) {
-            mDialog.dismiss();
-        }
-    }
-
-    /**
-     * 给spinner初始化数据
-     *
-     * @param spinner spinner控件
-     */
-    public void initSpinnerView(BusinessConcatSpinner spinner) {
-        List<FieldInfo> fieldInfoList = mCurrentDataSet.FieldInfos;
-        for (int i = 0; i < fieldInfoList.size(); i++) {
-            FieldInfo fieldInfo = fieldInfoList.get(i);
-            if (fieldInfo == null) {
-                continue;
-            }
-            String tag = spinner.getTag().toString();
-            if (null == tag || tag.isEmpty()) {
-                return;
-            }
-            if (tag.equalsIgnoreCase(fieldInfo.Alias)) {
-                spinner.setControlValue(fieldInfo, fieldInfo.Default);
-                spinner.setData(mCurrentDataSet, fieldInfo);
-            }
-        }
-    }
-
     @Override
     public void getValue(DataSet dataSet) {
         super.getValue(dataSet);
@@ -251,9 +275,23 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     /**
      * 获取当前内存中的间隔dataset
+     *
      * @return dataset
      */
     public List<DataSet> getSpacerDatasetList() {
         return mController.getDataSets();
     }
+
+    @Override
+    public void onDestroyView() {
+        ElectricApplication.BUS.unregister(this);
+        super.onDestroyView();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
+    public void onDataSynEvent(SpacerRefreshEvent event) {
+        //参数-1是为了没有给选中项添加阴影
+        refreshListView(0);
+    }
+
 }

@@ -131,6 +131,9 @@ public class TowerShowListController extends BaseController {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                if (null == dataSetGroup) {
+                    return;
+                }
                 if (mDataSets != null) {
                     mDataSets.clear();
                 }

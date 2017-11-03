@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.geocraft.electrics.sr.controller.TowerShowListController;
 import com.geocraft.electrics.sr.spacer.SpacerController;
@@ -60,7 +61,7 @@ public class SpacerAsyncTask extends AsyncTask<SpacerController, Integer, Boolea
             if (!aBoolean) {
                 T.showShort(mContext, R.string.get_data_null);
             } else {
-                ((TowerShowListActivity) mContext).refreshListView(0);
+                ElectricApplication.BUS.post(new SpacerRefreshEvent());
             }
         } catch (Exception e) {
             L.printException(e);

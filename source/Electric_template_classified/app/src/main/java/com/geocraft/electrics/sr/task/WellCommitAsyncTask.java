@@ -8,10 +8,14 @@ import android.os.AsyncTask;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.constants.Constants;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.sr.activity.TowerShowListActivity_;
 import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.huace.log.logger.L;
+
+import java.util.List;
 
 import common.geocraft.untiltools.T;
 
@@ -44,7 +48,10 @@ public class WellCommitAsyncTask extends AsyncTask<WellController, Integer, Bool
     @Override
     protected Boolean doInBackground(WellController... params) {
         try {
-            return mController.saveRecord(((WellActivity) mContext).getPhotoInfoList());
+            WellActivity wellActivity = (WellActivity) mContext;
+            List<SrPhotoManagerController.PhotoItemInfo> photos = wellActivity.getPhotoInfoList();
+            List<DataSet> dataSets = wellActivity.getSpacerDatasets();
+            return mController.saveRecord(photos, dataSets);
         } catch (Exception e) {
             L.printException(e);
             return false;
