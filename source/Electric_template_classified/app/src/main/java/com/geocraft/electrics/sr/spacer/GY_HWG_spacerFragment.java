@@ -11,9 +11,13 @@ import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.sr.activity.WellActivity;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.WellBaseFragment;
+import com.geocraft.electrics.ui.view.DataValidityInfoView;
+import com.geocraft.electrics.ui.view.DataValidityInfoView_;
+import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenu;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuCreator;
 import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuItem;
@@ -21,8 +25,12 @@ import com.geocraft.electrics.ui.view.swipemenulist.SwipeMenuListView;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import common.geocraft.untiltools.DensityUtils;
 import common.geocraft.untiltools.T;
@@ -35,10 +43,11 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     protected SwipeMenuListView listViewCommon;
     protected SpacerAdapter mAdapter;
     @ViewById
-    LinearLayout linearLayoutRoot;
+    Button btnAddSpacer;
     @Bean
     SpacerController mController;
     private WellActivity mActivity;
+    private DataSet mCurrentDataSet;
     private SwipeMenuCreator menuCreator = new SwipeMenuCreator() {
         @Override
         public void create(SwipeMenu menu) {
@@ -61,7 +70,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
                 public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                     try {
                         mController.showRemoveTargetRecordDialog(
-                                GY_HWG_spacerFragment.this.getActivity(), position);
+                                GY_HWG_spacerFragment.this, position);
                     } catch (Exception e) {
                         L.printException(e);
                         T.showShort(GY_HWG_spacerFragment.this.getActivity(),
@@ -71,20 +80,72 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
                     return false;
                 }
             };
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btnYes:
+                    onSaveSpacer();
+                    break;
+                case R.id.btnNo:
+                    dialogDismiss();
+                    break;
+                default:
+                    break;
+            }
         }
     };
+
+    private void onSaveSpacer() {
+        DataSet dataSet = mController.getSpacerDataset();
+        getValue(dataSet);
+        boolean isContinueCheck = checkDataValidity(getContext(), dataSet);
+        if (!isContinueCheck) {
+            return;
+        }
+        mController.getDataSets().add(dataSet);
+        refreshListView(0);
+        dialogDismiss();
+    }
+
+    public boolean checkDataValidity(Context context, DataSet dataSet) {
+        List<String> illegalFieldList = new ArrayList<>();
+        List<String> illegalPhotoList = new ArrayList<>();
+        illegalFieldList.clear();
+        illegalPhotoList.clear();
+        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
+        for (int i = 0; i < fieldInfoList.size(); i++) {
+            FieldInfo fieldInfoTemp = fieldInfoList.get(i);
+            if (fieldInfoTemp == null) {
+                continue;
+            }
+            if (fieldInfoTemp.IsRequired && fieldInfoTemp.Value.length() <= 0) {
+                illegalFieldList.add(fieldInfoTemp.Alias);
+            }
+        }
+        if (illegalFieldList.size() > 0 || illegalPhotoList.size() > 0) {
+            DataValidityInfoView validityInfoView = DataValidityInfoView_.build(context);
+            validityInfoView.setFieldErrorInfo(illegalFieldList);
+            validityInfoView.setPhotoErrorInfo(illegalPhotoList);
+            new AlertDialog.Builder(context)
+                    .setIcon(R.mipmap.ic_warning)
+                    .setTitle(R.string.dlg_warning)
+                    .setView(validityInfoView)
+                    .show();
+            return false;
+        }
+        return true;
+    }
 
 
     @Override
     public void init() {
-        mLinearLayout = linearLayoutRoot;
         mActivity = ((WellActivity) this.getActivity());
         mIsNew = mActivity.getController().isCreateRecord();
         mDataSet = mActivity.getController().getCurrentDataSet();
         WellController controller = mActivity.getController();
+        mCurrentDataSet = mController.getSpacerDataset();
 
         mController.setLineId(controller.getLineId());
         mController.setWellId(controller.getWellId());
@@ -104,12 +165,9 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         return mAdapter;
     }
 
-
-    // TODO: 2017/11/1 新增对话框
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // TODO: 2017/11/1 弹出对话框
+
     }
 
     public void refreshListView(int position) {
@@ -127,7 +185,6 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         }
     }
 
-
     /**
      * 点击环网柜间隔详情按钮
      */
@@ -139,6 +196,11 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         button.setOnClickListener(mOnClickListener);
         button = (Button) dialogView.findViewById(R.id.btnNo);
         button.setOnClickListener(mOnClickListener);
+        BusinessConcatSpinner spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGDYLX);
+        initSpinnerView(spinner);
+        spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGSBZT);
+        initSpinnerView(spinner);
+        mLinearLayout = (LinearLayout) dialogView.findViewById(R.id.linearLayoutRoot);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(dialogView).setCancelable(true);
         mDialog = builder.create();
@@ -148,27 +210,50 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     }
 
 
+    @Click
+    void btnAddSpacer() {
+        onGyHwgIntervalDetail();
+    }
+
     private void dialogDismiss() {
         if (mDialog != null) {
             mDialog.dismiss();
         }
     }
 
-    private void onSaveInterval() {
-
+    /**
+     * 给spinner初始化数据
+     *
+     * @param spinner spinner控件
+     */
+    public void initSpinnerView(BusinessConcatSpinner spinner) {
+        List<FieldInfo> fieldInfoList = mCurrentDataSet.FieldInfos;
+        for (int i = 0; i < fieldInfoList.size(); i++) {
+            FieldInfo fieldInfo = fieldInfoList.get(i);
+            if (fieldInfo == null) {
+                continue;
+            }
+            String tag = spinner.getTag().toString();
+            if (null == tag || tag.isEmpty()) {
+                return;
+            }
+            if (tag.equalsIgnoreCase(fieldInfo.Alias)) {
+                spinner.setControlValue(fieldInfo, fieldInfo.Default);
+                spinner.setData(mCurrentDataSet, fieldInfo);
+            }
+        }
     }
-
 
     @Override
     public void getValue(DataSet dataSet) {
-
-//        if(!viewGLDW.strSecondManager.isEmpty()) {
-//            etSJDW.setControlValue(viewGLDW.strSecondManager);
-//        }
         super.getValue(dataSet);
     }
 
-    private void onNextInterval() {
-
+    /**
+     * 获取当前内存中的间隔dataset
+     * @return dataset
+     */
+    public List<DataSet> getSpacerDatasetList() {
+        return mController.getDataSets();
     }
 }

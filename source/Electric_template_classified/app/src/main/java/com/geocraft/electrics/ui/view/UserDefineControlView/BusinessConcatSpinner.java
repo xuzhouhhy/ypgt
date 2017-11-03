@@ -149,7 +149,7 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                if (position == mDatalist.size() - 1) {
+                if (mDatalist.get(position).isEmpty()) {
                     view.setVisibility(INVISIBLE);
                 }
                 return view;
@@ -157,7 +157,13 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
 
             @Override
             public int getCount() {
-                return super.getCount() - 1;
+                int i = 0;
+                for (String item : mDatalist) {
+                    if (item.isEmpty()) {
+                        i++;
+                    }
+                }
+                return super.getCount() - i;
             }
         };
         dataAdapter.setDropDownViewResource(R.layout.item_single_choice);

@@ -293,6 +293,10 @@ public class BusinessFragment extends BaseFragment {
                                 fieldInfo.Value = ((EditTextDatetimeExpand) view).getControlValue();
                                 break;
                             }
+                            case PropertyDictionay.OperateCode.type_concat: {
+                                fieldInfo.Value = ((BusinessConcatSpinner) view).getControlValue();
+                                break;
+                            }
                             default:
                                 break;
                         }
