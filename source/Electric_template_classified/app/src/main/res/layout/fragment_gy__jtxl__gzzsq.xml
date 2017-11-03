@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/GY_JKXL_F_GZZSQ_TYRQ"
             />
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/F_GZZSQ_TYRQ"

@@ -23,32 +23,9 @@
                 android:text="@string/GY_FZX_TITLE_MX"/>
         </LinearLayout>
 
-    <!-- 生产厂家 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_MXSCCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_MXSCCJ"
-        android:tag="@string/GY_FZXTZXX_F_MXSCCJ"/>
 
 
-    <!-- 截面积 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_MXJMJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_MXJMJ"
-        android:tag="@string/GY_FZXTZXX_F_MXJMJ"/>
+
 
 
 
@@ -65,7 +42,31 @@
         android:id="@+id/F_MXXH"
         android:tag="@string/GY_FZXTZXX_F_MXXH"/>
 
+        <!-- 分支箱母线:材质 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_MXCZ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_MXCZ"
+            android:tag="@string/F_FZX_MXCZ"/>
 
+        <!-- 截面积 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_FZXTZXX_F_MXJMJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_MXJMJ"
+            android:tag="@string/GY_FZXTZXX_F_MXJMJ"/>
 
     <!-- 载流量 -->
     <TextView
@@ -79,5 +80,33 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_MXZLL"
         android:tag="@string/GY_FZXTZXX_F_MXZLL"/>
+
+        <!-- 生产厂家 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_FZXTZXX_F_MXSCCJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_MXSCCJ"
+            android:tag="@string/GY_FZXTZXX_F_MXSCCJ"/>
+
+
+        <!-- 分支箱母线:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_MXTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_MXTYSJ"
+            android:tag="@string/F_FZX_MXTYSJ"/>
+
     </LinearLayout>
 </ScrollView>

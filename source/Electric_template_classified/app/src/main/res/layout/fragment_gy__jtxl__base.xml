@@ -120,19 +120,19 @@
             android:layout_height="wrap_content"
             android:tag="@string/GY_JKXLTZXX_F_CTRQ"/>
 
-        <!--最近一次技改大修日期-->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_JKXLTZXX_F_ZHJGDXRQ"
-            />
+        <!--&lt;!&ndash;最近一次技改大修日期&ndash;&gt;-->
+        <!--<TextView-->
+            <!--style="@style/SimpleLabel"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/GY_JKXLTZXX_F_ZHJGDXRQ"-->
+            <!--/>-->
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
-            android:id="@+id/F_ZHJGDXRQ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_JKXLTZXX_F_ZHJGDXRQ"/>
+        <!--<com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand-->
+            <!--android:id="@+id/F_ZHJGDXRQ"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:tag="@string/GY_JKXLTZXX_F_ZHJGDXRQ"/>-->
 
         <!--施工单位-->
         <TextView

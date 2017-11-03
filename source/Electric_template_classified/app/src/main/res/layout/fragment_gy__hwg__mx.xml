@@ -23,36 +23,6 @@
                 android:text="@string/GY_HWG_TITLE_MX"/>
         </LinearLayout>
 
-    <!--生产厂家 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_HWGMXSCCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWGMXSCCJ"
-        android:tag="@string/GY_HYGTZXX_F_HWGMXSCCJ"/>
-
-
-
-    <!--截面积 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_HWGMXJMJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWGMXJMJ"
-        android:tag="@string/GY_HYGTZXX_F_HWGMXJMJ"/>
-
-
-
     <!--型号 -->
     <TextView
         style="@style/SimpleLabel"
@@ -80,6 +50,19 @@
         android:id="@+id/F_HWGMXCZ"
         android:tag="@string/GY_HYGTZXX_F_HWGMXCZ"/>
 
+        <!--截面积 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_HWGMXJMJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWGMXJMJ"
+            android:tag="@string/GY_HYGTZXX_F_HWGMXJMJ"/>
+
     <!--载流量 -->
     <TextView
         style="@style/SimpleLabel"
@@ -92,5 +75,32 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGMXJLL"
         android:tag="@string/GY_HYGTZXX_F_HWGMXJLL"/>
+
+        <!--生产厂家 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_HWGMXSCCJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWGMXSCCJ"
+            android:tag="@string/GY_HYGTZXX_F_HWGMXSCCJ"/>
+
+        <!-- 环网柜母线信息:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_MXTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_MXTYSJ"
+            android:tag="@string/F_HWG_MXTYSJ"/>
+
     </LinearLayout>
 </ScrollView>

@@ -48,5 +48,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:tag="@string/GY_FZXTZXX_F_BLQCJ" />
+
+        <!-- 分支箱避雷器:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_BLQTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_BLQTYSJ"
+            android:tag="@string/F_FZX_BLQTYSJ"/>
+
     </LinearLayout>
 </ScrollView>

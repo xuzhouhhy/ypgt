@@ -50,5 +50,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGBLQCJ"
         android:tag="@string/GY_HYGTZXX_F_HWGBLQCJ"/>
+
+        <!-- 环网柜避雷器:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_BLQTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_BLQTYSJ"
+            android:tag="@string/F_HWG_BLQTYSJ"/>
+
  </LinearLayout>
 </ScrollView>

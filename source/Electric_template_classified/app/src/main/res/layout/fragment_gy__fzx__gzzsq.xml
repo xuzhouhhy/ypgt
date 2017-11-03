@@ -50,5 +50,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_GZZSDCJ"
         android:tag="@string/GY_FZXTZXX_F_GZZSDCJ"/>
+
+        <!-- 分支箱故障指示器:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_GZZSQTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_GZZSQTYSJ"
+            android:tag="@string/F_FZX_GZZSQTYSJ"/>
+
     </LinearLayout>
 </ScrollView>
