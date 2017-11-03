@@ -91,6 +91,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
     public void onDataSynEvent(UpdateWellNameArgs event) {
         F_JZID.setText(initWellName(""));
+        updateWellNameEditable(F_JZID, mIsCreateForDefine);
     }
 
     @Override
@@ -164,6 +165,9 @@ public class Well_PreFragment extends WellBaseInfoFragment {
 
     private String initWellName(String wellName) {
         String name = wellName;
+        if (mWellController.getWellType() == WellType.KBS) {
+            return getDefaultWellName(mWellController.getWellType());
+        }
         if (null == name || name.isEmpty()) {
             name = getNextWellName(mWellController.getLineId(), mWellController.getWellType());
         } else {
