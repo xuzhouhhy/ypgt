@@ -24,7 +24,7 @@ import common.geocraft.untiltools.FileUtils;
  * 井号采集fragment基类
  */
 @EFragment(R.layout.fragment_business)
-public class WellBaseFragment extends BusinessFragment {
+public class  WellBaseFragment extends BusinessFragment {
     protected WellActivity mActivity;
 
     @Override

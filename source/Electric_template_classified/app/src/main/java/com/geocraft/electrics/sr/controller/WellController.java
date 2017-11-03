@@ -17,9 +17,6 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.PreFragmentFactory;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
-import com.geocraft.electrics.ui.controller.PhotoManagerController;
-import com.geocraft.electrics.ui.view.DataValidityInfoView;
-import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;

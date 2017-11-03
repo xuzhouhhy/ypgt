@@ -5,14 +5,9 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
-import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Enum;
-import com.geocraft.electrics.db.DbManager;
-import com.geocraft.electrics.db.DbManager_;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
-import com.geocraft.electrics.manager.TaskManager;
-import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.activity.WellActivity;
 import com.geocraft.electrics.sr.adapters.FragmentAdapter;
@@ -32,12 +27,6 @@ import java.util.List;
 @EFragment(R.layout.fragment_well_main)
 public class WellMainFragment extends WellBaseFragment {
     private final static String NAME_KEY_MARK = "&";
-    protected DataSet mDataSet;
-    protected Boolean mIsNew;
-    protected TaskManager taskManager = TaskManager_.getInstance_(
-            ElectricApplication_.getInstance().getApplicationContext());
-    protected DbManager dbManager = DbManager_.getInstance_(
-            ElectricApplication_.getInstance().getApplicationContext());
     @ViewById
     LinearLayout linearLayoutRoot;
     @ViewById
@@ -46,15 +35,18 @@ public class WellMainFragment extends WellBaseFragment {
 
     @Override
     protected void init() {
+        mLinearLayout = linearLayoutRoot;
         mWellController = ((WellActivity) this.getActivity()).getController();
         mIsNew = mWellController.isCreateRecord();
         mDataSet = mWellController.getCurrentDataSet();
+        mActivity = ((WellActivity) this.getActivity());
         initViewData();
     }
 
     private void initViewData() {
         try {
-            FragmentAdapter fragmentAdapter = new FragmentAdapter(this.getActivity(), mWellController);
+            FragmentAdapter fragmentAdapter = new FragmentAdapter(this.getActivity(),
+                    mWellController);
             grd_ck_fragment.setAdapter(fragmentAdapter);
         } catch (Exception e) {
             L.printException(e);
@@ -64,6 +56,7 @@ public class WellMainFragment extends WellBaseFragment {
     /**
      * 获取界面直
      */
+    @Override
     public void getValue(DataSet dataSet) {
         List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
         for (int i = 0; i < fieldInfoList.size(); i++) {
