@@ -15,11 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.sr.task.UpdateTemplateAsyncTask;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
+import com.geocraft.electrics.utils.SPUtils;
 
 import java.util.ArrayList;
 
@@ -82,6 +84,10 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
         spinner = (Spinner) mRootView.findViewById(R.id.spinner);
         button = (Button) mRootView.findViewById(R.id.button);
         button.setOnClickListener(mListener);
+        if (!((Boolean) SPUtils.get(context, Constants.SPKEY_SPINNER_SWITCH, true))) {
+            button.setVisibility(GONE);
+        }
+
     }
 
     private void dialogDismiss() {
