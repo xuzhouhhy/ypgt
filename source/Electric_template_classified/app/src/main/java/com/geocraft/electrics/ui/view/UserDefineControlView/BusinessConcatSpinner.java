@@ -111,23 +111,20 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     }
 
     private void onAddSpinnerItem() {
-        if (null == mEditText || mEditText.toString().isEmpty()) {
+        if (null == mEditText || mEditText.getText().toString().isEmpty()) {
             return;
         }
         String text = mEditText.getText().toString();
-        mDatalist.add(text);
+        String select = spinner.getSelectedItem().toString();
+        mDatalist.remove("");
+        mFieldInfo.Dictionay.menuList.add(text);
+        mDatalist.add("");
         dataAdapter.notifyDataSetChanged();
-        onAddFieldMenulistToTemplate(text);
-        dialogDismiss();
-    }
-
-    private void onAddFieldMenulistToTemplate(String text) {
-        if (null == text || text.isEmpty()) {
-            return;
-        }
         UpdateTemplateAsyncTask task = new UpdateTemplateAsyncTask(getContext(),
                 mDataSet, mFieldInfo);
         task.execute(text);
+        setControlValue(select);
+        dialogDismiss();
     }
 
     @Override
@@ -148,25 +145,20 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     @Override
     public void setControlValue(FieldInfo fieldInfo, String text) {
         mDatalist = fieldInfo.Dictionay.menuList;
+        mDatalist.add("");
         dataAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.simple_spinner_item, mDatalist) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                if (mDatalist.get(position).isEmpty()) {
-                    view.setVisibility(GONE);
+                if (position == mDatalist.size() - 1) {
+                    view.setVisibility(INVISIBLE);
                 }
                 return view;
             }
 
             @Override
             public int getCount() {
-                int i = 0;
-                for (String item : mDatalist) {
-                    if (item.isEmpty()) {
-                        i++;
-                    }
-                }
-                return super.getCount() - i;
+                return super.getCount() - 1;
             }
         };
         dataAdapter.setDropDownViewResource(R.layout.item_single_choice);

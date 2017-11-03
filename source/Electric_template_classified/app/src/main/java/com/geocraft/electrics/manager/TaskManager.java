@@ -17,15 +17,10 @@ import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
-import org.w3c.dom.Attr;
-import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.TypeInfo;
-import org.w3c.dom.UserDataHandler;
 import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlSerializer;
 
@@ -331,17 +326,21 @@ public class TaskManager {
      * @param fieldInfo 更新字段
      * @param text      添加的mennulist内容
      */
-    public void writeMenuList(DataSet mDataSet, FieldInfo fieldInfo, String text) {
+    public boolean writeMenuList(DataSet mDataSet, FieldInfo fieldInfo, String text) {
         int groupIndex = getGroupIndex(mDataSet);
         if (groupIndex >= 0) {
             int datasetIndex = getDatasetIndex(groupIndex, mDataSet);
             if (datasetIndex >= 0) {
                 int fieldIndex = getFieldIndex(groupIndex, datasetIndex, fieldInfo);
                 if (fieldIndex >= 0) {
-                    updateXmlFieldMenuList(groupIndex, datasetIndex, fieldIndex, text);
+                    if (updateXmlFieldMenuList(groupIndex, datasetIndex, fieldIndex, text)) {
+                        String taskPath = ConstPath.getTaskRootFolder() + mTaskInfo.getTaskName();
+                        return initDataSourceByTemplate(taskPath);
+                    }
                 }
             }
         }
+        return false;
     }
 
     private boolean updateXmlFieldMenuList(int groupIndex, int datasetIndex, int fieldIndex, final String text) {
@@ -383,7 +382,7 @@ public class TaskManager {
                                                     int menuListLength = meunList.getLength();
                                                     if (menuListLength <= 0) {
                                                         Element menuNodeCopy = dom.createElement("MenuList");
-                                                        Element itemNodeCopy =dom.createElement("Item");
+                                                        Element itemNodeCopy = dom.createElement("Item");
                                                         itemNodeCopy.setAttribute("Value", text);
                                                         menuNodeCopy.appendChild(itemNodeCopy);
                                                         fieldList.item(q).appendChild(menuNodeCopy);

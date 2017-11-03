@@ -44,8 +44,7 @@ public class UpdateTemplateAsyncTask extends AsyncTask<String, Integer, Boolean>
     protected Boolean doInBackground(String... params) {
         try {
             TaskManager taskManager = TaskManager_.getInstance_(mContext);
-            taskManager.writeMenuList(mDataSet, mFieldInfo, params[0]);
-            return true;
+            return taskManager.writeMenuList(mDataSet, mFieldInfo, params[0]);
         } catch (Exception e) {
             L.printException(e);
             return false;
