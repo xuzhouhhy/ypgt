@@ -11,6 +11,7 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
@@ -138,17 +139,16 @@ public class WellActivity extends BaseActivity {
             photoItemInfos = ((SrPhotoManagerFragment) fragment).getTaskPhotoList();
             mPhotoFragments.put(mFragmentOption.getNameKey(), photoManagerFragment);
         }
-        fragment.getValue(mController.getCurrentDataSet());
-        boolean isNeedCheckData = isGoNext;
-        if (isNeedCheckData) {
-            if (!fragment.checkDataValidity(photoItemInfos)) {
-                return false;
-            }
-        }
         if (fragment instanceof GY_HWG_spacerFragment) {
             mSpacerFragment = (GY_HWG_spacerFragment) fragment;
         }
-        fragment.getValue(dataSet);
+        fragment.getValue(mController.getCurrentDataSet());
+        boolean isNeedCheckData = isGoNext;
+        if (isNeedCheckData) {
+            if (!fragment.checkDataValidity(mController.getCurrentDataSet(), photoItemInfos)) {
+                return false;
+            }
+        }
         return true;
     }
 

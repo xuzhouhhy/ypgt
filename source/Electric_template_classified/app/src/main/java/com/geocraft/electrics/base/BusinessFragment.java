@@ -47,8 +47,10 @@ public class BusinessFragment extends BaseFragment {
     protected Boolean mIsNew;
     protected LinearLayout mLinearLayout;
 
-    protected TaskManager taskManager = TaskManager_.getInstance_(ElectricApplication_.getInstance().getApplicationContext());
-    protected DbManager dbManager = DbManager_.getInstance_(ElectricApplication_.getInstance().getApplicationContext());
+    protected TaskManager taskManager = TaskManager_.getInstance_(
+            ElectricApplication_.getInstance().getApplicationContext());
+    protected DbManager dbManager = DbManager_.getInstance_(
+            ElectricApplication_.getInstance().getApplicationContext());
 
     @AfterViews
     protected void init() {
