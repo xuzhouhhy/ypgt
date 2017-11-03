@@ -17,10 +17,15 @@ import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
+import org.w3c.dom.Attr;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.TypeInfo;
+import org.w3c.dom.UserDataHandler;
 import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlSerializer;
 
@@ -377,7 +382,12 @@ public class TaskManager {
                                                     NodeList meunList = fieldList.item(q).getChildNodes();
                                                     int menuListLength = meunList.getLength();
                                                     if (menuListLength <= 0) {
-                                                        return false;
+                                                        Element menuNodeCopy = dom.createElement("MenuList");
+                                                        Element itemNodeCopy =dom.createElement("Item");
+                                                        itemNodeCopy.setAttribute("Value", text);
+                                                        menuNodeCopy.appendChild(itemNodeCopy);
+                                                        fieldList.item(q).appendChild(menuNodeCopy);
+                                                        return writeFile(file, dom);
                                                     }
                                                     for (int l = 0; l < meunList.getLength(); l++) {
                                                         if (null == meunList.item(l).getAttributes()) {
@@ -492,4 +502,5 @@ public class TaskManager {
         }
         return -1;
     }
+
 }

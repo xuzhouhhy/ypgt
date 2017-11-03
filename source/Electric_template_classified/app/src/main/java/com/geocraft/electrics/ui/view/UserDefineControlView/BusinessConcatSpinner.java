@@ -15,11 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PropertyDictionay;
 import com.geocraft.electrics.sr.task.UpdateTemplateAsyncTask;
 import com.geocraft.electrics.ui.inter.DataInterActionInterface;
+import com.geocraft.electrics.utils.SPUtils;
 
 import java.util.ArrayList;
 
@@ -82,6 +84,10 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
         spinner = (Spinner) mRootView.findViewById(R.id.spinner);
         button = (Button) mRootView.findViewById(R.id.button);
         button.setOnClickListener(mListener);
+        if (!((Boolean) SPUtils.get(context, Constants.SPKEY_SPINNER_SWITCH, true))) {
+            button.setVisibility(GONE);
+        }
+
     }
 
     private void dialogDismiss() {
@@ -109,18 +115,16 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
             return;
         }
         String text = mEditText.getText().toString();
-        int count = mDatalist.size();
-        if (count > 0) {
-            mDatalist.remove(count - 1);
-        }
         mDatalist.add(text);
-        mDatalist.add("");
         dataAdapter.notifyDataSetChanged();
         onAddFieldMenulistToTemplate(text);
         dialogDismiss();
     }
 
     private void onAddFieldMenulistToTemplate(String text) {
+        if (null == text || text.isEmpty()) {
+            return;
+        }
         UpdateTemplateAsyncTask task = new UpdateTemplateAsyncTask(getContext(),
                 mDataSet, mFieldInfo);
         task.execute(text);
@@ -144,13 +148,12 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     @Override
     public void setControlValue(FieldInfo fieldInfo, String text) {
         mDatalist = fieldInfo.Dictionay.menuList;
-        mDatalist.add("");
         dataAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.simple_spinner_item, mDatalist) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (mDatalist.get(position).isEmpty()) {
-                    view.setVisibility(INVISIBLE);
+                    view.setVisibility(GONE);
                 }
                 return view;
             }

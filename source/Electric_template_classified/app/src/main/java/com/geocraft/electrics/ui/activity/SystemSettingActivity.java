@@ -2,6 +2,7 @@ package com.geocraft.electrics.ui.activity;
 
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
@@ -32,14 +33,30 @@ public class SystemSettingActivity extends BaseActivity {
 
 	@ViewById
 	SwitchCompat switchCompatTaskDefault;
+	@ViewById
+	SwitchCompat switchAddSpinnerItem;
 
 	@ViewById
 	LinearLayout linearLayoutRegister;
 
+	private CompoundButton.OnCheckedChangeListener mCheckedChangeListener=new CompoundButton.OnCheckedChangeListener() {
+		@Override
+		public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+			switch (compoundButton.getId()){
+				case R.id.switchAddSpinnerItem:
+					mController.setAddSpinnerSwitch(checked,SystemSettingActivity.this);
+					break;
+				default:
+					break;
+			}
+		}
+	};
 
 	@AfterViews
 	void init() {
 		switchCompatTaskDefault.setChecked(mController.getSPDefaultTaskStatus(this));
+		switchAddSpinnerItem.setChecked(mController.getSpSpinnerAdd(this));
+		switchAddSpinnerItem.setOnCheckedChangeListener(mCheckedChangeListener);
 		if (ElectricApplication_.getInstance().mIsOpenRegister) {
 			linearLayoutRegister.setVisibility(View.VISIBLE);
 		} else {

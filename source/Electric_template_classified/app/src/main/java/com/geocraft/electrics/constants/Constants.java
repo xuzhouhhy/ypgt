@@ -87,4 +87,9 @@ public class Constants {
      */
     public final static String INTENT_DATA_WELL_TYPE = "intent_data_well_type";
 
+    /**
+     * BusinessConcatSpinner的添加按钮是否显示
+     */
+    public final static String SPKEY_SPINNER_SWITCH = "SPKEY_SPINNER_SWITCH";
+
 }
