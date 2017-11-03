@@ -40,19 +40,17 @@ import common.geocraft.untiltools.T;
 import common.geocraft.untiltools.Tools;
 
 /**
- * Created by Administrator on 2016/6/7.
+ * 照片处理controller
  */
 @EBean
 public class SrPhotoManagerController extends BaseController {
 
-    DataSet mDataSet;
-    boolean mIsNew;
-    Context mContext;
-
     @Bean
     TaskManager mTaskManager;
-
     List<PhotoItemInfo> mTaskPhotoList = new ArrayList<>();
+    private DataSet mDataSet;
+    private Context mContext;
+    private List<String> mTagList = new ArrayList<String>();
 
     /**
      * 拍照操作
@@ -88,10 +86,11 @@ public class SrPhotoManagerController extends BaseController {
     void init() {
     }
 
-    public void initParams(Context context, boolean isNew, DataSet dataSet) {
-        this.mContext = context;
-        this.mIsNew = isNew;
-        this.mDataSet = dataSet;
+    public void initParams(Context context, DataSet dataSet, List<String> tagList) {
+
+        mContext = context;
+        mDataSet = dataSet;
+        mTagList = tagList;
     }
 
     public DataSet getCurrentDataSet() {
@@ -103,11 +102,12 @@ public class SrPhotoManagerController extends BaseController {
     }
 
     public void saveData() {
-        for (int i = 0; i < mDataSet.PhotoRules.size(); i++) {
+        for (int i = 0; i < mTaskPhotoList.size(); i++) {
             PhotoRules photoRules = mDataSet.PhotoRules.get(i);
             PhotoItemInfo photoItemInfoTemp = mTaskPhotoList.get(i);
-            photoRules.setPohotoPath(photoItemInfoTemp.photoPath);
-            photoRules.Type = photoItemInfoTemp.mPhotoType;
+            if (photoRules.Type.equals(photoItemInfoTemp.mPhotoType)) {
+                photoRules.setPohotoPath(photoItemInfoTemp.photoPath);
+            }
         }
     }
 
@@ -115,7 +115,7 @@ public class SrPhotoManagerController extends BaseController {
         if (mDataSet == null) {
             return;
         }
-        List<PhotoRules> photoItemList = mDataSet.PhotoRules;
+        List<PhotoRules> photoItemList = getPhotoRules();
         for (int i = 0; i < photoItemList.size(); i++) {
             PhotoItemInfo photoItemInfoTemp = new PhotoItemInfo();
             PhotoRules photoRulesTemp = photoItemList.get(i);
@@ -140,6 +140,16 @@ public class SrPhotoManagerController extends BaseController {
                 mTaskPhotoList.add(photoItemInfoTemp);
             }
         }
+    }
+
+    private List<PhotoRules> getPhotoRules() {
+        List<PhotoRules> photoRules = new ArrayList<PhotoRules>();
+        for (PhotoRules photoRule : mDataSet.PhotoRules) {
+            if (mTagList.contains(photoRule.Type)) {
+                photoRules.add(photoRule);
+            }
+        }
+        return photoRules;
     }
 
     //通过搜索文件名获取照片

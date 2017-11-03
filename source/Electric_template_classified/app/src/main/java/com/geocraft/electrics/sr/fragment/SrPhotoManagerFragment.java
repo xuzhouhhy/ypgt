@@ -39,12 +39,13 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import common.geocraft.untiltools.T;
 
 /**
- * Created by Administrator on 2016/6/7.
+ * 照片管理功能
  */
 @EFragment(R.layout.fragment_photo_manager)
 public class SrPhotoManagerFragment extends WellBaseFragment {
@@ -54,6 +55,9 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     SrPhotoManagerController mController;
     @ViewById
     GridView gridViewPhotoList;
+    private List<String> mTagList = new ArrayList<String>();
+    private String mPhotoPath;
+
     PopupMenu.OnMenuItemClickListener mOnMenuItemClickListener =
             new PopupMenu.OnMenuItemClickListener() {
                 @Override
@@ -85,7 +89,6 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
                     return true;
                 }
             };
-    private String photoPath;
 
     /**
      * 拍照点击事件
@@ -124,14 +127,21 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
         if (!ElectricApplication.BUS.isRegistered(this)) {
             ElectricApplication.BUS.register(this);
         }
-        mController.initParams(
-                this.getContext(),
-                ((WellActivity) this.getContext()).getController().isCreateRecord(),
-                ((WellActivity) this.getContext()).getController().getCurrentDataSet());
+        mController.initParams(this.getContext(),
+                ((WellActivity) this.getContext()).getController().getCurrentDataSet(), mTagList);
         mController.initTaskPhotoList();
         mAdapter = new PhotoManagerAdapter();
         gridViewPhotoList.setAdapter(mAdapter);
         gridViewPhotoList.setOnItemLongClickListener(mOnItemLongClickListener);
+    }
+
+    /**
+     * 设置需要显示的字段对象标签
+     *
+     * @param tagList 模板配置需要显示photo type属性
+     */
+    public void setTags(List<String> tagList) {
+        mTagList = tagList;
     }
 
 
@@ -139,7 +149,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     public void onEventMainThread(RefreshPhotoAdapterEventArgs args) {
         try {
             if (args.getCurrentDataSetName().equals(mController.getCurrentDataSet().Name)) {
-                photoPath = "";
+                mPhotoPath = "";
                 mAdapter.notifyDataSetChanged();
             }
         } catch (Exception e) {
@@ -174,14 +184,14 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCopyImportPhotoFinish(CopyImportFileFinishedEvent args) {
         try {
-            mController.reSetPhotoPath(photoPath);
+            mController.reSetPhotoPath(mPhotoPath);
         } catch (Exception e) {
             L.printException(e);
         }
     }
 
     private void openSystemImportPhotoActivity(File file) {
-        photoPath = file.getPath();
+        mPhotoPath = file.getPath();
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, ConstRequestCode.REQUEST_CODE_IMPORT_PHOTO);
@@ -204,7 +214,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (this.getContext().getPackageManager().resolveActivity(intent, 0) != null) {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-            photoPath = file.getPath();
+            mPhotoPath = file.getPath();
             startActivityForResult(intent, ConstRequestCode.REQUEST_CODE_TAKE_PHOTO);
         } else {
             T.showShort(this.getContext(), R.string.open_system_take_photo_exception);
@@ -216,7 +226,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
         switch (requestCode) {
             case ConstRequestCode.REQUEST_CODE_TAKE_PHOTO: {
                 if (resultCode == Activity.RESULT_OK) {
-                    mController.reSetPhotoPath(photoPath);
+                    mController.reSetPhotoPath(mPhotoPath);
                 }
             }
             break;
@@ -238,7 +248,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
             @Override
             public void run() {
                 try {
-                    UtilFile.copyFile(srcPhotoPath, photoPath);
+                    UtilFile.copyFile(srcPhotoPath, mPhotoPath);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -276,7 +286,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
 
     @Override
     public void onDestroyView() {
-        if(ElectricApplication.BUS.isRegistered(this)){
+        if (ElectricApplication.BUS.isRegistered(this)) {
             ElectricApplication.BUS.unregister(this);
         }
         super.onDestroyView();

@@ -157,6 +157,11 @@ public class KBSFragments {
     private FragmentOption generateGY_KBS_PHOTO() {
         SrPhotoManagerFragment fragment = new
                 com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment_();
+        List<String> tags = new ArrayList<String>();
+        tags.add("开闭所:标识牌照片");
+        tags.add("开闭所:开关柜铭牌照片");
+        tags.add("开闭所:断路器铭牌照片");
+        fragment.setTags(tags);
         String fragmentName = mResources.getString(R.string.GY_KBS_TITLE_photo);
         return new FragmentOption(KEY_GY_KBS_PHOTO, fragmentName, "", fragment);
     }
