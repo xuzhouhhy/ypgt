@@ -51,8 +51,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
         mActivity = ((WellActivity) this.getActivity());
         mDataSet = mActivity.getController().getCurrentDataSet();
         mIsCreateForDefine = mActivity.getController().isCreateRecord();
-        mIsNew = mIsCreateForDefine ?
-                ((WellActivity) this.getActivity()).isGoNext() : false;
+        mIsNew = mIsCreateForDefine && ((WellActivity) this.getActivity()).isGoNext();
         mWellController = ((WellActivity) this.getActivity()).getController();
         super.initData(mIsNew, mDataSet);
         initDefineViewData();
