@@ -19,6 +19,8 @@ import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLZJ
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_DLZJT_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_FZX;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_FZX_;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GJXX;
+import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GJXX_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GXJBXX;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GXJBXX_;
 import com.geocraft.electrics.ui.fragment.GY_fragment.DLXL_fragment.GY_DLXL_GZZSQ;
@@ -175,6 +177,8 @@ public class DLFragments {
     private final static String KEY_GY_DLFJX_DLHGQ = "GY_DLFJX_DLHGQ";
     private final static String KEY_GY_DLFJX_GZZSQ = "GY_DLFJX_GZZSQ";
     private final static String KEY_GY_DLFJX_ZPSJ = "GY_DLFJX_ZPSJ";
+    //工井信息
+    private final static String KEY_GY_DLXL_GJXX = "GY_DLXL_GJXX";
 
 
     private List<FragmentOption> mDLXLFragments = new ArrayList<FragmentOption>();//电缆线路
@@ -188,10 +192,10 @@ public class DLFragments {
         fragmentOptions.add(getGY_HWG_HWG_SACER());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
         fragmentOptions.add(getGY_HWG_PHOTO());//环网柜(照片)
-        fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
+      //  fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
         fragmentOptions.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
-        fragmentOptions.add(getGY_HWG_FHKG());//环网柜（负荷开关）</string>
         fragmentOptions.add(getGY_HWG_GLKG());//环网柜（隔离开关）</string>
+        fragmentOptions.add(getGY_HWG_FHKG());//环网柜（负荷开关）</string>
         fragmentOptions.add(getGY_HWG_DYHGQ());//环网柜（电压互感器）</string>
         fragmentOptions.add(getGY_HWG_DLHGQ());//环网柜（电流互感器）</string>
         fragmentOptions.add(getGY_HWG_BLQ());//环网柜（避雷器）</string>
@@ -288,15 +292,16 @@ public class DLFragments {
             return mDLXLFragments;
         }
 
-        mDLXLFragments.add(getGY_DLXL_DJX());
-        mDLXLFragments.add(getGY_DLXL_DLJ());
-        mDLXLFragments.add(getGY_DLXL_DLZJT());
-        mDLXLFragments.add(getGY_DLXL_GXJBXX());
-        mDLXLFragments.add(getGY_DLXL_GZZSQ());
-        mDLXLFragments.add(getGY_DLXL_KYQK());
-        mDLXLFragments.add(getGY_DLXL_SKQK());
-        mDLXLFragments.add(getGY_DLXL_TSPDBYQ());
-
+//        mDLXLFragments.add(getGY_DLXL_DJX());
+//        mDLXLFragments.add(getGY_DLXL_DLJ());
+//        mDLXLFragments.add(getGY_DLXL_DLZJT());
+//        mDLXLFragments.add(getGY_DLXL_GXJBXX());
+//        mDLXLFragments.add(getGY_DLXL_GZZSQ());
+//        mDLXLFragments.add(getGY_DLXL_KYQK());
+//        mDLXLFragments.add(getGY_DLXL_SKQK());
+//        mDLXLFragments.add(getGY_DLXL_TSPDBYQ());
+        //公井信息
+        mDLXLFragments.add(getGY_DLXL_GJXX());
         //环网柜
         mDLXLFragments.addAll(getSecondLevelItems_HWG());
         //分支箱
@@ -725,4 +730,11 @@ public class DLFragments {
         return new FragmentOption(KEY_GY_DLFJX_ZPSJ, fragmentName, "", fragment);
     }
 
+    //工井信息
+    private FragmentOption getGY_DLXL_GJXX() {
+        GY_DLXL_GJXX fragment = new GY_DLXL_GJXX_();
+        String fragmentName = mResources.getString(R.string.GY_DLXL_GJXX);
+        return new FragmentOption(KEY_GY_DLXL_GJXX,
+                fragmentName, "", fragment);
+    }
 }

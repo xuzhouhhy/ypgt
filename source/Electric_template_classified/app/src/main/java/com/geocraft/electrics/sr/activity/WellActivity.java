@@ -139,7 +139,7 @@ public class WellActivity extends BaseActivity {
         fragment.getValue(mController.getCurrentDataSet());
         boolean isNeedCheckData = isGoNext;
         if (isNeedCheckData) {
-            if (!fragment.checkDataValidity(photoItemInfos)) {
+            if (!fragment.checkDataValidity(mController.getCurrentDataSet(), photoItemInfos)) {
                 return false;
             }
         }

@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BusinessFragment;
+import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.sr.activity.WellActivity;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
@@ -34,8 +35,8 @@ public class WellBaseFragment extends BusinessFragment {
         super.initData(mIsNew, mDataSet);
     }
 
-
-    public boolean checkDataValidity(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    public boolean checkDataValidity(DataSet dataSet,
+            List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
         if (null == mLinearLayout) {
             return false;
         }
@@ -43,7 +44,7 @@ public class WellBaseFragment extends BusinessFragment {
         List<String> illegalPhotoList = new ArrayList<>();
         illegalFieldList.clear();
         illegalPhotoList.clear();
-        List<FieldInfo> fieldInfoList = mDataSet.FieldInfos;
+        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
         List<View> childViewGroup = new ArrayList<>();
         for (int i = 0; i < mLinearLayout.getChildCount(); i++) {
             View viewTemp = mLinearLayout.getChildAt(i);
