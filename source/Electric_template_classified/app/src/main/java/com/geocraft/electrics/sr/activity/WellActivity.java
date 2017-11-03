@@ -10,7 +10,6 @@ import android.widget.Button;
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
-import com.geocraft.electrics.base.BusinessFragment;
 import com.geocraft.electrics.constants.ConstRequestCode;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
@@ -18,6 +17,7 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
 import com.geocraft.electrics.sr.task.WellCommitAsyncTask;
 
@@ -88,7 +88,7 @@ public class WellActivity extends BaseActivity {
     }
 
     public void initView() {
-       // this.setTitle(mController.getTitle());
+        // this.setTitle(mController.getTitle());
         this.setTitle(this.getResources().getString(R.string.well_connection_titile));
         FragmentOption fragmentOption = mController.getPreFragmentFactory().getFirsFragment();
         changeContentView(fragmentOption);
@@ -134,8 +134,13 @@ public class WellActivity extends BaseActivity {
         if (null == mFragmentOption) {
             return false;
         }
-        BusinessFragment fragment = mFragmentOption.getFragment();
-        if (!fragment.logicCheck()) {
+        WellBaseFragment fragment = mFragmentOption.getFragment();
+        List<SrPhotoManagerController.PhotoItemInfo> photoItemInfos =
+                new ArrayList<SrPhotoManagerController.PhotoItemInfo>();
+        if (fragment instanceof SrPhotoManagerFragment) {
+            photoItemInfos = ((SrPhotoManagerFragment) fragment).getTaskPhotoList();
+        }
+        if (!fragment.checkDataValidity(photoItemInfos)) {
             return false;
         }
         if (fragment instanceof SrPhotoManagerFragment) {
