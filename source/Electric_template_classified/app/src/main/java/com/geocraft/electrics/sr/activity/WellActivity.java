@@ -145,6 +145,9 @@ public class WellActivity extends BaseActivity {
                 return false;
             }
         }
+        if (!fragment.logicCheck()) {
+            return false;
+        }
         return true;
     }
 

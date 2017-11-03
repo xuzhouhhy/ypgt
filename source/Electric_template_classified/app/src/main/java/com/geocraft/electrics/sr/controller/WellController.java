@@ -3,6 +3,7 @@ package com.geocraft.electrics.sr.controller;
 import android.app.Activity;
 import android.content.Context;
 
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
@@ -17,6 +18,7 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.PreFragmentFactory;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
+import com.geocraft.electrics.sr.event.UpdateWellNameArgs;
 import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
 import com.geocraft.electrics.sr.spacer.GY_HWG_spacerFragment;
 import com.huace.log.logger.L;
@@ -575,6 +577,7 @@ public class WellController extends BaseController {
     public void switchWellType(WellType wellType) {
         mWellType = wellType;
         initCurDatasetAndFragments();
+        ElectricApplication.BUS.post(new UpdateWellNameArgs());
     }
 
     public WellType getWellType() {

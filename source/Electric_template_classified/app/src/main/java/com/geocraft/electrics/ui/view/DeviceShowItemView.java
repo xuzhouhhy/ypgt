@@ -38,7 +38,8 @@ public class DeviceShowItemView extends LinearLayout {
     }
 
     public void bind(String number, String firstField, String firstValue, String secondField,
-                     String secondValue, String thirdField, String thirdValue, boolean isShowMenu) {
+                     String secondValue, String thirdField, String thirdValue, boolean isShowMenu,
+                     OnClickEffectiveListener mOnClickEffectiveListener,int primaryKey) {
         txtNumber.setText(number);
         txtName.setText(firstField + firstValue);
         txtKind.setText(secondField + secondValue);
@@ -61,6 +62,10 @@ public class DeviceShowItemView extends LinearLayout {
                 txtKind.setVisibility(GONE);
             }
         }
+        DeviceShowItemView.ViewHodler viewHodler = new DeviceShowItemView.ViewHodler();
+        viewHodler.setPrimaryKey(primaryKey);
+        btnMenu.setTag(viewHodler);
+        btnMenu.setOnClickListener(mOnClickEffectiveListener);
     }
 
     public void setNumberColor(int status) {
@@ -79,14 +84,6 @@ public class DeviceShowItemView extends LinearLayout {
             }
             break;
         }
-    }
-
-    public void setOnClickListener(OnClickEffectiveListener mOnClickEffectiveListener,
-                                   int primaryKey) {
-        DeviceShowItemView.ViewHodler viewHodler = new DeviceShowItemView.ViewHodler();
-        viewHodler.setPrimaryKey(primaryKey);
-        btnMenu.setTag(viewHodler);
-        btnMenu.setOnClickListener(mOnClickEffectiveListener);
     }
 
     public static class ViewHodler {

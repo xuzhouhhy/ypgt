@@ -80,10 +80,10 @@ public class TowerShowListAdapter extends BaseAdapter {
         String third = temp.GetFieldValueByName(temp.Third);
 
         deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
-                thirdField, third, temp.isShowInDeviceList());
+                thirdField, third, temp.isShowInDeviceList(),mOnClickEffectiveListener,
+                position);
         deviceShowItemView.setNumberColor(getStatus(status));
         deviceShowItemView.setSelected(true);
-        deviceShowItemView.setOnClickListener(mOnClickEffectiveListener, position);
         return deviceShowItemView;
     }
 

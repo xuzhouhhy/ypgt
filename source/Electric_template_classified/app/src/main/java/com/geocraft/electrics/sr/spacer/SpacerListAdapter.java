@@ -66,7 +66,7 @@ public class SpacerListAdapter extends BaseAdapter {
 
         mFistrValue = first;
         deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
-                thirdField, third, temp.isShowInDeviceList());
+                thirdField, third, temp.isShowInDeviceList(), null, temp.PrimaryKey);
         deviceShowItemView.setNumberColor(getStatus(status));
         deviceShowItemView.setSelected(true);
         return deviceShowItemView;
