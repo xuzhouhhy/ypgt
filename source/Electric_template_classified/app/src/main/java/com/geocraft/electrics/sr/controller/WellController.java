@@ -23,7 +23,6 @@ import com.geocraft.electrics.sr.WellType;
 import com.geocraft.electrics.ui.controller.PhotoManagerController;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;
-import com.geocraft.electrics.utils.Utils;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
@@ -403,11 +402,16 @@ public class WellController extends BaseController {
         return true;
     }
 
-    public boolean saveRecord(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
+    public boolean saveRecord(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList,
+                              List<DataSet> dataSets) {
         if (mCurrentDataSet == null) {
             return false;
         }
         if (mIsCreateRecord) {
+            //保存间隔点，获取间隔点id组成的F_SpacerIds字段值
+            String spacerIds = saveSpacer(dataSets);
+            //F_SpacerIds字段值写给当前基桩dataset
+            mCurrentDataSet.SetFiledValueByName(Enum.DLJ_JGD, spacerIds);
             int key = mDbManager.insert(mCurrentDataSet);
             if (key >= 0) {
                 mCurrentDataSet.PrimaryKey = key;
@@ -417,6 +421,8 @@ public class WellController extends BaseController {
                 return false;
             }
         } else {
+            String spacerIds = updateSpacer(dataSets);
+
             if (mDbManager.update(mCurrentDataSet)) {
                 renamePhotoAndMove(taskPhotoList);
                 return true;
@@ -424,6 +430,22 @@ public class WellController extends BaseController {
                 return false;
             }
         }
+    }
+
+    private String saveSpacer(List<DataSet> dataSets) {
+        StringBuilder builder = new StringBuilder();
+        for (DataSet ds : dataSets) {
+            int key = mDbManager.insert(ds);
+            if (key >= 0) {
+                builder.append(key);
+                builder.append("&");
+            }
+        }
+        return builder.toString();
+    }
+
+    private String updateSpacer(List<DataSet> dataSets) {
+        return null;
     }
 
     private void renamePhotoAndMove(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {

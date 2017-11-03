@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
+import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.sr.activity.WellActivity;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.WellBaseFragment;
@@ -28,6 +30,8 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,50 +101,9 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         }
     };
 
-    private void onSaveSpacer() {
-        DataSet dataSet = mController.getSpacerDataset();
-        getValue(dataSet);
-        boolean isContinueCheck = checkDataValidity(getContext(), dataSet);
-        if (!isContinueCheck) {
-            return;
-        }
-        mController.getDataSets().add(dataSet);
-        refreshListView(0);
-        dialogDismiss();
-    }
-
-    public boolean checkDataValidity(Context context, DataSet dataSet) {
-        List<String> illegalFieldList = new ArrayList<>();
-        List<String> illegalPhotoList = new ArrayList<>();
-        illegalFieldList.clear();
-        illegalPhotoList.clear();
-        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
-        for (int i = 0; i < fieldInfoList.size(); i++) {
-            FieldInfo fieldInfoTemp = fieldInfoList.get(i);
-            if (fieldInfoTemp == null) {
-                continue;
-            }
-            if (fieldInfoTemp.IsRequired && fieldInfoTemp.Value.length() <= 0) {
-                illegalFieldList.add(fieldInfoTemp.Alias);
-            }
-        }
-        if (illegalFieldList.size() > 0 || illegalPhotoList.size() > 0) {
-            DataValidityInfoView validityInfoView = DataValidityInfoView_.build(context);
-            validityInfoView.setFieldErrorInfo(illegalFieldList);
-            validityInfoView.setPhotoErrorInfo(illegalPhotoList);
-            new AlertDialog.Builder(context)
-                    .setIcon(R.mipmap.ic_warning)
-                    .setTitle(R.string.dlg_warning)
-                    .setView(validityInfoView)
-                    .show();
-            return false;
-        }
-        return true;
-    }
-
-
     @Override
     public void init() {
+        ElectricApplication.BUS.register(this);
         mActivity = ((WellActivity) this.getActivity());
         mIsNew = mActivity.getController().isCreateRecord();
         mDataSet = mActivity.getController().getCurrentDataSet();
@@ -244,6 +207,47 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         }
     }
 
+    private void onSaveSpacer() {
+        DataSet dataSet = mController.getSpacerDataset();
+        getValue(dataSet);
+        boolean isContinueCheck = checkDataValidity(getContext(), dataSet);
+        if (!isContinueCheck) {
+            return;
+        }
+        mController.getDataSets().add(dataSet);
+        refreshListView(0);
+        dialogDismiss();
+    }
+
+    public boolean checkDataValidity(Context context, DataSet dataSet) {
+        List<String> illegalFieldList = new ArrayList<>();
+        List<String> illegalPhotoList = new ArrayList<>();
+        illegalFieldList.clear();
+        illegalPhotoList.clear();
+        List<FieldInfo> fieldInfoList = dataSet.FieldInfos;
+        for (int i = 0; i < fieldInfoList.size(); i++) {
+            FieldInfo fieldInfoTemp = fieldInfoList.get(i);
+            if (fieldInfoTemp == null) {
+                continue;
+            }
+            if (fieldInfoTemp.IsRequired && fieldInfoTemp.Value.length() <= 0) {
+                illegalFieldList.add(fieldInfoTemp.Alias);
+            }
+        }
+        if (illegalFieldList.size() > 0 || illegalPhotoList.size() > 0) {
+            DataValidityInfoView validityInfoView = DataValidityInfoView_.build(context);
+            validityInfoView.setFieldErrorInfo(illegalFieldList);
+            validityInfoView.setPhotoErrorInfo(illegalPhotoList);
+            new AlertDialog.Builder(context)
+                    .setIcon(R.mipmap.ic_warning)
+                    .setTitle(R.string.dlg_warning)
+                    .setView(validityInfoView)
+                    .show();
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void getValue(DataSet dataSet) {
         super.getValue(dataSet);
@@ -251,9 +255,23 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     /**
      * 获取当前内存中的间隔dataset
+     *
      * @return dataset
      */
     public List<DataSet> getSpacerDatasetList() {
         return mController.getDataSets();
     }
+
+    @Override
+    public void onDestroyView() {
+        ElectricApplication.BUS.unregister(this);
+        super.onDestroyView();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
+    public void onDataSynEvent(SpacerRefreshEvent event) {
+        //参数-1是为了没有给选中项添加阴影
+        refreshListView(0);
+    }
+
 }

@@ -18,6 +18,7 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.spacer.GY_HWG_spacerFragment;
 import com.geocraft.electrics.sr.task.InitWellInfoAsyncTask;
 import com.geocraft.electrics.sr.task.WellCommitAsyncTask;
 
@@ -54,6 +55,7 @@ public class WellActivity extends BaseActivity {
     private boolean isGoNext;
     private Map<String, SrPhotoManagerFragment> mPhotoFragments =
             new HashMap<String, SrPhotoManagerFragment>();
+    private GY_HWG_spacerFragment mSpacerFragment;
 
     @AfterViews
     void init() {
@@ -141,6 +143,9 @@ public class WellActivity extends BaseActivity {
             mPhotoFragments.put(mFragmentOption.getNameKey(),
                     (SrPhotoManagerFragment) fragment);
         }
+        if (fragment instanceof GY_HWG_spacerFragment) {
+            mSpacerFragment = (GY_HWG_spacerFragment) fragment;
+        }
         fragment.getValue(dataSet);
         return true;
     }
@@ -210,5 +215,13 @@ public class WellActivity extends BaseActivity {
         return isGoNext;
     }
 
-
+    /**
+     * @return 当前编辑好的spacer数据集
+     */
+    public List<DataSet> getSpacerDatasets() {
+        if (null != mSpacerFragment) {
+            return mSpacerFragment.getSpacerDatasetList();
+        }
+        return null;
+    }
 }
