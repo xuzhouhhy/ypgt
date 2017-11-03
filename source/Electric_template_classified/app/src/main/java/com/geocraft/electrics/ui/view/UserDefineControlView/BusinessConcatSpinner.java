@@ -109,18 +109,16 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
             return;
         }
         String text = mEditText.getText().toString();
-        int count = mDatalist.size();
-        if (count > 0) {
-            mDatalist.remove(count - 1);
-        }
         mDatalist.add(text);
-        mDatalist.add("");
         dataAdapter.notifyDataSetChanged();
         onAddFieldMenulistToTemplate(text);
         dialogDismiss();
     }
 
     private void onAddFieldMenulistToTemplate(String text) {
+        if (null == text || text.isEmpty()) {
+            return;
+        }
         UpdateTemplateAsyncTask task = new UpdateTemplateAsyncTask(getContext(),
                 mDataSet, mFieldInfo);
         task.execute(text);
@@ -144,13 +142,12 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     @Override
     public void setControlValue(FieldInfo fieldInfo, String text) {
         mDatalist = fieldInfo.Dictionay.menuList;
-        mDatalist.add("");
         dataAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.simple_spinner_item, mDatalist) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (mDatalist.get(position).isEmpty()) {
-                    view.setVisibility(INVISIBLE);
+                    view.setVisibility(GONE);
                 }
                 return view;
             }
