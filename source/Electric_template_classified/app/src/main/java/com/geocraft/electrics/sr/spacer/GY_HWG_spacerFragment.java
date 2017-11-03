@@ -51,6 +51,14 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     SpacerController mController;
     private WellActivity mActivity;
     private DataSet mCurrentDataSet;
+    /**
+     * dialog显示的间隔是新建还是编辑
+     */
+    private boolean mIsNewSpacer;
+    /**
+     * 当前编辑间隔的位置
+     */
+    private int mSpacerPosition;
     private SwipeMenuCreator menuCreator = new SwipeMenuCreator() {
         @Override
         public void create(SwipeMenu menu) {
@@ -89,7 +97,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btnYes:
-                    onSaveSpacer();
+                    onSaveAndUpdateSpacer();
                     break;
                 case R.id.btnNo:
                     dialogDismiss();
@@ -131,6 +139,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         DataSet dataSet = mController.getDataSets().get(position);
         onGyHwgIntervalDetail(dataSet);
+        mSpacerPosition = position;
     }
 
     public void refreshListView(int position) {
@@ -152,6 +161,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
      * 点击环网柜间隔详情按钮
      */
     private void onGyHwgIntervalDetail(DataSet dataSet) {
+        mIsNewSpacer = (dataSet == null);
         Context context = getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View dialogView = inflater.inflate(R.layout.view_gy__hwg__jg_extend, null);
@@ -165,7 +175,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         initSpinnerView(spinner);
         mLinearLayout = (LinearLayout) dialogView.findViewById(R.id.linearLayoutRoot);
         if (null != dataSet) {
-            super.initData(false,dataSet);
+            super.initData(false, dataSet);
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(dialogView).setCancelable(true);
@@ -210,14 +220,21 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         }
     }
 
-    private void onSaveSpacer() {
-        DataSet dataSet = mController.getSpacerDataset();
+    private void onSaveAndUpdateSpacer() {
+        DataSet dataSet;
+        if (mIsNewSpacer) {
+            dataSet = mController.getSpacerDataset();
+        } else {
+            dataSet = mController.getDataSets().get(mSpacerPosition);
+        }
         getValue(dataSet);
         boolean isContinueCheck = checkDataValidity(getContext(), dataSet);
         if (!isContinueCheck) {
             return;
         }
-        mController.getDataSets().add(dataSet);
+        if (mIsNewSpacer) {
+            mController.getDataSets().add(dataSet);
+        }
         refreshListView(0);
         dialogDismiss();
     }

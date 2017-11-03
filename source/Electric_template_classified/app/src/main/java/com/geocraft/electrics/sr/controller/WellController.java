@@ -421,8 +421,10 @@ public class WellController extends BaseController {
                 return false;
             }
         } else {
-            String spacerIds = updateSpacer(dataSets);
-
+            //保存和更新间隔
+            String spacerIds = saveAndupdateSpacer(dataSets);
+            //F_SpacerIds字段值写给当前基桩dataset
+            mCurrentDataSet.SetFiledValueByName(Enum.DLJ_JGD, spacerIds);
             if (mDbManager.update(mCurrentDataSet)) {
                 renamePhotoAndMove(taskPhotoList);
                 return true;
@@ -444,8 +446,24 @@ public class WellController extends BaseController {
         return builder.toString();
     }
 
-    private String updateSpacer(List<DataSet> dataSets) {
-        return null;
+    private String saveAndupdateSpacer(List<DataSet> dataSets) {
+        StringBuilder builder = new StringBuilder();
+        for (DataSet ds : dataSets) {
+            int key = ds.PrimaryKey;
+            if (key < 0) {
+                key = mDbManager.insert(ds);
+                if (key >= 0) {
+                    builder.append(key);
+                    builder.append("&");
+                }
+            } else {
+                if (mDbManager.update(ds)) {
+                    builder.append(key);
+                    builder.append("&");
+                }
+            }
+        }
+        return builder.toString();
     }
 
     private void renamePhotoAndMove(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
