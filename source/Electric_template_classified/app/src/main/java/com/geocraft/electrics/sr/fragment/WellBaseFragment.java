@@ -9,7 +9,6 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.sr.activity.WellActivity;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
-import com.geocraft.electrics.ui.controller.PhotoManagerController;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 
@@ -24,7 +23,7 @@ import common.geocraft.untiltools.FileUtils;
  * 井号采集fragment基类
  */
 @EFragment(R.layout.fragment_business)
-public class  WellBaseFragment extends BusinessFragment {
+public class WellBaseFragment extends BusinessFragment {
     protected WellActivity mActivity;
 
     @Override
@@ -36,8 +35,8 @@ public class  WellBaseFragment extends BusinessFragment {
     }
 
     public boolean checkDataValidity(DataSet dataSet,
-            List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
-        if (null == mLinearLayout) {
+                                     List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
+        if (null == mLinearLayout || null == mActivity) {
             return false;
         }
         List<String> illegalFieldList = new ArrayList<>();

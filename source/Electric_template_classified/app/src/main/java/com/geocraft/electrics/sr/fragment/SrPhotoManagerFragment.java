@@ -124,6 +124,8 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
 
     @Override
     protected void init() {
+        super.init();
+        mLinearLayout = linearLayoutRoot;
         if (!ElectricApplication.BUS.isRegistered(this)) {
             ElectricApplication.BUS.register(this);
         }
@@ -279,7 +281,7 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
 
     @Override
     public void onDestroyView() {
-        if(ElectricApplication.BUS.isRegistered(this)){
+        if (ElectricApplication.BUS.isRegistered(this)) {
             ElectricApplication.BUS.unregister(this);
         }
         super.onDestroyView();

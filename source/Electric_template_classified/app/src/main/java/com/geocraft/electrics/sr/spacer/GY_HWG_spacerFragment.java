@@ -43,15 +43,14 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         AdapterView.OnItemClickListener {
 
     @ViewById
-    LinearLayout linearLayoutRoot;
-    @ViewById
     protected SwipeMenuListView listViewCommon;
     protected SpacerAdapter mAdapter;
+    @ViewById
+    LinearLayout linearLayoutRoot;
     @ViewById
     Button btnAddSpacer;
     @Bean
     SpacerController mController;
-    private WellActivity mActivity;
     private DataSet mCurrentDataSet;
     /**
      * dialog显示的间隔是新建还是编辑
@@ -112,11 +111,9 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     @Override
     public void init() {
-
+        super.init();
+        mLinearLayout = linearLayoutRoot;
         ElectricApplication.BUS.register(this);
-        mActivity = ((WellActivity) this.getActivity());
-        mIsNew = mActivity.getController().isCreateRecord();
-        mDataSet = mActivity.getController().getCurrentDataSet();
         WellController controller = mActivity.getController();
         mCurrentDataSet = mController.getSpacerDataset();
 

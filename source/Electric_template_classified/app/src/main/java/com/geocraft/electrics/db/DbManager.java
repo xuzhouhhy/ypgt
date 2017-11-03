@@ -208,7 +208,7 @@ public class DbManager {
             return false;
         }
         String status = dataSet.GetFieldValueByAlias("状态");
-        if (status.equals("导入") || status.equals("修改")) {
+        if (status.equals("导入") || status.equals("修改") || status.equals("新建")) {
             dataSet.SetFiledValueByAlias("状态", "删除");
             ContentValues contentValues = getContentValues(dataSet);
             if (contentValues == null) {

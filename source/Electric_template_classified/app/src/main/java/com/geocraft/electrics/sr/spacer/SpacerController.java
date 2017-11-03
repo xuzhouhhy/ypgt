@@ -13,7 +13,6 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.WellType;
-import com.geocraft.electrics.sr.activity.TowerShowListActivity;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
@@ -63,9 +62,15 @@ public class SpacerController extends BaseController {
                         try {
                             DataSet dataSet = mDataSets.get(position);
                             DeleteDataSetFactory deleteDataSetFactory = new DeleteDataSetFactory();
-                            if (deleteDataSetFactory.deleteAllDataSet(dataSet)) {
+                            if (dataSet.PrimaryKey < 0) {
                                 mDataSets.remove(position);
-                                ((TowerShowListActivity) context).refreshListView(position);
+                                T.showShort(context, R.string.remove_record_succeed);
+                                ((GY_HWG_spacerFragment_) fragment).refreshListView(0);
+                                return;
+                            }
+                            if (deleteDataSetFactory.deleteAllDataSet(dataSet)) {
+                                updateWellSpacerIds(dataSet);
+                                mDataSets.remove(position);
                                 T.showShort(context, R.string.remove_record_succeed);
                                 ((GY_HWG_spacerFragment_) fragment).refreshListView(0);
                             } else {
@@ -77,6 +82,31 @@ public class SpacerController extends BaseController {
                         }
                     }
                 }).show();
+    }
+
+    /**
+     * 删除间隔后，更新基桩的间隔点字段
+     * @param dataSet 间隔数据集
+     */
+    private void updateWellSpacerIds(DataSet dataSet) {
+        String spacerId = String.valueOf(dataSet.PrimaryKey);
+        DataSet wellDs = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ, Enum.GY_DLXLTZXX);
+        wellDs.PrimaryKey = mWellId;
+        wellDs = mDbManager.queryByPrimaryKey(wellDs, true);
+        if (null == wellDs) {
+            return;
+        }
+        String spacerIds = wellDs.GetFieldValueByName(Enum.DLJ_JGD);
+        String[] ids = spacerIds.split("&");
+        StringBuilder builder = new StringBuilder();
+        for (String id : ids) {
+            if (!id.equals(spacerId)) {
+                builder.append(id);
+                builder.append("&");
+            }
+        }
+        wellDs.SetFiledValueByName(builder.toString(), Enum.DLJ_JGD);
+        mDbManager.update(wellDs);
     }
 
     /**
