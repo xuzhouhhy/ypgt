@@ -72,6 +72,10 @@ public class WellController extends BaseController {
     private Map<String, SrPhotoManagerFragment> mPhotoFragments =
             new HashMap<String, SrPhotoManagerFragment>();
     private GY_HWG_spacerFragment mSpacerFragment;
+    /**
+     * 编辑间隔的内存管理
+     */
+    private List<DataSet> mSpacerDs = new ArrayList<>();
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
@@ -97,6 +101,7 @@ public class WellController extends BaseController {
     private void clearSpecialData() {
         mPhotoFragments.clear();
         mSpacerFragment = null;
+        mSpacerDs.clear();
     }
 
     private void initDatasets() throws CloneNotSupportedException {
@@ -593,6 +598,13 @@ public class WellController extends BaseController {
 
     public void setSpacerFragment(GY_HWG_spacerFragment spacerFragment) {
         mSpacerFragment = spacerFragment;
+        if (null != mSpacerFragment) {
+            mSpacerDs = mSpacerFragment.getSpacerDatasetList();
+        }
+    }
+
+    public List<DataSet> getSpacerDs() {
+        return mSpacerDs;
     }
 
     private class ExtensionFilter implements FilenameFilter {
@@ -606,5 +618,4 @@ public class WellController extends BaseController {
             return name.contains(ext);
         }
     }
-
 }

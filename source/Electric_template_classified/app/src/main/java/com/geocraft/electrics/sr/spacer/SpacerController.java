@@ -13,6 +13,7 @@ import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.WellType;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
@@ -205,5 +206,9 @@ public class SpacerController extends BaseController {
      */
     public DataSet getSpacerDataset() {
         return mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ, Enum.spacer);
+    }
+
+    public void setDataSets(List<DataSet> dataSets) {
+        mDataSets = dataSets;
     }
 }
