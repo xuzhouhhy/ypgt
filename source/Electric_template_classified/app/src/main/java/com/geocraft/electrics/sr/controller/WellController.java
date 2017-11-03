@@ -17,6 +17,8 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.PreFragmentFactory;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
+import com.geocraft.electrics.sr.fragment.SrPhotoManagerFragment;
+import com.geocraft.electrics.sr.spacer.GY_HWG_spacerFragment;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
@@ -26,7 +28,9 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import common.geocraft.untiltools.FileUtils;
 
@@ -61,7 +65,11 @@ public class WellController extends BaseController {
     private DataSet mCurrentDataSet;
     private int mLineId = -1;
     private int mWellId = -1;
-    private int mFramgmentIndex = -1;//前不在可选项fragment栈列表中维护
+    private int mFramgmentIndex = -1;
+
+    private Map<String, SrPhotoManagerFragment> mPhotoFragments =
+            new HashMap<String, SrPhotoManagerFragment>();
+    private GY_HWG_spacerFragment mSpacerFragment;
 
     //获取Intent传递参数
     public void initIntentData(Context context) {
@@ -455,7 +463,8 @@ public class WellController extends BaseController {
 
     private String queryLineName() {
         if (mLineId > -1) {
-            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ, Enum.DATA_SET_NAME_LINE);
+            DataSet dataSet = mTaskManager.getDataSource().getDataSetByName(Enum.GYCJ,
+                    Enum.DATA_SET_NAME_LINE);
             dataSet.PrimaryKey = mLineId;
             DataSet ds = mDbManager.queryByPrimaryKey(dataSet, true);
             return ds.GetFieldValueByName(Enum.LINE_FIELD_NAME);
@@ -467,7 +476,8 @@ public class WellController extends BaseController {
         return ConstPath.getTaskRootFolder() + mTaskManager.getTaskInfo().getTaskName();
     }
 
-    private String getNewPhotoPath(SrPhotoManagerController.PhotoItemInfo photoItemInfo, String lineName) {
+    private String getNewPhotoPath(SrPhotoManagerController.PhotoItemInfo photoItemInfo,
+                                   String lineName) {
         PhotoRules photoRules = getPhotoRules(photoItemInfo.mPhotoType);
         if (photoRules == null) {
             return "";
@@ -487,7 +497,8 @@ public class WellController extends BaseController {
             photoName = photoPrefix + photoRules.Type + Constants.PHOTO_SUFFIX;
         }
         String taskPath = getTaskPath();
-        String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER + lineName + File.separator;
+        String photoPath = taskPath + File.separator + Constants.TASK_PHOTO_FOLDER +
+                lineName + File.separator;
         return photoPath + photoName;
     }
 
@@ -498,6 +509,28 @@ public class WellController extends BaseController {
             if (photoRulesTemp.Type.equals(type)) {
                 return photoRulesTemp;
             }
+        }
+        return null;
+    }
+
+    public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
+        List<SrPhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
+        for (Object object : mPhotoFragments.entrySet()) {
+            Map.Entry entry = (Map.Entry) object;
+            SrPhotoManagerFragment photoFragment = (SrPhotoManagerFragment) entry.getValue();
+            if (photoFragment != null) {
+                photoItemInfoList.addAll(photoFragment.getTaskPhotoList());
+            }
+        }
+        return photoItemInfoList;
+    }
+
+    /**
+     * @return 当前编辑好的spacer数据集
+     */
+    public List<DataSet> getSpacerDatasets() {
+        if (null != mSpacerFragment) {
+            return mSpacerFragment.getSpacerDatasetList();
         }
         return null;
     }
@@ -540,6 +573,22 @@ public class WellController extends BaseController {
 
     public int getWellId() {
         return mWellId;
+    }
+
+    public Map<String, SrPhotoManagerFragment> getPhotoFragments() {
+        return mPhotoFragments;
+    }
+
+    public void setPhotoFragments(Map<String, SrPhotoManagerFragment> photoFragments) {
+        mPhotoFragments = photoFragments;
+    }
+
+    public GY_HWG_spacerFragment getSpacerFragment() {
+        return mSpacerFragment;
+    }
+
+    public void setSpacerFragment(GY_HWG_spacerFragment spacerFragment) {
+        mSpacerFragment = spacerFragment;
     }
 
     private class ExtensionFilter implements FilenameFilter {

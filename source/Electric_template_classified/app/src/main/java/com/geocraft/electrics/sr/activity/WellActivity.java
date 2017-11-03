@@ -11,7 +11,6 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
-import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
@@ -31,9 +30,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 井号采集
@@ -52,9 +49,7 @@ public class WellActivity extends BaseActivity {
 
     private FragmentOption mFragmentOption;
     private boolean isGoNext;
-    private Map<String, SrPhotoManagerFragment> mPhotoFragments =
-            new HashMap<String, SrPhotoManagerFragment>();
-    private GY_HWG_spacerFragment mSpacerFragment;
+
 
     @AfterViews
     void init() {
@@ -137,10 +132,11 @@ public class WellActivity extends BaseActivity {
         if (fragment instanceof SrPhotoManagerFragment) {
             SrPhotoManagerFragment photoManagerFragment = (SrPhotoManagerFragment) fragment;
             photoItemInfos = ((SrPhotoManagerFragment) fragment).getTaskPhotoList();
-            mPhotoFragments.put(mFragmentOption.getNameKey(), photoManagerFragment);
+            mController.getPhotoFragments().put(mFragmentOption.getNameKey(),
+                    photoManagerFragment);
         }
         if (fragment instanceof GY_HWG_spacerFragment) {
-            mSpacerFragment = (GY_HWG_spacerFragment) fragment;
+            mController.setSpacerFragment((GY_HWG_spacerFragment) fragment);
         }
         fragment.getValue(mController.getCurrentDataSet());
         boolean isNeedCheckData = isGoNext;
@@ -170,17 +166,7 @@ public class WellActivity extends BaseActivity {
         transaction.commit();
     }
 
-    public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
-        List<SrPhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
-        for (Object object : mPhotoFragments.entrySet()) {
-            Map.Entry entry = (Map.Entry) object;
-            SrPhotoManagerFragment photoFragment = (SrPhotoManagerFragment) entry.getValue();
-            if (photoFragment != null) {
-                photoItemInfoList.addAll(photoFragment.getTaskPhotoList());
-            }
-        }
-        return photoItemInfoList;
-    }
+
 
     private void excuteCommitTask() {
         WellCommitAsyncTask commitAsyncTask = new WellCommitAsyncTask(this, mController);
@@ -216,13 +202,5 @@ public class WellActivity extends BaseActivity {
         return isGoNext;
     }
 
-    /**
-     * @return 当前编辑好的spacer数据集
-     */
-    public List<DataSet> getSpacerDatasets() {
-        if (null != mSpacerFragment) {
-            return mSpacerFragment.getSpacerDatasetList();
-        }
-        return null;
-    }
+
 }

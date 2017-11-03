@@ -48,9 +48,8 @@ public class WellCommitAsyncTask extends AsyncTask<WellController, Integer, Bool
     @Override
     protected Boolean doInBackground(WellController... params) {
         try {
-            WellActivity wellActivity = (WellActivity) mContext;
-            List<SrPhotoManagerController.PhotoItemInfo> photos = wellActivity.getPhotoInfoList();
-            List<DataSet> dataSets = wellActivity.getSpacerDatasets();
+            List<SrPhotoManagerController.PhotoItemInfo> photos = mController.getPhotoInfoList();
+            List<DataSet> dataSets = mController.getSpacerDatasets();
             return mController.saveRecord(photos, dataSets);
         } catch (Exception e) {
             L.printException(e);
