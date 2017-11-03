@@ -190,7 +190,7 @@ public class DLFragments {
     public List<FragmentOption> getSecondLevelItems_HWG() {
         List<FragmentOption> fragmentOptions = new ArrayList<FragmentOption>();
         fragmentOptions.add(getGY_HWG_HWG());//环网柜（基本信息）</string>
-        fragmentOptions.add(getGY_HWG_HWG_SACER());//环网柜（基本信息）</string>
+        fragmentOptions.add(getGY_HWG_HWG_SACER());//环网柜（间隔）</string>
         fragmentOptions.add(getGY_HWG_PHOTO());//环网柜(照片)
         //  fragmentOptions.add(getGY_HWG_JG());//环网柜（间隔）</string>
         fragmentOptions.add(getGY_HWG_DLQ());//环网柜（断路器）</string>
