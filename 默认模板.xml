@@ -17,7 +17,7 @@
 			<Field Name="F_whbz" Alias="维护班组" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 			<Field Name="F_LINESTARTDATE" Alias="投运日期" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 			<Field Name="F_equipment_owner" Alias="设备主人" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
-		
+			<Field Name="ZT" Alias="状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="True" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 			<!--新增start-->
 			<Field Name="F_parentId" Alias="父线路" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 			<Field Name="F_wllId" Alias="支线起点" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
@@ -317,10 +317,11 @@
 			<Field Name="F_Reserved7" Alias="预留7" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved8" Alias="预留8" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved9" Alias="预留9" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
+			<Field Name="ZT" Alias="状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="True" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 		</DataSet>
 		
 		<DataSet Name="GY_DLXLTZXX" Alias="电缆线路台帐信息" GroupName="gycj" EntityType="" DeviceType="" Mark="003.png" Symbol="" IsVisible="True" First="F_GH" Second="F_GH" Third="" IsExport = "False" IsShowPhoto = "True" IsShowCoordinate = "True" IsShowBase = "True" IsShowNecessary = "True" SearchField = "" ValueField ="" isGoToThird = "false">
-			<Field Name="F_GH" Alias="基桩号" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GH" Alias="基桩号" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="true" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_gzlx" Alias="杆桩类型" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_lineId" Alias="线路Id" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<!--新增start-->
@@ -961,10 +962,11 @@
 			<Field Name="F_Reserved16" Alias="预留16" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved17" Alias="预留17" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved18" Alias="预留18" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
+			<Field Name="ZT" Alias="状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="True" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 		</DataSet>
 
 		<DataSet Name="GY_KBSTZXX" Alias="开闭所台帐信息" GroupName="gycj" EntityType="" DeviceType="" Mark="003.png" Symbol="" IsVisible="True" First="F_GH" Second="F_JZTYPE" Third="" IsExport = "False" IsShowPhoto = "True" IsShowCoordinate = "True" IsShowBase = "True" IsShowNecessary = "True" SearchField = "" ValueField ="" isGoToThird = "false">
-			<Field Name="F_GH" Alias="基桩号" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GH" Alias="基桩号" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="true" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_gzlx" Alias="杆桩类型" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_lineId" Alias="线路Id" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<!--新增start-->
@@ -1157,11 +1159,12 @@
 			<Field Name="F_Reserved7" Alias="预留7" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved8" Alias="预留8" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved9" Alias="预留9" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
+			<Field Name="ZT" Alias="状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="True" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 		</DataSet>
 		
-		<DataSet Name="spacer" Alias="间隔" GroupName="gycj" EntityType="" DeviceType="" Mark="003.png" Symbol="" IsVisible="True" First="F_lineName" Second="F_area" Third="" IsExport = "False" IsShowPhoto = "False" IsShowCoordinate = "false" IsShowBase = "True" IsShowNecessary = "false" SearchField = "" ValueField ="" isGoToThird = "true">
-			<Field Name="F_spacerName" Alias="间隔名称" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
-			<Field Name="F_JGDYMC" Alias="环网柜:间隔单元名称" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+		<DataSet Name="spacer" Alias="间隔" GroupName="gycj" EntityType="" DeviceType="" Mark="003.png" Symbol="" IsVisible="True" First="F_spacerName" Second="F_JGDYMC" Third="" IsExport = "False" IsShowPhoto = "False" IsShowCoordinate = "false" IsShowBase = "True" IsShowNecessary = "false" SearchField = "" ValueField ="" isGoToThird = "true">
+			<Field Name="F_spacerName" Alias="间隔名称" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="True" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
+			<Field Name="F_JGDYMC" Alias="环网柜:间隔单元名称" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="True" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_JGDYLX" Alias="环网柜:间隔单元类型" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_JGSSDZ" Alias="环网柜:所属电站" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_JGSBZT" Alias="环网柜:设备状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
@@ -1174,6 +1177,7 @@
 			<Field Name="F_Reserved7" Alias="预留7" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved8" Alias="预留8" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved9" Alias="预留9" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
+			<Field Name="ZT" Alias="状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="True" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 		</DataSet>
 		
 		<DataSet Name="GY_ZSBYQTZXX" Alias="柱上变压器台帐信息" GroupName="gycj" EntityType="" DeviceType="" Mark="003.png" Symbol="" IsVisible="True" First="F_ZSBYQSBMC" Second="F_ZSBYQSCCJ" Third="" IsExport = "False" IsShowPhoto = "True" IsShowCoordinate = "True" IsShowBase = "True" IsShowNecessary = "True" SearchField = "" ValueField ="" isGoToThird = "false">
@@ -1291,6 +1295,7 @@
 			<Field Name="F_Reserved7" Alias="预留7" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved8" Alias="预留8" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved9" Alias="预留9" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
+			<Field Name="ZT" Alias="状态" Type="TEXT" Length="0" Default="" Value="" IsSystemField="True" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 		</DataSet>
     </DataSetGroup>
   </DataSource>
