@@ -1,13 +1,13 @@
 package com.geocraft.electrics.sr;
 
-import com.geocraft.electrics.base.BusinessFragment;
+import com.geocraft.electrics.sr.fragment.WellBaseFragment;
 
 /**
  * 可选项fragment配置类
  */
 
 public class FragmentOption {
-    private BusinessFragment mFragment;
+    private WellBaseFragment mFragment;
     private String mFramentName;
     private String mDatasetName;
     private String mNameKey;
@@ -15,18 +15,18 @@ public class FragmentOption {
     private String mParentNameKey = "";
 
     public FragmentOption(String framentNameKey, String framentName,
-                          String datasetName, BusinessFragment fragment) {
+                          String datasetName, WellBaseFragment fragment) {
         mNameKey = framentNameKey;
         mFramentName = framentName;
         mDatasetName = datasetName;
         mFragment = fragment;
     }
 
-    public BusinessFragment getFragment() {
+    public WellBaseFragment getFragment() {
         return mFragment;
     }
 
-    public void setFragment(BusinessFragment fragment) {
+    public void setFragment(WellBaseFragment fragment) {
         mFragment = fragment;
     }
 

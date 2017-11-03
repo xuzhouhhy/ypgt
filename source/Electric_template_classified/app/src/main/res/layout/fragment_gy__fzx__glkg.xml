@@ -4,8 +4,6 @@
     android:layout_height="wrap_content">
 
 
-
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -24,33 +22,33 @@
                 android:text="@string/GY_FZX_TITLE_GLKG"/>
         </LinearLayout>
 
-    <!-- 设备名称 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_GLKGSBMC"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGSBMC"
-        android:tag="@string/GY_FZXTZXX_F_GLKGSBMC"/>
+    <!--&lt;!&ndash; 设备名称 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_FZXTZXX_F_GLKGSBMC"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_GLKGSBMC"-->
+        <!--android:tag="@string/GY_FZXTZXX_F_GLKGSBMC"/>-->
 
 
 
-    <!-- 所属电站 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_GLKGSSDZ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_GLKGSSDZ"
-        android:tag="@string/GY_FZXTZXX_F_GLKGSSDZ"/>
+    <!--&lt;!&ndash; 所属电站 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_FZXTZXX_F_GLKGSSDZ"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_GLKGSSDZ"-->
+        <!--android:tag="@string/GY_FZXTZXX_F_GLKGSSDZ"/>-->
 
 
 
@@ -170,6 +168,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_GLKGKGCJ"
         android:tag="@string/GY_FZXTZXX_F_GLKGKGCJ"/>
+
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_MXTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_MXTYSJ"
+            android:tag="@string/F_FZX_MXTYSJ"/>
 
     </LinearLayout>
 

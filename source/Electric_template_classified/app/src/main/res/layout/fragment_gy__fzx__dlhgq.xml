@@ -23,18 +23,45 @@
                 android:text="@string/GY_FZX_TITLE_DLHGQ"/>
         </LinearLayout>
 
-    <!-- 电流互感器型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_DLHGQXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQXH"
-        android:tag="@string/GY_FZXTZXX_F_DLHGQXH"/>
+        <!-- 电流互感器型号 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_FZXTZXX_F_DLHGQXH"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLHGQXH"
+            android:tag="@string/GY_FZXTZXX_F_DLHGQXH"/>
+
+        <!-- 分支箱电流互感器:额定电压 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_DLHGQEDDY"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_DLHGQEDDY"
+            android:tag="@string/F_FZX_DLHGQEDDY"/>
+
+        <!-- 变比 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_FZXTZXX_F_DLHGQBB"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLHGQBB"
+            android:tag="@string/GY_FZXTZXX_F_DLHGQBB"/>
+
 
 
 
@@ -53,18 +80,34 @@
         android:tag="@string/GY_FZXTZXX_F_DLHGQCJ"/>
 
 
-    <!-- 变比 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_FZXTZXX_F_DLHGQBB"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLHGQBB"
-        android:tag="@string/GY_FZXTZXX_F_DLHGQBB"/>
+        <!-- 分支箱电流互感器:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_FZX_DLHGQTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_FZX_DLHGQTYSJ"
+            android:tag="@string/F_FZX_DLHGQTYSJ"/>
+
+
+
+
+        <!--&lt;!&ndash; 分接箱电流互感器:投运时间 &ndash;&gt;-->
+        <!--<TextView-->
+            <!--style="@style/SimpleLabel"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/F_FJX_DLHGQTYSJ"-->
+            <!--/>-->
+        <!--<com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/F_FJX_DLHGQTYSJ"-->
+            <!--android:tag="@string/F_FJX_DLHGQTYSJ"/>-->
 
     </LinearLayout>
 </ScrollView>

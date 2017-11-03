@@ -37,19 +37,18 @@
         android:tag="@string/GY_HYGTZXX_F_HWGDLHGQXH"/>
 
 
-
-    <!--电流互感器厂家 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_HWGDLHGQCJ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWGDLHGQCJ"
-        android:tag="@string/GY_HYGTZXX_F_HWGDLHGQCJ"/>
+        <!-- 环网柜电流互感器:额定电压 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_DLHGQEDDY"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_DLHGQEDDY"
+            android:tag="@string/F_HWG_DLHGQEDDY"/>
 
 
     <!--变比 -->
@@ -64,5 +63,32 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGDLHGQBB"
         android:tag="@string/GY_HYGTZXX_F_HWGDLHGQBB"/>
+
+        <!--电流互感器厂家 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_HWGDLHGQCJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWGDLHGQCJ"
+            android:tag="@string/GY_HYGTZXX_F_HWGDLHGQCJ"/>
+
+        <!-- 环网柜电流互感器:投运时间 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_DLHGQTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_DLHGQTYSJ"
+            android:tag="@string/F_HWG_DLHGQTYSJ"/>
+
     </LinearLayout>
 </ScrollView>

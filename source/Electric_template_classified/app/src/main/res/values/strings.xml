@@ -1540,4 +1540,91 @@
     <string name="title_start_interval_name">起始间隔名称:</string>
     <string name="GY_DLFJXTZXX_F_PHOTO">电缆分接箱(照片信息)</string>
     <string name="GY_HYGTZXX_F_JGMC">间隔名称</string>
+    <string name="well_connection_titile">台账采集</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <!-- 工井信息 -->
+    <string name="F_GJXXLB">工井(电缆线):类别</string>
+    <string name="F_GJXXGGDX">工井(电缆线):规格大小</string>
+    <string name="F_GJXXJKGZ">工井(电缆线):井口规则</string>
+    <string name="F_GJXXJGCZ">工井(电缆线):井盖材质</string>
+    <string name="F_GJXXJZFS">工井(电缆线):建筑方式</string>
+    <string name="F_GJXXFSFS">工井(电缆线):敷设方式</string>
+    <string name="F_GJXXGDSL">工井(电缆线):管道数量</string>
+    <string name="F_GJXXSYGDS">工井(电缆线):使用管道数量</string>
+    <string name="F_GJXXBYGDSL">工井(电缆线):备用管道数量</string>
+    <string name="F_GJXXDLT">工井(电缆线):电缆头</string>
+    <string name="F_GJXXSGDW">工井(电缆线):施工单位</string>
+    <string name="F_GJXXSGRQ">工井(电缆线):施工日期</string>
+
+    <!-- 环网柜 -->
+    <string name="F_HWG_JGBH">环网柜:间隔编号</string>
+    <string name="F_HWG_JXJGS">环网柜:进线间隔数</string>
+    <string name="F_HWG_CXJGS">环网柜:出线间隔数</string>
+    <!-- 环网柜 断路器 -->
+    <string name="F_HWG_DLQDWDDL">环网柜断路器:动稳定电流</string>
+    <string name="F_HWG_DLQRWDDL">环网柜断路器:热稳定电流</string>
+    <string name="F_HWG_DLQZDKDDL">环网柜断路器:最大开断电流</string>
+    <string name="F_HWG_DLQHFSJ">环网柜断路器:合分时间</string>
+
+    <!-- 环网柜 隔离开关 -->
+    <string name="F_HWG_GLKGTYSJ">环网柜隔离开关:投运时间</string>
+
+    <!-- 环网柜 负荷开关 -->
+    <string name="F_HWG_FHKGTYSJ">环网柜负荷开关:投运时间</string>
+
+    <!-- 环网柜 电压互感器 -->
+    <string name="F_HWG_DYHGQEDDY">环网柜电压互感器:额定电压</string>
+    <string name="F_HWG_DYHGQTYSJ">环网柜电压互感器:投运时间</string>
+
+    <!-- 环网柜 电流互感器 -->
+    <string name="F_HWG_DLHGQEDDY">环网柜电流互感器:额定电压</string>
+    <string name="F_HWG_DLHGQTYSJ">环网柜电流互感器:投运时间</string>
+
+    <!-- 环网柜 避雷器 -->
+    <string name="F_HWG_BLQTYSJ">环网柜避雷器:投运时间</string>
+
+    <!-- 环网柜 故障指示器 -->
+    <string name="F_HWG_GZZSQTYSJ">环网柜故障指示器:投运时间</string>
+
+    <!-- 环网柜 是否具备电动操作 -->
+    <string name="F_HWG_SFJBDDCZ">环网柜故障指示器:是否具备电动操作</string>
+
+    <!-- 环网柜 母线信息 -->
+    <string name="F_HWG_MXTYSJ">环网柜母线信息:投运时间</string>
+
+    <!-- 分支箱 隔离开关 -->
+    <string name="F_FZX_GLKGTYSJ">分支箱隔离开关:投运时间</string>
+
+    <!-- 分支箱 负荷开关 -->
+    <string name="F_FZX_FHKGEDDSNSSJ">分支箱负荷开关:额定短时耐受时间</string>
+    <string name="F_FZX_FHKGTYSJ">分支箱负荷开关:投运时间</string>
+
+    <!-- 分支箱 电流互感器 -->
+    <string name="F_FZX_DLHGQEDDY">分支箱电流互感器:额定电压</string>
+    <string name="F_FZX_DLHGQTYSJ">分支箱电流互感器:投运时间</string>
+
+    <!-- 分支箱 避雷器 -->
+    <string name="F_FZX_BLQTYSJ">分支箱避雷器:投运时间</string>
+
+    <!-- 分支箱 故障指示器 -->
+    <string name="F_FZX_GZZSQTYSJ">分支箱故障指示器:投运时间</string>
+
+    <!-- 分支箱 母线 -->
+    <string name="F_FZX_MXCZ">分支箱母线:材质</string>
+    <string name="F_FZX_MXTYSJ">分支箱母线:投运时间</string>
+
+
+    <!-- 分接箱 电流互感器 -->
+    <string name="F_FJX_DLHGQEDDY">分接箱电流互感器:额定电压</string>
+    <string name="F_FJX_DLHGQTYSJ">分接箱电流互感器:投运时间</string>
+
+    <!-- 分接箱 避雷器 -->
+    <string name="F_FJX_BLQTYSJ">分接箱避雷器:投运时间</string>
+
+    <!-- 分接箱 故障指示器 -->
+    <string name="F_FJX_GZZSQTYSJ">分接箱故障指示器:投运时间</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="GY_DLXL_GJXX">工井信息</string>
 </resources>

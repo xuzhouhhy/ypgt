@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
@@ -9,183 +9,171 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-
-            <TextView
-                style="@style/fragment_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/GY_KBS_TITLE_GYG"/>
-        </LinearLayout>
-
-
-        <!-- 设备名称 -->
+        <!-- 工井(电缆线):类别 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGSBMC"
+            android:text="@string/F_GJXXLB"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGSBMC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGSBMC"/>
+            android:id="@+id/F_GJXXLB"
+            android:tag="@string/F_GJXXLB"/>
 
-
-        <!-- 生产厂家 -->
+        <!-- 工井(电缆线):规格大小 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGSCCJ"
+            android:text="@string/F_GJXXGGDX"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGSCCJ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGSCCJ"/>
+            android:id="@+id/F_GJXXGGDX"
+            android:tag="@string/F_GJXXGGDX"/>
 
 
-        <!-- 型号 -->
+        <!-- 工井(电缆线):井口规则 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGXH"
+            android:text="@string/F_GJXXJKGZ"
             />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-            android:id="@+id/F_GYGXH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGXH"/>
-
-
-        <!-- 设备状态 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGSBZT"
-            />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGSBZT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGSBZT"/>
+            android:id="@+id/F_GJXXJKGZ"
+            android:tag="@string/F_GJXXJKGZ"/>
 
 
-        <!-- 设备主人 -->
+
+        <!-- 工井(电缆线):井盖材质 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGSBZR"
+            android:text="@string/F_GJXXJGCZ"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGSBZR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGSBZR"/>
+            android:id="@+id/F_GJXXJGCZ"
+            android:tag="@string/F_GJXXJGCZ"/>
 
 
-        <!-- 北纬（N或B） -->
+        <!-- 工井(电缆线):建筑方式 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGBW"
+            android:text="@string/F_GJXXJZFS"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGBW"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGBW"/>
+            android:id="@+id/F_GJXXJZFS"
+            android:tag="@string/F_GJXXJZFS"/>
 
 
-        <!-- 东经（E或L） -->
+        <!-- 工井(电缆线):敷设方式 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGDJ"
+            android:text="@string/F_GJXXFSFS"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGDJ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGDJ"/>
+            android:id="@+id/F_GJXXFSFS"
+            android:tag="@string/F_GJXXFSFS"/>
 
 
-        <!-- 出厂编号 -->
+        <!-- 工井(电缆线):管道数量 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGCCBH"
+            android:text="@string/F_GJXXGDSL"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGCCBH"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGCCBH"/>
+            android:id="@+id/F_GJXXGDSL"
+            android:tag="@string/F_GJXXGDSL"/>
 
 
-        <!-- 投运日期 -->
+        <!-- 工井(电缆线):使用管道数量 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGTYRQ"
+            android:text="@string/F_GJXXSYGDS"
             />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GJXXSYGDS"
+            android:tag="@string/F_GJXXSYGDS"/>
 
+
+        <!-- 工井(电缆线):备用管道数量 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_GJXXBYGDSL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GJXXBYGDSL"
+            android:tag="@string/F_GJXXBYGDSL"/>
+
+
+        <!-- 工井(电缆线):电缆头 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_GJXXDLT"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GJXXDLT"
+            android:tag="@string/F_GJXXDLT"/>
+
+
+        <!-- 工井(电缆线):施工单位 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_GJXXSGDW"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_GJXXSGDW"
+            android:tag="@string/F_GJXXSGDW"/>
+
+
+        <!-- 工井(电缆线):施工日期 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_GJXXSGRQ"
+            />
         <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
-            android:id="@+id/F_GYGTYRQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGTYRQ"/>
-
-
-        <!-- 接地电阻 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGJDDZ"
-            />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGJDDZ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGJDDZ"/>
-
-
-        <!-- 备用进出线间隔数 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_KBSTZXX_F_GYGBYJCXJGS"
-            />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_GYGBYJCXJGS"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_KBSTZXX_F_GYGBYJCXJGS"/>
+            android:id="@+id/F_GJXXSGRQ"
+            android:tag="@string/F_GJXXSGRQ"/>
     </LinearLayout>
 </ScrollView>

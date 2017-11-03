@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
 
 
     <LinearLayout
-        android:id="@+id/linearLayoutRoot"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:id="@+id/linearLayoutRoot">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal">
-
             <TextView
                 style="@style/fragment_title"
                 android:layout_width="wrap_content"
@@ -23,19 +23,44 @@
                 android:text="@string/GY_DLFZX_TITLE_DLHGQ"/>
         </LinearLayout>
 
-        <!-- 电流互感器型号 -->
+    <!-- 电流互感器型号 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLFJXTZXX_F_DLHGQXH"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLHGQXH"
+        android:tag="@string/GY_DLFJXTZXX_F_DLHGQXH"/>
+
+        <!-- 分接箱电流互感器:额定电压 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_DLFJXTZXX_F_DLHGQXH"
+            android:text="@string/F_FJX_DLHGQEDDY"
             />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-            android:id="@+id/F_DLHGQXH"
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_DLFJXTZXX_F_DLHGQXH"/>
+            android:id="@+id/F_FJX_DLHGQEDDY"
+            android:tag="@string/F_FJX_DLHGQEDDY"/>
+
+    <!-- 变比 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLFJXTZXX_F_DLHGQBB"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_DLHGQBB"
+        android:tag="@string/GY_DLFJXTZXX_F_DLHGQBB"/>
 
 
         <!-- 电流互感器厂家 -->
@@ -45,26 +70,25 @@
             android:layout_height="wrap_content"
             android:text="@string/GY_DLFJXTZXX_F_DLHGQCJ"
             />
-
         <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_DLHGQCJ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/F_DLHGQCJ"
             android:tag="@string/GY_DLFJXTZXX_F_DLHGQCJ"/>
 
 
-        <!-- 变比 -->
+        <!-- 分接箱电流互感器:投运时间 -->
         <TextView
             style="@style/SimpleLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/GY_DLFJXTZXX_F_DLHGQBB"
+            android:text="@string/F_FJX_DLHGQTYSJ"
             />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_DLHGQBB"
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="@string/GY_DLFJXTZXX_F_DLHGQBB"/>
+            android:id="@+id/F_FJX_DLHGQTYSJ"
+            android:tag="@string/F_FJX_DLHGQTYSJ"/>
+
     </LinearLayout>
 </ScrollView>

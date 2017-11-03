@@ -23,32 +23,32 @@
                 android:text="@string/GY_HWG_TITLE_GLKG"/>
         </LinearLayout>
 
-    <!--设备名称 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_HWGGLKGSBMC"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWGGLKGSBMC"
-        android:tag="@string/GY_HYGTZXX_F_HWGGLKGSBMC"/>
+    <!--&lt;!&ndash;设备名称 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_HYGTZXX_F_HWGGLKGSBMC"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWGGLKGSBMC"-->
+        <!--android:tag="@string/GY_HYGTZXX_F_HWGGLKGSBMC"/>-->
 
 
-    <!--所属电站 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_HWGGLKGSSDZ"
-        android:tag="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"/>
+    <!--&lt;!&ndash;所属电站 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_HWGGLKGSSDZ"-->
+        <!--android:tag="@string/GY_HYGTZXX_F_HWGGLKGSSDZ"/>-->
 
 
     <!--隔离开关型号 -->
@@ -160,5 +160,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_HWGGLKGGLKGCJ"
         android:tag="@string/GY_HYGTZXX_F_HWGGLKGGLKGCJ"/>
+
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_GLKGTYSJ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.EditTextDatetimeExpand
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_GLKGTYSJ"
+            android:tag="@string/F_HWG_GLKGTYSJ"/>
+
+
     </LinearLayout>
 </ScrollView>

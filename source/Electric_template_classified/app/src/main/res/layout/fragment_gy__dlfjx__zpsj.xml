@@ -1,70 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
 
 
     <LinearLayout
-        android:id="@+id/linearLayoutRoot"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:id="@+id/linearLayoutRoot">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:gravity="center_horizontal">-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/"/>-->
+        <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/GY_DLFJXTZXX_F_PHOTO"/>
-        </LinearLayout>
-
-        <!-- 电缆分接箱全貌照片 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_DLFJXTZXX_F_PHOTO_QM"
-            />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_PHOTO_QM"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_DLFJXTZXX_F_PHOTO_QM"/>
+    <!-- 电缆分接箱全貌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLFJXTZXX_F_PHOTO_QM"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_QM"
+        android:tag="@string/GY_DLFJXTZXX_F_PHOTO_QM"/>
 
 
-        <!-- 标识牌照片 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_DLFJXTZXX_F_PHOTO_BSP"
-            />
-
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_PHOTO_BSP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_DLFJXTZXX_F_PHOTO_BSP"/>
 
 
-        <!-- 铭牌照片 -->
-        <TextView
-            style="@style/SimpleLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/GY_DLFJXTZXX_F_PHOTO_MP"
-            />
+    <!-- 标识牌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLFJXTZXX_F_PHOTO_BSP"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_BSP"
+        android:tag="@string/GY_DLFJXTZXX_F_PHOTO_BSP"/>
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-            android:id="@+id/F_PHOTO_MP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:tag="@string/GY_DLFJXTZXX_F_PHOTO_MP"/>
+
+    <!-- 铭牌照片 -->
+    <TextView
+        style="@style/SimpleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/GY_DLFJXTZXX_F_PHOTO_MP"
+        />
+    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/F_PHOTO_MP"
+        android:tag="@string/GY_DLFJXTZXX_F_PHOTO_MP"/>
 
     </LinearLayout>
 </ScrollView>

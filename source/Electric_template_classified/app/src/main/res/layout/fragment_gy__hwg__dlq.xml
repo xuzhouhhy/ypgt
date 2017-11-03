@@ -23,84 +23,141 @@
                 android:text="@string/GY_HWG_TITLE_DLQ"/>
         </LinearLayout>
 
-    <!--所属电站 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQSSDZ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQSSDZ"
-        android:tag="@string/GY_HYGTZXX_F_DLQSSDZ"/>
 
-    <!--间隔单元 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQJGDY"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQJGDY"
-        android:tag="@string/GY_HYGTZXX_F_DLQJGDY"/>
-
-    <!--额定电压 (kV) -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQEDDY"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQEDDY"
-        android:tag="@string/GY_HYGTZXX_F_DLQEDDY"/>
-
-    <!--额定电流(A) -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQEDDL"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQEDDL"
-        android:tag="@string/GY_HYGTZXX_F_DLQEDDL"/>
+        <!--断路器型号 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_DLQXH"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLQXH"
+            android:tag="@string/GY_HYGTZXX_F_DLQXH"/>
 
 
-    <!--额定频率(Hz) -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQEDPL"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQEDPL"
-        android:tag="@string/GY_HYGTZXX_F_DLQEDPL"/>
+        <!--额定电压 (kV) -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_DLQEDDY"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLQEDDY"
+            android:tag="@string/GY_HYGTZXX_F_DLQEDDY"/>
 
-    <!--灭弧介质 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQMHJZ"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQMHJZ"
-        android:tag="@string/GY_HYGTZXX_F_DLQMHJZ"/>
+        <!--额定电流(A) -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_DLQEDDL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLQEDDL"
+            android:tag="@string/GY_HYGTZXX_F_DLQEDDL"/>
+
+
+        <!--额定频率(Hz) -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_DLQEDPL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLQEDPL"
+            android:tag="@string/GY_HYGTZXX_F_DLQEDPL"/>
+
+        <!--灭弧介质 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GY_HYGTZXX_F_DLQMHJZ"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_DLQMHJZ"
+            android:tag="@string/GY_HYGTZXX_F_DLQMHJZ"/>
+
+        <!-- 环网柜断路器:动稳定电流 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_DLQDWDDL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_DLQDWDDL"
+            android:tag="@string/F_HWG_DLQDWDDL"/>
+
+
+        <!-- 环网柜断路器:热稳定电流 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_DLQRWDDL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_DLQRWDDL"
+            android:tag="@string/F_HWG_DLQRWDDL"/>
+
+
+        <!-- 环网柜断路器:最大开断电流 -->
+        <TextView
+            style="@style/SimpleLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/F_HWG_DLQZDKDDL"
+            />
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/F_HWG_DLQZDKDDL"
+            android:tag="@string/F_HWG_DLQZDKDDL"/>
+
+    <!--&lt;!&ndash;所属电站 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_HYGTZXX_F_DLQSSDZ"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_DLQSSDZ"-->
+        <!--android:tag="@string/GY_HYGTZXX_F_DLQSSDZ"/>-->
+
+    <!--&lt;!&ndash;间隔单元 &ndash;&gt;-->
+    <!--<TextView-->
+        <!--style="@style/SimpleLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/GY_HYGTZXX_F_DLQJGDY"-->
+        <!--/>-->
+    <!--<com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/F_DLQJGDY"-->
+        <!--android:tag="@string/GY_HYGTZXX_F_DLQJGDY"/>-->
+
 
 
 
@@ -147,18 +204,6 @@
         android:tag="@string/GY_HYGTZXX_F_DLQHFSJ"/>
 
 
-    <!--断路器型号 -->
-    <TextView
-        style="@style/SimpleLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/GY_HYGTZXX_F_DLQXH"
-        />
-    <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/F_DLQXH"
-        android:tag="@string/GY_HYGTZXX_F_DLQXH"/>
 
     <!--断路器厂家 -->
     <TextView
@@ -172,5 +217,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/F_DLQCJ"
         android:tag="@string/GY_HYGTZXX_F_DLQCJ"/>
+
     </LinearLayout>
 </ScrollView>
