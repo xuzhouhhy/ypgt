@@ -87,8 +87,14 @@ public class WellController extends BaseController {
 
     private void initCurDatasetAndFragments() {
         initCurrentDataSet();
-        mFragmentOptions = mBasicFragmentProxy.
-                initFragmentOptions(mWellType, mCurrentDataSet);
+        mFragmentOptions = mBasicFragmentProxy.initFragmentOptions(mWellType,
+                mCurrentDataSet);
+        clearSpecialData();
+    }
+
+    private void clearSpecialData() {
+        mPhotoFragments.clear();
+        mSpacerFragment = null;
     }
 
     private void initDatasets() throws CloneNotSupportedException {
@@ -577,14 +583,6 @@ public class WellController extends BaseController {
 
     public Map<String, SrPhotoManagerFragment> getPhotoFragments() {
         return mPhotoFragments;
-    }
-
-    public void setPhotoFragments(Map<String, SrPhotoManagerFragment> photoFragments) {
-        mPhotoFragments = photoFragments;
-    }
-
-    public GY_HWG_spacerFragment getSpacerFragment() {
-        return mSpacerFragment;
     }
 
     public void setSpacerFragment(GY_HWG_spacerFragment spacerFragment) {

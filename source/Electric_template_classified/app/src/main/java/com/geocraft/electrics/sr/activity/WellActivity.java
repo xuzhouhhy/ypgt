@@ -166,8 +166,6 @@ public class WellActivity extends BaseActivity {
         transaction.commit();
     }
 
-
-
     private void excuteCommitTask() {
         WellCommitAsyncTask commitAsyncTask = new WellCommitAsyncTask(this, mController);
         commitAsyncTask.execute(mController);
