@@ -17,9 +17,6 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.PreFragmentFactory;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
-import com.geocraft.electrics.ui.controller.PhotoManagerController;
-import com.geocraft.electrics.ui.view.DataValidityInfoView;
-import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
@@ -357,10 +354,12 @@ public class WellController extends BaseController {
             return false;
         }
         if (mIsCreateRecord) {
-            //保存间隔点，获取间隔点id组成的F_SpacerIds字段值
-            String spacerIds = saveSpacer(dataSets);
-            //F_SpacerIds字段值写给当前基桩dataset
-            mCurrentDataSet.SetFiledValueByName(Enum.DLJ_JGD, spacerIds);
+            if (null != dataSets) {
+                //保存间隔点，获取间隔点id组成的F_SpacerIds字段值
+                String spacerIds = saveSpacer(dataSets);
+                //F_SpacerIds字段值写给当前基桩dataset
+                mCurrentDataSet.SetFiledValueByName(Enum.DLJ_JGD, spacerIds);
+            }
             int key = mDbManager.insert(mCurrentDataSet);
             if (key >= 0) {
                 mCurrentDataSet.PrimaryKey = key;
@@ -370,10 +369,12 @@ public class WellController extends BaseController {
                 return false;
             }
         } else {
-            //保存和更新间隔
-            String spacerIds = saveAndupdateSpacer(dataSets);
-            //F_SpacerIds字段值写给当前基桩dataset
-            mCurrentDataSet.SetFiledValueByName(Enum.DLJ_JGD, spacerIds);
+            if (null != dataSets) {
+                //保存和更新间隔
+                String spacerIds = saveAndupdateSpacer(dataSets);
+                //F_SpacerIds字段值写给当前基桩dataset
+                mCurrentDataSet.SetFiledValueByName(Enum.DLJ_JGD, spacerIds);
+            }
             if (mDbManager.update(mCurrentDataSet)) {
                 renamePhotoAndMove(taskPhotoList);
                 return true;
