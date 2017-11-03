@@ -40,7 +40,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     private final String WELL_NAME_PRIX = "#";
     private final String WELL_FISTR_NAME = "#001";
     private final String WELL_KBS_NAME = "#000";
-    private final String WELL_KBS_NAME_FORMAT = "000";
+    private final String WELL_NAME_FORMAT = "000";
     protected TaskManager taskManager = TaskManager_.getInstance_(
             ElectricApplication_.getInstance().getApplicationContext());
     protected DbManager dbManager = DbManager_.getInstance_(
@@ -120,12 +120,12 @@ public class Well_PreFragment extends WellBaseInfoFragment {
         return true;
     }
 
-    private String formatInput(String name, int step, String format) {
+    private String formatInput(String name) {
         if (null == name || name.isEmpty()) {
             name = getDefaultWellName(mWellController.getWellType());
         }
         int cnt = Integer.valueOf(name);
-        String formatValue = new DecimalFormat(format).format(cnt);
+        String formatValue = new DecimalFormat(WELL_NAME_FORMAT).format(cnt);
         return formatValue;
     }
 
@@ -174,7 +174,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
             return getDefaultWellName(wellType);
         }
         return NameFormatter.getNextNameWithDigitSuffixFormat(wellNames,
-                WELL_NAME_PRIX, 1, WELL_KBS_NAME_FORMAT);
+                WELL_NAME_PRIX, 1, WELL_NAME_FORMAT);
     }
 
     private String initWellName(String wellName) {
