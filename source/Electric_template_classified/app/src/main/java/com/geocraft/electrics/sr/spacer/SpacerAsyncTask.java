@@ -6,10 +6,12 @@ import android.os.AsyncTask;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
-import com.geocraft.electrics.sr.activity.TowerShowListActivity;
-import com.geocraft.electrics.sr.controller.TowerShowListController;
-import com.geocraft.electrics.sr.spacer.SpacerController;
+import com.geocraft.electrics.entity.DataSet;
+import com.geocraft.electrics.sr.activity.WellActivity;
+import com.geocraft.electrics.sr.controller.WellController;
 import com.huace.log.logger.L;
+
+import java.util.List;
 
 import common.geocraft.untiltools.T;
 
@@ -18,9 +20,9 @@ import common.geocraft.untiltools.T;
  */
 public class SpacerAsyncTask extends AsyncTask<SpacerController, Integer, Boolean> {
 
-    private Context mContext;
     SpacerController mController;
     ProgressDialog mProgressDialog;
+    private Context mContext;
 
     public SpacerAsyncTask(Context context, SpacerController controller) {
         super();
@@ -40,6 +42,12 @@ public class SpacerAsyncTask extends AsyncTask<SpacerController, Integer, Boolea
     @Override
     protected Boolean doInBackground(SpacerController... params) {
         try {
+            WellController controller = ((WellActivity) mContext).getController();
+            List<DataSet> spacerDs = controller.getSpacerDs();
+            if (spacerDs.size() > 0) {
+                mController.setDataSets(spacerDs);
+                return true;
+            }
             mController.initDataFromDB();
             return true;
         } catch (Exception e) {
