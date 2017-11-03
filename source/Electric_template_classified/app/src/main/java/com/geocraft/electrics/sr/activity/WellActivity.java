@@ -11,7 +11,6 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.base.BaseActivity;
 import com.geocraft.electrics.constants.ConstRequestCode;
-import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.event.CheckFragmentEvent;
 import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.controller.SrPhotoManagerController;
@@ -31,7 +30,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -127,10 +125,6 @@ public class WellActivity extends BaseActivity {
     }
 
     private boolean saveFragmentData() {
-        return excuteSaveAction(mController.getCurrentDataSet());
-    }
-
-    private boolean excuteSaveAction(DataSet dataSet) {
         if (null == mFragmentOption) {
             return false;
         }
@@ -138,16 +132,17 @@ public class WellActivity extends BaseActivity {
         List<SrPhotoManagerController.PhotoItemInfo> photoItemInfos =
                 new ArrayList<SrPhotoManagerController.PhotoItemInfo>();
         if (fragment instanceof SrPhotoManagerFragment) {
+            SrPhotoManagerFragment photoManagerFragment = (SrPhotoManagerFragment) fragment;
             photoItemInfos = ((SrPhotoManagerFragment) fragment).getTaskPhotoList();
+            mPhotoFragments.put(mFragmentOption.getNameKey(), photoManagerFragment);
         }
-        if (!fragment.checkDataValidity(photoItemInfos)) {
-            return false;
+        fragment.getValue(mController.getCurrentDataSet());
+        boolean isNeedCheckData = isGoNext;
+        if (isNeedCheckData) {
+            if (!fragment.checkDataValidity(photoItemInfos)) {
+                return false;
+            }
         }
-        if (fragment instanceof SrPhotoManagerFragment) {
-            mPhotoFragments.put(mFragmentOption.getNameKey(),
-                    (SrPhotoManagerFragment) fragment);
-        }
-        fragment.getValue(dataSet);
         return true;
     }
 
@@ -171,9 +166,8 @@ public class WellActivity extends BaseActivity {
 
     public List<SrPhotoManagerController.PhotoItemInfo> getPhotoInfoList() {
         List<SrPhotoManagerController.PhotoItemInfo> photoItemInfoList = new ArrayList<>();
-        Iterator iter = mPhotoFragments.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry entry = (Map.Entry) iter.next();
+        for (Object object : mPhotoFragments.entrySet()) {
+            Map.Entry entry = (Map.Entry) object;
             SrPhotoManagerFragment photoFragment = (SrPhotoManagerFragment) entry.getValue();
             if (photoFragment != null) {
                 photoItemInfoList.addAll(photoFragment.getTaskPhotoList());

@@ -1,17 +1,14 @@
 package com.geocraft.electrics.sr.controller;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 
-import com.geocraft.electrics.R;
 import com.geocraft.electrics.base.BaseController;
 import com.geocraft.electrics.constants.ConstPath;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.constants.Enum;
 import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.entity.DataSet;
-import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.sr.BasicFragmentProxy;
@@ -20,10 +17,6 @@ import com.geocraft.electrics.sr.FragmentOption;
 import com.geocraft.electrics.sr.PreFragmentFactory;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
-import com.geocraft.electrics.ui.controller.PhotoManagerController;
-import com.geocraft.electrics.ui.view.DataValidityInfoView;
-import com.geocraft.electrics.ui.view.DataValidityInfoView_;
-import com.geocraft.electrics.utils.Utils;
 import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.Bean;
@@ -119,10 +112,6 @@ public class WellController extends BaseController {
 
     public DataSet getCurrentDataSet() {
         return mCurrentDataSet;
-    }
-
-    public void setCurrentDataSet(String datasetName) {
-        mCurrentDataSet = getCurrentDataSet(datasetName);
     }
 
     private void initCurrentDataSet() {
@@ -260,20 +249,11 @@ public class WellController extends BaseController {
     }
 
     public boolean isHasNextFragment() {
-        if (mPreFragmentFactory.isHasNextFragmentOption()) {
-            return true;
-        }
-        if (isHasNextFragmentOption()) {
-            return true;
-        }
-        return false;
+        return mPreFragmentFactory.isHasNextFragmentOption() || isHasNextFragmentOption();
     }
 
     public boolean isHasPreFragment() {
-        if (mPreFragmentFactory.getFramgmentIndex() > 0) {
-            return true;
-        }
-        return false;
+        return mPreFragmentFactory.getFramgmentIndex() > 0;
     }
 
     private boolean isHasNextFragmentOption() {
@@ -366,41 +346,6 @@ public class WellController extends BaseController {
             mFirstType = ((Activity) context).getIntent()
                     .getStringExtra(Constants.INTENT_DATA_SET_GROUP_NAME);
         }
-    }
-
-    public boolean checkDataValidity(Context context,
-                                     List<PhotoManagerController.PhotoItemInfo> taskPhotoList) {
-        List<String> illegalFieldList = new ArrayList<>();
-        List<String> illegalPhotoList = new ArrayList<>();
-        illegalFieldList.clear();
-        illegalPhotoList.clear();
-        List<FieldInfo> fieldInfoList = mCurrentDataSet.FieldInfos;
-        for (int i = 0; i < fieldInfoList.size(); i++) {
-            FieldInfo fieldInfoTemp = fieldInfoList.get(i);
-            if (fieldInfoTemp == null) {
-                continue;
-            }
-            if (fieldInfoTemp.IsRequired && fieldInfoTemp.Value.length() <= 0) {
-                illegalFieldList.add(fieldInfoTemp.Alias);
-            }
-        }
-        for (int j = 0; j < taskPhotoList.size(); j++) {
-            if (!FileUtils.existFile(taskPhotoList.get(j).photoPath)) {
-                illegalPhotoList.add(taskPhotoList.get(j).mPhotoType);
-            }
-        }
-        if (illegalFieldList.size() > 0 || illegalPhotoList.size() > 0) {
-            DataValidityInfoView validityInfoView = DataValidityInfoView_.build(context);
-            validityInfoView.setFieldErrorInfo(illegalFieldList);
-            validityInfoView.setPhotoErrorInfo(illegalPhotoList);
-            new AlertDialog.Builder(context)
-                    .setIcon(R.mipmap.ic_warning)
-                    .setTitle(R.string.dlg_warning)
-                    .setView(validityInfoView)
-                    .show();
-            return false;
-        }
-        return true;
     }
 
     public boolean saveRecord(List<SrPhotoManagerController.PhotoItemInfo> taskPhotoList) {
