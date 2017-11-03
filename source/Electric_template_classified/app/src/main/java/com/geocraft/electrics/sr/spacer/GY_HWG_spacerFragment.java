@@ -13,7 +13,6 @@ import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
-import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.sr.activity.WellActivity;
 import com.geocraft.electrics.sr.controller.WellController;
 import com.geocraft.electrics.sr.fragment.WellBaseFragment;
@@ -130,7 +129,8 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        DataSet dataSet = mController.getDataSets().get(position);
+        onGyHwgIntervalDetail(dataSet);
     }
 
     public void refreshListView(int position) {
@@ -151,7 +151,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
     /**
      * 点击环网柜间隔详情按钮
      */
-    private void onGyHwgIntervalDetail() {
+    private void onGyHwgIntervalDetail(DataSet dataSet) {
         Context context = getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View dialogView = inflater.inflate(R.layout.view_gy__hwg__jg_extend, null);
@@ -164,6 +164,9 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         spinner = (BusinessConcatSpinner) dialogView.findViewById(R.id.F_JGSBZT);
         initSpinnerView(spinner);
         mLinearLayout = (LinearLayout) dialogView.findViewById(R.id.linearLayoutRoot);
+        if (null != dataSet) {
+            super.initData(false,dataSet);
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(dialogView).setCancelable(true);
         mDialog = builder.create();
@@ -175,7 +178,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     @Click
     void btnAddSpacer() {
-        onGyHwgIntervalDetail();
+        onGyHwgIntervalDetail(null);
     }
 
     private void dialogDismiss() {
