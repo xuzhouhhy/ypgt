@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import com.geocraft.electrics.R;
 import com.geocraft.electrics.app.ElectricApplication;
@@ -52,6 +53,8 @@ public class SrPhotoManagerFragment extends WellBaseFragment {
     PhotoManagerAdapter mAdapter;
     @Bean
     SrPhotoManagerController mController;
+    @ViewById
+    LinearLayout linearLayoutRoot;
     @ViewById
     GridView gridViewPhotoList;
     PopupMenu.OnMenuItemClickListener mOnMenuItemClickListener =

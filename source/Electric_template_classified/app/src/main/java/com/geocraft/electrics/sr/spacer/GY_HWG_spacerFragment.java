@@ -43,6 +43,8 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
         AdapterView.OnItemClickListener {
 
     @ViewById
+    LinearLayout linearLayoutRoot;
+    @ViewById
     protected SwipeMenuListView listViewCommon;
     protected SpacerAdapter mAdapter;
     @ViewById
@@ -110,6 +112,7 @@ public class GY_HWG_spacerFragment extends WellBaseFragment implements
 
     @Override
     public void init() {
+
         ElectricApplication.BUS.register(this);
         mActivity = ((WellActivity) this.getActivity());
         mIsNew = mActivity.getController().isCreateRecord();
