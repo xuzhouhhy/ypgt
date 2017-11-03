@@ -854,6 +854,89 @@
 			<Photo Type="电缆分接箱:电缆分接箱全貌照片" Number = "1" Rules = "F_GH"/>
 			<Photo Type="电缆分接箱:标识牌照片" Number = "1" Rules = "F_GH"/>
 			<Photo Type="电缆分接箱:铭牌照片" Number = "1" Rules = "F_GH"/>
+			
+			<!-- 工井信息 -->
+			<Field Name="F_GJXXLB" Alias="工井(电缆线):类别" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXGGDX" Alias="工井(电缆线):规格大小" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXJKGZ" Alias="工井(电缆线):井口规则" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXJGCZ" Alias="工井(电缆线):井盖材质" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXJZFS" Alias="工井(电缆线):建筑方式" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXFSFS" Alias="工井(电缆线):敷设方式" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXGDSL" Alias="工井(电缆线):管道数量" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXSYGDS" Alias="工井(电缆线):使用管道数量" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXBYGDSL" Alias="工井(电缆线):备用管道数量" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXDLT" Alias="工井(电缆线):电缆头" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXSGDW" Alias="工井(电缆线):施工单位" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_GJXXSGRQ" Alias="工井(电缆线):施工日期" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 -->
+			<Field Name="F_HWG_JGBH" Alias="环网柜:间隔编号" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_JXJGS" Alias="环网柜:进线间隔数" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_CXJGS" Alias="环网柜:出线间隔数" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<!-- 环网柜 断路器 -->
+			<Field Name="F_HWG_DLQDWDDL" Alias="环网柜断路器:动稳定电流" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_DLQRWDDL" Alias="环网柜断路器:热稳定电流" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_DLQZDKDDL" Alias="环网柜断路器:最大开断电流" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_DLQHFSJ" Alias="环网柜断路器:合分时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 隔离开关 -->	
+			<Field Name="F_HWG_GLKGTYSJ" Alias="环网柜隔离开关:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+				
+			<!-- 环网柜 负荷开关 -->	
+			<Field Name="F_HWG_FHKGTYSJ" Alias="环网柜负荷开关:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 电压互感器 -->	
+			<Field Name="F_HWG_DYHGQEDDY" Alias="环网柜电压互感器:额定电压" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_DYHGQTYSJ" Alias="环网柜电压互感器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 电流互感器 -->	
+			<Field Name="F_HWG_DLHGQEDDY" Alias="环网柜电流互感器:额定电压" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_HWG_DLHGQTYSJ" Alias="环网柜电流互感器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 避雷器 -->	
+			<Field Name="F_HWG_BLQTYSJ" Alias="环网柜避雷器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 故障指示器 -->	
+			<Field Name="F_HWG_GZZSQTYSJ" Alias="环网柜故障指示器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 是否具备电动操作 -->	
+			<Field Name="F_HWG_SFJBDDCZ" Alias="环网柜故障指示器:是否具备电动操作" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 环网柜 母线信息 -->	
+			<Field Name="F_HWG_MXTYSJ" Alias="环网柜母线信息:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分支箱 隔离开关 -->	
+			<Field Name="F_FZX_MXTYSJ" Alias="分支箱隔离开关:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分支箱 负荷开关 -->	
+			<Field Name="F_FZX_FHKGEDDSNSSJ" Alias="分支箱负荷开关:额定短时耐受时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_FZX_FHKGTYSJ" Alias="分支箱负荷开关:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分支箱 电流互感器 -->	
+			<Field Name="F_FZX_DLHGQEDDY" Alias="分支箱电流互感器:额定电压" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_FZX_DLHGQTYSJ" Alias="分支箱电流互感器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分支箱 避雷器 -->	
+			<Field Name="F_FZX_BLQTYSJ" Alias="分支箱避雷器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分支箱 故障指示器 -->	
+			<Field Name="F_FZX_GZZSQTYSJ" Alias="分支箱故障指示器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分支箱 母线 -->	
+			<Field Name="F_FZX_MXCZ" Alias="分支箱母线:材质" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_FZX_MXTYSJ" Alias="分支箱母线:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+
+			<!-- 分接箱 电流互感器 -->	
+			<Field Name="F_FJX_DLHGQEDDY" Alias="分接箱电流互感器:额定电压" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_FJX_DLHGQTYSJ" Alias="分接箱电流互感器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分接箱 避雷器 -->	
+			<Field Name="F_FJX_BLQTYSJ" Alias="分接箱避雷器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
+			<!-- 分接箱 故障指示器 -->	
+			<Field Name="F_FJX_GZZSQTYSJ" Alias="分接箱故障指示器:投运时间" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+
 		
 			<Field Name="F_IsDeleted" Alias="是否已删除" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_IsExport" Alias="是否已导出" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
@@ -1199,7 +1282,7 @@
 			<Field Name="F_ColletObject" Alias="采集对象" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_DeviceID" Alias="设备ID" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="False" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 						
-			<Field Name="F_Reserved1" Alias="f" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
+			<Field Name="F_Reserved1" Alias="预留1" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved2" Alias="预留2" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
 			<Field Name="F_Reserved3" Alias="预留3" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />
 			<Field Name="F_Reserved4" Alias="预留4" Type="TEXT" Length="0" Default="" Value="" IsSystemField="False" IsRequired="False" IsUnique="False" IsVisible="True" IsDisable="False" IsCopy="False" IsNum="False" Sort="0" OperateCode="0" />	
