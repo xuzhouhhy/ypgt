@@ -145,6 +145,7 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     @Override
     public void setControlValue(FieldInfo fieldInfo, String text) {
         mDatalist = fieldInfo.Dictionay.menuList;
+        mDatalist.remove("");
         mDatalist.add("");
         dataAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.simple_spinner_item, mDatalist) {
             @Override
