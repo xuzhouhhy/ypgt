@@ -115,7 +115,10 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
             return;
         }
         String text = mEditText.getText().toString();
-        String select = spinner.getSelectedItem().toString();
+        String select = "";
+        if (spinner.getSelectedItem() != null) {
+            select = spinner.getSelectedItem().toString();
+        }
         mDatalist.remove("");
         mFieldInfo.Dictionay.menuList.add(text);
         mDatalist.add("");
