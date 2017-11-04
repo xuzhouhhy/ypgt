@@ -14,6 +14,7 @@ import com.geocraft.electrics.db.DbManager;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.entity.FieldInfo;
 import com.geocraft.electrics.manager.TaskManager;
+import com.geocraft.electrics.sr.WellType;
 import com.geocraft.electrics.ui.view.DataValidityInfoView;
 import com.geocraft.electrics.ui.view.DataValidityInfoView_;
 import com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner;
@@ -52,7 +53,7 @@ public class AddChildLineController {
     /**
      * 基桩type
      */
-    private String mWellType;
+    private String mWellTypeValue;
 
     /**
      * 选择的间隔id
@@ -64,17 +65,17 @@ public class AddChildLineController {
                 Enum.DATA_SET_NAME_LINE);
         mLineId = intent.getIntExtra(Constants.INTENT_DATA_LINE_ID, -1);
         mWellId = intent.getIntExtra(Constants.INTENT_DATA_WELL_ID, -1);
-        mWellType = intent.getStringExtra(Constants.INTENT_DATA_WELL_TYPE);
+        mWellTypeValue = intent.getStringExtra(Constants.INTENT_DATA_WELL_TYPE);
         mIntervalName = queryIntervalNameList();
     }
 
     private List<Pair<String, Integer>> queryIntervalNameList() {
         List<Pair<String, Integer>> nameId = new ArrayList<>();
-        if (mLineId < 0 || mWellId < 0 || null == mWellType || mWellType.isEmpty()) {
+        if (mLineId < 0 || mWellId < 0 || null == mWellTypeValue || mWellTypeValue.isEmpty()) {
             return nameId;
         }
         //只有电缆线路型基桩才可以查询间隔
-        if (!mWellType.equals("2")) {
+        if (Integer.valueOf(mWellTypeValue) != WellType.DL.ordinal()) {
             return nameId;
         }
         //电缆表
@@ -154,7 +155,7 @@ public class AddChildLineController {
         mCurrentDataSet.SetFiledValueByName(Enum.LINE_PARENT_ID, String.valueOf(mLineId));
         mCurrentDataSet.SetFiledValueByName(Enum.LINE_WELL_ID, String.valueOf(mWellId));
         mCurrentDataSet.SetFiledValueByName(Enum.LINE_SPACER_ID, String.valueOf(mIntervalId));
-        mCurrentDataSet.SetFiledValueByName(Enum.LINE_JZTYPE, String.valueOf(mWellType));
+        mCurrentDataSet.SetFiledValueByName(Enum.LINE_JZTYPE, String.valueOf(mWellTypeValue));
         int key = mDbManager.insert(mCurrentDataSet);
         if (key >= 0) {
             mCurrentDataSet.PrimaryKey = key;
@@ -170,7 +171,7 @@ public class AddChildLineController {
      * @param f_linezcsx spinner控件
      */
     public void initView(BusinessConcatSpinner f_linezcsx, LinearLayout intervalLl) {
-        intervalLl.setVisibility(mWellType.equals(Enum.DLJ_TYPE) ? View.VISIBLE : View.GONE);
+        intervalLl.setVisibility(mWellTypeValue.equals(Enum.DLJ_TYPE) ? View.VISIBLE : View.GONE);
         List<FieldInfo> fieldInfoList = mCurrentDataSet.FieldInfos;
         for (int i = 0; i < fieldInfoList.size(); i++) {
             FieldInfo fieldInfo = fieldInfoList.get(i);

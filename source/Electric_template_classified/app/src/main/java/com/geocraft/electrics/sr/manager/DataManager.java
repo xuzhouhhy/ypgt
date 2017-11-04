@@ -9,6 +9,7 @@ import com.geocraft.electrics.manager.TaskManager;
 import com.geocraft.electrics.manager.TaskManager_;
 import com.geocraft.electrics.sr.WellDatasets;
 import com.geocraft.electrics.sr.WellType;
+import com.huace.log.logger.L;
 
 import org.androidannotations.annotations.EBean;
 
@@ -60,7 +61,26 @@ public class DataManager {
     }
 
     /**
+     * 获取当前线路，指定类型的基桩号名称
+     *
+     * @param lineId   线路名称，
+     */
+//    public List<String> getWellNames(int lineId) {
+//        List<DataSet> dataSets = new ArrayList<>();
+//        for (:
+//             ) {
+//
+//        }
+//        dataSets.addAll(getWells(lineId, WellType.JK));
+//        dataSets.addAll(getWells(lineId, WellType.DL));
+//        dataSets.add(getWells())
+//        return wellNames;
+//        return wellNames;
+//    }
+
+    /**
      * 获取当前线路，非开闭所基桩名称
+     *
      * @param lineId 线路名称
      */
     public List<String> getWellNames_JK_DL(int lineId) {
@@ -76,6 +96,18 @@ public class DataManager {
             wellNames.add(name);
         }
         return wellNames;
+    }
+
+    public boolean deleteAllDataSet(DataSet dataSet) {
+        if (null == dataSet) {
+            return true;
+        }
+        try {
+            return mDbManager.delete(dataSet);
+        } catch (Exception e) {
+            L.printException(e);
+            return false;
+        }
     }
 
 
