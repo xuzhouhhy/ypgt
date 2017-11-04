@@ -38,10 +38,6 @@ import common.geocraft.untiltools.T;
 
 @EFragment(R.layout.fragment_well_pre_base)
 public class Well_PreFragment extends WellBaseInfoFragment {
-    private final String WELL_NAME_PRIX = "#";
-    private final String WELL_FISTR_NAME = "#001";
-    private final String WELL_KBS_NAME = "#000";
-    private final String WELL_NAME_FORMAT = "000";
     protected TaskManager taskManager = TaskManager_.getInstance_(
             ElectricApplication_.getInstance().getApplicationContext());
     protected DbManager dbManager = DbManager_.getInstance_(
@@ -54,6 +50,11 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     BusinessEditText F_JZID;
     @Bean
     DataManager mDataManager;
+    private String WELL_NAME_PRIX = "#";
+    private String WELL_FISTR_NAME = "#001";
+    private String WELL_KBS_NAME = "#000";
+    private String WELL_NAME_FORMAT = "000";
+    private int WELL_NAME_LENGTH_LIMIT = 4;
     private WellController mWellController;
     private boolean mIsCreateForDefine;
 
@@ -95,7 +96,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
     public void onDataSynEvent(UpdateWellNameArgs event) {
         updateWellNameEditable(F_JZID, mIsCreateForDefine);
-        if(mIsCreateForDefine){
+        if (mIsCreateForDefine) {
             F_JZID.setText(initWellName(""));
         }
     }
@@ -112,6 +113,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
         String curWellName = F_JZID.getText().toString();
         int value = 0;
         if (mIsCreateForDefine) {
+            curWellName = formatInput(curWellName);
             String nextName = getNextWellName(mWellController.getLineId(),
                     mWellController.getWellType());
             nextName = nextName.substring(WELL_NAME_PRIX.length());
@@ -160,7 +162,8 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     }
 
     private void initWellNameControl() {
-        F_JZID.setFilters(new InputFilter[]{new InputFilter.LengthFilter(3)});
+        F_JZID.setFilters(new InputFilter[]{new InputFilter.LengthFilter(
+                WELL_NAME_LENGTH_LIMIT)});
         F_JZID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -189,7 +192,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     }
 
     private String getNextWellName(int lineId, WellType wellType) {
-        List<String> wellNames = mDataManager.getWellNames(lineId, wellType);
+        List<String> wellNames = mDataManager.getWellNames_JK_DL(lineId);
         if (wellNames.size() == 0) {
             return getDefaultWellName(wellType);
         }

@@ -59,5 +59,24 @@ public class DataManager {
         return wellNames;
     }
 
+    /**
+     * 获取当前线路，非开闭所基桩名称
+     * @param lineId 线路名称
+     */
+    public List<String> getWellNames_JK_DL(int lineId) {
+        List<String> wellNames = new ArrayList<>();
+        List<DataSet> dataSets = new ArrayList<DataSet>();
+        dataSets.addAll(getWells(lineId, WellType.JK));
+        dataSets.addAll(getWells(lineId, WellType.DL));
+        for (DataSet dataSet : dataSets) {
+            String name = dataSet.GetFieldValueByName(Enum.GYCJ_LINE_F_GH);
+            if (null == name || name.isEmpty()) {
+                continue;
+            }
+            wellNames.add(name);
+        }
+        return wellNames;
+    }
+
 
 }
