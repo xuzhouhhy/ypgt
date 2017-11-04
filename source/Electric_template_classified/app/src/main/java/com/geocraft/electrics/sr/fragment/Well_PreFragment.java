@@ -1,6 +1,7 @@
 package com.geocraft.electrics.sr.fragment;
 
 import android.support.annotation.NonNull;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -55,6 +56,7 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     DataManager mDataManager;
     private WellController mWellController;
     private boolean mIsCreateForDefine;
+
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener =
             new RadioGroup.OnCheckedChangeListener() {
                 @Override
@@ -92,8 +94,10 @@ public class Well_PreFragment extends WellBaseInfoFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 100)
     public void onDataSynEvent(UpdateWellNameArgs event) {
-        F_JZID.setText(initWellName(""));
         updateWellNameEditable(F_JZID, mIsCreateForDefine);
+        if(mIsCreateForDefine){
+            F_JZID.setText(initWellName(""));
+        }
     }
 
     @Override
@@ -149,10 +153,26 @@ public class Well_PreFragment extends WellBaseInfoFragment {
                 }
             }
             updateRadioClickable(rg_tower_type, mIsCreateForDefine);
-            updateWellNameEditable(F_JZID, mIsCreateForDefine);
+            initWellNameControl();
         } catch (Exception e) {
             L.printException(e);
         }
+    }
+
+    private void initWellNameControl() {
+        F_JZID.setFilters(new InputFilter[]{new InputFilter.LengthFilter(3)});
+        F_JZID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    String value = F_JZID.getText().toString();
+                    value = formatInput(value);
+                    F_JZID.setText(value);
+                    F_JZID.setSelection(value.length());
+                }
+            }
+        });
+        updateWellNameEditable(F_JZID, mIsCreateForDefine);
     }
 
     private String getDefaultWellName(WellType wellType) {
@@ -180,21 +200,21 @@ public class Well_PreFragment extends WellBaseInfoFragment {
     private String initWellName(String wellName) {
         String name = wellName;
         if (mWellController.getWellType() == WellType.KBS) {
-            return getDefaultWellName(mWellController.getWellType());
+            name = getDefaultWellName(mWellController.getWellType());
         }
         if (null == name || name.isEmpty()) {
             name = getNextWellName(mWellController.getLineId(), mWellController.getWellType());
-        } else {
-            String[] arrys = wellName.split(WELL_NAME_PRIX);
-            if (null == arrys || arrys.length == 0) {
-                name = getDefaultWellName(mWellController.getWellType());
-            }
         }
         return name.substring(WELL_NAME_PRIX.length());
     }
 
     private String getWellName() {
-        return WELL_NAME_PRIX + F_JZID.getText().toString();
+        String value = F_JZID.getText().toString();
+        if (null == value || value.isEmpty()) {
+            return "";
+        }
+        value = formatInput(value);
+        return WELL_NAME_PRIX + value;
     }
 
     private void getUserDefineData(DataSet dataSet) {
