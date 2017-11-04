@@ -111,15 +111,18 @@ public class Well_PreFragment extends WellBaseInfoFragment {
 
     private boolean isDataValid() {
         String curWellName = F_JZID.getText().toString();
-        int value = 0;
+        if (mWellController.getWellType() == WellType.KBS) {
+            return true;
+        }
+        int compareValue = 0;
         if (mIsCreateForDefine) {
             curWellName = formatInput(curWellName);
             String nextName = getNextWellName(mWellController.getLineId(),
                     mWellController.getWellType());
             nextName = nextName.substring(WELL_NAME_PRIX.length());
-            value = curWellName.compareTo(nextName);
+            compareValue = curWellName.compareTo(nextName);
         }
-        if (value < 0) {
+        if (compareValue < 0) {
             T.showShort(mActivity, R.string.well_name_is_too_samll);
             return false;
         }

@@ -1629,6 +1629,6 @@
     <string name="GY_DLXL_GJXX">工井信息</string>
     <string name="GY_HWG_HWG">环网柜</string>
     <string name="GY_DLFZX">电缆分接箱</string>
-    <string name="well_name_is_too_samll">基桩号已存在</string>
+    <string name="well_name_is_too_samll">基桩号小于已采录基桩号！</string>
     <string name="title_switch_spinner_add_item">是否输入值</string>
 </resources>
