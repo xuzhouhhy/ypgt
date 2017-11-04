@@ -133,13 +133,18 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
     }
 
     @Override
-    public void setControlValue(String text) {
-        if (mDatalist.contains(text)) {
-            spinner.setSelection(mDatalist.indexOf(text));
-            mValue = text;
-        } else {
-            spinner.setSelection(mDatalist.indexOf(""));
-        }
+    public void setControlValue(final String text) {
+        spinner.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mDatalist.contains(text)) {
+                    spinner.setSelection(mDatalist.indexOf(text), true);
+                    mValue = text;
+                } else {
+                    spinner.setSelection(mDatalist.indexOf(""), true);
+                }
+            }
+        });
     }
 
     @Override
@@ -152,7 +157,7 @@ public class BusinessConcatSpinner extends LinearLayout implements DataInterActi
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 if (position == mDatalist.size() - 1) {
-                    view.setVisibility(INVISIBLE);
+                    view.setVisibility(GONE);
                 }
                 return view;
             }
