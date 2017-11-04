@@ -39,7 +39,8 @@ public class DeviceShowItemView extends LinearLayout {
 
     public void bind(String number, String firstField, String firstValue, String secondField,
                      String secondValue, String thirdField, String thirdValue, boolean isShowMenu,
-                     OnClickEffectiveListener mOnClickEffectiveListener,int primaryKey) {
+                     OnClickEffectiveListener mOnClickEffectiveListener, int primaryKey,
+                     String btnStr) {
         txtNumber.setText(number);
         txtName.setText(firstField + firstValue);
         txtKind.setText(secondField + secondValue);
@@ -62,6 +63,7 @@ public class DeviceShowItemView extends LinearLayout {
                 txtKind.setVisibility(GONE);
             }
         }
+        btnMenu.setText(btnStr);
         DeviceShowItemView.ViewHodler viewHodler = new DeviceShowItemView.ViewHodler();
         viewHodler.setPrimaryKey(primaryKey);
         btnMenu.setTag(viewHodler);

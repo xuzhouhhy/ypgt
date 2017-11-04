@@ -23,6 +23,7 @@ import com.geocraft.electrics.entity.PhotoRules;
 import com.geocraft.electrics.event.GaoyaLineRefreshEvent;
 import com.geocraft.electrics.factory.DeleteDataSetFactory;
 import com.geocraft.electrics.manager.TaskManager;
+import com.geocraft.electrics.sr.manager.DataManager;
 import com.geocraft.electrics.ui.activity.CommonListActivity_;
 import com.geocraft.electrics.ui.activity.DeviceShowListActivity;
 import com.geocraft.electrics.ui.activity.RecordActivity_;
@@ -51,6 +52,8 @@ public class DeviceShowListController extends BaseController {
     TaskManager mTaskManager;
     @Bean
     DbManager mDbManager;
+    @Bean
+    DataManager mDataManager;
     LT40ScanReceiver mReceiver = new LT40ScanReceiver();
     //小类,同时也是当前Activity的标题
     private String mSecondType;
@@ -221,6 +224,10 @@ public class DeviceShowListController extends BaseController {
                             DeleteDataSetFactory deleteDataSetFactory = new DeleteDataSetFactory();
                             //先删除照片
                             //deleteAllPhotoFiles(dataSet);
+                            if (mDataManager.getWellsOfLine(dataSet.PrimaryKey).size() > 0) {
+                                T.showShort(context, R.string.line_hasData_no_remove);
+                                return;
+                            }
                             if (deleteDataSetFactory.deleteAllDataSet(dataSet)) {
                                 mDataSets.remove(position);
                                 ((DeviceShowListActivity) context).refreshListView(position);

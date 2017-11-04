@@ -1631,4 +1631,7 @@
     <string name="GY_DLFZX">电缆分接箱</string>
     <string name="well_name_is_too_samll">基桩号小于已采录基桩号！</string>
     <string name="title_switch_spinner_add_item">是否输入值</string>
+    <string name="line_new">新建分支线</string>
+    <string name="line_well">查看线路基桩</string>
+    <string name="line_hasData_no_remove">线路有采录数据不能删除！</string>
 </resources>

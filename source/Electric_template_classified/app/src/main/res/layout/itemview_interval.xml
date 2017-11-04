@@ -5,9 +5,10 @@
     android:orientation="vertical">
 
     <TextView
+
         android:id="@+id/tvIntervalName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/components_height"
         android:paddingLeft="8dp"
         android:textSize="24sp" />
 </LinearLayout>

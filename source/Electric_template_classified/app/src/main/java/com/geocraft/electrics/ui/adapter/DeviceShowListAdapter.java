@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.geocraft.electrics.R;
+import com.geocraft.electrics.app.ElectricApplication_;
 import com.geocraft.electrics.constants.Constants;
 import com.geocraft.electrics.entity.DataSet;
 import com.geocraft.electrics.ui.absinterface.OnClickEffectiveListener;
@@ -83,10 +84,11 @@ public class DeviceShowListAdapter extends BaseAdapter {
         String second = temp.GetFieldValueByName(temp.Second);
         String thirdField = temp.GetFieldNameByName(temp.Third) + ":";
         String third = temp.GetFieldValueByName(temp.Third);
-
+        String btnStr = ElectricApplication_.getInstance().
+                getResources().getString(R.string.line_well);
         deviceShowItemView.bind((position + 1) + "", firstField, first, secondField, second,
                 thirdField, third, temp.isShowInDeviceList(), mOnClickEffectiveListener,
-                temp.PrimaryKey);
+                temp.PrimaryKey, btnStr);
         deviceShowItemView.setNumberColor(getStatus(status));
         deviceShowItemView.setSelected(true);
         return deviceShowItemView;

@@ -61,22 +61,17 @@ public class DataManager {
     }
 
     /**
-     * 获取当前线路，指定类型的基桩号名称
+     * 获取当前线路，指定类型的基桩号
      *
-     * @param lineId   线路名称，
+     * @param lineId 线路名称，
      */
-//    public List<String> getWellNames(int lineId) {
-//        List<DataSet> dataSets = new ArrayList<>();
-//        for (:
-//             ) {
-//
-//        }
-//        dataSets.addAll(getWells(lineId, WellType.JK));
-//        dataSets.addAll(getWells(lineId, WellType.DL));
-//        dataSets.add(getWells())
-//        return wellNames;
-//        return wellNames;
-//    }
+    public List<DataSet> getWellsOfLine(int lineId) {
+        List<DataSet> dataSets = new ArrayList<>();
+        for (WellType wellType : WellType.values()) {
+            dataSets.addAll(getWells(lineId, wellType));
+        }
+        return dataSets;
+    }
 
     /**
      * 获取当前线路，非开闭所基桩名称
@@ -96,18 +91,6 @@ public class DataManager {
             wellNames.add(name);
         }
         return wellNames;
-    }
-
-    public boolean deleteAllDataSet(DataSet dataSet) {
-        if (null == dataSet) {
-            return true;
-        }
-        try {
-            return mDbManager.delete(dataSet);
-        } catch (Exception e) {
-            L.printException(e);
-            return false;
-        }
     }
 
 
