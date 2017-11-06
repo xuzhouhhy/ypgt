@@ -8,6 +8,8 @@ import com.geocraft.electrics.sr.fragment.WellMainFragment;
 import com.geocraft.electrics.sr.fragment.WellMainFragment_;
 import com.geocraft.electrics.sr.fragment.Well_PreFragment;
 import com.geocraft.electrics.sr.fragment.Well_PreFragment_;
+import com.geocraft.electrics.sr.fragment.jz.JZ_DX;
+import com.geocraft.electrics.sr.fragment.jz.JZ_DX_;
 import com.geocraft.electrics.ui.fragment.Coordfragment;
 import com.geocraft.electrics.ui.fragment.Coordfragment_;
 
@@ -22,6 +24,7 @@ import java.util.List;
 @EBean
 public class PreFragmentFactory {
     private final static String KEY_WELL_MAIN = "WELL_MAIN";
+    private final static String KEY_JZ_DX = "JZ_DX";
     private final static String KEY_WELL_PRE = "WELL_PRE";
     private final static String KEY_WELL_COORDINATE = "WELL_COORDINATE";
     private int mFramgmentIndex;
@@ -40,6 +43,7 @@ public class PreFragmentFactory {
 
     private void initCommonFramentItems() {
         mFragmentOptions.add(generate_WELL_PRE());
+        mFragmentOptions.add(generate_GY_JZ_DX());
         mFragmentOptions.add(generate_WELL_Coordinate());
     }
 
@@ -56,6 +60,12 @@ public class PreFragmentFactory {
                 mResources.getString(R.string.GY_DLXLTZXX_F_JZCOORD_HIGH));
         String fragmentName = "";
         return new FragmentOption(KEY_WELL_COORDINATE, fragmentName, "", fragment);
+    }
+
+    private FragmentOption generate_GY_JZ_DX() {
+        JZ_DX fragment = new JZ_DX_();
+        String fragmentName = mResources.getString(R.string.GY_JZ_DX);
+        return new FragmentOption(KEY_JZ_DX, fragmentName, "", fragment);
     }
 
     private FragmentOption generate_WELL_MAIN() {

@@ -1634,4 +1634,5 @@
     <string name="line_new">新建分支线</string>
     <string name="line_well">查看线路基桩</string>
     <string name="line_hasData_no_remove">线路有采录数据不能删除！</string>
+    <string name="GY_JZ_DX">基桩导线信息</string>
 </resources>
