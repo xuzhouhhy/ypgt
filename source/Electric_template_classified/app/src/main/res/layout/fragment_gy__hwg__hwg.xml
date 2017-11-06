@@ -166,7 +166,7 @@
             android:layout_height="wrap_content"
             android:text="@string/GY_HYGTZXX_F_JCXJGS" />
 
-        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessConcatSpinner
+        <com.geocraft.electrics.ui.view.UserDefineControlView.BusinessEditText
             android:id="@+id/F_JCXJGS"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

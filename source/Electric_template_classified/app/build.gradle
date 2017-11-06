@@ -15,8 +15,8 @@ android {
         applicationId "com.geocraft.electrics"
         minSdkVersion 16
         targetSdkVersion 19
-        versionCode 18
-        versionName "2.13"
+        versionCode 1
+        versionName "1"
     }
     buildTypes {
         release {
