@@ -53,7 +53,7 @@ public class ElectricApplication extends Application {
 
     public boolean mUsePermitted;
     //是否开启注册功能
-    public boolean mIsOpenRegister = false;
+    public boolean mIsOpenRegister = true;
     private List mList = new LinkedList();
     //条码扫描
     private BarcodeConfig barcodeConfig = new BarcodeConfig(this);

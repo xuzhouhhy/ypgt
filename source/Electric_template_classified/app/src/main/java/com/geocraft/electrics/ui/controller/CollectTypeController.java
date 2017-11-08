@@ -85,15 +85,15 @@ public class CollectTypeController extends BaseController {
     void init() {
     }
 
-    private void dealWithDefaultTaskModeNoSyns(Context context) {
-        if (getSPDefaultTaskMode(context)) {
-            openOrCreateDefaultTask();
-        } else {
-            initCollectTypeList();
-            ((CollectTypeActivity) context).getAdapter().notifyDataSetChanged();
-            openTaskManagerActivity(context);
-        }
-    }
+//    private void dealWithDefaultTaskModeNoSyns(Context context) {
+//        if (getSPDefaultTaskMode(context)) {
+//            openOrCreateDefaultTask();
+//        } else {
+//            initCollectTypeList();
+//            ((CollectTypeActivity) context).getAdapter().notifyDataSetChanged();
+//            openTaskManagerActivity(context);
+//        }
+//    }
 
     private void dealWithDefaultTaskMode(Context context) {
         if (getSPDefaultTaskMode(context)) {
@@ -114,8 +114,8 @@ public class CollectTypeController extends BaseController {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ElectricApplication.BUS.post(new NotRegisteredTempUseEvent());
-                        //dealWithDefaultTaskMode(context);
-                        dealWithDefaultTaskModeNoSyns(context);
+                        dealWithDefaultTaskMode(context);
+                        //dealWithDefaultTaskModeNoSyns(context);
                     }
                 };
                 new AlertDialog.Builder(context)
@@ -126,13 +126,13 @@ public class CollectTypeController extends BaseController {
                         .setPositiveButton(R.string.dlg_yes, onPositiveListener)
                         .show();
             } else {
-                //dealWithDefaultTaskMode(context);
-                dealWithDefaultTaskModeNoSyns(context);
+                dealWithDefaultTaskMode(context);
+                //dealWithDefaultTaskModeNoSyns(context);
             }
         } else {
             if (verifyPermission(context)) {
-                //dealWithDefaultTaskMode(context);
-                dealWithDefaultTaskModeNoSyns(context);
+                dealWithDefaultTaskMode(context);
+                //dealWithDefaultTaskModeNoSyns(context);
             }
         }
     }

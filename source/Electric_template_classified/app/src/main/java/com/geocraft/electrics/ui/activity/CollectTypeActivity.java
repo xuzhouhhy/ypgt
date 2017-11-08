@@ -38,16 +38,17 @@ public class CollectTypeActivity extends BaseActivity {
 
     @Bean
     CollectTypeController mController;
-
     AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             mController.openTargetActivity(CollectTypeActivity.this, position);
         }
     };
+    private boolean mIsInit;
 
     @AfterViews
     void init() {
+        mIsInit = true;
         hideHomeButton();
         gridViewCollectType.setOnItemClickListener(mOnItemClickListener);
         mAdapter = new CollectTypeAdapter(CollectTypeActivity.this, mController);
@@ -70,9 +71,13 @@ public class CollectTypeActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         mController.setActionBatTitle(this);
-        if (mController.isDataSourceNull()) {
-            mController.initCollectTypeList();
-            refreshCollectTypeListView();
+        if (mIsInit) {
+            mIsInit = false;
+        }else {
+            if (mController.isDataSourceNull()) {
+                mController.initCollectTypeList();
+                refreshCollectTypeListView();
+            }
         }
     }
 
